@@ -1,1 +1,7 @@
 # Introduction
+
+## Why do we need all this?
+
+## Why use `R` and not other applications?
+
+## Regression analysis: not again!

@@ -1,2 +1,22 @@
 # Using `R' in Social Science Research
 
+## Where to get it
+
+## How to use it
+
+### Scripts
+
+### Packages
+
+## Reading in data
+
+## Regression modeling
+
+## Writing results
+
+## Making plots 
+
+## Recap
+
+
+
