@@ -8,3 +8,5 @@ site: bookdown::bookdown_site
 
 # Preface 
 
+I started this book as background material for the course Network Analysis and from the need to teach social science students (and Business Administration students in particular) the basics of `R` and the intuition behing applying linear regression.
+
