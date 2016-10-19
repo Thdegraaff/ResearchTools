@@ -56,6 +56,43 @@ MathJax.Hub.Config({
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
@@ -93,7 +130,13 @@ MathJax.Hub.Config({
 <li class="chapter" data-level="4.1.3" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#possible-violations-and-how-to-spot-them"><i class="fa fa-check"></i><b>4.1.3</b> Possible violations and how to spot them</a></li>
 <li class="chapter" data-level="4.1.4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#normality-heteroskedasticity-and-multicollinearity"><i class="fa fa-check"></i><b>4.1.4</b> Normality, heteroskedasticity and multicollinearity</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#sec:applications"><i class="fa fa-check"></i><b>4.2</b> Applications of linear regression</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#sec:applications"><i class="fa fa-check"></i><b>4.2</b> Applications of linear regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#descriptives"><i class="fa fa-check"></i><b>4.2.1</b> Descriptives</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#baseline-model"><i class="fa fa-check"></i><b>4.2.2</b> Baseline model</a></li>
+<li class="chapter" data-level="4.2.3" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#specificion-issues"><i class="fa fa-check"></i><b>4.2.3</b> Specificion issues</a></li>
+<li class="chapter" data-level="4.2.4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#reporting"><i class="fa fa-check"></i><b>4.2.4</b> Reporting</a></li>
+<li class="chapter" data-level="4.2.5" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#internal-validation"><i class="fa fa-check"></i><b>4.2.5</b> Internal validation</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a></li>
 <li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
@@ -125,7 +168,7 @@ MathJax.Hub.Config({
 <p>I usually have finding causal relations in mind when talking about least squares (already difficult enough), but note again that the same least squares assumptions should hold when you want to predict or want to find statistical relations.</p>
 <div id="the-model" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> The model</h3>
-<p>Assume we are interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We have found a dataset with 32 observations and state the following univariate regression model: <span class="math display">\[
+<p>Assume we are interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We state the following univariate regression model: <span class="math display">\[
 y_i = \alpha + \beta x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(y\)</span> denotes the fuel efficiency of the car, <span class="math inline">\(x\)</span> denotes the weight of the car and subscript <span class="math inline">\(i\)</span> stands for the <span class="math inline">\(i\)</span>-th observation. <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are the parameters of the model and they are <strong>unknown</strong> so have to be <strong>estimated</strong>. <span class="math inline">\(\epsilon\)</span> is a so-called error term and denotes all the variation that is not captures by our two variables (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>) and our weight variable <span class="math inline">\(x\)</span>.</p>
 <p>The following observations are rather important:</p>
@@ -178,12 +221,404 @@ y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 <p>Until now, we have not discussed the concepts normality, heteroskedasticity and multicollinearity. That is simply because they are not that relevant (as long as we have enough observations, typically above 40). The validity of OLS hinges just upon the three assumptions mentioned above (and they are already difficult enough). In fact, if the three assumptions are satisfied, then, as an <strong>outcome</strong>, the parameters (<span class="math inline">\(\beta\)</span>) are normally distributed. It goes to far to explain why (the theorems required for this are deeply fundamental to statistics), but in any case, normality is <strong>not</strong> a core OLS assumption. It would be nice if both <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> are normally distributed because then the standard errors are minimized, but again, whether the estimate of <span class="math inline">\(\beta\)</span> you find is correct or not (biased or unbiased) does not depend on normality <strong>assumptions</strong>.</p>
 <p>Heteroskedasticy (in other words your standard errors are not constant) as well leads to quite some confusion. In general heteroskedasticity only leads to inefficient estimates (so only affects the standard errors). Nothing more, nothing less. And there are corrections for that (robust standard errors in <code>Stata</code> and similar procedures in <code>R</code>), so that nobody needs to care anymore about heteroskedasticity.</p>
 <p>Finally, there is multicollinearity. And this come in two flavours: perfect and imperfect multicollinearity. Perfect multicollinearity occurs, e.g., when your model contains two identical variables. Then, OLS can not decide which one to use and usually one of the variables is dropped, or your computer program gives an error (<em>computer says no</em>).</p>
-<p>Imperfect multicollinearity occurs when two variables are highly (but not perfectly) correlated. This occurs less often than one may think. Variables that are highly correlated (say <span class="math inline">\(age\)</span> and <span class="math inline">\(age^2\)</span>) can be perfectly incorporated in a model. Only when the correlation becomes very high (say above 95% or even higher) then something strange happens: the standard error get very large. Why? That is because of the definition mentioned above. Parameter <span class="math inline">\(\beta_1\)</span> measures the impact of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> <em>holding <span class="math inline">\(c\)</span> constant</em>. But if <span class="math inline">\(x\)</span> and <span class="math inline">\(c\)</span> are very correlated and you control for <span class="math inline">\(c\)</span>, then not much variation is left over for <span class="math inline">\(x\)</span>. So, <span class="math inline">\(c\)</span> actually removes the variation of <span class="math inline">\(x\)</span>. This always happens, and there is trade-off between adding more variables and leaving enough variation (note that there is always correlation between variables), but usually it all goes fine. Good judgement and sound thinking typically helps more than strange statistics (VIF?).</p>
+<p>Imperfect multicollinearity occurs when two variables are highly (but not perfectly) correlated. This occurs less often than one may think. Variables that are highly correlated (say <span class="math inline">\(age\)</span> and <span class="math inline">\(age^2\)</span>) can be perfectly incorporated in a model. Only when the correlation becomes very high (say above 95% or even higher) then something strange happens: the standard error get very large. Why? That is because of the definition mentioned above. Parameter <span class="math inline">\(\beta_1\)</span> measures the impact of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> <em>holding <span class="math inline">\(c\)</span> constant</em>. But if <span class="math inline">\(x\)</span> and <span class="math inline">\(c\)</span> are very correlated and you control for <span class="math inline">\(c\)</span>, then not much variation is left over for <span class="math inline">\(x\)</span>. So, <span class="math inline">\(c\)</span> actually removes the variation of <span class="math inline">\(x\)</span>. This always happens, and there is a trade-off between adding more variables and leaving enough variation (note that there is always correlation between variables), but usually it all goes fine. Good judgement and sound thinking typically helps more than strange statistics (say VIF?).</p>
 </div>
 </div>
 <div id="sec:applications" class="section level2">
 <h2><span class="header-section-number">4.2</span> Applications of linear regression</h2>
+<p>This section gives an application of regression analysis. Assume we are still interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We have found a dataset (internal in <code>R</code>), so the first thing we have to do is describe the descriptives of the dataset.</p>
+<div id="descriptives" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Descriptives</h3>
+<p>The build-in dataset <code>mtcars</code> has, besides several other variables, information on weight of a car in (1000 lbs or in about 450 kilos) and miles per gallon. With following command <code>head()</code> we can look at the first 6 observations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<p>Again, we are interested in the relation weight of a car (the variable <code>wt</code>) and miles per gallon (the variable <code>mpg</code>). Note, that in his case <code>mpg</code> is the first column and <code>wt</code> is the sixth column. (The column with car names above is not a real variable, but are the row names). Recall that the command <code>c()</code> combines stuff, so we look at the summary statistics of the variables we are interested in by:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(mtcars[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>)])</code></pre></div>
+<pre><code>##       mpg              wt       
+##  Min.   :10.40   Min.   :1.513  
+##  1st Qu.:15.43   1st Qu.:2.581  
+##  Median :19.20   Median :3.325  
+##  Mean   :20.09   Mean   :3.217  
+##  3rd Qu.:22.80   3rd Qu.:3.610  
+##  Max.   :33.90   Max.   :5.424</code></pre>
+<p>There does not seem to be anything out of the ordinary here, but to be sure, we constuct a scatterplot between weight of the car and miles per gallon.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="_main_files/figure-html/unnamed-chunk-3-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
+<p class="caption">
+Figure 4.1: A scatterplog between miles per gallon and car weight.
+</p>
+</div>
+<p>So, there do not seem to be many outliers here. Moreover, as we would expect, there seems to be a downward sloping relation between weight of the car and miles per gallon (hopefully you agree, that this makes sense). To <strong>quantify</strong> this relation, the next subsection will perform a least squares estimation.</p>
+</div>
+<div id="baseline-model" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Baseline model</h3>
+<p>So, if we are only interested in the relation between weight of a car (the variable <code>wt</code>) and miles per gallon, we can easily perform the following regression (recall again that the command <code>lm()</code> performs a least squares estimation and that <code>&lt;-</code> denotes an assignment to a variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baselinemodel &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg~wt, mtcars)
+<span class="kw">summary</span>(baselinemodel)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ wt, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.5432 -2.3647 -0.1252  1.4096  6.8727 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***
+## wt           -5.3445     0.5591  -9.559 1.29e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.046 on 30 degrees of freedom
+## Multiple R-squared:  0.7528, Adjusted R-squared:  0.7446 
+## F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
+<p>At this point it is good to stop and see what we have got. We have the formula call (we know this one), some stuff about the residuals, stuff about the coefficients (most important for us), and some diagnostics (including the notorious <span class="math inline">\(R^2\)</span>). We zoom in on the results about the coefficients. We have an estimation of the intercept (our <span class="math inline">\(\alpha\)</span> of above) and of <code>wt</code> (our <span class="math inline">\(\beta\)</span> of above). For both, we have as well a standard error, a <span class="math inline">\(t\)</span>-value, a probability and a bunch of start. What do they all mean again. We focus on <code>wt</code> here (typically we are less interested in the constant or intercept).</p>
+<p>The estimate is easy; that is <span class="math inline">\(\beta\)</span> or the marginal effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>. So, increasing <span class="math inline">\(x\)</span> with 1 (or with a 1000 lbs) decreases the miles per gallon with 5.3445 (which is quite lot).</p>
+<p>The standard error denote thes <em>precision</em> of the estimate. As a rule of thumb: you know with 95% centainty that the true value of <span class="math inline">\(\beta\)</span> lies within the interval [estimate - 2 <span class="math inline">\(\times\)</span> standard error, estimate + 2 <span class="math inline">\(\times\)</span> standard error]. The standard error is very important and is used to <strong>test</strong> possible values of the parameter. One of the most important test is whether <span class="math inline">\(\beta=0\)</span>. Why? Because, if <span class="math inline">\(\beta=0\)</span> then the variable <code>wt</code> does nothing on <code>mpg</code>. This specific test is always denoted by the <span class="math inline">\(t\)</span>-value, its associated probability and the corresponding star thingies. In this case, the <span class="math inline">\(t\)</span>-value is high in an absolute sense, it is <em>very</em> improbable that the estimate could be zero (somehting like a probability of 0.0000000001 which is small indeed), and the start neatly indicate that that his probaility is smaller than 0.001.</p>
+<p>One nice trick is to plot the regression line in the scatterplot above. One can do so by the command <code>abline()</code> or:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)
+<span class="kw">abline</span>(<span class="kw">lm</span>(mpg~wt, mtcars))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="_main_files/figure-html/unnamed-chunk-5-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
+<p class="caption">
+Figure 4.2: A scatterplog between miles per gallon and car weight with regression line.
+</p>
+</div>
+</div>
+<div id="specificion-issues" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> Specificion issues</h3>
+<p>I can imagine that you are not very satisfied yet with the analysis. First of all, the relation between <code>mpg</code> and <code>wt</code> might be nonlinear and, secondly, you would like to include additional variables. First we look at the possible nonlinearity in the regresson (note that we can use the regression formula as before, but that we can specify logarithmic relations by <code>log()</code>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)~<span class="kw">log</span>(wt), mtcars)
+<span class="kw">summary</span>(logmodel)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(mpg) ~ log(wt), data = mtcars)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.18141 -0.10681 -0.02125  0.08109  0.26930 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.90181    0.08790   44.39  &lt; 2e-16 ***
+## log(wt)     -0.84182    0.07549  -11.15 3.41e-12 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1334 on 30 degrees of freedom
+## Multiple R-squared:  0.8056, Adjusted R-squared:  0.7992 
+## F-statistic: 124.4 on 1 and 30 DF,  p-value: 3.406e-12</code></pre>
+<p>We have now the same type of output as before, but I would like to focus on two things here. First, the <span class="math inline">\(R^2\)</span> has gone up and that is what you typically get in the social sciences. Logarithmically transformed variables usually <strong>fit</strong> better. Secondly, the interpretation of the estimate now differs. It has become an elasticity with size <span class="math inline">\(-0.84\)</span>, which is quite high again. If the car doubles in weights, the fuel efficiency of the car goes down by 84%!</p>
+<p>Secondly, you might want to include other variables, such as being a foreing car (opposite to a car from USA) (<code>vs</code>), the number of cylinders (<code>cyl</code>), the gross horsepower (<code>hp</code>) and how quick the car does over a quarter of a mile (<code>qsec</code>). Again, we are not interested in these additional variables or whether they crank up the <span class="math inline">\(R^2\)</span>. The only thing we are interested is in whether the coefficient of <code>log(wt)</code> changes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">extendedmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)~<span class="kw">log</span>(wt)+vs+cyl +<span class="st"> </span>hp +<span class="st"> </span>qsec, mtcars)
+<span class="kw">summary</span>(extendedmodel)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(mpg) ~ log(wt) + vs + cyl + hp + qsec, data = mtcars)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.201746 -0.065242 -0.009506  0.079809  0.205166 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.5280554  0.4610947   7.651 4.04e-08 ***
+## log(wt)     -0.6514583  0.1509786  -4.315 0.000205 ***
+## vs          -0.0149215  0.0863277  -0.173 0.864111    
+## cyl         -0.0160253  0.0314486  -0.510 0.614651    
+## hp          -0.0007670  0.0006861  -1.118 0.273786    
+## qsec         0.0212017  0.0267153   0.794 0.434603    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1121 on 26 degrees of freedom
+## Multiple R-squared:  0.8811, Adjusted R-squared:  0.8582 
+## F-statistic: 38.53 on 5 and 26 DF,  p-value: 3.227e-11</code></pre>
+<p>Clearly, the coefficient of <code>log(wt)</code> changes with the inclusion of additional variables. So there was unobserved heterogeneity bias in our baseline model (and most likely there still is in our extended model), even though the addional variables are not siginficant.</p>
+</div>
+<div id="reporting" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> Reporting</h3>
+<p>Hopefully you agree that the regression output of above looks <strong>horrible</strong> and that you do not need all these statistics and stuff. Therefore, you need to construct your own table for presentation format. The minimum what should be in these tables are the coefficient names, the estimates, the standard errors (and the start would be nice as well), the <span class="math inline">\(R^2\)</span> and the number of observations used.</p>
+<p>Unfortunately, creating tables of your own is a pain in the … Luckily, within <code>R</code> (and by the way in programs as <code>Stata</code> as well) you can do this automatically! In <code>R</code> there are several packages one use. I prefer the package Stargazer which can be loaded as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;stargazer&quot;</span>)</code></pre></div>
+<p>And using this package we get the following outcome for our logarithmic specification:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stargazer</span>(logmodel, extendedmodel, <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>,<span class="dt">omit.stat =</span> <span class="kw">c</span>(<span class="st">&quot;rsq&quot;</span>, <span class="st">&quot;f&quot;</span>))</code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+log(mpg)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+log(wt)
+</td>
+<td>
+-0.842<sup>***</sup>
+</td>
+<td>
+-0.651<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.075)
+</td>
+<td>
+(0.151)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+vs
+</td>
+<td>
+</td>
+<td>
+-0.015
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.086)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+cyl
+</td>
+<td>
+</td>
+<td>
+-0.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.031)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+hp
+</td>
+<td>
+</td>
+<td>
+-0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+qsec
+</td>
+<td>
+</td>
+<td>
+0.021
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.027)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+3.902<sup>***</sup>
+</td>
+<td>
+3.528<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.088)
+</td>
+<td>
+(0.461)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+32
+</td>
+<td>
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.799
+</td>
+<td>
+0.858
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+0.133 (df = 30)
+</td>
+<td>
+0.112 (df = 26)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<p>Note that we now display both specifications, the first the univariate case and the second the multivariate case. This is now typically done in social science research. You start with a baseline and then add variables to check whether the variable of interest remains robust.</p>
+</div>
+<div id="internal-validation" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> Internal validation</h3>
+<p>So, after done all modeling exercitions you are not done! Now, it is time to validate your results internally. Can you be confident of your results. Or is the parameter that you have found still suspect of possible biases. Here again come the three least squares assumptions:</p>
+<ol style="list-style-type: decimal">
+<li><p>No large outliers: we have checked that with our descriptive statistics and our scatterplot and it seems that assumption is met.</p></li>
+<li><p>Both miles per gallon and car weight should be <em>i.i.d.</em>. We can reasonably assume that the sampling has been correctly and that this is the case.</p></li>
+<li><p>The following condition should hold: <span class="math inline">\(E[\epsilon|X=x] = 0\)</span>. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.)</p></li>
+</ol>
+<p>Note that the number of observations in this case is only 32, so whether our standard errors are automatically normally distributed is highly questionable, but for the sake of the exposition (and the fact that small sample statistics are very complex) we leave it just with this observation.</p>
 
+</div>
 </div>
 </div>
             </section>

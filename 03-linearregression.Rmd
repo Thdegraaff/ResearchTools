@@ -14,7 +14,7 @@ I usually have finding causal relations in mind when talking about least squares
 
 ### The model
 
-Assume we are interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We have found a dataset with 32 observations and state the following univariate regression model:
+Assume we are interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We state the following univariate regression model:
 $$
 y_i = \alpha + \beta x_i + \epsilon_i,
 $$
@@ -90,7 +90,102 @@ Heteroskedasticy (in other words your standard errors are not constant) as well 
 
 Finally, there is multicollinearity. And this come in two flavours: perfect and imperfect multicollinearity. Perfect multicollinearity occurs, e.g., when your model contains two identical variables. Then, OLS can not decide which one to use and usually one of the variables is dropped, or your computer program gives an error (*computer says no*). 
 
-Imperfect multicollinearity occurs when two variables are highly (but not perfectly) correlated. This occurs less often than one may think. Variables that are highly correlated (say $age$ and $age^2$) can be perfectly incorporated in a model. Only when the correlation becomes very high (say above 95\% or even higher) then something strange happens: the standard error get very large. Why? That is because of the definition mentioned above. Parameter $\beta_1$ measures the impact of $x$ on $y$ *holding $c$ constant*. But if $x$ and $c$ are very correlated and you control for $c$, then not much variation is left over for $x$. So, $c$ actually removes the variation of $x$. This always happens, and there is trade-off between adding more variables and leaving enough variation (note that there is always correlation between variables), but usually it all goes fine. Good judgement and sound thinking typically helps more than strange statistics (say VIF?).
+Imperfect multicollinearity occurs when two variables are highly (but not perfectly) correlated. This occurs less often than one may think. Variables that are highly correlated (say $age$ and $age^2$) can be perfectly incorporated in a model. Only when the correlation becomes very high (say above 95\% or even higher) then something strange happens: the standard error get very large. Why? That is because of the definition mentioned above. Parameter $\beta_1$ measures the impact of $x$ on $y$ *holding $c$ constant*. But if $x$ and $c$ are very correlated and you control for $c$, then not much variation is left over for $x$. So, $c$ actually removes the variation of $x$. This always happens, and there is a trade-off between adding more variables and leaving enough variation (note that there is always correlation between variables), but usually it all goes fine. Good judgement and sound thinking typically helps more than strange statistics (say VIF?).
 
 ## Applications of linear regression {#sec:applications}
 
+This section gives an application of regression analysis. Assume we are still interested in the effect of the weight of a car on the fuel efficiency of the car (measures in miles per gallon). We have found a dataset (internal in `R`), so the first thing we have to do is describe the descriptives of the dataset. 
+
+### Descriptives
+
+The build-in dataset `mtcars` has, besides several other variables, information on weight of a car in (1000 lbs or in about 450 kilos) and miles per gallon. With following command `head()` we can look at the first 6 observations.
+
+```{r}
+head(mtcars)
+```
+
+Again, we are interested in the relation weight of a car (the variable `wt`) and miles per gallon (the variable `mpg`). Note, that in his case `mpg` is the first column and `wt` is the sixth column. (The column with car names above is not a real variable, but are the row names). Recall that the command `c()` combines stuff, so we look at the summary statistics of the variables we are interested in by:
+
+```{r}
+summary(mtcars[,c(1,6)])
+```
+
+There does not seem to be anything out of the ordinary here, but to be sure, we constuct a scatterplot between weight of the car and miles per gallon. 
+
+```{r, fig.cap='A scatterplog between miles per gallon and car weight.'}
+plot(mpg~wt, mtcars)
+```
+
+So, there do not seem to be many outliers here. Moreover, as we would expect, there seems to be a downward sloping relation between weight of the car and miles per gallon (hopefully you agree, that this makes sense). To **quantify** this relation, the next subsection will perform a least squares estimation. 
+
+### Baseline model
+
+So, if we are only interested in the relation between weight of a car (the variable `wt`) and miles per gallon, we can easily perform the following regression (recall again that the command `lm()` performs a least squares estimation and that `<-` denotes an assignment to a variable:
+
+```{r}
+baselinemodel <- lm(mpg~wt, mtcars)
+summary(baselinemodel)
+```
+
+At this point it is good to stop and see what we have got. We have the formula call (we know this one), some stuff about the  residuals, stuff about the coefficients (most important for us), and some diagnostics (including the notorious $R^2$). We zoom in on the results about the coefficients. We have an estimation of the intercept (our $\alpha$ of above) and of `wt` (our $\beta$ of above). For both, we have as well a standard error, a $t$-value, a probability and a bunch of start. What do they all mean again. We focus on `wt` here (typically we are less interested in the constant or intercept). 
+
+The estimate is easy; that is $\beta$ or the marginal effect of $x$ on $y$. So, increasing $x$ with 1 (or with a 1000 lbs) decreases the miles per gallon with 5.3445 (which is quite lot).
+
+The standard error denote thes *precision* of the estimate. As a rule of thumb: you know with 95% centainty that the true value of $\beta$ lies within the interval [estimate - 2 $\times$ standard error, estimate + 2 $\times$ standard error]. The standard error is very important and is used to **test** possible values of the parameter. One of the most important test is whether $\beta=0$. Why? Because, if $\beta=0$ then the variable `wt` does nothing on `mpg`. This specific test is always denoted by the $t$-value, its associated probability and the corresponding star thingies. In this case, the $t$-value is high in an absolute sense, it is *very* improbable that the estimate could be zero (somehting like a probability of 0.0000000001 which is small indeed), and the start neatly indicate that that his probaility is smaller than 0.001.
+
+One nice trick is to plot the regression line in the scatterplot above. One can do so by the command `abline()` or:
+
+```{r, fig.cap='A scatterplog between miles per gallon and car weight with regression line.'}
+plot(mpg~wt, mtcars)
+abline(lm(mpg~wt, mtcars))
+```
+
+### Specificion issues
+
+I can imagine that you are not very satisfied yet with the analysis. First of all, the relation between `mpg` and `wt` might be nonlinear and, secondly, you would like to include additional variables. First we look at the possible nonlinearity in the regresson (note that we can use the regression formula as before, but that we can specify logarithmic relations by `log()`): 
+
+```{r}
+logmodel <- lm(log(mpg)~log(wt), mtcars)
+summary(logmodel)
+```
+
+We have now the same type of output as before, but I would like to focus on two things here. First, the $R^2$ has gone up and that is what you typically get in the social sciences. Logarithmically transformed variables usually **fit** better. Secondly, the interpretation of the estimate now differs. It has become an elasticity with size $-0.84$, which is quite high again. If the car doubles in weights, the fuel efficiency of the car goes down by 84%!
+
+Secondly, you might want to include other variables, such as being a foreing car (opposite to a car from USA) (`vs`), the number of cylinders (`cyl`), the gross horsepower (`hp`) and how quick the car does over a quarter of a mile (`qsec`). Again, we are not interested in these additional variables or whether they crank up the $R^2$. The only thing we are interested is in whether the coefficient of `log(wt)` changes. 
+
+```{r}
+extendedmodel <- lm(log(mpg)~log(wt)+vs+cyl + hp + qsec, mtcars)
+summary(extendedmodel)
+```
+
+Clearly, the coefficient of `log(wt)` changes with the inclusion of additional variables. So there was unobserved heterogeneity bias in our baseline model (and most likely there still is in our extended model), even though the addional variables are not siginficant. 
+
+### Reporting
+
+Hopefully you agree that the regression output of above looks **horrible** and that you do not need all these statistics and stuff. Therefore, you need to construct your own table for presentation format. The minimum what should be in these tables are the coefficient names, the estimates, the standard errors (and the start would be nice as well), the $R^2$ and the number of observations used. 
+
+Unfortunately, creating tables of your own is a pain in the ... Luckily, within `R` (and by the way in programs as `Stata` as well) you can do this automatically! In `R` there are several packages one use. I prefer the package Stargazer which can be loaded as: 
+
+```{r, message=FALSE}
+library("stargazer")
+```
+
+And using this package we get the following outcome for our logarithmic specification:
+
+```{r, results='asis'}
+stargazer(logmodel, extendedmodel, type = "html",omit.stat = c("rsq", "f"))
+```
+
+Note that we now display both specifications, the first the univariate case and the second the multivariate case. This is now typically done in social science research. You start with a baseline and then add variables to check whether the variable of interest remains robust. 
+
+### Internal validation
+
+So, after done all modeling exercitions you are not done! Now, it is time to validate your results internally. Can you be confident of your results. Or is the parameter that you have found still suspect of possible biases. Here again come the three least squares assumptions:
+
+1. No large outliers: we have checked that with our descriptive statistics and our scatterplot and it seems that assumption is met. 
+
+2. Both miles per gallon and car weight should be *i.i.d.*. We can reasonably assume that the sampling has been correctly and that this is the case. 
+
+3. The following condition should hold: $E[\epsilon|X=x] = 0$. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.)
+
+Note that the number of observations in this case is only 32, so whether our standard errors are automatically normally distributed is highly questionable, but for the sake of the exposition (and the fact that small sample statistics are very complex) we leave it just with this observation.
