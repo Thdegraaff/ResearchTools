@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Research Tools for Social Scientists</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Research Tools for Social Scientists">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Research Tools for Social Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Research Tools for Social Scientists" />
+  
+  
+  
+
+<meta name="author" content="Thomas de Graaff">
+
+<meta name="date" content="2016-10-19">
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="using-r-in-social-science-research.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.3</b> Regression analysis: not again!</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html"><i class="fa fa-check"></i><b>3</b> Using <code>R</code> in Social Science Research</a><ul>
+<li class="chapter" data-level="3.1" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#where-to-get-it"><i class="fa fa-check"></i><b>3.1</b> Where to get it</a></li>
+<li class="chapter" data-level="3.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#how-to-use-it"><i class="fa fa-check"></i><b>3.2</b> How to use it</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#scripts"><i class="fa fa-check"></i><b>3.2.1</b> Scripts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#packages"><i class="fa fa-check"></i><b>3.2.2</b> Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#reading-in-data"><i class="fa fa-check"></i><b>3.3</b> Reading in data</a></li>
+<li class="chapter" data-level="3.4" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#regression-modeling"><i class="fa fa-check"></i><b>3.4</b> Regression modeling</a></li>
+<li class="chapter" data-level="3.5" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#writing-results"><i class="fa fa-check"></i><b>3.5</b> Writing results</a></li>
+<li class="chapter" data-level="3.6" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#making-plots"><i class="fa fa-check"></i><b>3.6</b> Making plots</a></li>
+<li class="chapter" data-level="3.7" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#recap"><i class="fa fa-check"></i><b>3.7</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html"><i class="fa fa-check"></i><b>4</b> Linear Regression and how to apply it</a><ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#sec:theory"><i class="fa fa-check"></i><b>4.1</b> Theoretical background</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#the-model"><i class="fa fa-check"></i><b>4.1.1</b> The model</a></li>
+<li class="chapter" data-level="4.1.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#the-least-squares-assumptions"><i class="fa fa-check"></i><b>4.1.2</b> The least squares assumptions</a></li>
+<li class="chapter" data-level="4.1.3" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#possible-violations-and-how-to-spot-them"><i class="fa fa-check"></i><b>4.1.3</b> Possible violations and how to spot them</a></li>
+<li class="chapter" data-level="4.1.4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#normality-heteroskedasticity-and-multicollinearity"><i class="fa fa-check"></i><b>4.1.4</b> Normality, heteroskedasticity and multicollinearity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#sec:applications"><i class="fa fa-check"></i><b>4.2</b> Applications of linear regression</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#descriptives"><i class="fa fa-check"></i><b>4.2.1</b> Descriptives</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#baseline-model"><i class="fa fa-check"></i><b>4.2.2</b> Baseline model</a></li>
+<li class="chapter" data-level="4.2.3" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#specificion-issues"><i class="fa fa-check"></i><b>4.2.3</b> Specificion issues</a></li>
+<li class="chapter" data-level="4.2.4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#reporting"><i class="fa fa-check"></i><b>4.2.4</b> Reporting</a></li>
+<li class="chapter" data-level="4.2.5" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#internal-validation"><i class="fa fa-check"></i><b>4.2.5</b> Internal validation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a></li>
+<li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Research Tools for Social Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">2</span> Introduction</h1>
+<div id="why-do-we-need-all-this" class="section level2">
+<h2><span class="header-section-number">2.1</span> Why do we need all this?</h2>
+<p>A natural question that arises, or at least should arise, is why bother? Why learn students in the social sciences new tools to do research. ‘Old’ tools<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> such as <code>Word</code>, <code>Excel</code> and <code>Stata</code>do just as fine right? I would say yes, but up to a certain extent. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then <code>Stata</code> and <code>Excel</code>(or even <code>SPSS</code>, the horror…) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation, network analysis, and even whole books in <code>html</code> then you need more elaborate tools.</p>
+<p>And even though most of the best tools out there<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> are open source (so they are <strong>free</strong>, as in <strong>free beer</strong>) they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:</p>
+<ul>
+<li>They are open source. So no lock-in effects anymore with datasets (<code>Stata</code>) or versions (<code>Word</code>).</li>
+<li>They are scriptable. This means they can “communicate” with other programs. Usually this means that these tools revolve around <code>.txt</code> files.</li>
+<li>There is a large community that uses these tools. This is very handy for supplementary material and solving questions.</li>
+<li>They are multi-purpose, which means you can use them for various purposes. This is actually only a requirement of the data management/statistics you use.</li>
+</ul>
+<p>One of the tools that meets all these requirements, and more, is <code>R</code> and the next section lays out why even social scientists should learn <code>R</code>.</p>
+</div>
+<div id="why-use-r-and-not-other-applications" class="section level2">
+<h2><span class="header-section-number">2.2</span> Why use <code>R</code> and not other applications?</h2>
+<p>Ask any data scientist at the moment for the software tools most used and they will most likely answer <code>R</code> or <code>Python</code>. Of course, that should not be a valid answer (most people used <code>Word</code> as well and nobody would argue that <code>Word</code> is brilliant), but it indicates the popularity (and the community) that uses <code>R</code>.</p>
+<p>Where 10 years ago most social scientists still used <code>SPSS</code> (and the economists <code>Stata</code>), that has now changed completely (well the economists still use <code>Stata</code> but the rest of the world moved on). And for good reasons, namely:</p>
+<ol style="list-style-type: decimal">
+<li>It is open source and thus free;</li>
+<li><code>R</code> is flexible and thus multi-purpose;</li>
+<li>there is now a <strong>very</strong> large userbase; everything you can dream of (well sort of), somebody else most likely already programmed;<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></li>
+<li>it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams);</li>
+<li>relative to <code>Stata</code> or <code>Excel</code> it is fast, which is great for larger (spatial) databases.</li>
+</ol>
+<p>In general, you can use <code>R</code> for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than <code>Stata</code>. Last but perhaps not least, <code>R</code> is more and more used outside academia as well. Twitter, Facebook and Google use <code>R</code>, but firms as the NY times as well for interactive website diagrams.</p>
+</div>
+<div id="regression-analysis-not-again" class="section level2">
+<h2><span class="header-section-number">2.3</span> Regression analysis: not again!</h2>
+<p>I will also spend some time on the use of regression analysis and try to explain in my own words how to use it. In general, my experience is that many students have little or no experience in regression analysis. Moreover, and perhaps even worse, they have little or no intuition for regression analysis. This sort of sucks, the more because regression is the most often statistical technique used in the social sciences (heck, in all sciences).</p>
+<p>In my perception, students are taught the principles of statistics (typically this involves lots of things as ANOVA), where in the last course, one or two hours is spent on regression analysis. This is fine, as long as it comes back in a course as <em>applied</em> statistics or econometrics (how and when to do this stuff?) or in other applied courses. But usually this is not the case. Most courses don’t care about regression analysis and the first moment you have to use it again is when writing your thesis and at that time it is a bit too late to teach the applied stuff again.</p>
+<p>So, yeah, therefore a bit of regression analysis from my perspective. But again, you only learn this by doing and under the guidance of various teachers (and in various cirumstances).</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Some of the tools I use are actually quite old, even so far as from the 1970s and they are still very good.<a href="introduction.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Including <code>Markdown</code>, <span class="math inline">\(\LaTeX\)</span>, <code>Python</code> and <code>Git/GitHub</code>.<a href="introduction.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN packages</a> give a great overview of all the official packages out there and the wide range of applications, and again they are all free!<a href="introduction.html#fnref3">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-r-in-social-science-research.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
