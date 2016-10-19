@@ -1,4 +1,4 @@
-# Using `R' in Social Science Research
+# Using `R` in Social Science Research
 
 ## Where to get it
 
