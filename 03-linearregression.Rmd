@@ -135,7 +135,7 @@ The standard error denote thes *precision* of the estimate. As a rule of thumb: 
 
 One nice trick is to plot the regression line in the scatterplot above. One can do so by the command `abline()` or:
 
-```{r, fig.cap='A scatterplog between miles per gallon and car weight with regression line.'}
+```{r, fig.path='./', fig.cap='A scatterplog between miles per gallon and car weight with regression line.'}
 plot(mpg~wt, mtcars)
 abline(lm(mpg~wt, mtcars))
 ```
