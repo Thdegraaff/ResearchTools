@@ -186,6 +186,6 @@ So, after done all modeling exercitions you are not done! Now, it is time to val
 
 2. Both miles per gallon and car weight should be *i.i.d.*. We can reasonably assume that the sampling has been correctly and that this is the case. 
 
-3. The following condition should hold: $E[\epsilon|X=x] = 0$. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.)
+3. The following condition should hold: $E[\epsilon|X=x] = 0$. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.). One possible strategy here is to add additional variables until the parameter of interest remains robust.
 
 Note that the number of observations in this case is only 32, so whether our standard errors are automatically normally distributed is highly questionable, but for the sake of the exposition (and the fact that small sample statistics are very complex) we leave it just with this observation.

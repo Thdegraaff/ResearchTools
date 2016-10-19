@@ -1,7 +1,7 @@
 ---
 title: "Research Tools for Social Scientists"
 author: "Thomas de Graaff"
-date: "October 18, 2016"
+date: "October 19, 2016"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
 ---

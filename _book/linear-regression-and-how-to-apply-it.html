@@ -25,7 +25,7 @@
 
 <meta name="author" content="Thomas de Graaff">
 
-<meta name="date" content="2016-10-18">
+<meta name="date" content="2016-10-19">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -614,7 +614,7 @@ Residual Std. Error
 <ol style="list-style-type: decimal">
 <li><p>No large outliers: we have checked that with our descriptive statistics and our scatterplot and it seems that assumption is met.</p></li>
 <li><p>Both miles per gallon and car weight should be <em>i.i.d.</em>. We can reasonably assume that the sampling has been correctly and that this is the case.</p></li>
-<li><p>The following condition should hold: <span class="math inline">\(E[\epsilon|X=x] = 0\)</span>. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.)</p></li>
+<li><p>The following condition should hold: <span class="math inline">\(E[\epsilon|X=x] = 0\)</span>. This one is dubious. Probably there is no reverse causality (difficult to image that miles per gallon would influence car weight), but most likely there are other factors that impact car weight and miles per gallon which are omitted (where is the car build, what is the car brand, etcetera.). One possible strategy here is to add additional variables until the parameter of interest remains robust.</p></li>
 </ol>
 <p>Note that the number of observations in this case is only 32, so whether our standard errors are automatically normally distributed is highly questionable, but for the sake of the exposition (and the fact that small sample statistics are very complex) we leave it just with this observation.</p>
 

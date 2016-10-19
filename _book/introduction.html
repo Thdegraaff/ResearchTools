@@ -25,7 +25,7 @@
 
 <meta name="author" content="Thomas de Graaff">
 
-<meta name="date" content="2016-10-18">
+<meta name="date" content="2016-10-19">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -161,14 +161,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">2</span> Introduction</h1>
 <div id="why-do-we-need-all-this" class="section level2">
 <h2><span class="header-section-number">2.1</span> Why do we need all this?</h2>
+<p>A natural question that arises, or at least should arise, is why bother? Why learn students in the social sciences new tools to do research. ‘Old’ tools<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> such as <code>Word</code>, <code>Excel</code> and <code>Stata</code>do just as fine right? I would say yes, but up to a certain extent. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then <code>Stata</code> and <code>Excel</code>(or even <code>SPSS</code>, the horror…) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation, network analysis, and even whole books in <code>html</code> then you need more elaborate tools.</p>
+<p>And even though most of the best tools out there<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> are open source (so they are <strong>free</strong>, as in <strong>free beer</strong>) they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:</p>
+<ul>
+<li>They are open source. So no lock-in effects anymore with datasets (<code>Stata</code>) or versions (<code>Word</code>).</li>
+<li>They are scriptable. This means they can “communicate” with other programs. Usually this means that these tools revolve around <code>.txt</code> files.</li>
+<li>There is a large community that uses these tools. This is very handy for supplementary material and solving questions.</li>
+<li>They are multi-purpose, which means you can use them for various purposes. This is actually only a requirement of the data management/statistics you use.</li>
+</ul>
+<p>One of the tools that meets all these requirements, and more, is <code>R</code> and the next section lays out why even social scientists should learn <code>R</code>.</p>
 </div>
 <div id="why-use-r-and-not-other-applications" class="section level2">
 <h2><span class="header-section-number">2.2</span> Why use <code>R</code> and not other applications?</h2>
+<p>Ask any data scientist at the moment for the software tools most used and they will most likely answer <code>R</code> or <code>Python</code>. Of course, that should not be a valid answer (most people used <code>Word</code> as well and nobody would argue that <code>Word</code> is brilliant), but it indicates the popularity (and the community) that uses <code>R</code>.</p>
+<p>Where 10 years ago most social scientists still used <code>SPSS</code> (and the economists <code>Stata</code>), that has now changed completely (well the economists still use <code>Stata</code> but the rest of the world moved on). And for good reasons, namely:</p>
+<ol style="list-style-type: decimal">
+<li>It is open source and thus free;</li>
+<li><code>R</code> is flexible and thus multi-purpose;</li>
+<li>there is now a <strong>very</strong> large userbase; everything you can dream of (well sort of), somebody else most likely already programmed;<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></li>
+<li>it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams);</li>
+<li>relative to <code>Stata</code> or <code>Excel</code> it is fast, which is great for larger (spatial) databases.</li>
+</ol>
+<p>In general, you can use <code>R</code> for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than <code>Stata</code>. Last but perhaps not least, <code>R</code> is more and more used outside academia as well. Twitter, Facebook and Google use <code>R</code>, but firms as the NY times as well for interactive website diagrams.</p>
 </div>
 <div id="regression-analysis-not-again" class="section level2">
 <h2><span class="header-section-number">2.3</span> Regression analysis: not again!</h2>
+<p>I will also spend some time on the use of regression analysis and try to explain in my own words how to use it. In general, my experience is that many students have little or no experience in regression analysis. Moreover, and perhaps even worse, they have little or no intuition for regression analysis. This sort of sucks, the more because regression is the most often statistical technique used in the social sciences (heck, in all sciences).</p>
+<p>In my perception, students are taught the principles of statistics (typically this involves lots of things as ANOVA), where in the last course, one or two hours is spent on regression analysis. This is fine, as long as it comes back in a course as <em>applied</em> statistics or econometrics (how and when to do this stuff?) or in other applied courses. But usually this is not the case. Most courses don’t care about regression analysis and the first moment you have to use it again is when writing your thesis and at that time it is a bit too late to teach the applied stuff again.</p>
+<p>So, yeah, therefore a bit of regression analysis from my perspective. But again, you only learn this by doing and under the guidance of various teachers (and in various cirumstances).</p>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Some of the tools I use are actually quite old, even so far as from the 1970s and they are still very good.<a href="introduction.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Including <code>Markdown</code>, <span class="math inline">\(\LaTeX\)</span>, <code>Python</code> and <code>Git/GitHub</code>.<a href="introduction.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN packages</a> give a great overview of all the official packages out there and the wide range of applications, and again they are all free!<a href="introduction.html#fnref3">↩</a></p></li>
+</ol>
 </div>
             </section>
 
