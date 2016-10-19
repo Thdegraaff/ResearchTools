@@ -112,7 +112,7 @@ summary(mtcars[,c(1,6)])
 
 There does not seem to be anything out of the ordinary here, but to be sure, we constuct a scatterplot between weight of the car and miles per gallon. 
 
-```{r, fig.cap='A scatterplog between miles per gallon and car weight.'}
+```{r, fig.path='./', fig.cap='A scatterplog between miles per gallon and car weight.'}
 plot(mpg~wt, mtcars)
 ```
 
