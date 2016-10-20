@@ -1,8 +1,38 @@
 # Using `R` in Social Science Research
 
+The `R` programming language and software environment for statistical computing is an implementation of the proprietary `S` programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 [Programming tools: Adventures with R](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609)) and now has more than 8,000 user contributed packages (see as well the blog piece [On the growth of CRAN packages](https://www.r-bloggers.com/on-the-growth-of-cran-packages/)).
+
 ## Where to get it
 
+## For absolute beginners
+
+```{r, message=FALSE}
+library("swirl")
+```
+
+At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: [http://swirlstats.com/students.html](http://swirlstats.com/students.html)). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:
+
+```{r, eval=FALSE}
+install.packages("swirl")
+```
+
+then start Swirl by first loading the package:
+
+```{r, eval=FALSE}
+library("swirl")
+```
+
+And then call the function by typing: 
+
+```{r, eval=FALSE}
+swirl()
+```
+
+In the first menu choose `R Programming`. Now, there are 15 lessons. I find the first four the most useful (Basic Building Block, Workspace and Files, Sequences of Numbers, Vectors), but others are very useful as well to go through. The command `main()` by the way brings you always back to the main menu, and do not go for the credits on coursera (that is now a paid online course).
+
 ## How to use it
+
+It is truly a programming language in the sense that there is no graphical user interface (GUI) involved 
 
 ### Scripts
 

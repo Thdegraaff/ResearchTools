@@ -1,5 +1,9 @@
 # Linear Regression and how to apply it
 
+```{r, message=FALSE}
+library("stargazer")
+```
+
 In the social sciences (in fact, in all sciences) linear regressions (also called OLS or ordinary least squares) or one of its relatives is the most *used* empirical research tool there is. Why? It is relatively simple, computationally fast, easy to interpret and relies on a relatively weak set of assumptions. Unfortunately, the assumptions needed to be able to apply linear regression, are often not well understood: both in the social sciences and beyond. Moreover, students in the social sciences typically get little guidance in how to apply linear regression in practice and how to interpret the results. Note that this does not have anything to do with the specific software students use, but more with that fact that regression techniques in a wide number of situations (courses) are just not given (apart from statistical or research methods courses). However, given the fact that data becomes increasingly more available, knowing when to use regression techniques, how to apply them and especially how to interpret and assess them is now becoming an issue of paramount importance. Or, perhaps more compelling, you need them to write your thesis. 
 
 In this chapter, I will first focus in section \@ref(sec:theory) on the *essential* theory behind regression analysis. I really keep it to the bare minimum. But if you understand these basics, I would argue that you understand more than 75% of the theorical background (the rest if just nitty-gritty). Section \@ref(sec:applications) will focus on applications of linear regression, specification issues (how many variables) and how to interpret the results.
@@ -164,13 +168,7 @@ Clearly, the coefficient of `log(wt)` changes with the inclusion of additional v
 
 Hopefully you agree that the regression output of above looks **horrible** and that you do not need all these statistics and stuff. Therefore, you need to construct your own table for presentation format. The minimum what should be in these tables are the coefficient names, the estimates, the standard errors (and the start would be nice as well), the $R^2$ and the number of observations used. 
 
-Unfortunately, creating tables of your own is a pain in the ... Luckily, within `R` (and by the way in programs as `Stata` as well) you can do this automatically! In `R` there are several packages one use. I prefer the package Stargazer which can be loaded as: 
-
-```{r, message=FALSE}
-library("stargazer")
-```
-
-And using this package we get the following outcome for our logarithmic specification:
+Unfortunately, creating tables of your own is a pain in the ... Luckily, within `R` (and by the way in programs as `Stata` as well) you can do this automatically! In `R` there are several packages one use. I prefer the package Stargazer and after using this package we get the following outcome for our logarithmic specification:
 
 ```{r, results='asis'}
 stargazer(logmodel, extendedmodel, type = "html",omit.stat = c("rsq", "f"))

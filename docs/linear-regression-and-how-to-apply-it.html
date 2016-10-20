@@ -113,15 +113,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html"><i class="fa fa-check"></i><b>3</b> Using <code>R</code> in Social Science Research</a><ul>
 <li class="chapter" data-level="3.1" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#where-to-get-it"><i class="fa fa-check"></i><b>3.1</b> Where to get it</a></li>
-<li class="chapter" data-level="3.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#how-to-use-it"><i class="fa fa-check"></i><b>3.2</b> How to use it</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#scripts"><i class="fa fa-check"></i><b>3.2.1</b> Scripts</a></li>
-<li class="chapter" data-level="3.2.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#packages"><i class="fa fa-check"></i><b>3.2.2</b> Packages</a></li>
+<li class="chapter" data-level="3.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#for-absolute-beginners"><i class="fa fa-check"></i><b>3.2</b> For absolute beginners</a></li>
+<li class="chapter" data-level="3.3" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#how-to-use-it"><i class="fa fa-check"></i><b>3.3</b> How to use it</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#scripts"><i class="fa fa-check"></i><b>3.3.1</b> Scripts</a></li>
+<li class="chapter" data-level="3.3.2" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#packages"><i class="fa fa-check"></i><b>3.3.2</b> Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#reading-in-data"><i class="fa fa-check"></i><b>3.3</b> Reading in data</a></li>
-<li class="chapter" data-level="3.4" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#regression-modeling"><i class="fa fa-check"></i><b>3.4</b> Regression modeling</a></li>
-<li class="chapter" data-level="3.5" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#writing-results"><i class="fa fa-check"></i><b>3.5</b> Writing results</a></li>
-<li class="chapter" data-level="3.6" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#making-plots"><i class="fa fa-check"></i><b>3.6</b> Making plots</a></li>
-<li class="chapter" data-level="3.7" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#recap"><i class="fa fa-check"></i><b>3.7</b> Recap</a></li>
+<li class="chapter" data-level="3.4" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#reading-in-data"><i class="fa fa-check"></i><b>3.4</b> Reading in data</a></li>
+<li class="chapter" data-level="3.5" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#regression-modeling"><i class="fa fa-check"></i><b>3.5</b> Regression modeling</a></li>
+<li class="chapter" data-level="3.6" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#writing-results"><i class="fa fa-check"></i><b>3.6</b> Writing results</a></li>
+<li class="chapter" data-level="3.7" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#making-plots"><i class="fa fa-check"></i><b>3.7</b> Making plots</a></li>
+<li class="chapter" data-level="3.8" data-path="using-r-in-social-science-research.html"><a href="using-r-in-social-science-research.html#recap"><i class="fa fa-check"></i><b>3.8</b> Recap</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html"><i class="fa fa-check"></i><b>4</b> Linear Regression and how to apply it</a><ul>
 <li class="chapter" data-level="4.1" data-path="linear-regression-and-how-to-apply-it.html"><a href="linear-regression-and-how-to-apply-it.html#sec:theory"><i class="fa fa-check"></i><b>4.1</b> Theoretical background</a><ul>
@@ -159,6 +160,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="linear-regression-and-how-to-apply-it" class="section level1">
 <h1><span class="header-section-number">4</span> Linear Regression and how to apply it</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;stargazer&quot;</span>)</code></pre></div>
 <p>In the social sciences (in fact, in all sciences) linear regressions (also called OLS or ordinary least squares) or one of its relatives is the most <em>used</em> empirical research tool there is. Why? It is relatively simple, computationally fast, easy to interpret and relies on a relatively weak set of assumptions. Unfortunately, the assumptions needed to be able to apply linear regression, are often not well understood: both in the social sciences and beyond. Moreover, students in the social sciences typically get little guidance in how to apply linear regression in practice and how to interpret the results. Note that this does not have anything to do with the specific software students use, but more with that fact that regression techniques in a wide number of situations (courses) are just not given (apart from statistical or research methods courses). However, given the fact that data becomes increasingly more available, knowing when to use regression techniques, how to apply them and especially how to interpret and assess them is now becoming an issue of paramount importance. Or, perhaps more compelling, you need them to write your thesis.</p>
 <p>In this chapter, I will first focus in section <a href="linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> on the <em>essential</em> theory behind regression analysis. I really keep it to the bare minimum. But if you understand these basics, I would argue that you understand more than 75% of the theorical background (the rest if just nitty-gritty). Section <a href="linear-regression-and-how-to-apply-it.html#sec:applications">4.2</a> will focus on applications of linear regression, specification issues (how many variables) and how to interpret the results.</p>
 <div id="sec:theory" class="section level2">
@@ -249,8 +251,8 @@ y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 ##  Max.   :33.90   Max.   :5.424</code></pre>
 <p>There does not seem to be anything out of the ordinary here, but to be sure, we constuct a scatterplot between weight of the car and miles per gallon.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="unnamed-chunk-3-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="unnamed-chunk-8-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
 <p class="caption">
 Figure 4.1: A scatterplog between miles per gallon and car weight.
 </p>
@@ -286,8 +288,8 @@ Figure 4.1: A scatterplog between miles per gallon and car weight.
 <p>One nice trick is to plot the regression line in the scatterplot above. One can do so by the command <code>abline()</code> or:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)
 <span class="kw">abline</span>(<span class="kw">lm</span>(mpg~wt, mtcars))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
-<img src="unnamed-chunk-5-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="unnamed-chunk-10-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
 <p class="caption">
 Figure 4.2: A scatterplog between miles per gallon and car weight with regression line.
 </p>
@@ -347,9 +349,7 @@ Figure 4.2: A scatterplog between miles per gallon and car weight with regressio
 <div id="reporting" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Reporting</h3>
 <p>Hopefully you agree that the regression output of above looks <strong>horrible</strong> and that you do not need all these statistics and stuff. Therefore, you need to construct your own table for presentation format. The minimum what should be in these tables are the coefficient names, the estimates, the standard errors (and the start would be nice as well), the <span class="math inline">\(R^2\)</span> and the number of observations used.</p>
-<p>Unfortunately, creating tables of your own is a pain in the … Luckily, within <code>R</code> (and by the way in programs as <code>Stata</code> as well) you can do this automatically! In <code>R</code> there are several packages one use. I prefer the package Stargazer which can be loaded as:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;stargazer&quot;</span>)</code></pre></div>
-<p>And using this package we get the following outcome for our logarithmic specification:</p>
+<p>Unfortunately, creating tables of your own is a pain in the … Luckily, within <code>R</code> (and by the way in programs as <code>Stata</code> as well) you can do this automatically! In <code>R</code> there are several packages one use. I prefer the package Stargazer and after using this package we get the following outcome for our logarithmic specification:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stargazer</span>(logmodel, extendedmodel, <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>,<span class="dt">omit.stat =</span> <span class="kw">c</span>(<span class="st">&quot;rsq&quot;</span>, <span class="st">&quot;f&quot;</span>))</code></pre></div>
 <table style="text-align:center">
 <tr>
