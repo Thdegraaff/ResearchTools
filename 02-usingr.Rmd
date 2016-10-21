@@ -217,6 +217,3 @@ ggplot(df, aes(x,y))+geom_point() + geom_density2d()
 ## Recap
 
 For the absolute beginner `R` is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain even become efficienter than when using `Excel` or `SPSS`. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics.  
-
-
-

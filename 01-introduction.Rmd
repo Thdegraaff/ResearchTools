@@ -15,7 +15,7 @@ One of the tools that meets all these requirements, and more, is `R` and the nex
 
 [^old]: Some of the tools I use are actually quite old, even so far as from the 1970s and they are still very good.
 
-[^tools]: Including `Markdown`, $\LaTeX$, `Python` and `Git/GitHub`. 
+[^tools]: Including `Markdown`, `LaTeX`, `Python`, `Git` and `GitHub`. 
 
 ## Why use `R` and not other applications?
 

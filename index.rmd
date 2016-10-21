@@ -2,7 +2,15 @@
 title: "Research Tools for Social Scientists"
 author: "Thomas de Graaff"
 date: "October 19, 2016"
-output: bookdown::gitbook
+output: 
+  bookdown::gitbook: default
+  bookdown::epub_book: default
+  bookdown::pdf_book:
+    includes:
+      in_header: preamble.tex
+    latex_engine: xelatex
+    citation_package: natbib
+    keep_tex: yes
 site: bookdown::bookdown_site
 github-repo: Thdegraaff/Research_tools_for_social_scientists
 ---

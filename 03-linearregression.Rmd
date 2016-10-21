@@ -171,7 +171,7 @@ Hopefully you agree that the regression output of above looks **horrible** and t
 Unfortunately, creating tables of your own is a pain in the ... Luckily, within `R` (and by the way in programs as `Stata` as well) you can do this automatically! In `R` there are several packages one can use. I prefer the package Stargazer and after using this package we get the following outcome for our logarithmic specification:[^stargazer]
 
 ```{r, results='asis'}
-stargazer(logmodel, extendedmodel, type = "html",omit.stat = c("rsq", "f"))
+stargazer(logmodel, extendedmodel, header=FALSE, type = "latex",omit.stat = c("rsq", "f"))
 ```
 
 Note that we now display both specifications, the first the univariate case and the second the multivariate case. This is now typically done in social science research. You start with a baseline and then add variables to check whether the variable of interest remains robust. 
