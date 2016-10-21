@@ -4,6 +4,7 @@ author: "Thomas de Graaff"
 date: "October 19, 2016"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
+github-repo: Thdegraaff/Research_tools_for_social_scientists
 ---
 
 # Preface 

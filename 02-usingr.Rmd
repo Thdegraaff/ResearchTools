@@ -38,15 +38,15 @@ In the first menu choose `R Programming`. Now, there are 15 lessons. I find the 
 
 ## How to use it
 
-`R` is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as `Excel` or `SPSS`, there are two big differences: (*i*) you use scripts and (*ii*) you make frequently use of packages which are essentially written by author `R` users. 
+`R` is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as `Excel` or `SPSS`, there are two big differences: (*i*) you use scripts and (*ii*) you make frequently use of packages which are essentially written by other `R` users. 
 
 ### Scripts {#subsec:scripts}
 
-The use of scripts or program files is some alien to most. Although `Stata` also make use of so-called `do` files. You start a new script by clicking on File > New Script (`R` editor) or File > New File > New Script (`RStudio`). You now have a new *empty* file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The **huge** benefit of this procedure is that you record what you have done and that you can easily change something. 
+The use of scripts or program files is somewhat alien to most. Although `Stata` also makes use of so-called `do` files. You start a new script by clicking on File > New Script (`R` editor) or File > New File > New Script (`RStudio`). You now have a new *empty* file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The **huge** benefit of this procedure is that you record what you have done and that you can easily change something. 
 
 As an example, assume that somebody gives you a dataset with 2 variables and ask you to analyse this dataset. With `SPSS` you read this dataset in and then click on various butttons so you get some output. Now, assume further that this person actually has forgotten a variable (this happens more often than you think) and gives you a new dataset with 3 variables. Then you have to do all the clicking again (and hopefully you remembered on which buttons you actually clicked).
 
-When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the **beginning**, but there are **huge** time savers later on! To run a script you simply need to press the button Edit > Run all (`R` editor) or Code > Run Region > Run All (`RStudio`). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerbly faster. Actually, most Keyboard Shortcuts work in a wide variety of editors--even in `Word`.)
+When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the **beginning**, but there are **huge** time savers later on! To run a script you simply need to press the button Edit > Run all (`R` editor) or Code > Run Region > Run All (`RStudio`). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors--even in `Word`.)
 
 ### Help!
 
@@ -60,7 +60,7 @@ And the appropiate documentation will pop up.
 
 ### Packages {#subsec:packages}
 
-`R` (as many other software applications nowadays) depends heavily on packages written by other parties, usually users. There are now many packages out there. You can find the 'official' ones on [the CRAN website](https://cran.r-project.org/web/packages/available_packages_by_name.html), but there are many more out there. Packages have to be installed (both `R` editor and `RStudio` have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome `ggplot2` package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:
+`R` (as many other software applications nowadays) depends heavily on packages written by other parties, usually users of `R`. There are now many packages out there. You can find the 'official' ones on [the CRAN website](https://cran.r-project.org/web/packages/available_packages_by_name.html), but there are many more. Packages have to be installed (both `R` editor and `RStudio` have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome `ggplot2` package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:
 
 ```{r, eval=FALSE}
 install.packages("ggplot2")
@@ -73,7 +73,7 @@ Gradually, we come across some useful packages. Those we will use in a chapter w
 
 ### Using comments
 
-A final word in this section about the use of comments. **Do it!**. Really, it will make your future life much easiert to document what you have done. You can insert comments by using the `#` operator (everything after the hashtag is a comment), so, e.g.,
+A final word in this section about the use of comments. **Do it!**. Really, it will make your future life much easier if you have documented what you have done. You can insert comments by using the `#` operator (everything after the hashtag is a comment), so, e.g.,
 
 ```{r, eval=FALSE}
 2+2 # always wanted to know about the outcome, but were afraid to ask
@@ -95,7 +95,7 @@ and your read in the `data.csv` in a data frame variable called `df`. Note that 
 write.csv(df, file = "my_data.csv")
 ```
 
-Now sometimes you do not have nicely formatted `.csv` or `.txt`files, but nasty `.dta` files from Stata or `.xlsx` files from `Excel`. Here the package Rio comes very handed, being the swiss-army knife of data converters in `R`. Assume you have the `mtcars` dataset in various format, then you can do 
+Now sometimes you do not have nicely formatted `.csv` or `.txt`files, but nasty `.dta` files from Stata or `.xlsx` files from `Excel`. Here the package Rio comes very handed, being the swiss-army knife of data converters in `R`. Assume you have the `mtcars` dataset in various formats, then you can do 
 
 ```{r, eval=FALSE}
 library("rio")
@@ -159,13 +159,13 @@ checking this with
 head(df)
 ```
 
-indeed shows the first 6 combination of $x$ and $y$. If we no do a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In `R` we have the command `lm()` (from linear model) to do this as follows:
+indeed shows the first 6 combination of $x$ and $y$. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In `R` we have the command `lm()` (from linear model) to do this as follows:
 
 ```{r}
 linear_model <- lm(y~x, data = df)
 ```
 
-We now have performed a regression of $y$ onto $x$, using the data `df` and save the result in a variable called linear_model. First note the first part of the `lm(,)` expression. `y~x` means that `y` is the left-hand side variable and `x` the righ-hand side variable (if we more variables, the formula becomes something as`y~x+u+v+w+z`). The second part of the `lm(,)` expression denotes the specific dataframe to be used. Namely, in `R` you can have multiple dataframes so you have to specify which one is to be used. 
+We now have performed a regression of $y$ onto $x$, using the data `df` and save the result in a variable called linear_model. First note the first part of the `lm(,)` expression. `y~x` means that `y` is the left-hand side variable and `x` the righ-hand side variable (if we have more variables, the formula becomes something as`y~x+u+v+w+z`). The second part of the `lm(,)` expression denotes the specific dataframe to be used. Namely, in `R` you can have multiple dataframes so you have to specify which one is to be used. 
 
 Right, but now what? Well, we have now a variable called linear_model, just typing in `linear_model` only gets you the real basic results:
 
@@ -173,19 +173,19 @@ Right, but now what? Well, we have now a variable called linear_model, just typi
 linear_model
 ```
 
-But, you want more, right. Standard errors, t-statistics, R-squares, the whole lot. Herefore, you need the `summary()` command, which gives you the following outcome 
+But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the `summary()` command, which gives you the following outcome 
 
 ```{r}
 summary(linear_model)
 ```
 
-Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command `summary()` gives all the needed statistical output, but what about regression diagnostics. For this you samply ask for a plot of the variable linear_model
+Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command `summary()` gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model
 
 ```{r,fig.path='./'}
 plot(linear_model)
 ```
 
-And that is basically it, at least for the basics. There is something more to say about the `lm()` command, but that is for later.  
+And that is basically it, at least for the basics. There is much more to say about the `lm()` command, but that is for later.  
 
 ## Making plots 
 

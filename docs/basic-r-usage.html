@@ -15,7 +15,7 @@
   
   
   
-  
+  <meta name="github-repo" content="Thdegraaff/Research_tools_for_social_scientists" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Research Tools for Social Scientists" />
@@ -161,7 +161,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="basic-r-usage" class="section level1">
-<h1><span class="header-section-number">3</span> Basic <code>R</code> Usage</h1>
+<h1><span class="header-section-number">Chapter 3</span> Basic <code>R</code> Usage</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;swirl&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;rio&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
@@ -183,12 +183,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="how-to-use-it" class="section level2">
 <h2><span class="header-section-number">3.3</span> How to use it</h2>
-<p><code>R</code> is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as <code>Excel</code> or <code>SPSS</code>, there are two big differences: (<em>i</em>) you use scripts and (<em>ii</em>) you make frequently use of packages which are essentially written by author <code>R</code> users.</p>
+<p><code>R</code> is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as <code>Excel</code> or <code>SPSS</code>, there are two big differences: (<em>i</em>) you use scripts and (<em>ii</em>) you make frequently use of packages which are essentially written by other <code>R</code> users.</p>
 <div id="subsec:scripts" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Scripts</h3>
-<p>The use of scripts or program files is some alien to most. Although <code>Stata</code> also make use of so-called <code>do</code> files. You start a new script by clicking on File &gt; New Script (<code>R</code> editor) or File &gt; New File &gt; New Script (<code>RStudio</code>). You now have a new <em>empty</em> file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The <strong>huge</strong> benefit of this procedure is that you record what you have done and that you can easily change something.</p>
+<p>The use of scripts or program files is somewhat alien to most. Although <code>Stata</code> also makes use of so-called <code>do</code> files. You start a new script by clicking on File &gt; New Script (<code>R</code> editor) or File &gt; New File &gt; New Script (<code>RStudio</code>). You now have a new <em>empty</em> file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The <strong>huge</strong> benefit of this procedure is that you record what you have done and that you can easily change something.</p>
 <p>As an example, assume that somebody gives you a dataset with 2 variables and ask you to analyse this dataset. With <code>SPSS</code> you read this dataset in and then click on various butttons so you get some output. Now, assume further that this person actually has forgotten a variable (this happens more often than you think) and gives you a new dataset with 3 variables. Then you have to do all the clicking again (and hopefully you remembered on which buttons you actually clicked).</p>
-<p>When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the <strong>beginning</strong>, but there are <strong>huge</strong> time savers later on! To run a script you simply need to press the button Edit &gt; Run all (<code>R</code> editor) or Code &gt; Run Region &gt; Run All (<code>RStudio</code>). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerbly faster. Actually, most Keyboard Shortcuts work in a wide variety of editors–even in <code>Word</code>.)</p>
+<p>When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the <strong>beginning</strong>, but there are <strong>huge</strong> time savers later on! To run a script you simply need to press the button Edit &gt; Run all (<code>R</code> editor) or Code &gt; Run Region &gt; Run All (<code>RStudio</code>). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors–even in <code>Word</code>.)</p>
 </div>
 <div id="help" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Help!</h3>
@@ -198,7 +198,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="subsec:packages" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Packages</h3>
-<p><code>R</code> (as many other software applications nowadays) depends heavily on packages written by other parties, usually users. There are now many packages out there. You can find the ‘official’ ones on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">the CRAN website</a>, but there are many more out there. Packages have to be installed (both <code>R</code> editor and <code>RStudio</code> have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome <code>ggplot2</code> package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:</p>
+<p><code>R</code> (as many other software applications nowadays) depends heavily on packages written by other parties, usually users of <code>R</code>. There are now many packages out there. You can find the ‘official’ ones on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">the CRAN website</a>, but there are many more. Packages have to be installed (both <code>R</code> editor and <code>RStudio</code> have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome <code>ggplot2</code> package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
 <p>Now, we can use the commands from this package as if they were built-in.</p>
@@ -206,7 +206,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="using-comments" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Using comments</h3>
-<p>A final word in this section about the use of comments. <strong>Do it!</strong>. Really, it will make your future life much easiert to document what you have done. You can insert comments by using the <code>#</code> operator (everything after the hashtag is a comment), so, e.g.,</p>
+<p>A final word in this section about the use of comments. <strong>Do it!</strong>. Really, it will make your future life much easier if you have documented what you have done. You can insert comments by using the <code>#</code> operator (everything after the hashtag is a comment), so, e.g.,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2+2</span> <span class="co"># always wanted to know about the outcome, but were afraid to ask</span></code></pre></div>
 </div>
 </div>
@@ -217,7 +217,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;my_data.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>and your read in the <code>data.csv</code> in a data frame variable called <code>df</code>. Note that the original header variables are preserved. If you would like to store your data you can do the reverse, namely:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(df, <span class="dt">file =</span> <span class="st">&quot;my_data.csv&quot;</span>)</code></pre></div>
-<p>Now sometimes you do not have nicely formatted <code>.csv</code> or <code>.txt</code>files, but nasty <code>.dta</code> files from Stata or <code>.xlsx</code> files from <code>Excel</code>. Here the package Rio comes very handed, being the swiss-army knife of data converters in <code>R</code>. Assume you have the <code>mtcars</code> dataset in various format, then you can do</p>
+<p>Now sometimes you do not have nicely formatted <code>.csv</code> or <code>.txt</code>files, but nasty <code>.dta</code> files from Stata or <code>.xlsx</code> files from <code>Excel</code>. Here the package Rio comes very handed, being the swiss-army knife of data converters in <code>R</code>. Assume you have the <code>mtcars</code> dataset in various formats, then you can do</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rio&quot;</span>)
 
 x &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;mtcars.sav&quot;</span>)  <span class="co"># SPSS data file</span>
@@ -272,16 +272,16 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y         x
-## 1 6.547059 0.4527184
-## 2 4.110017 0.2932251
-## 3 4.155993 0.2128771
-## 4 7.307813 0.8293205
-## 5 4.893880 0.5937219
-## 6 7.894951 0.9312583</code></pre>
-<p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we no do a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
+<pre><code>##          y          x
+## 1 6.439611 0.86732214
+## 2 3.340124 0.12408581
+## 3 1.755044 0.02535753
+## 4 2.911930 0.49254007
+## 5 7.790278 0.97638801
+## 6 8.393476 0.96438591</code></pre>
+<p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
-<p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
+<p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
 <p>Right, but now what? Well, we have now a variable called linear_model, just typing in <code>linear_model</code> only gets you the real basic results:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model</code></pre></div>
 <pre><code>## 
@@ -290,31 +290,31 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.935        6.534</code></pre>
-<p>But, you want more, right. Standard errors, t-statistics, R-squares, the whole lot. Herefore, you need the <code>summary()</code> command, which gives you the following outcome</p>
+##       1.950        5.889</code></pre>
+<p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.98908 -0.60711 -0.01062  0.57071  1.91466 
+##     Min      1Q  Median      3Q     Max 
+## -2.4896 -0.6594 -0.0092  0.6507  2.4159 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   1.9346     0.1830   10.57   &lt;2e-16 ***
-## x             6.5342     0.3344   19.54   &lt;2e-16 ***
+## (Intercept)   1.9500     0.1846   10.56   &lt;2e-16 ***
+## x             5.8894     0.3122   18.86   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.9622 on 98 degrees of freedom
-## Multiple R-squared:  0.7958, Adjusted R-squared:  0.7937 
-## F-statistic: 381.9 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you samply ask for a plot of the variable linear_model</p>
+## Residual standard error: 0.9882 on 98 degrees of freedom
+## Multiple R-squared:  0.7841, Adjusted R-squared:  0.7819 
+## F-statistic: 355.8 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
 <p><img src="unnamed-chunk-19-1.png" width="672" /><img src="unnamed-chunk-19-2.png" width="672" /><img src="unnamed-chunk-19-3.png" width="672" /><img src="unnamed-chunk-19-4.png" width="672" /></p>
-<p>And that is basically it, at least for the basics. There is something more to say about the <code>lm()</code> command, but that is for later.</p>
+<p>And that is basically it, at least for the basics. There is much more to say about the <code>lm()</code> command, but that is for later.</p>
 </div>
 <div id="making-plots" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making plots</h2>
