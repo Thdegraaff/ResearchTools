@@ -19,7 +19,7 @@ One of the tools that meets all these requirements, and more, is `R` and the nex
 
 ## Why use `R` and not other applications?
 
-Ask any data scientist at the moment for the software tools most used and they will most likely answer `R` or `Python`. Of course, that should not be a valid answer (most people used `Word` as well and nobody would argue that `Word` is brilliant), but it indicates the popularity (and the community) that uses `R`. 
+Ask any data scientist at the moment for the software tools most used and they will most likely answer `R` or `Python`. Of course, that should not be a valid answer (many people use `Word` as well and nobody would argue that `Word` is brilliant), but it indicates the popularity (and the community) that uses `R`. 
 
 Where 10 years ago most social scientists still used `SPSS` (and the economists `Stata`), that has now changed completely (well the economists still use `Stata` but the rest of the world moved on). And for good reasons, namely:
 
@@ -29,7 +29,7 @@ Where 10 years ago most social scientists still used `SPSS` (and the economists 
 4. it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams);
 5. relative to `Stata` or `Excel` it is fast, which is great for larger (spatial) databases. 
 
-In general, you can use `R` for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than `Stata`. Last but perhaps not least, `R` is more and more used outside academia as well. Twitter, Facebook and Google use `R`, but firms as the NY times as well for interactive website diagrams.
+In general, you can use `R` for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than `Stata`. Last but perhaps not least, `R` is more and more used outside academia as well. Twitter, Facebook and Google use `R`, but companies as the NY times as well for interactive website diagrams.
 
 [^userbase]: [CRAN packages](https://cran.r-project.org/web/packages/available_packages_by_name.html) give a great overview of all the official packages out there and the wide range of applications, and again they are all free!
 

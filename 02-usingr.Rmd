@@ -16,7 +16,7 @@ The base distribution of `R` comes with a built-in editor, where you can write y
 
 ## For absolute beginners
 
-At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: [http://swirlstats.com/students.html](http://swirlstats.com/students.html)). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:
+At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: [http://swirlstats.com/students.html](http://swirlstats.com/students.html)). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:
 
 ```{r, eval=FALSE}
 install.packages("swirl")
@@ -89,7 +89,7 @@ When you just have a `csv` text file (comma separated file), it is easy, you jus
 df <- read.csv(file="my_data.csv", header = TRUE)
 ```
 
-and your read in the `data.csv` in a data frame variable called `df`. Note that the original header variables are preserved. If you would like to store your data you can do the reverse, namely:
+and you read in the `data.csv` in a data frame variable called `df`. Note that the original header variables are preserved. If you would like to store your data you can do the reverse, namely:
 
 ```{r, eval=FALSE}
 write.csv(df, file = "my_data.csv")
@@ -208,7 +208,7 @@ df$z <- runif(100, 0,1)
 plot(df)
 ```
 
-And luckily, this plot confirms what we expect. $x$ are correlated $y$ by construction and $z$ is not correlated with either $x$ and $y$. These are all the so-called baseline plots. They are great (and already highly customizable), but lately there has been a new kid on the block called ggplot2. It goes to far to explain the details of ggplot2 (gg here stands for the grammar of graphics), but suffice to say that ggplot2 works with building blocks, so that every piece of the figure that you want (or can think of can be constructed. Just as an example, let's redo our scatterplot but no using ggplot2 and say we want to add some density lines from our observations (just because we can). This can be done in the following way
+And luckily, this plot confirms what we expect. $x$ are correlated $y$ by construction and $z$ is not correlated with either $x$ and $y$. These are all the so-called baseline plots. They are great (and already highly customizable), but lately there has been a new kid on the block called ggplot2. It goes to far to explain the details of ggplot2 (gg here stands for the grammar of graphics), but suffice to say that ggplot2 works with building blocks, so that every piece of the figure that you want (or can think of) can be constructed. Just as an example, let's redo our scatterplot but now using ggplot2 and say we want to add some density lines from our observations (just because we can). This can be done in the following way
 
 ```{r,fig.path='./'}
 ggplot(df, aes(x,y))+geom_point() + geom_density2d()
