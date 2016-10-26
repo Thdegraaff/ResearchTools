@@ -615,13 +615,13 @@ checking this with
 \end{Shaded}
 
 \begin{verbatim}
-##          y          x
-## 1 4.449244 0.30495275
-## 2 7.377798 0.86351375
-## 3 4.404569 0.12856235
-## 4 1.532799 0.08568526
-## 5 5.056863 0.58070073
-## 6 2.991364 0.16112747
+##          y         x
+## 1 7.770210 0.8518414
+## 2 6.849481 0.7420373
+## 3 3.333578 0.2723562
+## 4 1.053394 0.1222844
+## 5 7.543054 0.8132894
+## 6 4.553263 0.5681640
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -664,7 +664,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.928        5.921
+##       1.650        6.569
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -683,19 +683,19 @@ gives you the following outcome
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.7253 -0.5795  0.1411  0.7080  1.8492 
+##      Min       1Q   Median       3Q      Max 
+## -2.72994 -0.65452 -0.06504  0.70016  2.73844 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   1.9283     0.2011   9.588 9.48e-16 ***
-## x             5.9211     0.3579  16.542  < 2e-16 ***
+## (Intercept)   1.6497     0.2016   8.183 1.03e-12 ***
+## x             6.5689     0.3575  18.375  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.131 on 98 degrees of freedom
-## Multiple R-squared:  0.7363, Adjusted R-squared:  0.7336 
-## F-statistic: 273.7 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 1.084 on 98 degrees of freedom
+## Multiple R-squared:  0.775,  Adjusted R-squared:  0.7728 
+## F-statistic: 337.6 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -784,10 +784,11 @@ For the absolute beginner \texttt{R} is huge and daunting. You need to
 learn by taking small steps and by practicing (a lot). Do not aim
 immediately at big and complex projects but start small and at the
 basics. You will then learn that you quickly make progress and at a
-certain even become efficienter than when using \texttt{Excel} or
-\texttt{SPSS}. In later chapters I dive in to some more detailed topics,
-and hopefully the material provides you with a background solid enough
-to understand and work with those topics.
+certain time even become efficienter than when using mousing driven
+tools (clicking) as \texttt{Excel} or \texttt{SPSS}. In later chapters I
+dive in to some more detailed topics, and hopefully the material
+provides you with a background solid enough to understand and work with
+those topics using \texttt{R}.
 
 \section{Digression: Linear Regression and how to apply
 it}\label{digression-linear-regression-and-how-to-apply-it}
