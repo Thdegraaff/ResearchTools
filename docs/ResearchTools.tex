@@ -148,7 +148,8 @@ intend to add additional chapters, specifically about the use of stated
 preference modeling--and its corresponding logit estimation--and working
 with geographical data. Obviously, all in \texttt{R}. At the moment this
 book really has not yet passed its infant stage. Therefore, all input in
-the form of comments, critique and remarks are \emph{high} appreciated.
+the form of comments, critique and remarks are \emph{highly}
+appreciated.
 
 \section{Introduction}\label{introduction}
 
@@ -615,13 +616,13 @@ checking this with
 \end{Shaded}
 
 \begin{verbatim}
-##          y         x
-## 1 7.770210 0.8518414
-## 2 6.849481 0.7420373
-## 3 3.333578 0.2723562
-## 4 1.053394 0.1222844
-## 5 7.543054 0.8132894
-## 6 4.553263 0.5681640
+##          y          x
+## 1 2.327266 0.25244704
+## 2 4.976585 0.55341990
+## 3 3.911041 0.30994225
+## 4 5.794848 0.62406003
+## 5 3.492710 0.54107853
+## 6 1.453053 0.01828219
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -664,7 +665,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.650        6.569
+##       2.053        5.855
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -683,19 +684,19 @@ gives you the following outcome
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.72994 -0.65452 -0.06504  0.70016  2.73844 
+##     Min      1Q  Median      3Q     Max 
+## -2.4115 -0.6188  0.0248  0.7963  2.4924 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   1.6497     0.2016   8.183 1.03e-12 ***
-## x             6.5689     0.3575  18.375  < 2e-16 ***
+## (Intercept)   2.0528     0.2346   8.751 6.18e-14 ***
+## x             5.8555     0.3859  15.175  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.084 on 98 degrees of freedom
-## Multiple R-squared:  0.775,  Adjusted R-squared:  0.7728 
-## F-statistic: 337.6 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 1.085 on 98 degrees of freedom
+## Multiple R-squared:  0.7015, Adjusted R-squared:  0.6984 
+## F-statistic: 230.3 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -1481,7 +1482,446 @@ observation.
 \section{\texorpdfstring{Network analysis with
 \texttt{R}}{Network analysis with R}}\label{network-analysis-with-r}
 
-To be written
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"igraph"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(}\StringTok{"igraphdata"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Introduction}\label{introduction-1}
+
+Work in progress\footnote{Obviously I want to provide a self-contained
+  manual, however, there are as well some pretty good and more extensive
+  tutorials on internet: e.g., the one over
+  \href{http://kateto.net/networks-r-igraph/}{here}.}
+
+\subsection{Creating networks}\label{creating-networks}
+
+There are various ways to create a network: one can it oneself, one can
+create a structured network, and one can read a network from file or the
+internet. (The latter is typically done with very large and dynamics
+network data.)
+
+\subsubsection{Creating network
+yourself}\label{creating-network-yourself}
+
+First of all, I will show how to create a network ``by hand''. We first
+start with an undirected network. Suppose we have a network with four
+nodes (named 1,2, 3 and, you guessed it, 4). Then we can create a graph
+called \texttt{g\_4} by:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_4 <-}\StringTok{ }\KeywordTok{graph} \NormalTok{(}\DataTypeTok{edges =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{n =} \DecValTok{4}\NormalTok{, }\DataTypeTok{directed =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let us have a look at \texttt{g\_4}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## IGRAPH U--- 4 4 -- 
+## + edges:
+## [1] 1--2 2--3 3--4 1--4
+\end{verbatim}
+
+So, \texttt{g\_4} is an igraph sort of object which has four edges
+\texttt{1-\/-2\ 2-\/-3\ 3-\/-4\ 1-\/-4}. Note that these coincide with
+\texttt{c(1,2,2,3,3,4,\ 4,1)}, so an edge is always formed by two
+components (they do not have to be numbers). Now plotting \texttt{g\_4}
+leads to:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(g_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+The connectivity matrix of the network can be directly given by:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_4[]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 4 x 4 sparse Matrix of class "dgCMatrix"
+##             
+## [1,] . 1 . 1
+## [2,] 1 . 1 .
+## [3,] . 1 . 1
+## [4,] 1 . 1 .
+\end{verbatim}
+
+Now, for more directed graphs we need to set \texttt{directed\ =\ TRUE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_4 <-}\StringTok{ }\KeywordTok{graph} \NormalTok{(}\DataTypeTok{edges =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{n =} \DecValTok{4}\NormalTok{, }\DataTypeTok{directed =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+with as plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(g_4)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+Graphs may also be generated by using \texttt{-}, \texttt{-+} and
+\texttt{+-+}, in combination with the command
+\texttt{graph\_from\_literal}. For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_directed <-}\StringTok{ }\KeywordTok{graph_from_literal}\NormalTok{(A-+B, B +-+}\StringTok{ }\NormalTok{C, C+-A)}
+\KeywordTok{plot}\NormalTok{(g_directed)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-40-1.pdf}
+
+Finally, we can influence the color and sizes (amongst others) of all
+the elements of the network, so:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(g_directed, }\DataTypeTok{edge.arrow.size=}\DecValTok{2}\NormalTok{,}\DataTypeTok{vertex.size =} \DecValTok{50}\NormalTok{, }\DataTypeTok{vertex.color =} \StringTok{"blue"} \NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-41-1.pdf}
+
+However, this way of creating of networks is not very efficient. We
+therefore offer some other ways as well, starting with created directly
+(well-structured networks).
+
+\subsubsection{Structured networks}\label{structured-networks}
+
+With the package \texttt{igraph} it is rather straighforward to create
+structured networks. Let's start with an empty network. We therefore use
+the command \texttt{make\_empty\_graph(500} in order to create 500 nodes
+and no links.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_empty <-}\StringTok{ }\KeywordTok{make_empty_graph}\NormalTok{(}\DecValTok{500}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_empty, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+The other extreme is obviously the fully connected network. With the
+command \texttt{make\_full\_graph(40)} we can create a fully connected
+network between 40 nodes. (Please do not do 500 nodes; it takes a long
+time to create that network (with \(500 \times 500 - 500\) links)).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_full <-}\StringTok{ }\KeywordTok{make_full_graph}\NormalTok{(}\DecValTok{40}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_full, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+The \texttt{make\_star(500)} command create a star network (or a
+hub-and-spoke network) with 500 nodes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_star <-}\StringTok{ }\KeywordTok{make_star}\NormalTok{(}\DecValTok{500}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_star, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+With the \texttt{make\_tree(500,\ children\ =\ 3,\ mode="undirected}
+command, we create an undirected hierarchical tree with each time tree
+children
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_tree <-}\StringTok{ }\KeywordTok{make_tree}\NormalTok{(}\DecValTok{500}\NormalTok{, }\DataTypeTok{children =} \DecValTok{3}\NormalTok{, }\DataTypeTok{mode =} \StringTok{"undirected"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_tree, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+And the \texttt{graph.ring(500)} creates a ring (or line) structure
+where each node is connected to two other nodes in a sequential way
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_ring <-}\StringTok{ }\KeywordTok{graph.ring}\NormalTok{(}\DecValTok{500}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_ring, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-46-1.pdf}
+
+For the real-world network we can use the following commands. First, the
+command \texttt{erdos.renyi.game(500,\ 0.005)} creates a random network,
+where each node has a probability of 0.005 to be connected to each other
+node.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{erdos.renyi.game}\NormalTok{(}\DecValTok{500}\NormalTok{, }\FloatTok{0.005}\NormalTok{), }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+For the small-world network, we need to rewire the ring network. We can
+do by the command \texttt{rewire} as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{rewire}\NormalTok{(g_ring,}\KeywordTok{each_edge}\NormalTok{(}\DataTypeTok{prob =} \FloatTok{0.5}\NormalTok{)), }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-48-1.pdf}
+
+Note that the probability of rewiring is now 0.5.
+
+Finally, for a power-law we need to invoke an algorithm. In this case
+the \texttt{barabasi.game}, where we now create a power-law type of
+network with the following underlying formula \(P(k) = k^{-0.5}\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_power_law <-}\StringTok{ }\KeywordTok{barabasi.game}\NormalTok{(}\DecValTok{500}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_power_law, }\DataTypeTok{vertex.label=} \OtherTok{NA}\NormalTok{, }\DataTypeTok{edge.arrow.size=}\FloatTok{0.02}\NormalTok{,}\DataTypeTok{vertex.size =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+Note the tree-like structure.
+
+\subsubsection{Reading in networks}\label{reading-in-networks}
+
+There are various sources for networks on the internet. One of them is
+\href{http://nexus.igraph.org/}{nexus}. With the following command I
+import a network from this website:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{g_florence <-}\StringTok{ }\KeywordTok{nexus_get}\NormalTok{(}\StringTok{"padgett"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+which contains business and marriage ties (PADGB)in 14th century
+Florence and looks like this
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(g_florence$PADGB)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
+
+Another good but smaller source is the \texttt{igraphdata} package which
+actually contains a network of american domestic flights.
+
+Another possibility is to read in the data from a \texttt{.csv} file.
+Something like (I took and modified the example from
+\url{http://stackoverflow.com/questions/23687806/creating-a-network-graph-using-igraph-in-r}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Make up data}
+\NormalTok{relations <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{from=}\KeywordTok{c}\NormalTok{(}\StringTok{"Bob"}\NormalTok{, }\StringTok{"Cecil"}\NormalTok{, }\StringTok{"Cecil"}\NormalTok{, }\StringTok{"David"}\NormalTok{, }\StringTok{"David"}\NormalTok{, }\StringTok{"Esmeralda"}\NormalTok{),}
+                        \DataTypeTok{to=}\KeywordTok{c}\NormalTok{(}\StringTok{"Alice"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Alice"}\NormalTok{, }\StringTok{"Alice"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{, }\StringTok{"Alice"}\NormalTok{))}
+\CommentTok{# Alternatively, you could read in the data from a similar CSV file as follows:}
+\CommentTok{# relations <- read.csv("relations.csv")}
+
+\CommentTok{# Load (DIRECTED) graph from data frame }
+\NormalTok{g_relations <-}\StringTok{ }\KeywordTok{graph.data.frame}\NormalTok{(relations, }\DataTypeTok{directed=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(g_relations)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
+
+Note that this only requires a from and to columns in a \texttt{.csv}
+file, which resembles trade, commuting, migration and transport networks
+(in a gravity-model type of way). The only thing is that we need to
+convert this data in a igraph structure with \texttt{graph.data.frame}.
+
+\subsection{Network characteristics}\label{network-characteristics}
+
+So, it is fine that you have a network, but what about the network
+characteristics. Well these are easily given once you have a network.
+
+For density, or the completeness of the network, one can look at
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{edge_density}\NormalTok{(g_florence$PADGB)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1666667
+\end{verbatim}
+
+Which give the proportion of the present edges from all possible edges
+in the network.
+
+The diameter of a network can be retrieved as:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{diameter}\NormalTok{(g_florence$PADGB)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+somewhat more interesting is given by the degree function which gives
+the number of connections. For our power-law network this amounts to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{deg <-}\StringTok{ }\KeywordTok{degree}\NormalTok{(g_power_law)}
+\NormalTok{deg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 14 12  8  9 10  6 12  5  1  1  8  5  6  3  7  5  1  8  2  1  6 12  1
+##  [24]  6  6  5  1  5  6  4  4 14  5  6  1  1  1  2  1  4  2  6  4  5  1  1
+##  [47]  9  2  2  1  3  1  4  2  1  5  5  1  5  1  1  3  1  2  2  3  3  3  3
+##  [70]  4  5  3  1  2  3  1  1  3  6  2  3  2  4  4  1  2  1  9  1  5  2  2
+##  [93]  4  3  5  3  5  4  3  1  1  1  1  1  2  5  1  2  1  3  1  3  2  3  3
+## [116]  2  4  2  2  3  1  1  1  1  4  4  1  2  1  1  1  5  3  3  4  3  1  1
+## [139]  1  1  1  4  3  1  1  3  1  3  1  2  1  1  1  2  2  4  1  4  2  2  4
+## [162]  1  3  1  2  1  2  6  1  3  2  2  1  2  1  2  2  2  2  1  2  2  2  1
+## [185]  2  2  1  1  2  2  2  3  1  2  1  3  1  3  1  1  3  1  3  1  1  1  2
+## [208]  2  2  1  2  2  3  1  2  1  6  2  2  1  1  1  1  1  1  2  1  2  2  1
+## [231]  2  2  3  2  1  1  2  3  3  3  4  1  1  1  2  1  1  4  1  3  1  2  1
+## [254]  2  1  1  1  4  1  3  1  1  2  3  1  1  2  1  2  1  1  1  2  2  1  1
+## [277]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  2  1  3  1  1  1  1  1
+## [300]  1  2  1  1  1  1  1  2  1  2  1  6  1  1  4  1  3  2  1  2  2  1  1
+## [323]  2  1  1  2  2  2  1  2  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
+## [346]  2  1  1  1  1  1  2  1  2  1  2  2  2  2  3  2  1  1  1  1  1  1  1
+## [369]  1  1  1  2  1  2  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  2
+## [392]  1  1  1  1  2  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  2  1  1
+## [415]  2  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1
+## [438]  1  1  2  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [484]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
+\end{verbatim}
+
+which is not that insightful, but a histogram is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(deg)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+Which is typical for a power-law.
+
+The \texttt{degree\_distribution} is insightful here as well
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{degree_distribution}\NormalTok{(g_power_law, }\DataTypeTok{cumulative =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
+
+Finally, we may be interested in the shortest path. This can easily be
+retrieved using distances (with underlying Dijkstra's algorithm) as
+follows for the Florence network:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{distances}\NormalTok{(g_florence$PADGB)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           ACCIAIUOL ALBIZZI BARBADORI BISCHERI CASTELLAN GINORI GUADAGNI
+## ACCIAIUOL         0       2         2        4         3      3        3
+## ALBIZZI           2       0         2        2         3      1        1
+## BARBADORI         2       2         0        3         1      3        3
+## BISCHERI          4       2         3        0         2      3        1
+## CASTELLAN         3       3         1        2         0      4        3
+## GINORI            3       1         3        3         4      0        2
+## GUADAGNI          3       1         3        1         3      2        0
+## LAMBERTES         4       2         4        2         4      3        1
+## MEDICI            1       1         1        3         2      2        2
+## PAZZI             3       3         3        5         4      4        4
+## PERUZZI           4       3         2        1         1      4        2
+## PUCCI           Inf     Inf       Inf      Inf       Inf    Inf      Inf
+## RIDOLFI           2       2         2        2         2      3        2
+## SALVIATI          2       2         2        4         3      3        3
+## STROZZI           3       3         2        1         1      4        2
+## TORNABUON         2       2         2        2         3      3        1
+##           LAMBERTES MEDICI PAZZI PERUZZI PUCCI RIDOLFI SALVIATI STROZZI
+## ACCIAIUOL         4      1     3       4   Inf       2        2       3
+## ALBIZZI           2      1     3       3   Inf       2        2       3
+## BARBADORI         4      1     3       2   Inf       2        2       2
+## BISCHERI          2      3     5       1   Inf       2        4       1
+## CASTELLAN         4      2     4       1   Inf       2        3       1
+## GINORI            3      2     4       4   Inf       3        3       4
+## GUADAGNI          1      2     4       2   Inf       2        3       2
+## LAMBERTES         0      3     5       3   Inf       3        4       3
+## MEDICI            3      0     2       3   Inf       1        1       2
+## PAZZI             5      2     0       5   Inf       3        1       4
+## PERUZZI           3      3     5       0   Inf       2        4       1
+## PUCCI           Inf    Inf   Inf     Inf     0     Inf      Inf     Inf
+## RIDOLFI           3      1     3       2   Inf       0        2       1
+## SALVIATI          4      1     1       4   Inf       2        0       3
+## STROZZI           3      2     4       1   Inf       1        3       0
+## TORNABUON         2      1     3       3   Inf       1        2       2
+##           TORNABUON
+## ACCIAIUOL         2
+## ALBIZZI           2
+## BARBADORI         2
+## BISCHERI          2
+## CASTELLAN         3
+## GINORI            3
+## GUADAGNI          1
+## LAMBERTES         2
+## MEDICI            1
+## PAZZI             3
+## PERUZZI           3
+## PUCCI           Inf
+## RIDOLFI           1
+## SALVIATI          2
+## STROZZI           2
+## TORNABUON         0
+\end{verbatim}
+
+Note that the Pucci family is not in the network and therefore the
+distances are set to infinity.
 
 \section{In conclusion}\label{in-conclusion}
 

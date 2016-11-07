@@ -141,7 +141,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.5" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html#internal-validation"><i class="fa fa-check"></i><b>4.2.5</b> Internal validation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a></li>
+<li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#creating-networks"><i class="fa fa-check"></i><b>5.2</b> Creating networks</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#creating-network-yourself"><i class="fa fa-check"></i><b>5.2.1</b> Creating network yourself</a></li>
+<li class="chapter" data-level="5.2.2" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#structured-networks"><i class="fa fa-check"></i><b>5.2.2</b> Structured networks</a></li>
+<li class="chapter" data-level="5.2.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#reading-in-networks"><i class="fa fa-check"></i><b>5.2.3</b> Reading in networks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#network-characteristics"><i class="fa fa-check"></i><b>5.3</b> Network characteristics</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
 </ul>
 
@@ -272,13 +280,13 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y         x
-## 1 7.426378 0.7368662
-## 2 5.560097 0.6287083
-## 3 8.138601 0.8485328
-## 4 2.872327 0.1477258
-## 5 7.457680 0.7977440
-## 6 6.054013 0.8261836</code></pre>
+<pre><code>##          y          x
+## 1 3.329973 0.05539238
+## 2 4.550265 0.54388234
+## 3 6.351789 0.65296996
+## 4 5.979503 0.88132944
+## 5 4.956724 0.19754261
+## 6 6.199058 0.49898661</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
 <p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
@@ -290,7 +298,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.105        6.047</code></pre>
+##       2.088        5.776</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -298,19 +306,19 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.10464 -0.68203 -0.03058  0.62142  2.39626 
+##     Min      1Q  Median      3Q     Max 
+## -3.2695 -0.6617 -0.0053  0.7848  2.8880 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.1051     0.2118    9.94   &lt;2e-16 ***
-## x             6.0470     0.3652   16.56   &lt;2e-16 ***
+## (Intercept)   2.0876     0.2114   9.873 2.29e-16 ***
+## x             5.7761     0.3858  14.973  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.046 on 98 degrees of freedom
-## Multiple R-squared:  0.7367, Adjusted R-squared:  0.734 
-## F-statistic: 274.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.144 on 98 degrees of freedom
+## Multiple R-squared:  0.6958, Adjusted R-squared:  0.6927 
+## F-statistic: 224.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
 <p><img src="unnamed-chunk-19-1.png" width="672" /><img src="unnamed-chunk-19-2.png" width="672" /><img src="unnamed-chunk-19-3.png" width="672" /><img src="unnamed-chunk-19-4.png" width="672" /></p>

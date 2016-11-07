@@ -141,7 +141,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2.5" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html#internal-validation"><i class="fa fa-check"></i><b>4.2.5</b> Internal validation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a></li>
+<li class="chapter" data-level="5" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>5</b> Network analysis with <code>R</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#creating-networks"><i class="fa fa-check"></i><b>5.2</b> Creating networks</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#creating-network-yourself"><i class="fa fa-check"></i><b>5.2.1</b> Creating network yourself</a></li>
+<li class="chapter" data-level="5.2.2" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#structured-networks"><i class="fa fa-check"></i><b>5.2.2</b> Structured networks</a></li>
+<li class="chapter" data-level="5.2.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#reading-in-networks"><i class="fa fa-check"></i><b>5.2.3</b> Reading in networks</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#network-characteristics"><i class="fa fa-check"></i><b>5.3</b> Network characteristics</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
 </ul>
 
@@ -162,8 +170,210 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="network-analysis-with-r" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Network analysis with <code>R</code></h1>
-<p>To be written</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;igraph&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;igraphdata&quot;</span>)</code></pre></div>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
+<p>Work in progress<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+</div>
+<div id="creating-networks" class="section level2">
+<h2><span class="header-section-number">5.2</span> Creating networks</h2>
+<p>There are various ways to create a network: one can it oneself, one can create a structured network, and one can read a network from file or the internet. (The latter is typically done with very large and dynamics network data.)</p>
+<div id="creating-network-yourself" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Creating network yourself</h3>
+<p>First of all, I will show how to create a network “by hand”. We first start with an undirected network. Suppose we have a network with four nodes (named 1,2, 3 and, you guessed it, 4). Then we can create a graph called <code>g_4</code> by:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4 &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Let us have a look at <code>g_4</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4</code></pre></div>
+<pre><code>## IGRAPH U--- 4 4 -- 
+## + edges:
+## [1] 1--2 2--3 3--4 1--4</code></pre>
+<p>So, <code>g_4</code> is an igraph sort of object which has four edges <code>1--2 2--3 3--4 1--4</code>. Note that these coincide with <code>c(1,2,2,3,3,4, 4,1)</code>, so an edge is always formed by two components (they do not have to be numbers). Now plotting <code>g_4</code> leads to:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>The connectivity matrix of the network can be directly given by:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4[]</code></pre></div>
+<pre><code>## 4 x 4 sparse Matrix of class &quot;dgCMatrix&quot;
+##             
+## [1,] . 1 . 1
+## [2,] 1 . 1 .
+## [3,] . 1 . 1
+## [4,] 1 . 1 .</code></pre>
+<p>Now, for more directed graphs we need to set <code>directed = TRUE</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4 &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>with as plot</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>Graphs may also be generated by using <code>-</code>, <code>-+</code> and <code>+-+</code>, in combination with the command <code>graph_from_literal</code>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_directed &lt;-<span class="st"> </span><span class="kw">graph_from_literal</span>(A-+B, B +-+<span class="st"> </span>C, C+-A)
+<span class="kw">plot</span>(g_directed)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Finally, we can influence the color and sizes (amongst others) of all the elements of the network, so:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_directed, <span class="dt">edge.arrow.size=</span><span class="dv">2</span>,<span class="dt">vertex.size =</span> <span class="dv">50</span>, <span class="dt">vertex.color =</span> <span class="st">&quot;blue&quot;</span> )</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>However, this way of creating of networks is not very efficient. We therefore offer some other ways as well, starting with created directly (well-structured networks).</p>
+</div>
+<div id="structured-networks" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Structured networks</h3>
+<p>With the package <code>igraph</code> it is rather straighforward to create structured networks. Let’s start with an empty network. We therefore use the command <code>make_empty_graph(500</code> in order to create 500 nodes and no links.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_empty &lt;-<span class="st"> </span><span class="kw">make_empty_graph</span>(<span class="dv">500</span>)
+<span class="kw">plot</span>(g_empty, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>The other extreme is obviously the fully connected network. With the command <code>make_full_graph(40)</code> we can create a fully connected network between 40 nodes. (Please do not do 500 nodes; it takes a long time to create that network (with <span class="math inline">\(500 \times 500 - 500\)</span> links)).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_full &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">40</span>)
+<span class="kw">plot</span>(g_full, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>The <code>make_star(500)</code> command create a star network (or a hub-and-spoke network) with 500 nodes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_star &lt;-<span class="st"> </span><span class="kw">make_star</span>(<span class="dv">500</span>)
+<span class="kw">plot</span>(g_star, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>With the <code>make_tree(500, children = 3, mode=&quot;undirected</code> command, we create an undirected hierarchical tree with each time tree children</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_tree &lt;-<span class="st"> </span><span class="kw">make_tree</span>(<span class="dv">500</span>, <span class="dt">children =</span> <span class="dv">3</span>, <span class="dt">mode =</span> <span class="st">&quot;undirected&quot;</span>)
+<span class="kw">plot</span>(g_tree, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>And the <code>graph.ring(500)</code> creates a ring (or line) structure where each node is connected to two other nodes in a sequential way</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_ring &lt;-<span class="st"> </span><span class="kw">graph.ring</span>(<span class="dv">500</span>)
+<span class="kw">plot</span>(g_ring, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>For the real-world network we can use the following commands. First, the command <code>erdos.renyi.game(500, 0.005)</code> creates a random network, where each node has a probability of 0.005 to be connected to each other node.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">erdos.renyi.game</span>(<span class="dv">500</span>, <span class="fl">0.005</span>), <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>For the small-world network, we need to rewire the ring network. We can do by the command <code>rewire</code> as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">rewire</span>(g_ring,<span class="kw">each_edge</span>(<span class="dt">prob =</span> <span class="fl">0.5</span>)), <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Note that the probability of rewiring is now 0.5.</p>
+<p>Finally, for a power-law we need to invoke an algorithm. In this case the <code>barabasi.game</code>, where we now create a power-law type of network with the following underlying formula <span class="math inline">\(P(k) = k^{-0.5}\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_power_law &lt;-<span class="st"> </span><span class="kw">barabasi.game</span>(<span class="dv">500</span>, <span class="fl">0.5</span>)
+<span class="kw">plot</span>(g_power_law, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Note the tree-like structure.</p>
+</div>
+<div id="reading-in-networks" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Reading in networks</h3>
+<p>There are various sources for networks on the internet. One of them is <a href="http://nexus.igraph.org/">nexus</a>. With the following command I import a network from this website:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_florence &lt;-<span class="st"> </span><span class="kw">nexus_get</span>(<span class="st">&quot;padgett&quot;</span>)</code></pre></div>
+<p>which contains business and marriage ties (PADGB)in 14th century Florence and looks like this</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_florence$PADGB)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>Another good but smaller source is the <code>igraphdata</code> package which actually contains a network of american domestic flights.</p>
+<p>Another possibility is to read in the data from a <code>.csv</code> file. Something like (I took and modified the example from <a href="http://stackoverflow.com/questions/23687806/creating-a-network-graph-using-igraph-in-r" class="uri">http://stackoverflow.com/questions/23687806/creating-a-network-graph-using-igraph-in-r</a>):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make up data</span>
+relations &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">from=</span><span class="kw">c</span>(<span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Cecil&quot;</span>, <span class="st">&quot;Cecil&quot;</span>, <span class="st">&quot;David&quot;</span>, <span class="st">&quot;David&quot;</span>, <span class="st">&quot;Esmeralda&quot;</span>),
+                        <span class="dt">to=</span><span class="kw">c</span>(<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Alice&quot;</span>))
+<span class="co"># Alternatively, you could read in the data from a similar CSV file as follows:</span>
+<span class="co"># relations &lt;- read.csv(&quot;relations.csv&quot;)</span>
 
+<span class="co"># Load (DIRECTED) graph from data frame </span>
+g_relations &lt;-<span class="st"> </span><span class="kw">graph.data.frame</span>(relations, <span class="dt">directed=</span><span class="ot">TRUE</span>)
+<span class="kw">plot</span>(g_relations)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p>Note that this only requires a from and to columns in a <code>.csv</code> file, which resembles trade, commuting, migration and transport networks (in a gravity-model type of way). The only thing is that we need to convert this data in a igraph structure with <code>graph.data.frame</code>.</p>
+</div>
+</div>
+<div id="network-characteristics" class="section level2">
+<h2><span class="header-section-number">5.3</span> Network characteristics</h2>
+<p>So, it is fine that you have a network, but what about the network characteristics. Well these are easily given once you have a network.</p>
+<p>For density, or the completeness of the network, one can look at</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">edge_density</span>(g_florence$PADGB)</code></pre></div>
+<pre><code>## [1] 0.1666667</code></pre>
+<p>Which give the proportion of the present edges from all possible edges in the network.</p>
+<p>The diameter of a network can be retrieved as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diameter</span>(g_florence$PADGB)</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>somewhat more interesting is given by the degree function which gives the number of connections. For our power-law network this amounts to</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deg &lt;-<span class="st"> </span><span class="kw">degree</span>(g_power_law)
+deg</code></pre></div>
+<pre><code>##   [1] 11 12  1  5 14 12  9  4  5  3  6  5  7  5  4 10  3  4  3 13  8  4  6
+##  [24]  5  1  7  3  5  6  4  3  3  2  3  1  5  4  4  5  7  2  5  2  3  3  5
+##  [47]  3  1  5  1  2  1  6  6  7  5  1  3  7  3  5  3  2  8  3  2  3  1  5
+##  [70]  4  1  3  2  3  1  2  1 10  4  1  1  4  6  1  2  3  1  1  4  8  6  1
+##  [93]  5  3  1  6  2  4  3  1  7  7  5  1  1  1  6  1  3  2  3  1  3  2  1
+## [116]  2  3  4  3  4  1  3  1  1  5  1  1  3  5  3  1  2  1  3  2  1  1  3
+## [139]  2  1  2  1  1  3  5  1  1  1  2  1  1  2  1  2  3  1  2  1  1  2  3
+## [162]  1  1  2  4  5  1  4  2  1  1  1  1  4  1  1  2  1  1  1  1  1  1  4
+## [185]  1  1  1  1  1  1  1  1  2  1  3  3  1  3  1  1  1  1  3  1  1  4  2
+## [208]  1  1  1  1  1  1  1  2  4  1  1  1  2  1  2  1  1  1  1  3  1  2  1
+## [231]  1  1  1  1  2  1  1  2  1  1  1  2  2  1  3  1  1  4  1  1  3  2  1
+## [254]  2  3  1  1  1  1  1  1  4  2  2  1  1  3  1  1  3  1  1  1  1  1  1
+## [277]  4  1  1  1  2  1  1  1  2  1  1  1  1  1  1  1  1  1  2  1  1  1  1
+## [300]  1  1  1  2  1  1  1  1  1  1  1  1  3  1  1  1  1  1  1  1  1  1  1
+## [323]  1  4  1  1  1  2  3  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  2
+## [346]  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  2  1  1  1  1  1
+## [369]  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  3  1  1  1  1  1  1
+## [392]  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  1  1  2  1  1
+## [415]  2  2  1  1  1  1  1  1  1  3  1  1  1  1  1  1  1  1  1  1  2  1  1
+## [438]  1  2  1  1  1  1  1  1  1  1  1  3  1  1  1  1  1  1  1  1  1  2  1
+## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1
+## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1</code></pre>
+<p>which is not that insightful, but a histogram is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(deg)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Which is typical for a power-law.</p>
+<p>The <code>degree_distribution</code> is insightful here as well</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">degree_distribution</span>(g_power_law, <span class="dt">cumulative =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p>Finally, we may be interested in the shortest path. This can easily be retrieved using distances (with underlying Dijkstra’s algorithm) as follows for the Florence network:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">distances</span>(g_florence$PADGB)</code></pre></div>
+<pre><code>##           ACCIAIUOL ALBIZZI BARBADORI BISCHERI CASTELLAN GINORI GUADAGNI
+## ACCIAIUOL         0       2         2        4         3      3        3
+## ALBIZZI           2       0         2        2         3      1        1
+## BARBADORI         2       2         0        3         1      3        3
+## BISCHERI          4       2         3        0         2      3        1
+## CASTELLAN         3       3         1        2         0      4        3
+## GINORI            3       1         3        3         4      0        2
+## GUADAGNI          3       1         3        1         3      2        0
+## LAMBERTES         4       2         4        2         4      3        1
+## MEDICI            1       1         1        3         2      2        2
+## PAZZI             3       3         3        5         4      4        4
+## PERUZZI           4       3         2        1         1      4        2
+## PUCCI           Inf     Inf       Inf      Inf       Inf    Inf      Inf
+## RIDOLFI           2       2         2        2         2      3        2
+## SALVIATI          2       2         2        4         3      3        3
+## STROZZI           3       3         2        1         1      4        2
+## TORNABUON         2       2         2        2         3      3        1
+##           LAMBERTES MEDICI PAZZI PERUZZI PUCCI RIDOLFI SALVIATI STROZZI
+## ACCIAIUOL         4      1     3       4   Inf       2        2       3
+## ALBIZZI           2      1     3       3   Inf       2        2       3
+## BARBADORI         4      1     3       2   Inf       2        2       2
+## BISCHERI          2      3     5       1   Inf       2        4       1
+## CASTELLAN         4      2     4       1   Inf       2        3       1
+## GINORI            3      2     4       4   Inf       3        3       4
+## GUADAGNI          1      2     4       2   Inf       2        3       2
+## LAMBERTES         0      3     5       3   Inf       3        4       3
+## MEDICI            3      0     2       3   Inf       1        1       2
+## PAZZI             5      2     0       5   Inf       3        1       4
+## PERUZZI           3      3     5       0   Inf       2        4       1
+## PUCCI           Inf    Inf   Inf     Inf     0     Inf      Inf     Inf
+## RIDOLFI           3      1     3       2   Inf       0        2       1
+## SALVIATI          4      1     1       4   Inf       2        0       3
+## STROZZI           3      2     4       1   Inf       1        3       0
+## TORNABUON         2      1     3       3   Inf       1        2       2
+##           TORNABUON
+## ACCIAIUOL         2
+## ALBIZZI           2
+## BARBADORI         2
+## BISCHERI          2
+## CASTELLAN         3
+## GINORI            3
+## GUADAGNI          1
+## LAMBERTES         2
+## MEDICI            1
+## PAZZI             3
+## PERUZZI           3
+## PUCCI           Inf
+## RIDOLFI           1
+## SALVIATI          2
+## STROZZI           2
+## TORNABUON         0</code></pre>
+<p>Note that the Pucci family is not in the network and therefore the distances are set to infinity.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>Obviously I want to provide a self-contained manual, however, there are as well some pretty good and more extensive tutorials on internet: e.g., the one over <a href="http://kateto.net/networks-r-igraph/">here</a>.<a href="network-analysis-with-r.html#fnref5">↩</a></p></li>
+</ol>
 </div>
             </section>
 
