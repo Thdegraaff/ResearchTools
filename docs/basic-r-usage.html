@@ -172,7 +172,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 3</span> Basic <code>R</code> Usage</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;swirl&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;rio&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
 <p>The <code>R</code> programming language and software environment for statistical computing is an implementation of the proprietary <code>S</code> programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 <a href="http://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a>) and now has more than 8,000 user contributed packages (see as well the blog piece <a href="https://www.r-bloggers.com/on-the-growth-of-cran-packages/">On the growth of CRAN packages</a>).</p>
 <div id="where-to-get-it" class="section level2">
 <h2><span class="header-section-number">3.1</span> Where to get it</h2>
@@ -241,7 +242,7 @@ Grades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">
 Female &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>)
 
 df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names, Grades, Female) </code></pre></div>
-<p>First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names), numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command <code>head()</code> we can show the first 6 rows of this dataframe.</p>
+<p>First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)—so variable names are always in strings—, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command <code>head()</code> we can show the first 6 rows of this dataframe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
 <pre><code>##     Names Grades Female
 ## 1  Thomas    5.0  FALSE
@@ -267,6 +268,27 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 ## 3    Mark
 ## 4 Eveline</code></pre>
 <p>Most of the statistical stuff we will do invokes the use of dataframe and specific variables from that dataframe.</p>
+<p>How to change variables or generate new variables in such a dataframe. Well, remember you can always access elements from an object by the <code>$</code>-sign. So, let’s suppose we want to add a new variable to our dataframe where we a whole point to the <code>Grades</code> variable. We can do this as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_grades$Grades_revised &lt;-<span class="st"> </span>df_grades$Grades +<span class="st"> </span><span class="dv">1</span></code></pre></div>
+<p>Now, the grades dataframe looks like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
+<pre><code>##     Names Grades Female Grades_revised
+## 1  Thomas    5.0  FALSE            6.0
+## 2    Erik    8.0  FALSE            9.0
+## 3    Mark    6.5  FALSE            7.5
+## 4 Eveline    7.0   TRUE            8.0</code></pre>
+<p>We can even do this in a more simple way, by invoking the most brilliant <code>dplyr</code> package. Say, we want to create a log variable of the “Grades” variable and then a new variable where add +1. No idea why, but we want it. Then</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_grades &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_grades, 
+               <span class="dt">log_grades =</span> <span class="kw">log</span>(Grades),
+               <span class="dt">log_grades_revised =</span> log_grades +<span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<p>Does the trick. Note that I only have to invoke mutate once. <code>dplyr</code> can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">here</a>.</p>
+<p>Now, the grades dataframe looks like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
+<pre><code>##     Names Grades Female Grades_revised log_grades log_grades_revised
+## 1  Thomas    5.0  FALSE            6.0   1.609438           2.609438
+## 2    Erik    8.0  FALSE            9.0   2.079442           3.079442
+## 3    Mark    6.5  FALSE            7.5   1.871802           2.871802
+## 4 Eveline    7.0   TRUE            8.0   1.945910           2.945910</code></pre>
 </div>
 <div id="regression-modeling" class="section level2">
 <h2><span class="header-section-number">3.6</span> Regression modeling</h2>
@@ -280,13 +302,13 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y          x
-## 1 3.329973 0.05539238
-## 2 4.550265 0.54388234
-## 3 6.351789 0.65296996
-## 4 5.979503 0.88132944
-## 5 4.956724 0.19754261
-## 6 6.199058 0.49898661</code></pre>
+<pre><code>##          y         x
+## 1 3.115209 0.5425073
+## 2 4.989835 0.3233592
+## 3 3.884913 0.4723755
+## 4 4.660613 0.4692773
+## 5 8.152247 0.7233331
+## 6 6.227290 0.4527461</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
 <p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
@@ -298,7 +320,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.088        5.776</code></pre>
+##       1.898        6.040</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -307,38 +329,38 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.2695 -0.6617 -0.0053  0.7848  2.8880 
+## -2.5191 -0.5941  0.1294  0.5294  2.5025 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.0876     0.2114   9.873 2.29e-16 ***
-## x             5.7761     0.3858  14.973  &lt; 2e-16 ***
+## (Intercept)   1.8978     0.1999   9.492 1.53e-15 ***
+## x             6.0403     0.3527  17.126  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.144 on 98 degrees of freedom
-## Multiple R-squared:  0.6958, Adjusted R-squared:  0.6927 
-## F-statistic: 224.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.9904 on 98 degrees of freedom
+## Multiple R-squared:  0.7495, Adjusted R-squared:  0.747 
+## F-statistic: 293.3 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
-<p><img src="unnamed-chunk-19-1.png" width="672" /><img src="unnamed-chunk-19-2.png" width="672" /><img src="unnamed-chunk-19-3.png" width="672" /><img src="unnamed-chunk-19-4.png" width="672" /></p>
+<p><img src="unnamed-chunk-23-1.png" width="672" /><img src="unnamed-chunk-23-2.png" width="672" /><img src="unnamed-chunk-23-3.png" width="672" /><img src="unnamed-chunk-23-4.png" width="672" /></p>
 <p>And that is basically it, at least for the basics. There is much more to say about the <code>lm()</code> command, but that is for later.</p>
 </div>
 <div id="making-plots" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making plots</h2>
 <p>Where <code>R</code> truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data this can be easily done by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x,y)</code></pre></div>
-<p><img src="unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-24-1.png" width="672" /></p>
 <p>If you would like to create a histogram, just use <code>hist()</code> as</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(y)</code></pre></div>
-<p><img src="unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-25-1.png" width="672" /></p>
 <p>However, to go one step further you also make a plot of a dataframe. for our df dataframe this is not very insightful, but let’s add another variable <span class="math inline">\(z\)</span> uncorrelated with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and then plot the dataframe (the <code>$</code> indicate that <code>z</code> is a variable in dataframe <code>df</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df$z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">0</span>,<span class="dv">1</span>)
 <span class="kw">plot</span>(df)</code></pre></div>
-<p><img src="unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-26-1.png" width="672" /></p>
 <p>And luckily, this plot confirms what we expect. <span class="math inline">\(x\)</span> are correlated <span class="math inline">\(y\)</span> by construction and <span class="math inline">\(z\)</span> is not correlated with either <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. These are all the so-called baseline plots. They are great (and already highly customizable), but lately there has been a new kid on the block called ggplot2. It goes to far to explain the details of ggplot2 (gg here stands for the grammar of graphics), but suffice to say that ggplot2 works with building blocks, so that every piece of the figure that you want (or can think of) can be constructed. Just as an example, let’s redo our scatterplot but now using ggplot2 and say we want to add some density lines from our observations (just because we can). This can be done in the following way</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x,y))+<span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">geom_density2d</span>()</code></pre></div>
-<p><img src="unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 <div id="recap" class="section level2">
 <h2><span class="header-section-number">3.8</span> Recap</h2>

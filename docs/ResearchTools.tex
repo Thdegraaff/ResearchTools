@@ -276,6 +276,7 @@ Usage}{Basic R Usage}}\label{basic-r-usage}
 \KeywordTok{library}\NormalTok{(}\StringTok{"swirl"}\NormalTok{)}
 \KeywordTok{library}\NormalTok{(}\StringTok{"rio"}\NormalTok{)}
 \KeywordTok{library}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -507,11 +508,12 @@ they are. Simply, it is your data. Lets construct a simple dataframe:
 \end{Shaded}
 
 First,note a couple of things. A dataframe can consists of various
-data\_types, in this case strings (the names), numbers (the grades) and
-so-called Booleans (someone is female or not). Secondly, we have names
-the variables. So, we now have a dataframe called df\_grades. Great, now
-what? Well, we can do a couple of things. By using the command
-\texttt{head()} we can show the first 6 rows of this dataframe.
+data\_types, in this case strings (the names)---so variable names are
+always in strings---, numbers (the grades) and so-called Booleans
+(someone is female or not). Secondly, we have names the variables. So,
+we now have a dataframe called df\_grades. Great, now what? Well, we can
+do a couple of things. By using the command \texttt{head()} we can show
+the first 6 rows of this dataframe.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -585,6 +587,68 @@ the second index denotes the column. Look at the following examples:
 Most of the statistical stuff we will do invokes the use of dataframe
 and specific variables from that dataframe.
 
+How to change variables or generate new variables in such a dataframe.
+Well, remember you can always access elements from an object by the
+\texttt{\$}-sign. So, let's suppose we want to add a new variable to our
+dataframe where we a whole point to the \texttt{Grades} variable. We can
+do this as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_grades$Grades_revised <-}\StringTok{ }\NormalTok{df_grades$Grades +}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+Now, the grades dataframe looks like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(df_grades)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Names Grades Female Grades_revised
+## 1  Thomas    5.0  FALSE            6.0
+## 2    Erik    8.0  FALSE            9.0
+## 3    Mark    6.5  FALSE            7.5
+## 4 Eveline    7.0   TRUE            8.0
+\end{verbatim}
+
+We can even do this in a more simple way, by invoking the most brilliant
+\texttt{dplyr} package. Say, we want to create a log variable of the
+``Grades'' variable and then a new variable where add +1. No idea why,
+but we want it. Then
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_grades <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(df_grades, }
+               \DataTypeTok{log_grades =} \KeywordTok{log}\NormalTok{(Grades),}
+               \DataTypeTok{log_grades_revised =} \NormalTok{log_grades +}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Does the trick. Note that I only have to invoke mutate once.
+\texttt{dplyr} can be used for filtering, selecting, reshaping, sorting
+and a whole lot of other stuff. A very handy cheatsheet can be found
+\href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}{here}.
+
+Now, the grades dataframe looks like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(df_grades)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Names Grades Female Grades_revised log_grades log_grades_revised
+## 1  Thomas    5.0  FALSE            6.0   1.609438           2.609438
+## 2    Erik    8.0  FALSE            9.0   2.079442           3.079442
+## 3    Mark    6.5  FALSE            7.5   1.871802           2.871802
+## 4 Eveline    7.0   TRUE            8.0   1.945910           2.945910
+\end{verbatim}
+
 \subsection{Regression modeling}\label{regression-modeling}
 
 Before we start laying-out how to do regression modeling in \texttt{R},
@@ -617,12 +681,12 @@ checking this with
 
 \begin{verbatim}
 ##          y          x
-## 1 2.327266 0.25244704
-## 2 4.976585 0.55341990
-## 3 3.911041 0.30994225
-## 4 5.794848 0.62406003
-## 5 3.492710 0.54107853
-## 6 1.453053 0.01828219
+## 1 1.813045 0.31684671
+## 2 7.813838 0.73022612
+## 3 2.355888 0.09872103
+## 4 5.653408 0.29544488
+## 5 3.707419 0.23773422
+## 6 3.178336 0.27828697
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -665,7 +729,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.053        5.855
+##       2.044        5.549
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -684,19 +748,19 @@ gives you the following outcome
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -2.4115 -0.6188  0.0248  0.7963  2.4924 
+##      Min       1Q   Median       3Q      Max 
+## -3.00912 -0.59496  0.09804  0.70891  2.55356 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   2.0528     0.2346   8.751 6.18e-14 ***
-## x             5.8555     0.3859  15.175  < 2e-16 ***
+## (Intercept)   2.0442     0.1963   10.41   <2e-16 ***
+## x             5.5490     0.3575   15.52   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.085 on 98 degrees of freedom
-## Multiple R-squared:  0.7015, Adjusted R-squared:  0.6984 
-## F-statistic: 230.3 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 1.049 on 98 degrees of freedom
+## Multiple R-squared:  0.7108, Adjusted R-squared:  0.7079 
+## F-statistic: 240.9 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -712,10 +776,10 @@ linear\_model
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-19-1.pdf}
-\includegraphics{./unnamed-chunk-19-2.pdf}
-\includegraphics{./unnamed-chunk-19-3.pdf}
-\includegraphics{./unnamed-chunk-19-4.pdf}
+\includegraphics{./unnamed-chunk-23-1.pdf}
+\includegraphics{./unnamed-chunk-23-2.pdf}
+\includegraphics{./unnamed-chunk-23-3.pdf}
+\includegraphics{./unnamed-chunk-23-4.pdf}
 
 And that is basically it, at least for the basics. There is much more to
 say about the \texttt{lm()} command, but that is for later.
@@ -732,7 +796,7 @@ scatterplot. With our \(x\) and \(y\) data this can be easily done by:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-20-1.pdf}
+\includegraphics{./unnamed-chunk-24-1.pdf}
 
 If you would like to create a histogram, just use \texttt{hist()} as
 
@@ -742,7 +806,7 @@ If you would like to create a histogram, just use \texttt{hist()} as
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-21-1.pdf}
+\includegraphics{./unnamed-chunk-25-1.pdf}
 
 However, to go one step further you also make a plot of a dataframe. for
 our df dataframe this is not very insightful, but let's add another
@@ -757,7 +821,7 @@ dataframe \texttt{df}).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-22-1.pdf}
+\includegraphics{./unnamed-chunk-26-1.pdf}
 
 And luckily, this plot confirms what we expect. \(x\) are correlated
 \(y\) by construction and \(z\) is not correlated with either \(x\) and
@@ -777,7 +841,7 @@ be done in the following way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-23-1.pdf}
+\includegraphics{./unnamed-chunk-27-1.pdf}
 
 \subsection{Recap}\label{recap}
 
@@ -1158,8 +1222,8 @@ gallon.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{./unnamed-chunk-27-1.pdf}
-\caption{\label{fig:unnamed-chunk-27}A scatterplog between miles per gallon
+\includegraphics{./unnamed-chunk-31-1.pdf}
+\caption{\label{fig:unnamed-chunk-31}A scatterplog between miles per gallon
 and car weight.}
 \end{figure}
 
@@ -1245,8 +1309,8 @@ One can do so by the command \texttt{abline()} or:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{./unnamed-chunk-29-1.pdf}
-\caption{\label{fig:unnamed-chunk-29}A scatterplog between miles per gallon
+\includegraphics{./unnamed-chunk-33-1.pdf}
+\caption{\label{fig:unnamed-chunk-33}A scatterplog between miles per gallon
 and car weight with regression line.}
 \end{figure}
 
@@ -1543,7 +1607,7 @@ leads to:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 The connectivity matrix of the network can be directly given by:
 
@@ -1578,7 +1642,7 @@ with as plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \texttt{+-+}, in combination with the command
@@ -1591,7 +1655,7 @@ Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-44-1.pdf}
 
 Finally, we can influence the color and sizes (amongst others) of all
 the elements of the network, so:
@@ -1602,7 +1666,7 @@ the elements of the network, so:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 However, this way of creating of networks is not very efficient. We
 therefore offer some other ways as well, starting with created directly
@@ -1622,7 +1686,7 @@ and no links.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 The other extreme is obviously the fully connected network. With the
 command \texttt{make\_full\_graph(40)} we can create a fully connected
@@ -1636,7 +1700,7 @@ time to create that network (with \(500 \times 500 - 500\) links)).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-47-1.pdf}
 
 The \texttt{make\_star(500)} command create a star network (or a
 hub-and-spoke network) with 500 nodes.
@@ -1648,7 +1712,7 @@ hub-and-spoke network) with 500 nodes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-48-1.pdf}
 
 With the \texttt{make\_tree(500,\ children\ =\ 3,\ mode="undirected}
 command, we create an undirected hierarchical tree with each time tree
@@ -1661,7 +1725,7 @@ children
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-45-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 And the \texttt{graph.ring(500)} creates a ring (or line) structure
 where each node is connected to two other nodes in a sequential way
@@ -1673,7 +1737,7 @@ where each node is connected to two other nodes in a sequential way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 For the real-world network we can use the following commands. First, the
 command \texttt{erdos.renyi.game(500,\ 0.005)} creates a random network,
@@ -1686,7 +1750,7 @@ node.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 For the small-world network, we need to rewire the ring network. We can
 do by the command \texttt{rewire} as follows:
@@ -1697,7 +1761,7 @@ do by the command \texttt{rewire} as follows:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 Note that the probability of rewiring is now 0.5.
 
@@ -1712,7 +1776,7 @@ network with the following underlying formula \(P(k) = k^{-0.5}\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 Note the tree-like structure.
 
@@ -1737,7 +1801,7 @@ Florence and looks like this
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 Another good but smaller source is the \texttt{igraphdata} package which
 actually contains a network of american domestic flights.
@@ -1760,7 +1824,7 @@ Something like (I took and modified the example from
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 Note that this only requires a from and to columns in a \texttt{.csv}
 file, which resembles trade, commuting, migration and transport networks
@@ -1810,28 +1874,28 @@ the number of connections. For our power-law network this amounts to
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 14 12  8  9 10  6 12  5  1  1  8  5  6  3  7  5  1  8  2  1  6 12  1
-##  [24]  6  6  5  1  5  6  4  4 14  5  6  1  1  1  2  1  4  2  6  4  5  1  1
-##  [47]  9  2  2  1  3  1  4  2  1  5  5  1  5  1  1  3  1  2  2  3  3  3  3
-##  [70]  4  5  3  1  2  3  1  1  3  6  2  3  2  4  4  1  2  1  9  1  5  2  2
-##  [93]  4  3  5  3  5  4  3  1  1  1  1  1  2  5  1  2  1  3  1  3  2  3  3
-## [116]  2  4  2  2  3  1  1  1  1  4  4  1  2  1  1  1  5  3  3  4  3  1  1
-## [139]  1  1  1  4  3  1  1  3  1  3  1  2  1  1  1  2  2  4  1  4  2  2  4
-## [162]  1  3  1  2  1  2  6  1  3  2  2  1  2  1  2  2  2  2  1  2  2  2  1
-## [185]  2  2  1  1  2  2  2  3  1  2  1  3  1  3  1  1  3  1  3  1  1  1  2
-## [208]  2  2  1  2  2  3  1  2  1  6  2  2  1  1  1  1  1  1  2  1  2  2  1
-## [231]  2  2  3  2  1  1  2  3  3  3  4  1  1  1  2  1  1  4  1  3  1  2  1
-## [254]  2  1  1  1  4  1  3  1  1  2  3  1  1  2  1  2  1  1  1  2  2  1  1
-## [277]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  2  1  3  1  1  1  1  1
-## [300]  1  2  1  1  1  1  1  2  1  2  1  6  1  1  4  1  3  2  1  2  2  1  1
-## [323]  2  1  1  2  2  2  1  2  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
-## [346]  2  1  1  1  1  1  2  1  2  1  2  2  2  2  3  2  1  1  1  1  1  1  1
-## [369]  1  1  1  2  1  2  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  2
-## [392]  1  1  1  1  2  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  2  1  1
-## [415]  2  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1
-## [438]  1  1  2  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [484]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
+##   [1] 15 11 14  8  7 10 16  6  5  1 11  6  9  7  9  6 13  6  4  3  3  4  2
+##  [24]  2  4  4  2  1 10  1  5  1  5  1  7  1  8  2  1  6  4  3  5  1  2  3
+##  [47]  7  4  6  3  5  1  1  4  4  3  6  5  1  1  2  1  8  2  2  1  1  1  3
+##  [70]  1  4  2  3  1  3  5  2  2  2  2  2  2  4  1  1  1  3  1  2  1  4  3
+##  [93]  1  7  1  2  5  1  6  3  2  3  5  4  2  5  1  1  1  3  2  2  1  1  3
+## [116]  1  1  3  3  1  5  1  2  5  5  1  4  4  2  2  2  2  1  4  1  5  3  1
+## [139]  3  1  2  4  5  1  1  1  2  3  1  3  1  1  1  1  1  1  4  2  1  2  1
+## [162]  1  1  2  3  1  1  1  3  1  2  1  2  2  1  1  3  3  1  3  1  1  2  6
+## [185]  4  1  1  1  1  1  4  2  1  3  3  6  2  6  3  1  2  2  1  2  2  1  1
+## [208]  1  1  1  1  1  2  1  1  1  1  2  2  3  1  1  1  1  1  1  1  1  1  2
+## [231]  1  1  1  1  3  2  2  1  1  1  3  1  2  2  1  2  1  1  1  1  1  1  1
+## [254]  2  2  1  1  1  3  2  1  2  1  2  1  4  1  1  1  1  1  1  1  1  1  2
+## [277]  1  1  1  1  1  1  1  2  1  1  1  1  2  3  1  1  1  1  1  1  3  1  4
+## [300]  1  1  1  1  1  1  1  1  2  1  1  3  1  2  1  2  1  1  2  1  1  1  1
+## [323]  1  1  1  1  1  1  2  1  1  1  1  1  2  1  2  1  2  1  1  2  1  3  2
+## [346]  2  1  1  1  1  1  1  1  2  2  1  1  1  1  1  1  1  1  1  1  1  2  1
+## [369]  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [392]  1  1  1  1  1  1  1  1  1  2  3  3  1  1  1  1  1  1  2  1  1  1  1
+## [415]  2  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  2  1  1  1
+## [438]  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  2
+## [461]  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [484]  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1
 \end{verbatim}
 
 which is not that insightful, but a histogram is:
@@ -1842,7 +1906,7 @@ which is not that insightful, but a histogram is:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
 
 Which is typical for a power-law.
 
@@ -1854,7 +1918,7 @@ The \texttt{degree\_distribution} is insightful here as well
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 Finally, we may be interested in the shortest path. This can easily be
 retrieved using distances (with underlying Dijkstra's algorithm) as

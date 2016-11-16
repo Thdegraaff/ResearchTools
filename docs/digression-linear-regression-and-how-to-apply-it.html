@@ -261,8 +261,8 @@ y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 ##  Max.   :33.90   Max.   :5.424</code></pre>
 <p>There does not seem to be anything out of the ordinary here, but to be sure, we construct a scatterplot between weight of the car and miles per gallon.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-27"></span>
-<img src="unnamed-chunk-27-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-31"></span>
+<img src="unnamed-chunk-31-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
 <p class="caption">
 Figure 4.1: A scatterplog between miles per gallon and car weight.
 </p>
@@ -298,8 +298,8 @@ Figure 4.1: A scatterplog between miles per gallon and car weight.
 <p>One nice trick is to plot the regression line in the scatterplot above. One can do so by the command <code>abline()</code> or:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)
 <span class="kw">abline</span>(<span class="kw">lm</span>(mpg~wt, mtcars))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-29"></span>
-<img src="unnamed-chunk-29-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-33"></span>
+<img src="unnamed-chunk-33-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
 <p class="caption">
 Figure 4.2: A scatterplog between miles per gallon and car weight with regression line.
 </p>

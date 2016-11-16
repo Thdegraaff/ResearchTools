@@ -4,6 +4,7 @@
 library("swirl")
 library("rio")
 library("ggplot2")
+library("dplyr")
 ```
 
 The `R` programming language and software environment for statistical computing is an implementation of the proprietary `S` programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 [Programming tools: Adventures with R](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609)) and now has more than 8,000 user contributed packages (see as well the blog piece [On the growth of CRAN packages](https://www.r-bloggers.com/on-the-growth-of-cran-packages/)).
@@ -119,7 +120,7 @@ Female <- c(FALSE,FALSE,FALSE,TRUE)
 df_grades <- data.frame(Names, Grades, Female) 
 ```
 
-First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names), numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command `head()` we can show the first 6 rows of this dataframe.
+First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)---so variable names are always in strings---, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command `head()` we can show the first 6 rows of this dataframe.
 
 ```{r}
 head(df_grades)
@@ -148,6 +149,21 @@ Now, the grades dataframe looks like:
 head(df_grades)
 ```
 
+We can even do this in a more simple way, by invoking the most brilliant `dplyr` package. Say, we want to create a log variable of the "Grades" variable and then a new variable where add +1. No idea why, but we want it. Then
+
+```{r}
+df_grades <- mutate(df_grades, 
+               log_grades = log(Grades),
+               log_grades_revised = log_grades + 1)
+```
+
+Does the trick. Note that I only have to invoke mutate once. `dplyr` can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found [here](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+
+Now, the grades dataframe looks like:
+
+```{r}
+head(df_grades)
+```
 
 ## Regression modeling
 
