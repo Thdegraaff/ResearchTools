@@ -136,6 +136,19 @@ df_grades["Names"]
 
 Most of the statistical stuff we will do invokes the use of dataframe and specific variables from that dataframe. 
 
+How to change variables or generate new variables in such a dataframe. Well, remember you can always access elements from an object by the `$`-sign. So, let's suppose we want to add a new variable to our dataframe where we a whole point to the `Grades` variable. We can do this as follows:
+
+```{r}
+df_grades$Grades_revised <- df_grades$Grades + 1
+```
+
+Now, the grades dataframe looks like:
+
+```{r}
+head(df_grades)
+```
+
+
 ## Regression modeling
 
 Before we start laying-out how to do regression modeling in `R`, we first need data. And for this purpose we will simulate our data by the following commands:
