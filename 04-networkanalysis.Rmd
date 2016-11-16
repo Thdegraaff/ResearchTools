@@ -161,7 +161,7 @@ Note that this only requires a from and to columns in a `.csv` file, which resem
 
 ### Sankey networks
 
-```{r}
+```{r, eval=TRUE, include=TRUE}
 # Read in the data in a dataframe called Data
 Data <- read.csv("Migration_Corop_2003.csv", header=TRUE,stringsAsFactors=FALSE)
 # We filter some of the data so that our sankey diagram will not be too large

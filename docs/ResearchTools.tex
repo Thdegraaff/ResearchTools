@@ -680,13 +680,13 @@ checking this with
 \end{Shaded}
 
 \begin{verbatim}
-##          y           x
-## 1 2.662946 0.165246085
-## 2 6.411991 0.709344707
-## 3 7.918090 0.864341072
-## 4 3.306782 0.141959522
-## 5 4.374938 0.367125542
-## 6 2.512111 0.007785534
+##          y         x
+## 1 5.677078 0.6821151
+## 2 7.977810 0.8826769
+## 3 2.131435 0.0237788
+## 4 7.643682 0.9517926
+## 5 6.687696 0.8392424
+## 6 5.470086 0.6484546
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -729,7 +729,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.041        5.890
+##       1.515        6.732
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -748,19 +748,19 @@ gives you the following outcome
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -2.0853 -0.6498 -0.1098  0.5106  2.4105 
+##      Min       1Q   Median       3Q      Max 
+## -3.14525 -0.73716 -0.05392  0.74744  2.40644 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   2.0407     0.1882   10.84   <2e-16 ***
-## x             5.8901     0.3182   18.51   <2e-16 ***
+## (Intercept)   1.5147     0.2029   7.466 3.44e-11 ***
+## x             6.7319     0.3466  19.421  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9764 on 98 degrees of freedom
-## Multiple R-squared:  0.7776, Adjusted R-squared:  0.7753 
-## F-statistic: 342.7 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 1.051 on 98 degrees of freedom
+## Multiple R-squared:  0.7938, Adjusted R-squared:  0.7917 
+## F-statistic: 377.2 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -1840,6 +1840,36 @@ file, which resembles trade, commuting, migration and transport networks
 (in a gravity-model type of way). The only thing is that we need to
 convert this data in a igraph structure with \texttt{graph.data.frame}.
 
+\subsubsection{Sankey networks}\label{sankey-networks}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Read in the data in a dataframe called Data}
+\NormalTok{Data <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Migration_Corop_2003.csv"}\NormalTok{, }\DataTypeTok{header=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{stringsAsFactors=}\OtherTok{FALSE}\NormalTok{)}
+\CommentTok{# We filter some of the data so that our sankey diagram will not be too large}
+\NormalTok{Data <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(Data, To <}\StringTok{ }\DecValTok{25}\NormalTok{)}
+\NormalTok{Data <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(Data, From <}\StringTok{ }\DecValTok{25}\NormalTok{)}
+\CommentTok{# Create a variable for the names of the node (both on the left and right side)}
+\NormalTok{DataNames <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(Data$NameFrom[}\DecValTok{1}\NormalTok{:}\DecValTok{8}\NormalTok{], }\DataTypeTok{times=}\DecValTok{2}\NormalTok{)}
+\CommentTok{# Create a dataframe of this variable names}
+\NormalTok{Names <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(DataNames, }\DataTypeTok{stringsAsFactors=}\OtherTok{FALSE}\NormalTok{)}
+\CommentTok{# Revalue To and From such that they nicely count up to the number of nodes (Note, we start at index number 0!)}
+\NormalTok{Data$To <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{8}\NormalTok{:}\DecValTok{15}\NormalTok{, }\DataTypeTok{each=}\DecValTok{8}\NormalTok{)}
+\NormalTok{Data$From <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{:}\DecValTok{7}\NormalTok{, }\DataTypeTok{times=}\DecValTok{8}\NormalTok{)}
+
+\CommentTok{# Now plot network}
+\KeywordTok{sankeyNetwork}\NormalTok{(}\DataTypeTok{Links =} \NormalTok{Data, }\CommentTok{# which dataframe to be used for the flows}
+              \DataTypeTok{Nodes =} \NormalTok{Names, }\CommentTok{# which dataframe to be used for the names of the nodes}
+              \DataTypeTok{Source =} \StringTok{"From"}\NormalTok{, }\CommentTok{# where do the flows come from (index number)}
+              \DataTypeTok{Target =} \StringTok{"To"}\NormalTok{,  }\CommentTok{# where do the flows go to (index number)}
+              \DataTypeTok{Value =} \StringTok{"Migrants"}\NormalTok{, }\CommentTok{# the variable that denote the flows from dataframe}
+              \DataTypeTok{units =} \StringTok{"Migrants"}\NormalTok{, }\CommentTok{# Which units are the flows (not necessary)}
+              \DataTypeTok{NodeID =} \StringTok{"DataNames"}\NormalTok{, }\CommentTok{# Variable that gives the names from the dataframe Names }
+              \DataTypeTok{fontSize =} \DecValTok{14}\NormalTok{,  }\CommentTok{# Make things look better}
+              \DataTypeTok{nodeWidth =} \DecValTok{40}\NormalTok{) }\CommentTok{# make things look good}
+\end{Highlighting}
+\end{Shaded}
+
 \subsection{Network characteristics}\label{network-characteristics}
 
 So, it is fine that you have a network, but what about the network
@@ -1883,26 +1913,26 @@ the number of connections. For our power-law network this amounts to
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 26 12  6  9 12  3 11 10  6  4  6  6  7  5  3  4 11  2  5  5  1  2  5
-##  [24]  3  3  1  1  4  2  3  1  5  2  5  7  7  1  6  7  4  1  2  3  3  1  5
-##  [47]  8  5  2  6  2  1  7  1  2  4  2  7  1  3  1  1  1  3  3  2  5  6 11
-##  [70]  1  6  2  2  2  3  1  1  1  2  2  2  1  1  1  1  1  2  5  6  1  3  1
-##  [93]  3  2  1  2  5  4  1  6  3  2  3  1  5  6  2  2  1  6  2  7  2  1  4
-## [116]  4  3  3  2  6  1  2  1  1  1  1  1  1  2  2  3  1  1  2  2  1  3  3
-## [139]  1  3  1  1  3  2  2  5  3  1  4  1  2  1  1  1  1  1  2  1  2  1  1
-## [162]  3  1  1  5  2  1  1  1  1  1  2  1  1  1  1  4  1  5  2  1  2  1  2
-## [185]  2  1  2  1  8  1  1  1  3  3  1  1  1  1  1  4  1  1  2  3  3  1  5
-## [208]  1  2  1  2  3  3  7  1  4  1  1  1  1  1  4  6  2  1  1  2  1  1  1
-## [231]  1  2  1  1  1  2  1  1  3  2  2  2  2  1  1  3  2  4  1  2  1  1  1
-## [254]  2  2  1  1  1  2  1  1  1  1  1  1  2  2  1  2  3  1  1  1  1  1  2
-## [277]  1  1  1  1  1  1  1  1  1  1  2  2  1  1  1  1  2  2  2  1  1  1  1
-## [300]  1  2  1  2  1  2  2  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1
-## [323]  1  1  1  1  2  1  1  1  2  1  3  1  1  2  2  1  1  1  1  1  1  3  2
-## [346]  1  1  1  3  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  2  1
-## [369]  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  2  1  2  1  1  1
-## [392]  1  1  1  2  1  2  1  1  1  1  1  1  1  2  1  1  1  1  1  1  2  1  1
-## [415]  1  1  1  1  1  1  2  1  1  2  1  1  1  2  1  1  1  1  1  1  2  1  1
-## [438]  2  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  3  1  1  1  1
+##   [1]  8  6 11 13 13  3  7  8  7  4  6 12  8  1  8  1  2  6  8  6  5  5  8
+##  [24]  1  7  5  3  1  1  4  6  1  4  4  6  6  4  2  2  2  1  3  5  1  1  1
+##  [47]  4  9  6  2  1  3  2  3  7  6  4  4  2  7  5  8  4  4  6  3  3  5  1
+##  [70]  1  2  3  1  7  1  7  5  4  4  5  2  4  1  2  2  1  3  2  2  1  1  2
+##  [93]  4  7  4  4  1  1  4  1  2  1  1  1  1  1  1  5  1  1  2  1  2  3  4
+## [116]  2  1  1  1  2  3  3  1  2  5  2  3  4  2  2  1  4  1  2  2  1  1  1
+## [139]  2  1  4  3  1  1  1  1  2  1  4  1  1  1  2  2  1  6  1  1  2  2  3
+## [162]  2  1  3  2  4  3  5  1  1  2  3  2  6  3  3  1  3  3  1  1  2  1  3
+## [185]  1  1  1  2  3  1  1  3  1  1  2  2  2  3  1  2  1  1  1  1  1  2  2
+## [208]  1  1  3  3  1  5  3  2  1  1  1  1  2  1  4  1  2  3  1  1  1  1  1
+## [231]  1  1  2  2  1  3  1  1  2  1  4  1  1  1  2  1  1  2  2  2  2  1  2
+## [254]  1  1  1  1  1  2  2  1  1  2  1  1  1  1  1  1  1  1  2  1  1  2  1
+## [277]  1  2  1  1  1  2  1  1  2  1  1  1  2  1  1  1  1  3  1  3  1  1  1
+## [300]  2  1  1  1  1  1  2  2  2  1  2  2  1  2  1  1  1  1  2  1  1  1  2
+## [323]  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  2  1  2  1  2  1  2  2
+## [346]  1  1  1  1  2  1  1  1  1  1  1  2  1  1  1  1  2  1  1  1  2  2  1
+## [369]  1  1  2  1  1  1  2  1  1  1  1  1  1  2  2  1  1  1  1  1  1  1  1
+## [392]  1  1  1  1  1  1  1  2  1  2  2  1  1  1  1  1  1  1  1  1  1  1  1
+## [415]  1  1  1  1  1  3  1  1  2  1  1  1  1  1  1  1  1  1  2  2  1  1  1
+## [438]  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  1  1  2  1  1  1  1  1
 ## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 ## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 \end{verbatim}
@@ -1915,7 +1945,7 @@ which is not that insightful, but a histogram is:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 Which is typical for a power-law.
 
@@ -1927,7 +1957,7 @@ The \texttt{degree\_distribution} is insightful here as well
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 Finally, we may be interested in the shortest path. This can easily be
 retrieved using distances (with underlying Dijkstra's algorithm) as
