@@ -54,6 +54,10 @@ MathJax.Hub.Config({
 
 
 
+<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
+<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/sankey-1/sankey.js"></script>
+<script src="libs/sankeyNetwork-binding-0.2.8/sankeyNetwork.js"></script>
 
 
 <style type="text/css">
@@ -147,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.1" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#creating-network-yourself"><i class="fa fa-check"></i><b>5.2.1</b> Creating network yourself</a></li>
 <li class="chapter" data-level="5.2.2" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#structured-networks"><i class="fa fa-check"></i><b>5.2.2</b> Structured networks</a></li>
 <li class="chapter" data-level="5.2.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#reading-in-networks"><i class="fa fa-check"></i><b>5.2.3</b> Reading in networks</a></li>
+<li class="chapter" data-level="5.2.4" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#sankey-networks"><i class="fa fa-check"></i><b>5.2.4</b> Sankey networks</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#network-characteristics"><i class="fa fa-check"></i><b>5.3</b> Network characteristics</a></li>
 </ul></li>
@@ -171,10 +176,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="network-analysis-with-r" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Network analysis with <code>R</code></h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;igraph&quot;</span>)
-<span class="kw">library</span>(<span class="st">&quot;igraphdata&quot;</span>)</code></pre></div>
+<span class="kw">library</span>(<span class="st">&quot;igraphdata&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;networkD3&quot;</span>)</code></pre></div>
 <div id="introduction-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
-<p>Work in progress<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<p>Network analysis is huge and applied in many disciplines, ranging from mathematics to sociology. In <code>R</code> there are many packages available. We will use the <code>igraph</code> package, which seems to be the most encompassing.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics.</p>
 </div>
 <div id="creating-networks" class="section level2">
 <h2><span class="header-section-number">5.2</span> Creating networks</h2>
@@ -269,6 +275,34 @@ g_relations &lt;-<span class="st"> </span><span class="kw">graph.data.frame</spa
 <p><img src="ResearchTools_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Note that this only requires a from and to columns in a <code>.csv</code> file, which resembles trade, commuting, migration and transport networks (in a gravity-model type of way). The only thing is that we need to convert this data in a igraph structure with <code>graph.data.frame</code>.</p>
 </div>
+<div id="sankey-networks" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Sankey networks</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Read in the data in a dataframe called Data</span>
+Data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Migration_Corop_2003.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+<span class="co"># We filter some of the data so that our sankey diagram will not be too large</span>
+Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, To &lt;<span class="st"> </span><span class="dv">25</span>)
+Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, From &lt;<span class="st"> </span><span class="dv">25</span>)
+<span class="co"># Create a variable for the names of the node (both on the left and right side)</span>
+DataNames &lt;-<span class="st"> </span><span class="kw">rep</span>(Data$NameFrom[<span class="dv">1</span>:<span class="dv">8</span>], <span class="dt">times=</span><span class="dv">2</span>)
+<span class="co"># Create a dataframe of this variable names</span>
+Names &lt;-<span class="st"> </span><span class="kw">data.frame</span>(DataNames, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
+<span class="co"># Revalue To and From such that they nicely count up to the number of nodes (Note, we start at index number 0!)</span>
+Data$To &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">8</span>:<span class="dv">15</span>, <span class="dt">each=</span><span class="dv">8</span>)
+Data$From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>:<span class="dv">7</span>, <span class="dt">times=</span><span class="dv">8</span>)
+
+<span class="co"># Now plot network</span>
+<span class="kw">sankeyNetwork</span>(<span class="dt">Links =</span> Data, <span class="co"># which dataframe to be used for the flows</span>
+              <span class="dt">Nodes =</span> Names, <span class="co"># which dataframe to be used for the names of the nodes</span>
+              <span class="dt">Source =</span> <span class="st">&quot;From&quot;</span>, <span class="co"># where do the flows come from (index number)</span>
+              <span class="dt">Target =</span> <span class="st">&quot;To&quot;</span>,  <span class="co"># where do the flows go to (index number)</span>
+              <span class="dt">Value =</span> <span class="st">&quot;Migrants&quot;</span>, <span class="co"># the variable that denote the flows from dataframe</span>
+              <span class="dt">units =</span> <span class="st">&quot;Migrants&quot;</span>, <span class="co"># Which units are the flows (not necessary)</span>
+              <span class="dt">NodeID =</span> <span class="st">&quot;DataNames&quot;</span>, <span class="co"># Variable that gives the names from the dataframe Names </span>
+              <span class="dt">fontSize =</span> <span class="dv">14</span>,  <span class="co"># Make things look better</span>
+              <span class="dt">nodeWidth =</span> <span class="dv">40</span>) <span class="co"># make things look good</span></code></pre></div>
+<div id="htmlwidget-456" style="width:672px;height:480px;" class="sankeyNetwork"></div>
+<script type="application/json" data-for="htmlwidget-456">{"x":{"links":{"source":[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7],"target":[8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15],"value":[0,374,255,134,396,172,3120,1718,299,0,1407,257,325,384,1662,87,216,1340,0,711,241,249,1001,73,106,258,416,0,1161,323,867,37,360,224,174,816,0,82,2331,138,107,228,128,224,88,0,2104,48,3432,1587,972,720,2632,1378,0,1496,1492,137,66,40,103,67,1871,0]},"nodes":{"name":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "],"group":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "]},"options":{"NodeID":"DataNames","NodeGroup":"DataNames","LinkGroup":null,"colourScale":"d3.scale.category20()","fontSize":14,"fontFamily":null,"nodeWidth":40,"nodePadding":10,"units":"Migrants","margin":{"top":null,"right":null,"bottom":null,"left":null}}},"evals":[]}</script>
+</div>
 </div>
 <div id="network-characteristics" class="section level2">
 <h2><span class="header-section-number">5.3</span> Network characteristics</h2>
@@ -283,35 +317,35 @@ g_relations &lt;-<span class="st"> </span><span class="kw">graph.data.frame</spa
 <p>somewhat more interesting is given by the degree function which gives the number of connections. For our power-law network this amounts to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deg &lt;-<span class="st"> </span><span class="kw">degree</span>(g_power_law)
 deg</code></pre></div>
-<pre><code>##   [1] 18 20  3  9  4  4 10  9  8  3  1 10  5  4  9  3  4  6  4  4  5  3  5
-##  [24]  4  1  9  6  3  6  7  2  2  3  2  9  2  1  4  8  7  1  4  2  2  5  4
-##  [47]  1 11  2  9  2  1  7  6  4  5  4  5  7  3  1  2  5  6  3  2  1  1  6
-##  [70]  1  2  3  1  3  1  6  2  1  1  2  1  5  1  3  3  3  3  6  9  2  1  6
-##  [93]  2  2  2  2  6  2  1  1  2  5  3  1  4  2  2  2  4  2  1  1  1  2  3
-## [116]  4  2  4  4  3  2  4  2  1  3  3  3  2  1  5  3  1  1  2  1  1  1  3
-## [139]  1  3  2  5  4  1  1  2  1  1  2  1  1  1  1  1  1  1  1  1  1  1  3
-## [162]  2  2  1  3  5  1  2  5  1  5  2  2  1  1  2  1  1  1  1  2  1  2  1
-## [185]  1  1  1  1  1  2  2  1  1  2  2  2  1  3  1  1  2  1  5  2  1  1  2
-## [208]  1  1  3  1  1  1  2  2  4  2  1  1  1  1  1  1  1  1  1  1  4  1  1
-## [231]  1  1  2  1  2  1  2  2  2  3  2  2  2  1  2  1  2  1  1  1  2  2  1
-## [254]  1  1  3  1  2  1  1  3  1  1  1  1  2  1  1  2  2  1  1  3  1  2  1
-## [277]  1  1  2  1  1  1  1  1  2  1  1  1  2  1  1  1  2  1  1  1  1  1  2
-## [300]  1  1  1  1  1  1  1  3  1  1  1  1  1  2  1  2  1  1  2  1  2  1  1
-## [323]  1  1  1  1  1  2  1  1  1  1  1  1  1  2  1  1  1  3  1  1  1  1  2
-## [346]  1  2  1  1  1  1  1  4  1  1  1  1  1  1  1  1  2  2  1  1  1  1  2
-## [369]  2  1  1  2  1  2  1  1  1  1  1  1  1  1  3  1  1  1  1  1  1  1  1
-## [392]  2  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [415]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1
-## [438]  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  3  1  1  1  1
-## [461]  1  2  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1
+<pre><code>##   [1] 11 23  7  5 10  5  7  3 10  5  4  5 16  5  4  8  9  1  8  2  1  5  9
+##  [24]  3  7  4  1 10  3  1  2  3  1  1  2  6  2  1  3 12  2  8  6  4  1  4
+##  [47]  2  1  3  2  1  4  4  5  4  2  7  1  3  6  2  7  3  2  3  2  1  2  2
+##  [70]  3  3  2  5  1  4  7  3  4  2  2  3  1  1  1  2  1  3  1  2  1  1  7
+##  [93]  1  4  5  2  1  1  2  1  1  1  1  6  6  3  1  6  1  2  6  5  4  1  1
+## [116]  1  2  4  1  1  3  4  3  2  2  3  3  1  1  1  1  1  3  2  1  2  2  1
+## [139]  3  4  1  1  1  1  3  2  1  1  1  1  1  2  2  2  4  2  2  3  3  1  2
+## [162]  3  2  1  1  1  1  1  1  2  1  5  2  1  2  1  1  3  4  1  3  1  3  1
+## [185]  4  1  3  1  2  1  1  6  1  2  1  3  1  2  1  4  1  2  4  2  3  5  1
+## [208]  1  1  3  1  1  1  2  1  1  1  2  3  2  1  1  1  1  2  1  1  1  2  3
+## [231]  3  2  3  1  4  2  2  1  1  2  2  1  1  2  1  1  1  1  3  1  1  3  3
+## [254]  1  1  1  1  2  2  1  1  1  5  1  2  1  1  2  1  2  1  2  1  1  1  1
+## [277]  1  2  1  2  1  1  1  2  1  1  1  2  1  1  1  1  1  2  1  2  3  3  1
+## [300]  3  1  2  3  2  1  1  2  2  2  1  1  1  1  1  1  3  1  2  1  1  1  1
+## [323]  1  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
+## [346]  2  1  1  2  1  1  1  1  1  2  1  1  1  1  1  1  1  2  1  1  1  1  1
+## [369]  2  1  1  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [392]  1  1  1  1  2  2  1  1  2  1  1  2  1  1  1  1  1  1  1  1  1  1  1
+## [415]  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  3  1  1  1
+## [438]  1  1  1  1  1  1  2  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1
+## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 ## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1</code></pre>
 <p>which is not that insightful, but a histogram is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(deg)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>Which is typical for a power-law.</p>
 <p>The <code>degree_distribution</code> is insightful here as well</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">degree_distribution</span>(g_power_law, <span class="dt">cumulative =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>Finally, we may be interested in the shortest path. This can easily be retrieved using distances (with underlying Dijkstra’s algorithm) as follows for the Florence network:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">distances</span>(g_florence$PADGB)</code></pre></div>
 <pre><code>##           ACCIAIUOL ALBIZZI BARBADORI BISCHERI CASTELLAN GINORI GUADAGNI

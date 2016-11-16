@@ -157,7 +157,7 @@ df_grades <- mutate(df_grades,
                log_grades_revised = log_grades + 1)
 ```
 
-Does the trick. Note that I only have to invoke mutate once. `dplyr` can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found [here](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+Does the trick. Note that I only have to invoke `mutate` once. `dplyr` can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found [here](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
 
 Now, the grades dataframe looks like:
 

@@ -1,0 +1,226 @@
+NameTo,NameFrom,To,From,Migrants,PopulationTo,PopulationFrom,Distance
+Utrecht ,Utrecht ,17,17,0,1152218,1152218,0
+Utrecht ,Kop van Noord-Holland ,17,18,374,1152218,361764,87.37
+Utrecht ,Alkmaar en omgeving ,17,19,255,1152218,223936,67.04
+Utrecht ,IJmond ,17,20,134,1152218,187456,56.26
+Utrecht ,Agglomeratie Haarlem ,17,21,396,1152218,217606,48.92
+Utrecht ,Zaanstreek ,17,22,172,1152218,154974,48.58
+Utrecht ,Groot-Amsterdam ,17,23,3120,1152218,1184987,41.03
+Utrecht ,Het Gooi en Vechtstreek ,17,24,1718,1152218,242397,15.42
+Utrecht ,Aggl. Leiden en Bollenstreek ,17,25,647,1152218,387763,48.7
+Utrecht ,Agglomeratie 's-Gravenhage ,17,26,1441,1152218,759778,57.37
+Utrecht ,Delft en Westland ,17,27,301,1152218,210980,66.33
+Utrecht ,Oost-Zuid-Holland ,17,28,1129,1152218,322858,34.65
+Utrecht ,Groot-Rijnmond ,17,29,1815,1152218,1359640,70.14
+Utrecht ,Zuidoost-Zuid-Holland ,17,30,784,1152218,398963,38.48
+Utrecht ,Flevoland ,17,40,1168,1152218,351680,53.17
+Kop van Noord-Holland ,Utrecht ,18,17,299,361764,1152218,87.37
+Kop van Noord-Holland ,Kop van Noord-Holland ,18,18,0,361764,361764,0
+Kop van Noord-Holland ,Alkmaar en omgeving ,18,19,1407,361764,223936,29.52
+Kop van Noord-Holland ,IJmond ,18,20,257,361764,187456,47.86
+Kop van Noord-Holland ,Agglomeratie Haarlem ,18,21,325,361764,217606,62.14
+Kop van Noord-Holland ,Zaanstreek ,18,22,384,361764,154974,47.38
+Kop van Noord-Holland ,Groot-Amsterdam ,18,23,1662,361764,1184987,54.15
+Kop van Noord-Holland ,Het Gooi en Vechtstreek ,18,24,87,361764,242397,71.96
+Kop van Noord-Holland ,Aggl. Leiden en Bollenstreek ,18,25,94,361764,387763,82.57
+Kop van Noord-Holland ,Agglomeratie 's-Gravenhage ,18,26,174,361764,759778,99.21
+Kop van Noord-Holland ,Delft en Westland ,18,27,51,361764,210980,111.4
+Kop van Noord-Holland ,Oost-Zuid-Holland ,18,28,104,361764,322858,93.22
+Kop van Noord-Holland ,Groot-Rijnmond ,18,29,263,361764,1359640,124.31
+Kop van Noord-Holland ,Zuidoost-Zuid-Holland ,18,30,63,361764,398963,115.98
+Kop van Noord-Holland ,Flevoland ,18,40,258,361764,351680,54.49
+Alkmaar en omgeving ,Utrecht ,19,17,216,223936,1152218,67.04
+Alkmaar en omgeving ,Kop van Noord-Holland ,19,18,1340,223936,361764,29.52
+Alkmaar en omgeving ,Alkmaar en omgeving ,19,19,0,223936,223936,0
+Alkmaar en omgeving ,IJmond ,19,20,711,223936,187456,18.43
+Alkmaar en omgeving ,Agglomeratie Haarlem ,19,21,241,223936,217606,32.91
+Alkmaar en omgeving ,Zaanstreek ,19,22,249,223936,154974,20.11
+Alkmaar en omgeving ,Groot-Amsterdam ,19,23,1001,223936,1184987,27.88
+Alkmaar en omgeving ,Het Gooi en Vechtstreek ,19,24,73,223936,242397,52.18
+Alkmaar en omgeving ,Aggl. Leiden en Bollenstreek ,19,25,80,223936,387763,53.28
+Alkmaar en omgeving ,Agglomeratie 's-Gravenhage ,19,26,115,223936,759778,69.78
+Alkmaar en omgeving ,Delft en Westland ,19,27,43,223936,210980,81.91
+Alkmaar en omgeving ,Oost-Zuid-Holland ,19,28,44,223936,322858,65.59
+Alkmaar en omgeving ,Groot-Rijnmond ,19,29,100,223936,1359640,94.99
+Alkmaar en omgeving ,Zuidoost-Zuid-Holland ,19,30,29,223936,398963,89.9
+Alkmaar en omgeving ,Flevoland ,19,40,135,223936,351680,54.46
+IJmond ,Utrecht ,20,17,106,187456,1152218,56.26
+IJmond ,Kop van Noord-Holland ,20,18,258,187456,361764,47.86
+IJmond ,Alkmaar en omgeving ,20,19,416,187456,223936,18.43
+IJmond ,IJmond ,20,20,0,187456,187456,0
+IJmond ,Agglomeratie Haarlem ,20,21,1161,187456,217606,14.57
+IJmond ,Zaanstreek ,20,22,323,187456,154974,9.4
+IJmond ,Groot-Amsterdam ,20,23,867,187456,1184987,15.44
+IJmond ,Het Gooi en Vechtstreek ,20,24,37,187456,242397,43.2
+IJmond ,Aggl. Leiden en Bollenstreek ,20,25,84,187456,387763,34.86
+IJmond ,Agglomeratie 's-Gravenhage ,20,26,71,187456,759778,51.36
+IJmond ,Delft en Westland ,20,27,18,187456,210980,63.54
+IJmond ,Oost-Zuid-Holland ,20,28,35,187456,322858,48.3
+IJmond ,Groot-Rijnmond ,20,29,110,187456,1359640,76.55
+IJmond ,Zuidoost-Zuid-Holland ,20,30,25,187456,398963,73.53
+IJmond ,Flevoland ,20,40,111,187456,351680,59.91
+Agglomeratie Haarlem ,Utrecht ,21,17,360,217606,1152218,48.92
+Agglomeratie Haarlem ,Kop van Noord-Holland ,21,18,224,217606,361764,62.14
+Agglomeratie Haarlem ,Alkmaar en omgeving ,21,19,174,217606,223936,32.91
+Agglomeratie Haarlem ,IJmond ,21,20,816,217606,187456,14.57
+Agglomeratie Haarlem ,Agglomeratie Haarlem ,21,21,0,217606,217606,0
+Agglomeratie Haarlem ,Zaanstreek ,21,22,82,217606,154974,16.72
+Agglomeratie Haarlem ,Groot-Amsterdam ,21,23,2331,217606,1184987,15.28
+Agglomeratie Haarlem ,Het Gooi en Vechtstreek ,21,24,138,217606,242397,38.73
+Agglomeratie Haarlem ,Aggl. Leiden en Bollenstreek ,21,25,348,217606,387763,20.43
+Agglomeratie Haarlem ,Agglomeratie 's-Gravenhage ,21,26,229,217606,759778,37.17
+Agglomeratie Haarlem ,Delft en Westland ,21,27,57,217606,210980,49.52
+Agglomeratie Haarlem ,Oost-Zuid-Holland ,21,28,91,217606,322858,34.47
+Agglomeratie Haarlem ,Groot-Rijnmond ,21,29,156,217606,1359640,62.18
+Agglomeratie Haarlem ,Zuidoost-Zuid-Holland ,21,30,40,217606,398963,60.28
+Agglomeratie Haarlem ,Flevoland ,21,40,153,217606,351680,65.77
+Zaanstreek ,Utrecht ,22,17,107,154974,1152218,48.58
+Zaanstreek ,Kop van Noord-Holland ,22,18,228,154974,361764,47.38
+Zaanstreek ,Alkmaar en omgeving ,22,19,128,154974,223936,20.11
+Zaanstreek ,IJmond ,22,20,224,154974,187456,9.4
+Zaanstreek ,Agglomeratie Haarlem ,22,21,88,154974,217606,16.72
+Zaanstreek ,Zaanstreek ,22,22,0,154974,154974,0
+Zaanstreek ,Groot-Amsterdam ,22,23,2104,154974,1184987,7.9
+Zaanstreek ,Het Gooi en Vechtstreek ,22,24,48,154974,242397,34.73
+Zaanstreek ,Aggl. Leiden en Bollenstreek ,22,25,41,154974,387763,36.36
+Zaanstreek ,Agglomeratie 's-Gravenhage ,22,26,81,154974,759778,53.28
+Zaanstreek ,Delft en Westland ,22,27,25,154974,210980,65.73
+Zaanstreek ,Oost-Zuid-Holland ,22,28,34,154974,322858,45.97
+Zaanstreek ,Groot-Rijnmond ,22,29,123,154974,1359640,77.77
+Zaanstreek ,Zuidoost-Zuid-Holland ,22,30,28,154974,398963,69.83
+Zaanstreek ,Flevoland ,22,40,124,154974,351680,51.31
+Groot-Amsterdam ,Utrecht ,23,17,3432,1184987,1152218,41.03
+Groot-Amsterdam ,Kop van Noord-Holland ,23,18,1587,1184987,361764,54.15
+Groot-Amsterdam ,Alkmaar en omgeving ,23,19,972,1184987,223936,27.88
+Groot-Amsterdam ,IJmond ,23,20,720,1184987,187456,15.44
+Groot-Amsterdam ,Agglomeratie Haarlem ,23,21,2632,1184987,217606,15.28
+Groot-Amsterdam ,Zaanstreek ,23,22,1378,1184987,154974,7.9
+Groot-Amsterdam ,Groot-Amsterdam ,22,22,0,1184987,1184987,0
+Groot-Amsterdam ,Het Gooi en Vechtstreek ,23,24,1496,1184987,242397,27.77
+Groot-Amsterdam ,Aggl. Leiden en Bollenstreek ,23,25,1811,1184987,387763,32.2
+Groot-Amsterdam ,Agglomeratie 's-Gravenhage ,23,26,1581,1184987,759778,48.92
+Groot-Amsterdam ,Delft en Westland ,23,27,405,1184987,210980,61.37
+Groot-Amsterdam ,Oost-Zuid-Holland ,23,28,705,1184987,322858,39.12
+Groot-Amsterdam ,Groot-Rijnmond ,23,29,1471,1184987,1359640,72.62
+Groot-Amsterdam ,Zuidoost-Zuid-Holland ,23,30,278,1184987,398963,62.3
+Groot-Amsterdam ,Flevoland ,23,40,2375,1184987,351680,50.51
+Het Gooi en Vechtstreek ,Utrecht ,24,17,1492,242397,1152218,15.42
+Het Gooi en Vechtstreek ,Kop van Noord-Holland ,24,18,137,242397,361764,71.96
+Het Gooi en Vechtstreek ,Alkmaar en omgeving ,24,19,66,242397,223936,52.18
+Het Gooi en Vechtstreek ,IJmond ,24,20,40,242397,187456,43.2
+Het Gooi en Vechtstreek ,Agglomeratie Haarlem ,24,21,103,242397,217606,38.73
+Het Gooi en Vechtstreek ,Zaanstreek ,24,22,67,242397,154974,34.73
+Het Gooi en Vechtstreek ,Groot-Amsterdam ,24,23,1871,242397,1184987,27.77
+Het Gooi en Vechtstreek ,Het Gooi en Vechtstreek ,24,24,0,242397,242397,0
+Het Gooi en Vechtstreek ,Aggl. Leiden en Bollenstreek ,24,25,92,242397,387763,44.61
+Het Gooi en Vechtstreek ,Agglomeratie 's-Gravenhage ,24,26,218,242397,759778,57.14
+Het Gooi en Vechtstreek ,Delft en Westland ,24,27,56,242397,210980,67.96
+Het Gooi en Vechtstreek ,Oost-Zuid-Holland ,24,28,127,242397,322858,36.99
+Het Gooi en Vechtstreek ,Groot-Rijnmond ,24,29,220,242397,1359640,74.71
+Het Gooi en Vechtstreek ,Zuidoost-Zuid-Holland ,24,30,62,242397,398963,49.45
+Het Gooi en Vechtstreek ,Flevoland ,24,40,697,242397,351680,42.24
+Aggl. Leiden en Bollenstreek ,Utrecht ,25,17,530,387763,1152218,48.7
+Aggl. Leiden en Bollenstreek ,Kop van Noord-Holland ,25,18,129,387763,361764,82.57
+Aggl. Leiden en Bollenstreek ,Alkmaar en omgeving ,25,19,87,387763,223936,53.28
+Aggl. Leiden en Bollenstreek ,IJmond ,25,20,105,387763,187456,34.86
+Aggl. Leiden en Bollenstreek ,Agglomeratie Haarlem ,25,21,460,387763,217606,20.43
+Aggl. Leiden en Bollenstreek ,Zaanstreek ,25,22,52,387763,154974,36.36
+Aggl. Leiden en Bollenstreek ,Groot-Amsterdam ,25,23,1137,387763,1184987,32.2
+Aggl. Leiden en Bollenstreek ,Het Gooi en Vechtstreek ,25,24,120,387763,242397,44.61
+Aggl. Leiden en Bollenstreek ,Aggl. Leiden en Bollenstreek ,25,25,0,387763,387763,0
+Aggl. Leiden en Bollenstreek ,Agglomeratie 's-Gravenhage ,25,26,1655,387763,759778,16.91
+Aggl. Leiden en Bollenstreek ,Delft en Westland ,25,27,267,387763,210980,29.37
+Aggl. Leiden en Bollenstreek ,Oost-Zuid-Holland ,25,28,778,387763,322858,20.35
+Aggl. Leiden en Bollenstreek ,Groot-Rijnmond ,25,29,684,387763,1359640,41.75
+Aggl. Leiden en Bollenstreek ,Zuidoost-Zuid-Holland ,25,30,115,387763,398963,45.87
+Aggl. Leiden en Bollenstreek ,Flevoland ,25,40,165,387763,351680,80.47
+Agglomeratie 's-Gravenhage ,Utrecht ,26,17,1343,759778,1152218,57.37
+Agglomeratie 's-Gravenhage ,Kop van Noord-Holland ,26,18,224,759778,361764,99.21
+Agglomeratie 's-Gravenhage ,Alkmaar en omgeving ,26,19,139,759778,223936,69.78
+Agglomeratie 's-Gravenhage ,IJmond ,26,20,102,759778,187456,51.36
+Agglomeratie 's-Gravenhage ,Agglomeratie Haarlem ,26,21,262,759778,217606,37.17
+Agglomeratie 's-Gravenhage ,Zaanstreek ,26,22,87,759778,154974,53.28
+Agglomeratie 's-Gravenhage ,Groot-Amsterdam ,26,23,1565,759778,1184987,48.92
+Agglomeratie 's-Gravenhage ,Het Gooi en Vechtstreek ,26,24,195,759778,242397,57.14
+Agglomeratie 's-Gravenhage ,Aggl. Leiden en Bollenstreek ,26,25,1968,759778,387763,16.91
+Agglomeratie 's-Gravenhage ,Agglomeratie 's-Gravenhage ,26,26,0,759778,759778,0
+Agglomeratie 's-Gravenhage ,Delft en Westland ,26,27,3765,759778,210980,12.47
+Agglomeratie 's-Gravenhage ,Oost-Zuid-Holland ,26,28,1111,759778,322858,23.03
+Agglomeratie 's-Gravenhage ,Groot-Rijnmond ,26,29,3454,759778,1359640,25.36
+Agglomeratie 's-Gravenhage ,Zuidoost-Zuid-Holland ,26,30,433,759778,398963,41.55
+Agglomeratie 's-Gravenhage ,Flevoland ,26,40,448,759778,351680,95.78
+Delft en Westland ,Utrecht ,27,17,274,210980,1152218,66.33
+Delft en Westland ,Kop van Noord-Holland ,27,18,66,210980,361764,111.4
+Delft en Westland ,Alkmaar en omgeving ,27,19,49,210980,223936,81.91
+Delft en Westland ,IJmond ,27,20,17,210980,187456,63.54
+Delft en Westland ,Agglomeratie Haarlem ,27,21,65,210980,217606,49.52
+Delft en Westland ,Zaanstreek ,27,22,24,210980,154974,65.73
+Delft en Westland ,Groot-Amsterdam ,27,23,252,210980,1184987,61.37
+Delft en Westland ,Het Gooi en Vechtstreek ,27,24,59,210980,242397,67.96
+Delft en Westland ,Aggl. Leiden en Bollenstreek ,27,25,201,210980,387763,29.37
+Delft en Westland ,Agglomeratie 's-Gravenhage ,27,26,2854,210980,759778,12.47
+Delft en Westland ,Delft en Westland ,27,27,0,210980,210980,0
+Delft en Westland ,Oost-Zuid-Holland ,27,28,117,210980,322858,31.8
+Delft en Westland ,Groot-Rijnmond ,27,29,1126,210980,1359640,14.57
+Delft en Westland ,Zuidoost-Zuid-Holland ,27,30,105,210980,398963,43.31
+Delft en Westland ,Flevoland ,27,40,80,210980,351680,107.62
+Oost-Zuid-Holland ,Utrecht ,28,17,765,322858,1152218,34.65
+Oost-Zuid-Holland ,Kop van Noord-Holland ,28,18,68,322858,361764,93.22
+Oost-Zuid-Holland ,Alkmaar en omgeving ,28,19,33,322858,223936,65.59
+Oost-Zuid-Holland ,IJmond ,28,20,31,322858,187456,48.3
+Oost-Zuid-Holland ,Agglomeratie Haarlem ,28,21,54,322858,217606,34.47
+Oost-Zuid-Holland ,Zaanstreek ,28,22,26,322858,154974,45.97
+Oost-Zuid-Holland ,Groot-Amsterdam ,28,23,479,322858,1184987,39.12
+Oost-Zuid-Holland ,Het Gooi en Vechtstreek ,28,24,52,322858,242397,36.99
+Oost-Zuid-Holland ,Aggl. Leiden en Bollenstreek ,28,25,713,322858,387763,20.35
+Oost-Zuid-Holland ,Agglomeratie 's-Gravenhage ,28,26,860,322858,759778,23.03
+Oost-Zuid-Holland ,Delft en Westland ,28,27,115,322858,210980,31.8
+Oost-Zuid-Holland ,Oost-Zuid-Holland ,28,28,0,322858,322858,0
+Oost-Zuid-Holland ,Groot-Rijnmond ,28,29,1301,322858,1359640,37.77
+Oost-Zuid-Holland ,Zuidoost-Zuid-Holland ,28,30,190,322858,398963,26.19
+Oost-Zuid-Holland ,Flevoland ,28,40,144,322858,351680,78.33
+Groot-Rijnmond ,Utrecht ,29,17,1499,1359640,1152218,70.14
+Groot-Rijnmond ,Kop van Noord-Holland ,29,18,251,1359640,361764,124.31
+Groot-Rijnmond ,Alkmaar en omgeving ,29,19,165,1359640,223936,94.99
+Groot-Rijnmond ,IJmond ,29,20,110,1359640,187456,76.55
+Groot-Rijnmond ,Agglomeratie Haarlem ,29,21,173,1359640,217606,62.18
+Groot-Rijnmond ,Zaanstreek ,29,22,85,1359640,154974,77.77
+Groot-Rijnmond ,Groot-Amsterdam ,29,23,1389,1359640,1184987,72.62
+Groot-Rijnmond ,Het Gooi en Vechtstreek ,29,24,198,1359640,242397,74.71
+Groot-Rijnmond ,Aggl. Leiden en Bollenstreek ,29,25,650,1359640,387763,41.75
+Groot-Rijnmond ,Agglomeratie 's-Gravenhage ,29,26,2891,1359640,759778,25.36
+Groot-Rijnmond ,Delft en Westland ,29,27,1299,1359640,210980,14.57
+Groot-Rijnmond ,Oost-Zuid-Holland ,29,28,1511,1359640,322858,37.77
+Groot-Rijnmond ,Groot-Rijnmond ,29,29,0,1359640,1359640,0
+Groot-Rijnmond ,Zuidoost-Zuid-Holland ,29,30,2490,1359640,398963,39.62
+Groot-Rijnmond ,Flevoland ,29,40,388,1359640,351680,116
+Zuidoost-Zuid-Holland ,Utrecht ,30,17,542,398963,1152218,38.48
+Zuidoost-Zuid-Holland ,Kop van Noord-Holland ,30,18,49,398963,361764,115.98
+Zuidoost-Zuid-Holland ,Alkmaar en omgeving ,30,19,47,398963,223936,89.9
+Zuidoost-Zuid-Holland ,IJmond ,30,20,20,398963,187456,73.53
+Zuidoost-Zuid-Holland ,Agglomeratie Haarlem ,30,21,17,398963,217606,60.28
+Zuidoost-Zuid-Holland ,Zaanstreek ,30,22,38,398963,154974,69.83
+Zuidoost-Zuid-Holland ,Groot-Amsterdam ,30,23,235,398963,1184987,62.3
+Zuidoost-Zuid-Holland ,Het Gooi en Vechtstreek ,30,24,50,398963,242397,49.45
+Zuidoost-Zuid-Holland ,Aggl. Leiden en Bollenstreek ,30,25,113,398963,387763,45.87
+Zuidoost-Zuid-Holland ,Agglomeratie 's-Gravenhage ,30,26,365,398963,759778,41.55
+Zuidoost-Zuid-Holland ,Delft en Westland ,30,27,100,398963,210980,43.31
+Zuidoost-Zuid-Holland ,Oost-Zuid-Holland ,30,28,203,398963,322858,26.19
+Zuidoost-Zuid-Holland ,Groot-Rijnmond ,30,29,3051,398963,1359640,39.62
+Zuidoost-Zuid-Holland ,Zuidoost-Zuid-Holland ,30,30,0,398963,398963,0
+Zuidoost-Zuid-Holland ,Flevoland ,30,40,126,398963,351680,91.02
+Flevoland ,Utrecht ,40,17,1456,351680,1152218,53.17
+Flevoland ,Kop van Noord-Holland ,40,18,286,351680,361764,54.49
+Flevoland ,Alkmaar en omgeving ,40,19,102,351680,223936,54.46
+Flevoland ,IJmond ,40,20,136,351680,187456,59.91
+Flevoland ,Agglomeratie Haarlem ,40,21,158,351680,217606,65.77
+Flevoland ,Zaanstreek ,40,22,303,351680,154974,51.31
+Flevoland ,Groot-Amsterdam ,40,23,5516,351680,1184987,50.51
+Flevoland ,Het Gooi en Vechtstreek ,40,24,1085,351680,242397,42.24
+Flevoland ,Aggl. Leiden en Bollenstreek ,40,25,181,351680,387763,80.47
+Flevoland ,Agglomeratie 's-Gravenhage ,40,26,487,351680,759778,95.78
+Flevoland ,Delft en Westland ,40,27,94,351680,210980,107.62
+Flevoland ,Oost-Zuid-Holland ,40,28,231,351680,322858,78.33
+Flevoland ,Groot-Rijnmond ,40,29,508,351680,1359640,116
+Flevoland ,Zuidoost-Zuid-Holland ,40,30,135,351680,398963,91.02
+Flevoland ,Flevoland ,40,40,0,351680,351680,0

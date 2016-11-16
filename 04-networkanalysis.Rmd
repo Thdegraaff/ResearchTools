@@ -3,11 +3,12 @@
 ```{r, message=FALSE, warning=FALSE}
 library("igraph")
 library("igraphdata")
+library("networkD3")
 ```
 
 ## Introduction
 
-Work in progress[^tutorial]
+Network analysis is huge and applied in many disciplines, ranging from mathematics to sociology. In `R` there are many packages available. We will use the `igraph` package, which seems to be the most encompassing.[^tutorial] The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics. 
 
 [^tutorial]: Obviously I want to provide a self-contained manual, however, there are as well some pretty good and more extensive tutorials on internet: e.g., the one over [here](http://kateto.net/networks-r-igraph/).
 
@@ -157,6 +158,34 @@ plot(g_relations)
 ```
 
 Note that this only requires a from and to columns in a `.csv` file, which resembles trade, commuting, migration and transport networks (in a gravity-model type of way). The only thing is that we need to convert this data in a igraph structure with `graph.data.frame`. 
+
+### Sankey networks
+
+```{r}
+# Read in the data in a dataframe called Data
+Data <- read.csv("Migration_Corop_2003.csv", header=TRUE,stringsAsFactors=FALSE)
+# We filter some of the data so that our sankey diagram will not be too large
+Data <- filter(Data, To < 25)
+Data <- filter(Data, From < 25)
+# Create a variable for the names of the node (both on the left and right side)
+DataNames <- rep(Data$NameFrom[1:8], times=2)
+# Create a dataframe of this variable names
+Names <- data.frame(DataNames, stringsAsFactors=FALSE)
+# Revalue To and From such that they nicely count up to the number of nodes (Note, we start at index number 0!)
+Data$To <- rep(8:15, each=8)
+Data$From <- rep(0:7, times=8)
+
+# Now plot network
+sankeyNetwork(Links = Data, # which dataframe to be used for the flows
+              Nodes = Names, # which dataframe to be used for the names of the nodes
+              Source = "From", # where do the flows come from (index number)
+              Target = "To",  # where do the flows go to (index number)
+              Value = "Migrants", # the variable that denote the flows from dataframe
+              units = "Migrants", # Which units are the flows (not necessary)
+              NodeID = "DataNames", # Variable that gives the names from the dataframe Names 
+              fontSize = 14,  # Make things look better
+              nodeWidth = 40) # make things look good
+```
 
 ## Network characteristics
 
