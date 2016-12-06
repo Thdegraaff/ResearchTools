@@ -2,16 +2,16 @@
 
 ## Why do we need all this?
 
-A natural question that arises, or at least should arise, is why bother? Why learn students in the social sciences new tools to do research. 'Old' tools[^old]  such as `Word`, `Excel` and `Stata`do just as fine right? I would say yes, but up to a certain extent. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then `Stata` and `Excel`(or even `SPSS`, the horror...) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation, network analysis, and even whole books in `html` then you need more elaborate tools.
+A natural question that arises, or at least should arise, is why bother? Why learn students in the social sciences new tools to do research. 'Old' tools[^old]  such as `Word`, `Excel` and `Stata` do just as fine right? I would say yes, but only up to a certain extent. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then `Stata` and `Excel`(or even `SPSS`, the horror...) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation analysis, network analysis, and even whole books in `html` then you need more elaborate tools.
 
-And even though most of the best tools out there[^tools] are open source (so they are **free**, as in **free beer**) they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:
+And note that, even though most of the best tools out there[^tools] are open source (so they are **free**, as in **free beer**), they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:
 
 - They are open source. So no lock-in effects anymore with datasets (`Stata`) or versions (`Word`).
-- They are scriptable. This means they can "communicate" with other programs. Usually this means that these tools revolve around `.txt` files. 
-- There is a large community that uses these tools. This is very handy for supplementary material and solving questions. 
-- They are multi-purpose, which means you can use them for various purposes. This is actually only a requirement of the data management/statistics you use.
+- They are scriptable. This means they can "communicate" with other programs. Usually this means that these tools revolve around plain old `.txt` files and its related cousins (everything that can be opened and edited by an editor, such as source code, `.csv` and `.html` files). 
+- There is a large community that uses these tools. This is very handy for complementary materials (books, packages, etc.) and solving questions. 
+- They are multi-purpose, which means you can use them for various purposes. This is actually only a requirement of the data management/statistics tool you use. Simply said, you want a flexible tool that is capable of doing a variety of tasks.
 
-One of the tools that meets all these requirements, and more, is `R` and the next section lays out why even social scientists should learn `R`.
+One of the tools that meets all these requirements, and more, is `R` and the next section lays out why "even" social scientists should learn `R`.
 
 [^old]: Some of the tools I use are actually quite old, even so far as from the 1970s and they are still very good.
 
@@ -21,12 +21,12 @@ One of the tools that meets all these requirements, and more, is `R` and the nex
 
 Ask any data scientist at the moment for the software tools most used and they will most likely answer `R` or `Python`. Of course, that should not be a valid answer (many people use `Word` as well and nobody would argue that `Word` is brilliant), but it indicates the popularity (and the community) that uses `R`. 
 
-Where 10 years ago most social scientists still used `SPSS` (and the economists `Stata`), that has now changed completely (well the economists still use `Stata` but the rest of the world moved on). And for good reasons, namely:
+Where 10 years ago most social scientists still used `SPSS` (and the economists `Stata`), that has now changed completely (well, the economists still use `Stata`, but the rest of the world moved on). And for good reasons, namely:
 
 1. It is open source and thus free; 
 2. `R` is flexible and thus multi-purpose; 
-3. there is now a **very** large userbase; everything you can dream of (well sort of), somebody else most likely already programmed;[^userbase]
-4. it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams);
+3. there is now a **very** large userbase; everything you can dream of (that is in the context of data science/management), somebody else most likely already programmed;[^userbase]
+4. it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams for the masochistics amongst us);
 5. relative to `Stata` or `Excel` it is fast, which is great for larger (spatial) databases. 
 
 In general, you can use `R` for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than `Stata`. Last but perhaps not least, `R` is more and more used outside academia as well. Twitter, Facebook and Google use `R`, but companies as the NY times as well for interactive website diagrams.
@@ -40,3 +40,7 @@ I will also spend some time on the use of regression analysis and try to explain
 In my perception, students are taught the principles of statistics (typically this involves lots of things as ANOVA), where in the last course, one or two hours is spent on regression analysis. This is fine, as long as it comes back in a course as *applied*  statistics or econometrics (how and when to do this stuff?) or in other applied courses. But usually this is not the case. Most courses don't care about regression analysis and the first moment you have to use it again is when writing your thesis and at that time it is a bit too late to teach the applied stuff again. 
 
 So, yeah, therefore a bit of regression analysis from my perspective. But again, you only learn this by doing and under the guidance of various teachers (and in various cirumstances).
+
+## Structure of the book
+
+In its present state, the book contains three chapters dealing with contents. The second chapter concerns the basic usage of `R`. The third deals with the fundamentals behind regression analysis and how to apply it in `R`. The fourth chapter lays out how to do network analysis in `R` (it is still in a very basic form).   

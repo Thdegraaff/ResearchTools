@@ -165,6 +165,24 @@ Now, the grades dataframe looks like:
 head(df_grades)
 ```
 
+## Functions
+
+I already referred to the concepts of functions above. Everything in `R` that has the symbols `()` just behind a word denotes a function. And most things in `R` are really a function. Examples you have already seen above are `c()`, `head()`, and `read.csv()`. As a user, you can define your own functions. (But always do this before you 'call' this function.) Suppose, we want to create a function that calculates the function $z  = x^2 + y^2 + 10*x + 12* y - 10$ for every $x$ and $y$ we would like to use. For instance, we can first define the function (let's call the function 'zvalue'):
+
+```{r}
+zvalue <- function(x,y){
+  return(x^2 + y^2 + 10*x + 12* y - 10)
+}
+```
+
+Note that the `return()` is not necessary, as long as it is the last statement that you make.
+
+And we invoke the function for $x=2$ and $y=2$ as follows:
+
+```{r}
+zvalue(2,2)
+```
+
 ## Regression modeling
 
 Before we start laying-out how to do regression modeling in `R`, we first need data. And for this purpose we will simulate our data by the following commands:

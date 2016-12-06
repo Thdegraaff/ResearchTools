@@ -114,6 +114,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
 <li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.3</b> Regression analysis: not again!</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#structure-of-the-book"><i class="fa fa-check"></i><b>2.4</b> Structure of the book</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r-usage.html"><a href="basic-r-usage.html"><i class="fa fa-check"></i><b>3</b> Basic <code>R</code> Usage</a><ul>
 <li class="chapter" data-level="3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#where-to-get-it"><i class="fa fa-check"></i><b>3.1</b> Where to get it</a></li>
@@ -126,9 +127,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#reading-and-writing-data"><i class="fa fa-check"></i><b>3.4</b> Reading and writing data</a></li>
 <li class="chapter" data-level="3.5" data-path="basic-r-usage.html"><a href="basic-r-usage.html#ehmmm-dataframes"><i class="fa fa-check"></i><b>3.5</b> Ehmmm, dataframes</a></li>
-<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.6</b> Regression modeling</a></li>
-<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.7</b> Making plots</a></li>
-<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.8</b> Recap</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#functions"><i class="fa fa-check"></i><b>3.6</b> Functions</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.7</b> Regression modeling</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.8</b> Making plots</a></li>
+<li class="chapter" data-level="3.9" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.9</b> Recap</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html"><i class="fa fa-check"></i><b>4</b> Digression: Linear Regression and how to apply it</a><ul>
 <li class="chapter" data-level="4.1" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory"><i class="fa fa-check"></i><b>4.1</b> Theoretical background</a><ul>
@@ -196,7 +198,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [1] 1--2 2--3 3--4 1--4</code></pre>
 <p>So, <code>g_4</code> is an igraph sort of object which has four edges <code>1--2 2--3 3--4 1--4</code>. Note that these coincide with <code>c(1,2,2,3,3,4, 4,1)</code>, so an edge is always formed by two components (they do not have to be numbers). Now plotting <code>g_4</code> leads to:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>The connectivity matrix of the network can be directly given by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4[]</code></pre></div>
 <pre><code>## 4 x 4 sparse Matrix of class &quot;dgCMatrix&quot;
@@ -209,14 +211,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4 &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>with as plot</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>Graphs may also be generated by using <code>-</code>, <code>-+</code> and <code>+-+</code>, in combination with the command <code>graph_from_literal</code>. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_directed &lt;-<span class="st"> </span><span class="kw">graph_from_literal</span>(A-+B, B +-+<span class="st"> </span>C, C+-A)
 <span class="kw">plot</span>(g_directed)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Finally, we can influence the color and sizes (amongst others) of all the elements of the network, so:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_directed, <span class="dt">edge.arrow.size=</span><span class="dv">2</span>,<span class="dt">vertex.size =</span> <span class="dv">50</span>, <span class="dt">vertex.color =</span> <span class="st">&quot;blue&quot;</span> )</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>However, this way of creating of networks is not very efficient. We therefore offer some other ways as well, starting with created directly (well-structured networks).</p>
 </div>
 <div id="structured-networks" class="section level3">
@@ -224,34 +226,34 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>With the package <code>igraph</code> it is rather straighforward to create structured networks. Let’s start with an empty network. We therefore use the command <code>make_empty_graph(500</code> in order to create 500 nodes and no links.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_empty &lt;-<span class="st"> </span><span class="kw">make_empty_graph</span>(<span class="dv">500</span>)
 <span class="kw">plot</span>(g_empty, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>The other extreme is obviously the fully connected network. With the command <code>make_full_graph(40)</code> we can create a fully connected network between 40 nodes. (Please do not do 500 nodes; it takes a long time to create that network (with <span class="math inline">\(500 \times 500 - 500\)</span> links)).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_full &lt;-<span class="st"> </span><span class="kw">make_full_graph</span>(<span class="dv">40</span>)
 <span class="kw">plot</span>(g_full, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>The <code>make_star(500)</code> command create a star network (or a hub-and-spoke network) with 500 nodes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_star &lt;-<span class="st"> </span><span class="kw">make_star</span>(<span class="dv">500</span>)
 <span class="kw">plot</span>(g_star, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <p>With the <code>make_tree(500, children = 3, mode=&quot;undirected</code> command, we create an undirected hierarchical tree with each time tree children</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_tree &lt;-<span class="st"> </span><span class="kw">make_tree</span>(<span class="dv">500</span>, <span class="dt">children =</span> <span class="dv">3</span>, <span class="dt">mode =</span> <span class="st">&quot;undirected&quot;</span>)
 <span class="kw">plot</span>(g_tree, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>And the <code>graph.ring(500)</code> creates a ring (or line) structure where each node is connected to two other nodes in a sequential way</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_ring &lt;-<span class="st"> </span><span class="kw">graph.ring</span>(<span class="dv">500</span>)
 <span class="kw">plot</span>(g_ring, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>For the real-world network we can use the following commands. First, the command <code>erdos.renyi.game(500, 0.005)</code> creates a random network, where each node has a probability of 0.005 to be connected to each other node.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">erdos.renyi.game</span>(<span class="dv">500</span>, <span class="fl">0.005</span>), <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>For the small-world network, we need to rewire the ring network. We can do by the command <code>rewire</code> as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">rewire</span>(g_ring,<span class="kw">each_edge</span>(<span class="dt">prob =</span> <span class="fl">0.5</span>)), <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>Note that the probability of rewiring is now 0.5.</p>
 <p>Finally, for a power-law we need to invoke an algorithm. In this case the <code>barabasi.game</code>, where we now create a power-law type of network with the following underlying formula <span class="math inline">\(P(k) = k^{-0.5}\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_power_law &lt;-<span class="st"> </span><span class="kw">barabasi.game</span>(<span class="dv">500</span>, <span class="fl">0.5</span>)
 <span class="kw">plot</span>(g_power_law, <span class="dt">vertex.label=</span> <span class="ot">NA</span>, <span class="dt">edge.arrow.size=</span><span class="fl">0.02</span>,<span class="dt">vertex.size =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>Note the tree-like structure.</p>
 </div>
 <div id="reading-in-networks" class="section level3">
@@ -260,7 +262,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_florence &lt;-<span class="st"> </span><span class="kw">nexus_get</span>(<span class="st">&quot;padgett&quot;</span>)</code></pre></div>
 <p>which contains business and marriage ties (PADGB)in 14th century Florence and looks like this</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_florence$PADGB)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p>Another good but smaller source is the <code>igraphdata</code> package which actually contains a network of american domestic flights.</p>
 <p>Another possibility is to read in the data from a <code>.csv</code> file. Something like (I took and modified the example from <a href="http://stackoverflow.com/questions/23687806/creating-a-network-graph-using-igraph-in-r" class="uri">http://stackoverflow.com/questions/23687806/creating-a-network-graph-using-igraph-in-r</a>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make up data</span>
@@ -272,7 +274,7 @@ relations &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span
 <span class="co"># Load (DIRECTED) graph from data frame </span>
 g_relations &lt;-<span class="st"> </span><span class="kw">graph.data.frame</span>(relations, <span class="dt">directed=</span><span class="ot">TRUE</span>)
 <span class="kw">plot</span>(g_relations)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Note that this only requires a from and to columns in a <code>.csv</code> file, which resembles trade, commuting, migration and transport networks (in a gravity-model type of way). The only thing is that we need to convert this data in a igraph structure with <code>graph.data.frame</code>.</p>
 </div>
 <div id="sankey-networks" class="section level3">
@@ -300,8 +302,8 @@ Data$From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class=
               <span class="dt">NodeID =</span> <span class="st">&quot;DataNames&quot;</span>, <span class="co"># Variable that gives the names from the dataframe Names </span>
               <span class="dt">fontSize =</span> <span class="dv">14</span>,  <span class="co"># Make things look better</span>
               <span class="dt">nodeWidth =</span> <span class="dv">40</span>) <span class="co"># make things look good</span></code></pre></div>
-<div id="htmlwidget-3080" style="width:672px;height:480px;" class="sankeyNetwork"></div>
-<script type="application/json" data-for="htmlwidget-3080">{"x":{"links":{"source":[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7],"target":[8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15],"value":[0,374,255,134,396,172,3120,1718,299,0,1407,257,325,384,1662,87,216,1340,0,711,241,249,1001,73,106,258,416,0,1161,323,867,37,360,224,174,816,0,82,2331,138,107,228,128,224,88,0,2104,48,3432,1587,972,720,2632,1378,0,1496,1492,137,66,40,103,67,1871,0]},"nodes":{"name":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "],"group":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "]},"options":{"NodeID":"DataNames","NodeGroup":"DataNames","LinkGroup":null,"colourScale":"d3.scale.category20()","fontSize":14,"fontFamily":null,"nodeWidth":40,"nodePadding":10,"units":"Migrants","margin":{"top":null,"right":null,"bottom":null,"left":null}}},"evals":[]}</script>
+<div id="htmlwidget-8106" style="width:672px;height:480px;" class="sankeyNetwork"></div>
+<script type="application/json" data-for="htmlwidget-8106">{"x":{"links":{"source":[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7],"target":[8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15],"value":[0,374,255,134,396,172,3120,1718,299,0,1407,257,325,384,1662,87,216,1340,0,711,241,249,1001,73,106,258,416,0,1161,323,867,37,360,224,174,816,0,82,2331,138,107,228,128,224,88,0,2104,48,3432,1587,972,720,2632,1378,0,1496,1492,137,66,40,103,67,1871,0]},"nodes":{"name":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "],"group":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "]},"options":{"NodeID":"DataNames","NodeGroup":"DataNames","LinkGroup":null,"colourScale":"d3.scale.category20()","fontSize":14,"fontFamily":null,"nodeWidth":40,"nodePadding":10,"units":"Migrants","margin":{"top":null,"right":null,"bottom":null,"left":null}}},"evals":[]}</script>
 </div>
 </div>
 <div id="network-characteristics" class="section level2">
@@ -317,35 +319,35 @@ Data$From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class=
 <p>somewhat more interesting is given by the degree function which gives the number of connections. For our power-law network this amounts to</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deg &lt;-<span class="st"> </span><span class="kw">degree</span>(g_power_law)
 deg</code></pre></div>
-<pre><code>##   [1] 20 11  6 19  5  4  6  5  7  4  6  7  3  2  7  2  5  8  1  4  2  3  4
-##  [24]  3  3  1 12  4 12  4  7  6  5  2  3  5  5  1  3  5  1  1  1  2  7  8
-##  [47]  1  3  4  4  1  3  2  3  5  2  1  1  2  3  3  3  3  3  4  1  5  5  1
-##  [70]  9  5  3  4  3  5  5  3  1  2  1  3  2  4  6  3  6  2  2  3  9  1  1
-##  [93]  1  4  3  8  4  1  3  3  2  3  1  2  2  1  3  1  3  6  3  2  6  3  1
-## [116]  3  1  1  1  2  1  2  3  1  4  2  1  2  1  1  1  1  2  4  1  4  1  2
-## [139]  3  1  1  5  4  1  1  1  2  3  1  1  4  2  2  1  3  3  1  1  2  2  1
-## [162]  1  1  1  1  5  2  5  1  1  2  1  2  3  3  2  1  2  2  1  1  1  1  1
-## [185]  2  1  4  1  1  1  1  1  1  2  1  2  1  1  3  1  2  1  1  2  1  1  1
-## [208]  1  3  2  1  2  1  2  1  2  1  2  1  1  2  3  3  1  3  1  1  2  1  1
-## [231]  1  2  1  1  4  1  1  1  3  1  2  2  1  3  1  2  3  3  1  1  1  1  3
-## [254]  1  1  2  1  2  2  4  1  2  1  2  1  1  1  2  1  2  3  3  2  1  3  1
-## [277]  1  1  1  1  2  2  1  1  2  1  2  1  1  1  2  1  1  1  1  1  2  1  1
-## [300]  1  2  1  1  1  1  1  1  1  1  1  1  1  1  3  1  1  2  1  1  1  2  1
-## [323]  1  2  1  2  1  1  2  1  1  1  1  3  1  1  1  1  3  1  1  1  1  1  3
-## [346]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  2  1  1  1  2  1  2
-## [369]  3  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1
-## [392]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  4
-## [415]  1  1  1  2  1  2  1  1  1  1  1  1  1  1  2  1  1  2  1  1  1  2  1
-## [438]  1  1  1  1  1  1  1  1  1  1  4  1  1  1  1  1  1  1  1  1  1  2  1
-## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [484]  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1</code></pre>
+<pre><code>##   [1] 23 11 17  6  7  9  2  3  6  4  2  9  3  7  6  2  8  4  1  5  3  5 10
+##  [24]  3  3  6  5  8  1  1  4  5  2  5  3  3  4  2  2  2  4  6  6  3  1  3
+##  [47]  4  1  2  3  9  1  1  3  7  4  5  1  1  4  1  3  1  4  2  5  1  1  1
+##  [70]  1  3  1  2  2  9  3  8  1  2  2  5  3  7  2  3  2  6  6  6  2  1  3
+##  [93]  2  2  3  1  1  3  5  4  3  2  3  4  7  2  6  1  6  2  1  1  5  3  6
+## [116]  2  2  3  2  2  1  2  2  2  2  2  2  2  3  2  4  2  1  2  2  1  2  4
+## [139]  3  3  3  1  1  4  2  3  5  1  2  2  1  1  2  1  1  5  1  2  1  2  3
+## [162]  1  5  1  2  2  4  2  1  1  1  1  3  2  1  1  2  1  2  3  3  1  1  1
+## [185]  2  2  1  1  2  1  1  1  1  4  2  1  1  1  2  5  1  2  1  1  1  2  1
+## [208]  1  1  1  2  1  2  1  3  1  1  1  1  4  1  2  1  1  4  1  1  1  1  1
+## [231]  1  1  1  4  2  1  2  1  3  1  1  1  1  2  1  1  4  1  1  1  2  1  2
+## [254]  2  2  1  2  2  2  1  2  1  1  1  2  2  1  1  2  1  2  3  1  1  1  1
+## [277]  1  4  2  1  1  2  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1
+## [300]  2  2  1  1  1  3  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [323]  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  2  1  1  1  2
+## [346]  1  2  2  3  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1
+## [369]  3  1  2  1  1  3  2  1  1  1  1  1  1  2  1  1  1  2  1  1  1  2  1
+## [392]  1  1  1  2  2  3  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [415]  1  2  2  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [438]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
+## [461]  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1
+## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1</code></pre>
 <p>which is not that insightful, but a histogram is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(deg)</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p>Which is typical for a power-law.</p>
 <p>The <code>degree_distribution</code> is insightful here as well</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">degree_distribution</span>(g_power_law, <span class="dt">cumulative =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<p><img src="ResearchTools_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>Finally, we may be interested in the shortest path. This can easily be retrieved using distances (with underlying Dijkstra’s algorithm) as follows for the Florence network:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">distances</span>(g_florence$PADGB)</code></pre></div>
 <pre><code>##           ACCIAIUOL ALBIZZI BARBADORI BISCHERI CASTELLAN GINORI GUADAGNI
