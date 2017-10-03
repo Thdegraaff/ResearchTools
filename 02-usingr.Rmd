@@ -9,12 +9,6 @@ library("dplyr")
 
 The `R` programming language and software environment for statistical computing is an implementation of the proprietary `S` programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 [Programming tools: Adventures with R](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609)) and now has more than 8,000 user contributed packages (see as well the blog piece [On the growth of CRAN packages](https://www.r-bloggers.com/on-the-growth-of-cran-packages/)).
 
-## Where to get it
-
-First, you need to install `R` itself. You can do this by downloading this from [CRAN](http://cran.xl-mirror.nl/) (we choose here the server from the Netherlands). Choose your appropriate operating system, choose the `base` system, download `R` and install it. That's it!
-
-The base distribution of `R` comes with a built-in editor, where you can write your script (more about scripts in subsection \@ref(subsec:scripts)). This editor is however *very* basic. Therefore, it is very much advised that you download and install the Open Source editor [`RStudio`](https://www.rstudio.com/products/rstudio/download/) as well. Again, choose your operating system and just install the latest version. The very short video (1.5 minutes) on RStudio's [website](https://www.rstudio.com/products/rstudio/) gives an overview of the *basic* features (it can do quite some more stuff). 
-
 ## For absolute beginners
 
 At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: [http://swirlstats.com/students.html](http://swirlstats.com/students.html)). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:

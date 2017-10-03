@@ -1,15 +1,27 @@
-# Introduction
+# Why bother?
+
+This chapter deals with the justification for this book and the rationale behind using the `R` software environment versus other software applications. The first section deals with understanding the various criteria I (and others) maintain for software for proper research workflows. Thereafter, I deal with `R` and subsequently with using RMarkdown files (files with the `.rmd` extension). Finally, I say something about the need to revisit regression analysis again.  
 
 ## Why do we need all this?
 
-A natural question that arises, or at least should arise, is why bother? Why learn students in the social sciences new tools to do research. 'Old' tools[^old]  such as `Word`, `Excel` and `STATA` do just as fine right? I would say that it depends, but that these tools are severely limited. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then `Stata` and `Excel`(or even `SPSS`, the horror...) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation analysis, network analysis, and even whole books in `html` then you need more elaborate tools.
+The first question that arises, or at least should arise, is why bother? Why learn students in the social sciences relatively new and specific software tools for education and research. 'Old' tools[^old]  such as `Word`, `Excel` and `STATA` do just as fine right? I would say that it depends, but that these tools are severely limited. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then `Stata` and to a much lesser extent `Excel`(or even `SPSS`, the horror...) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation analysis, network analysis, and even whole books in `html` then you need more elaborate tools.
 
 And note that, even though most of the best tools out there[^tools] are open source (so they are **free**, as in **free beer**), they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:
 
-- They are open source. So no lock-in effects anymore with datasets (`Stata`) or versions (`Word`).
-- They are scriptable. This means they can "communicate" with other programs. Usually this means that these tools revolve around plain old `.txt` files and its related cousins (everything that can be opened and edited by an editor, such as source code, `.csv` and `.html` files). 
-- There is a large community that uses these tools. This is very handy for complementary materials (books, packages, etc.) and solving questions. 
-- They are multi-purpose, which means you can use them for various purposes. This is actually only a requirement of the data management/statistics tool you use. Simply said, you want a flexible tool that is capable of doing a variety of tasks.
+- They are open source. The most important argument to use an open source package is
+  reproducibility. Your work is simply less accessible and thus reproducible if
+  the code can only be run with applications that costs over 1,000 Euros.
+- Learning curve. First, and foremost, students should be able to use the
+  package for straightforward research. If that is not possible
+  after one six-week's course, the software package is not particularly
+  suitable. 
+- They are scriptable. A software package should be scriptable, both internally as externally. Internally scriptable indicates that within the package scripts or programs can be written so that every step within the workflow can be reproduced. With externally scriptable I mean that the software package should also be used in combination with other software packages or languages, such as LaTeX, markdown, make, html, sql, C++, etc.
+- There is a large community that uses these tools. Nobody wants to be locked in with obsolete
+  technology. A large userbase ensures a high probability that the software
+  package will be used and maintained in the future as well. Moreover, all sorts
+  of indirect effects, such as user written routines, packages and
+  documentation, come along for free with a large community. 
+- Flexibility: Ideally, a software approach should be both extendable and scalable. The former ensures that slight deviations from standard approaches can relatively easy be implemented. The latter is important when the size of the database increases, as typically is the case with recent improvements in remote sensing techniques.
 
 One of the tools that meets all these requirements, and more, is `R` and the next section lays out why "even" social scientists should learn `R`.
 
@@ -26,12 +38,25 @@ Where 10 years ago most social scientists still used `SPSS` (and the economists 
 1. It is open source and thus free; 
 2. `R` is flexible and thus multi-purpose; 
 3. there is now a **very** large userbase; everything you can dream of (that is in the context of data science/management), somebody else most likely already programmed;[^userbase]
-4. it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams for the masochistics amongst us);
+4. it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams for the masochists amongst us);
 5. relative to `Stata` or `Excel` it is fast, which is great for larger (spatial) databases. 
 
-In general, you can use `R` for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than `Stata`. Last but perhaps not least, `R` is more and more used outside academia as well. Twitter, Facebook and Google use `R`, but companies as the NY times as well for interactive website diagrams.
+In general, you can use `R` for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than `Stata`. Last but perhaps not least, `R` is more and more used outside academia as well. Twitter, Facebook, Booking and Google use `R`, just as companies as the New York Times for creating interactive website diagrams.
 
 [^userbase]: [CRAN packages](https://cran.r-project.org/web/packages/available_packages_by_name.html) give a great overview of all the official packages out there and the wide range of applications, and again they are all free!
+
+Social science students might find working with `R` initially strange, cumbersome or even frustrating. All the lovely drop-menus that are still provided by `Excel` and `Stata` have disappeared, and the whole thing is completely script-driven. In fact, `R` is a full-blown program language. I am aware that this needs some adaptation. However, hopefully, learning `R` in combination with `RStudio` will pay-off; if not in becoming more efficient and reproducable, then at least in the fact that you start to understand a *different* way of doing things and that Word and Powerpoint are not the only options out there.  
+
+## R Markdown
+
+`RStudio` does not only provide an editor for `R` but comes with all kinds of various other goodies installed. One of them is the ability to use [R Markdown](http://rmarkdown.rstudio.com/). R Markdown is a specific variant on the more generic Markdown markup language. Markup languages is not something that social science students are familiar with, but actually are very often used. Essentially, a markup language very specifically determines how pieces of text should look like, e.g., bold, italic, or being a header. One of the most famous markup languages is `html` and another well-known is LaTeX.
+
+One of the problems with these markup languages is that they are complex and difficult to read and write in (just try for yourself with `html`). That's why Markdown is invented as a lightweight markup language in 2004 by John Gruber. And with lightweight it is meant that there are only a few syntax operations (more or less only headers, bold, italics, lists, and hyperlinks). Very quickly it became a huge success (especially on line). Now various well known applications (such as Wordpress, GitHub and others) make use of this format.
+
+R Markdown is a variant on Markdown in combination with other tools (you do not have to know them, they are all under the hood of RStudio). And with R Markdown you can enable people
+> "to write using an easy-to-read, easy-to-write plain text format, and optionally convert it to structurally valid XHTML (or HTML)"
+
+That means that with R Markdown you can easily write a piece of text and then convert it to html. However, you are not restricted to html! You can convert the same text to a pdf or open office format! This makes it very flexible. In fact, this book has been written in R Markdown as well. And you are not restricted to texts. You can create slides as well if you want. Even more bonkers: you can put R code in your text with the results! That means that in one document you can have your script as your report file, which is truly wonderful for reproducable research. 
 
 ## Regression analysis: not again!
 
@@ -40,7 +65,3 @@ I will also spend some time on the use of regression analysis and try to explain
 In my perception, students are taught the principles of statistics (typically this involves lots of things as ANOVA), where in the last course, one or two hours is spent on regression analysis. This is fine, as long as it comes back in a course as *applied*  statistics or econometrics (how and when to do this stuff?) or in other applied courses. But usually this is not the case. Most courses don't care about regression analysis and the first moment you have to use it again is when writing your thesis and at that time it is a bit too late to teach the applied stuff again. 
 
 So, yeah, therefore a bit of regression analysis from my perspective. But again, you only learn this by doing and under the guidance of various teachers (and in various cirumstances).
-
-## Structure of the book
-
-In its present state, the book contains three chapters dealing with contents. The second chapter concerns the basic usage of `R`. The third deals with the fundamentals behind regression analysis and how to apply it in `R`. The fourth chapter lays out how to do network analysis in `R` (it is still in a very basic form).   

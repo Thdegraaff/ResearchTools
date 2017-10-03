@@ -2,19 +2,31 @@
 title: "Research Tools for Social Scientists"
 author: "Thomas de Graaff"
 date: "October 19, 2016"
-output: 
+output:
   bookdown::gitbook: default
   bookdown::epub_book: default
   bookdown::pdf_book:
+    citation_package: natbib
     includes:
       in_header: preamble.tex
-    latex_engine: xelatex
-    citation_package: natbib
     keep_tex: yes
+    latex_engine: xelatex
 site: bookdown::bookdown_site
 github-repo: Thdegraaff/Research_tools_for_social_scientists
 ---
 
-# Preface 
+# Introduction 
+
+## Preface
 
 I started this online book as background material for the course Network Analysis and from the need to teach social science students (which includes Business Administration and Economics students) the a basic understanding of `R`, network techniques and the intuition behing applying linear regression. I intend to work on this book on the fly meaning that during courses I try to see what the needs of students really are. Moreover, over the coming years I intend to add additional chapters, specifically about the use of stated preference modeling--and its corresponding logit estimation--and working with geographical data. Obviously, all in `R`. At the moment this book still has not yet passed its infant stage. Therefore, all input in the form of additions, comments, critique and remarks are *highly* appreciated. 
+
+## Where to get `R`
+
+First, you need to install `R` itself. You can do this by downloading this from [CRAN](http://cran.xl-mirror.nl/) (we choose here the server from the Netherlands). Choose your appropriate operating system, choose the `base` system, download `R` and install it. That's it!
+
+The base distribution of `R` comes with a built-in editor, where you can write your script (more about scripts in subsection \@ref(subsec:scripts)). This editor is however *very* basic. Therefore, it is very much advised that you download and install the Open Source editor [`RStudio`](https://www.rstudio.com/products/rstudio/download/) as well. Again, choose your operating system and just install the latest version. The very short video (1.5 minutes) on RStudio's [website](https://www.rstudio.com/products/rstudio/) gives an overview of the *basic* features (it can do quite some more stuff). 
+
+## Structure of the book
+
+In its present state, the book contains four chapters dealing with contents. The first chapter gives a justification for all this. The second chapter concerns the basic usage of `R`. The third deals with the fundamentals behind regression analysis and how to apply it in `R`. The fourth chapter lays out how to do network analysis in `R`. 

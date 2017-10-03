@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="why-bother.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="basic-r-usage.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -131,35 +131,66 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Research Tools for Social Scientists</h1>
-<h4 class="author"><em>Thomas de Graaff</em></h4>
-<h4 class="date"><em>October 19, 2016</em></h4>
+<div id="why-bother" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Why bother?</h1>
+<p>This chapter deals with the justification for this book and the rationale behind using the <code>R</code> software environment versus other software applications. The first section deals with understanding the various criteria I (and others) maintain for software for proper research workflows. Thereafter, I deal with <code>R</code> and subsequently with using RMarkdown files (files with the <code>.rmd</code> extension). Finally, I say something about the need to revisit regression analysis again.</p>
+<div id="why-do-we-need-all-this" class="section level2">
+<h2><span class="header-section-number">2.1</span> Why do we need all this?</h2>
+<p>The first question that arises, or at least should arise, is why bother? Why learn students in the social sciences relatively new and specific software tools for education and research. ‘Old’ tools<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> such as <code>Word</code>, <code>Excel</code> and <code>STATA</code> do just as fine right? I would say that it depends, but that these tools are severely limited. If you are only interested in straightforward regression and anova techniques and collect your sample by survey research, then <code>Stata</code> and to a much lesser extent <code>Excel</code>(or even <code>SPSS</code>, the horror…) would definitely suffice. But if you would like to do more fancy and cool stuff, including creating beautiful diagrams, nice maps, simulation analysis, network analysis, and even whole books in <code>html</code> then you need more elaborate tools.</p>
+<p>And note that, even though most of the best tools out there<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> are open source (so they are <strong>free</strong>, as in <strong>free beer</strong>), they will cost you something dearly: namely, your time. The learning curve of these tools are usually quite steep (which also means they will pay-off quickly). So, choose your battles carefully. The best tools, I would argue, have the following set of characteristics:</p>
+<ul>
+<li>They are open source. The most important argument to use an open source package is reproducibility. Your work is simply less accessible and thus reproducible if the code can only be run with applications that costs over 1,000 Euros.</li>
+<li>Learning curve. First, and foremost, students should be able to use the package for straightforward research. If that is not possible after one six-week’s course, the software package is not particularly suitable.</li>
+<li>They are scriptable. A software package should be scriptable, both internally as externally. Internally scriptable indicates that within the package scripts or programs can be written so that every step within the workflow can be reproduced. With externally scriptable I mean that the software package should also be used in combination with other software packages or languages, such as LaTeX, markdown, make, html, sql, C++, etc.</li>
+<li>There is a large community that uses these tools. Nobody wants to be locked in with obsolete technology. A large userbase ensures a high probability that the software package will be used and maintained in the future as well. Moreover, all sorts of indirect effects, such as user written routines, packages and documentation, come along for free with a large community.</li>
+<li>Flexibility: Ideally, a software approach should be both extendable and scalable. The former ensures that slight deviations from standard approaches can relatively easy be implemented. The latter is important when the size of the database increases, as typically is the case with recent improvements in remote sensing techniques.</li>
+</ul>
+<p>One of the tools that meets all these requirements, and more, is <code>R</code> and the next section lays out why “even” social scientists should learn <code>R</code>.</p>
 </div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<div id="preface" class="section level2">
-<h2><span class="header-section-number">1.1</span> Preface</h2>
-<p>I started this online book as background material for the course Network Analysis and from the need to teach social science students (which includes Business Administration and Economics students) the a basic understanding of <code>R</code>, network techniques and the intuition behing applying linear regression. I intend to work on this book on the fly meaning that during courses I try to see what the needs of students really are. Moreover, over the coming years I intend to add additional chapters, specifically about the use of stated preference modeling–and its corresponding logit estimation–and working with geographical data. Obviously, all in <code>R</code>. At the moment this book still has not yet passed its infant stage. Therefore, all input in the form of additions, comments, critique and remarks are <em>highly</em> appreciated.</p>
+<div id="why-use-r-and-not-other-applications" class="section level2">
+<h2><span class="header-section-number">2.2</span> Why use <code>R</code> and not other applications?</h2>
+<p>Ask any data scientist at the moment for the software tools most used and they will most likely answer <code>R</code> or <code>Python</code>. Of course, that should not be a valid answer (many people use <code>Word</code> as well and nobody would argue that <code>Word</code> is brilliant), but it indicates the popularity (and the community) that uses <code>R</code>.</p>
+<p>Where 10 years ago most social scientists still used <code>SPSS</code> (and the economists <code>Stata</code>), that has now changed completely (well, the economists still use <code>Stata</code>, but the rest of the world moved on). And for good reasons, namely:</p>
+<ol style="list-style-type: decimal">
+<li>It is open source and thus free;</li>
+<li><code>R</code> is flexible and thus multi-purpose;</li>
+<li>there is now a <strong>very</strong> large userbase; everything you can dream of (that is in the context of data science/management), somebody else most likely already programmed;<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></li>
+<li>it generates beautiful pictures, diagram, maps, and histograms (even pie diagrams for the masochists amongst us);</li>
+<li>relative to <code>Stata</code> or <code>Excel</code> it is fast, which is great for larger (spatial) databases.</li>
+</ol>
+<p>In general, you can use <code>R</code> for statistical analysis, simulation analysis, data management, visual display of data, creating documents (and presentations), and even GIS applications. In that respect it is far more flexible than <code>Stata</code>. Last but perhaps not least, <code>R</code> is more and more used outside academia as well. Twitter, Facebook, Booking and Google use <code>R</code>, just as companies as the New York Times for creating interactive website diagrams.</p>
+<p>Social science students might find working with <code>R</code> initially strange, cumbersome or even frustrating. All the lovely drop-menus that are still provided by <code>Excel</code> and <code>Stata</code> have disappeared, and the whole thing is completely script-driven. In fact, <code>R</code> is a full-blown program language. I am aware that this needs some adaptation. However, hopefully, learning <code>R</code> in combination with <code>RStudio</code> will pay-off; if not in becoming more efficient and reproducable, then at least in the fact that you start to understand a <em>different</em> way of doing things and that Word and Powerpoint are not the only options out there.</p>
 </div>
-<div id="where-to-get-r" class="section level2">
-<h2><span class="header-section-number">1.2</span> Where to get <code>R</code></h2>
-<p>First, you need to install <code>R</code> itself. You can do this by downloading this from <a href="http://cran.xl-mirror.nl/">CRAN</a> (we choose here the server from the Netherlands). Choose your appropriate operating system, choose the <code>base</code> system, download <code>R</code> and install it. That’s it!</p>
-<p>The base distribution of <code>R</code> comes with a built-in editor, where you can write your script (more about scripts in subsection <a href="basic-r-usage.html#subsec:scripts">3.2.1</a>). This editor is however <em>very</em> basic. Therefore, it is very much advised that you download and install the Open Source editor <a href="https://www.rstudio.com/products/rstudio/download/"><code>RStudio</code></a> as well. Again, choose your operating system and just install the latest version. The very short video (1.5 minutes) on RStudio’s <a href="https://www.rstudio.com/products/rstudio/">website</a> gives an overview of the <em>basic</em> features (it can do quite some more stuff).</p>
+<div id="r-markdown" class="section level2">
+<h2><span class="header-section-number">2.3</span> R Markdown</h2>
+<p><code>RStudio</code> does not only provide an editor for <code>R</code> but comes with all kinds of various other goodies installed. One of them is the ability to use <a href="http://rmarkdown.rstudio.com/">R Markdown</a>. R Markdown is a specific variant on the more generic Markdown markup language. Markup languages is not something that social science students are familiar with, but actually are very often used. Essentially, a markup language very specifically determines how pieces of text should look like, e.g., bold, italic, or being a header. One of the most famous markup languages is <code>html</code> and another well-known is LaTeX.</p>
+<p>One of the problems with these markup languages is that they are complex and difficult to read and write in (just try for yourself with <code>html</code>). That’s why Markdown is invented as a lightweight markup language in 2004 by John Gruber. And with lightweight it is meant that there are only a few syntax operations (more or less only headers, bold, italics, lists, and hyperlinks). Very quickly it became a huge success (especially on line). Now various well known applications (such as Wordpress, GitHub and others) make use of this format.</p>
+<p>R Markdown is a variant on Markdown in combination with other tools (you do not have to know them, they are all under the hood of RStudio). And with R Markdown you can enable people &gt; “to write using an easy-to-read, easy-to-write plain text format, and optionally convert it to structurally valid XHTML (or HTML)”</p>
+<p>That means that with R Markdown you can easily write a piece of text and then convert it to html. However, you are not restricted to html! You can convert the same text to a pdf or open office format! This makes it very flexible. In fact, this book has been written in R Markdown as well. And you are not restricted to texts. You can create slides as well if you want. Even more bonkers: you can put R code in your text with the results! That means that in one document you can have your script as your report file, which is truly wonderful for reproducable research.</p>
 </div>
-<div id="structure-of-the-book" class="section level2">
-<h2><span class="header-section-number">1.3</span> Structure of the book</h2>
-<p>In its present state, the book contains four chapters dealing with contents. The first chapter gives a justification for all this. The second chapter concerns the basic usage of <code>R</code>. The third deals with the fundamentals behind regression analysis and how to apply it in <code>R</code>. The fourth chapter lays out how to do network analysis in <code>R</code>.</p>
+<div id="regression-analysis-not-again" class="section level2">
+<h2><span class="header-section-number">2.4</span> Regression analysis: not again!</h2>
+<p>I will also spend some time on the use of regression analysis and try to explain in my own words how to use it. In general, my experience is that many students have little or no experience in regression analysis. Moreover, and perhaps even worse, they have little or no intuition for regression analysis. This sort of sucks, the more because regression is the most often statistical technique used in the social sciences (heck, in all sciences).</p>
+<p>In my perception, students are taught the principles of statistics (typically this involves lots of things as ANOVA), where in the last course, one or two hours is spent on regression analysis. This is fine, as long as it comes back in a course as <em>applied</em> statistics or econometrics (how and when to do this stuff?) or in other applied courses. But usually this is not the case. Most courses don’t care about regression analysis and the first moment you have to use it again is when writing your thesis and at that time it is a bit too late to teach the applied stuff again.</p>
+<p>So, yeah, therefore a bit of regression analysis from my perspective. But again, you only learn this by doing and under the guidance of various teachers (and in various cirumstances).</p>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Some of the tools I use are actually quite old, even so far as from the 1970s and they are still very good.<a href="why-bother.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Including <code>Markdown</code>, <code>LaTeX</code>, <code>Python</code>, <code>Git</code> and <code>GitHub</code>.<a href="why-bother.html#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">CRAN packages</a> give a great overview of all the official packages out there and the wide range of applications, and again they are all free!<a href="why-bother.html#fnref3">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="why-bother.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-r-usage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
