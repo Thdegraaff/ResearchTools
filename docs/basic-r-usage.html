@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Research Tools for Social Scientists</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Research Tools for Social Scientists">
-  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Research Tools for Social Scientists" />
   <meta property="og:type" content="book" />
@@ -25,22 +24,16 @@
 
 <meta name="author" content="Thomas de Graaff">
 
-<meta name="date" content="2016-10-19">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2016-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="introduction.html">
+<link rel="prev" href="why-bother.html">
 <link rel="next" href="digression-linear-regression-and-how-to-apply-it.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -54,10 +47,6 @@ MathJax.Hub.Config({
 
 
 
-<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
-<script src="libs/d3-3.5.2/d3.min.js"></script>
-<script src="libs/sankey-1/sankey.js"></script>
-<script src="libs/sankeyNetwork-binding-0.2.8/sankeyNetwork.js"></script>
 
 
 <style type="text/css">
@@ -103,34 +92,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.3</b> Regression analysis: not again!</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#structure-of-the-book"><i class="fa fa-check"></i><b>2.4</b> Structure of the book</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preface"><i class="fa fa-check"></i><b>1.1</b> Preface</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#where-to-get-r"><i class="fa fa-check"></i><b>1.2</b> Where to get <code>R</code></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i><b>1.3</b> Structure of the book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-bother.html"><a href="why-bother.html"><i class="fa fa-check"></i><b>2</b> Why bother?</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-bother.html"><a href="why-bother.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
+<li class="chapter" data-level="2.2" data-path="why-bother.html"><a href="why-bother.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
+<li class="chapter" data-level="2.3" data-path="why-bother.html"><a href="why-bother.html#r-markdown"><i class="fa fa-check"></i><b>2.3</b> R Markdown</a></li>
+<li class="chapter" data-level="2.4" data-path="why-bother.html"><a href="why-bother.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.4</b> Regression analysis: not again!</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r-usage.html"><a href="basic-r-usage.html"><i class="fa fa-check"></i><b>3</b> Basic <code>R</code> Usage</a><ul>
-<li class="chapter" data-level="3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#where-to-get-it"><i class="fa fa-check"></i><b>3.1</b> Where to get it</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#for-absolute-beginners"><i class="fa fa-check"></i><b>3.2</b> For absolute beginners</a></li>
-<li class="chapter" data-level="3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#how-to-use-it"><i class="fa fa-check"></i><b>3.3</b> How to use it</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:scripts"><i class="fa fa-check"></i><b>3.3.1</b> Scripts</a></li>
-<li class="chapter" data-level="3.3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#help"><i class="fa fa-check"></i><b>3.3.2</b> Help!</a></li>
-<li class="chapter" data-level="3.3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:packages"><i class="fa fa-check"></i><b>3.3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#using-comments"><i class="fa fa-check"></i><b>3.3.4</b> Using comments</a></li>
+<li class="chapter" data-level="3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#for-absolute-beginners"><i class="fa fa-check"></i><b>3.1</b> For absolute beginners</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#how-to-use-it"><i class="fa fa-check"></i><b>3.2</b> How to use it</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:scripts"><i class="fa fa-check"></i><b>3.2.1</b> Scripts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#help"><i class="fa fa-check"></i><b>3.2.2</b> Help!</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:packages"><i class="fa fa-check"></i><b>3.2.3</b> Packages</a></li>
+<li class="chapter" data-level="3.2.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#using-comments"><i class="fa fa-check"></i><b>3.2.4</b> Using comments</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#reading-and-writing-data"><i class="fa fa-check"></i><b>3.4</b> Reading and writing data</a></li>
-<li class="chapter" data-level="3.5" data-path="basic-r-usage.html"><a href="basic-r-usage.html#ehmmm-dataframes"><i class="fa fa-check"></i><b>3.5</b> Ehmmm, dataframes</a></li>
-<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#functions"><i class="fa fa-check"></i><b>3.6</b> Functions</a></li>
-<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.7</b> Regression modeling</a></li>
-<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.8</b> Making plots</a></li>
-<li class="chapter" data-level="3.9" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.9</b> Recap</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#reading-and-writing-data"><i class="fa fa-check"></i><b>3.3</b> Reading and writing data</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#ehmmm-dataframes"><i class="fa fa-check"></i><b>3.4</b> Ehmmm, dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-r-usage.html"><a href="basic-r-usage.html#functions"><i class="fa fa-check"></i><b>3.5</b> Functions</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.6</b> Regression modeling</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.7</b> Making plots</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.8</b> Recap</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html"><i class="fa fa-check"></i><b>4</b> Digression: Linear Regression and how to apply it</a><ul>
 <li class="chapter" data-level="4.1" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory"><i class="fa fa-check"></i><b>4.1</b> Theoretical background</a><ul>
@@ -182,13 +175,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
 <p>The <code>R</code> programming language and software environment for statistical computing is an implementation of the proprietary <code>S</code> programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 <a href="http://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a>) and now has more than 8,000 user contributed packages (see as well the blog piece <a href="https://www.r-bloggers.com/on-the-growth-of-cran-packages/">On the growth of CRAN packages</a>).</p>
-<div id="where-to-get-it" class="section level2">
-<h2><span class="header-section-number">3.1</span> Where to get it</h2>
-<p>First, you need to install <code>R</code> itself. You can do this by downloading this from <a href="http://cran.xl-mirror.nl/">CRAN</a> (we choose here the server from the Netherlands). Choose your appropriate operating system, choose the <code>base</code> system, download <code>R</code> and install it. That’s it!</p>
-<p>The base distribution of <code>R</code> comes with a built-in editor, where you can write your script (more about scripts in subsection <a href="basic-r-usage.html#subsec:scripts">3.3.1</a>). This editor is however <em>very</em> basic. Therefore, it is very much advised that you download and install the Open Source editor <a href="https://www.rstudio.com/products/rstudio/download/"><code>RStudio</code></a> as well. Again, choose your operating system and just install the latest version. The very short video (1.5 minutes) on RStudio’s <a href="https://www.rstudio.com/products/rstudio/">website</a> gives an overview of the <em>basic</em> features (it can do quite some more stuff).</p>
-</div>
 <div id="for-absolute-beginners" class="section level2">
-<h2><span class="header-section-number">3.2</span> For absolute beginners</h2>
+<h2><span class="header-section-number">3.1</span> For absolute beginners</h2>
 <p>At the moment there are <em>many</em> tutorials, blogs, youtube clips, and background materials about using <code>R</code> on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: <a href="http://swirlstats.com/students.html" class="uri">http://swirlstats.com/students.html</a>). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</code></pre></div>
 <p>then start Swirl by first loading the package:</p>
@@ -198,22 +186,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In the first menu choose <code>R Programming</code>. Now, there are 15 lessons. I find the first four the most useful (Basic Building Block, Workspace and Files, Sequences of Numbers, Vectors), but others are very useful as well to go through. The command <code>main()</code> by the way brings you always back to the main menu, and do not go for the credits on coursera (that is now a paid online course).</p>
 </div>
 <div id="how-to-use-it" class="section level2">
-<h2><span class="header-section-number">3.3</span> How to use it</h2>
+<h2><span class="header-section-number">3.2</span> How to use it</h2>
 <p><code>R</code> is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as <code>Excel</code> or <code>SPSS</code>, there are two big differences: (<em>i</em>) you use scripts and (<em>ii</em>) you make frequently use of packages which are essentially written by other <code>R</code> users.</p>
 <div id="subsec:scripts" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Scripts</h3>
+<h3><span class="header-section-number">3.2.1</span> Scripts</h3>
 <p>The use of scripts or program files is somewhat alien to most. Although <code>Stata</code> also makes use of so-called <code>do</code> files. You start a new script by clicking on File &gt; New Script (<code>R</code> editor) or File &gt; New File &gt; New Script (<code>RStudio</code>). You now have a new <em>empty</em> file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The <strong>huge</strong> benefit of this procedure is that you record what you have done and that you can easily change something.</p>
 <p>As an example, assume that somebody gives you a dataset with 2 variables and ask you to analyse this dataset. With <code>SPSS</code> you read this dataset in and then click on various butttons so you get some output. Now, assume further that this person actually has forgotten a variable (this happens more often than you think) and gives you a new dataset with 3 variables. Then you have to do all the clicking again (and hopefully you remembered on which buttons you actually clicked).</p>
 <p>When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the <strong>beginning</strong>, but there are <strong>huge</strong> time savers later on! To run a script you simply need to press the button Edit &gt; Run all (<code>R</code> editor) or Code &gt; Run Region &gt; Run All (<code>RStudio</code>). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors–even in <code>Word</code>.)</p>
 </div>
 <div id="help" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Help!</h3>
+<h3><span class="header-section-number">3.2.2</span> Help!</h3>
 <p>Sometimes you have found a command you would think you could use, but you do not know how, then you need to use <code>?</code> operator in front of the command. For instance, you know that the command <code>c()</code> could be useful, but how? Then type:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="kw">c</span>()</code></pre></div>
 <p>And the appropiate documentation will pop up.</p>
 </div>
 <div id="subsec:packages" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Packages</h3>
+<h3><span class="header-section-number">3.2.3</span> Packages</h3>
 <p><code>R</code> (as many other software applications nowadays) depends heavily on packages written by other parties, usually users of <code>R</code>. There are now many packages out there. You can find the ‘official’ ones on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">the CRAN website</a>, but there are many more. Packages have to be installed (both <code>R</code> editor and <code>RStudio</code> have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome <code>ggplot2</code> package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
@@ -221,13 +209,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Gradually, we come across some useful packages. Those we will use in a chapter will always be listed at the start of the chapter.</p>
 </div>
 <div id="using-comments" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Using comments</h3>
+<h3><span class="header-section-number">3.2.4</span> Using comments</h3>
 <p>A final word in this section about the use of comments. <strong>Do it!</strong>. Really, it will make your future life much easier if you have documented what you have done. You can insert comments by using the <code>#</code> operator (everything after the hashtag is a comment), so, e.g.,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2+2</span> <span class="co"># always wanted to know about the outcome, but were afraid to ask</span></code></pre></div>
 </div>
 </div>
 <div id="reading-and-writing-data" class="section level2">
-<h2><span class="header-section-number">3.4</span> Reading and writing data</h2>
+<h2><span class="header-section-number">3.3</span> Reading and writing data</h2>
 <p>To properly do statistics one needs data (duh!). Luckily, there are numerous ways to get data in <code>R</code>.</p>
 <p>When you just have a <code>csv</code> text file (comma separated file), it is easy, you just type:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;my_data.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre></div>
@@ -242,7 +230,7 @@ z &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">
 <p>and all dataframes <code>x</code>, <code>y</code> <code>z</code> should be identical.</p>
 </div>
 <div id="ehmmm-dataframes" class="section level2">
-<h2><span class="header-section-number">3.5</span> Ehmmm, dataframes</h2>
+<h2><span class="header-section-number">3.4</span> Ehmmm, dataframes</h2>
 <p>I already talked a bit about dataframes, but have not yet explained what they are. Simply, it is your data. Lets construct a simple dataframe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Names  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Thomas&quot;</span>, <span class="st">&quot;Erik&quot;</span>, <span class="st">&quot;Mark&quot;</span>, <span class="st">&quot;Eveline&quot;</span>)
 Grades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="fl">6.5</span>, <span class="dv">7</span>)
@@ -298,7 +286,7 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 ## 4 Eveline    7.0   TRUE            8.0   1.945910           2.945910</code></pre>
 </div>
 <div id="functions" class="section level2">
-<h2><span class="header-section-number">3.6</span> Functions</h2>
+<h2><span class="header-section-number">3.5</span> Functions</h2>
 <p>I already referred to the concepts of functions above. Everything in <code>R</code> that has the symbols <code>()</code> just behind a word denotes a function. And most things in <code>R</code> are really a function. Examples you have already seen above are <code>c()</code>, <code>head()</code>, and <code>read.csv()</code>. As a user, you can define your own functions. (But always do this before you ‘call’ this function.) Suppose, we want to create a function that calculates the function <span class="math inline">\(z = x^2 + y^2 + 10*x + 12* y - 10\)</span> for every <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> we would like to use. For instance, we can first define the function (let’s call the function ‘zvalue’):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zvalue &lt;-<span class="st"> </span>function(x,y){
   <span class="kw">return</span>(x^<span class="dv">2</span> +<span class="st"> </span>y^<span class="dv">2</span> +<span class="st"> </span><span class="dv">10</span>*x +<span class="st"> </span><span class="dv">12</span>*<span class="st"> </span>y -<span class="st"> </span><span class="dv">10</span>)
@@ -309,7 +297,7 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 <pre><code>## [1] 42</code></pre>
 </div>
 <div id="regression-modeling" class="section level2">
-<h2><span class="header-section-number">3.7</span> Regression modeling</h2>
+<h2><span class="header-section-number">3.6</span> Regression modeling</h2>
 <p>Before we start laying-out how to do regression modeling in <code>R</code>, we first need data. And for this purpose we will simulate our data by the following commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>) <span class="co"># create 100 uniformly distributed numbers in interval (0,1)</span>
 y &lt;-<span class="st"> </span><span class="dv">2</span> +<span class="st"> </span><span class="dv">6</span>*x +<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># rnorm stands for the normal distribution</span>
@@ -320,13 +308,13 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y          x
-## 1 6.983062 0.60285022
-## 2 1.910385 0.43377539
-## 3 4.588142 0.30021230
-## 4 2.787512 0.09442241
-## 5 5.270725 0.46856815
-## 6 7.186221 0.78741360</code></pre>
+<pre><code>##          y         x
+## 1 7.123982 0.7885475
+## 2 4.119386 0.1347265
+## 3 5.632046 0.9044581
+## 4 3.313482 0.3686373
+## 5 3.997021 0.2802013
+## 6 3.181046 0.2228008</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
 <p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
@@ -338,7 +326,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.030        5.857</code></pre>
+##       2.210        5.593</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -346,26 +334,26 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.4639 -0.6486  0.0749  0.7960  3.1671 
+##      Min       1Q   Median       3Q      Max 
+## -2.53629 -0.64312 -0.01634  0.73202  3.10773 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.0301     0.2327   8.725 7.02e-14 ***
-## x             5.8573     0.3905  15.001  &lt; 2e-16 ***
+## (Intercept)   2.2099     0.2011   10.99   &lt;2e-16 ***
+## x             5.5935     0.3841   14.56   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.091 on 98 degrees of freedom
-## Multiple R-squared:  0.6966, Adjusted R-squared:  0.6935 
-## F-statistic:   225 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.034 on 98 degrees of freedom
+## Multiple R-squared:  0.6839, Adjusted R-squared:  0.6807 
+## F-statistic: 212.1 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
 <p><img src="unnamed-chunk-25-1.png" width="672" /><img src="unnamed-chunk-25-2.png" width="672" /><img src="unnamed-chunk-25-3.png" width="672" /><img src="unnamed-chunk-25-4.png" width="672" /></p>
 <p>And that is basically it, at least for the basics. There is much more to say about the <code>lm()</code> command, but that is for later.</p>
 </div>
 <div id="making-plots" class="section level2">
-<h2><span class="header-section-number">3.8</span> Making plots</h2>
+<h2><span class="header-section-number">3.7</span> Making plots</h2>
 <p>Where <code>R</code> truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data this can be easily done by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x,y)</code></pre></div>
 <p><img src="unnamed-chunk-26-1.png" width="672" /></p>
@@ -381,7 +369,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 <p><img src="unnamed-chunk-29-1.png" width="672" /></p>
 </div>
 <div id="recap" class="section level2">
-<h2><span class="header-section-number">3.9</span> Recap</h2>
+<h2><span class="header-section-number">3.8</span> Recap</h2>
 <p>For the absolute beginner <code>R</code> is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mousing driven tools (clicking) as <code>Excel</code> or <code>SPSS</code>. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using <code>R</code>.</p>
 
 </div>
@@ -391,9 +379,10 @@ y_i = 2 + 6 x_i + \epsilon_i,
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="digression-linear-regression-and-how-to-apply-it.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="why-bother.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="digression-linear-regression-and-how-to-apply-it.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -402,9 +391,10 @@ y_i = 2 + 6 x_i + \epsilon_i,
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -435,7 +425,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
