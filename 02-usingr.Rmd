@@ -7,7 +7,7 @@ library("ggplot2")
 library("dplyr")
 ```
 
-The `R` programming language and software environment for statistical computing is an implementation of the proprietary `S` programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 [Programming tools: Adventures with R](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609)) and now has more than 8,000 user contributed packages (see as well the blog piece [On the growth of CRAN packages](https://www.r-bloggers.com/on-the-growth-of-cran-packages/)).
+The `R` programming language and software environment for statistical computing is an implementation of the proprietary `S` programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 [Programming tools: Adventures with R](http://www.nature.com/news/programming-tools-adventures-with-r-1.16609)) and now has more than **official** 10,000 user contributed packages (see as well the blog piece [On the growth of CRAN packages](https://www.r-bloggers.com/on-the-growth-of-cran-packages/)).
 
 ## For absolute beginners
 
@@ -33,29 +33,36 @@ In the first menu choose `R Programming`. Now, there are 15 lessons. I find the 
 
 ## How to use it
 
-`R` is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as `Excel` or `SPSS`, there are two big differences: (*i*) you use scripts and (*ii*) you make frequently use of packages which are essentially written by other `R` users. 
+`R` is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which command to type in, and you frequently make many mistakes. However, when you start to use it more, the speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. And perhaps you even reach that wonderful sensation: you feel in control of things.
+
+In contrast with programs such as `Excel` or `SPSS`, there are two big differences: (*i*) you use scripts and (*ii*) you make frequently use of packages which are essentially written by other `R` users. 
 
 ### Scripts {#subsec:scripts}
 
-The use of scripts or program files is somewhat alien to most. Although `Stata` also makes use of so-called `do` files. You start a new script by clicking on File > New Script (`R` editor) or File > New File > New Script (`RStudio`). You now have a new *empty* file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The **huge** benefit of this procedure is that you record what you have done and that you can easily change something. 
+The use of scripts or program files is somewhat alien to most. Although programs such as `Stata` also makes use of scripts in the form of so-called `do` files. You start a new script by clicking on File > New Script (`R` editor) or File > New File > New Script (`RStudio`). You now have a new *empty* file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The **huge** benefit of this procedure is that you record what you have done and that you can easily change something without **retyping** the whole thing over again.
 
 As an example, assume that somebody gives you a dataset with 2 variables and ask you to analyse this dataset. With `SPSS` you read this dataset in and then click on various butttons so you get some output. Now, assume further that this person actually has forgotten a variable (this happens more often than you think) and gives you a new dataset with 3 variables. Then you have to do all the clicking again (and hopefully you remembered on which buttons you actually clicked).
 
-When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the **beginning**, but there are **huge** time savers later on! To run a script you simply need to press the button Edit > Run all (`R` editor) or Code > Run Region > Run All (`RStudio`). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors--even in `Word`.)
+When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and saving it for later, might cost you some time in the **beginning**, but there are **huge** time savers later on! To run a script you simply need to press the button Edit > Run all (`R` editor) or Code > Run Region > Run All (`RStudio`). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors--even in `Word`.)
 
 ### Help!
 
-Sometimes you have found a command you would think you could use, but you do not know how, then you need to use `?` operator in front of the command. For instance, you know that the command `c()` could be useful, but how? Then type:
+Sometimes you have found a command you would think you could use, but you do not know how, then you need to use the `help()` command, where the thing you want help on should go between parentheses. A shortcut for this would be to use the `?` operator in front of the command. For instance, you know that the command `sqrt` could be useful to find square roots, but how? Then type:
 
 ```{r,  eval=FALSE}
-?c()
+help(sqrt)
+?sqrt
 ```
 
-And the appropiate documentation will pop up.
+And the appropiate documentation will pop up. Not that the documentation will make sense immediately, but a very efficient way to understand what is going on is to look for the examples at the bottom of the documentation and copy and play with them. In fact, you can immediately run an example by using the `example` command, as follows
+
+```{r,  eval=FALSE}
+example(sqrt)
+```
 
 ### Packages {#subsec:packages}
 
-`R` (as many other software applications nowadays) depends heavily on packages written by other parties, usually users of `R`. There are now many packages out there. You can find the 'official' ones on [the CRAN website](https://cran.r-project.org/web/packages/available_packages_by_name.html), but there are many more. Packages have to be installed (both `R` editor and `RStudio` have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome `ggplot2` package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:
+`R` (as many other software programs/languages nowadays) depends heavily on packages written by other parties, usually users of `R`. There are now many packages out there. You can find the 'official' ones on [the CRAN website](https://cran.r-project.org/web/packages/available_packages_by_name.html), but there are many more. Packages have to be installed (both `R` editor and `RStudio` have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome `ggplot2` package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:
 
 ```{r, eval=FALSE}
 install.packages("ggplot2")
@@ -104,7 +111,7 @@ and all dataframes `x`, `y` `z` should be identical.
 
 ## Ehmmm, dataframes
 
-I already talked a bit about dataframes, but have not yet explained what they are. Simply, it is your data. Lets construct a simple dataframe:
+I already mentioned dataframes above, but have not yet explained what they are. Simply, it is your data. Lets construct a simple dataframe:
 
 ```{r}
 Names  <- c("Thomas", "Erik", "Mark", "Eveline")
@@ -114,7 +121,7 @@ Female <- c(FALSE,FALSE,FALSE,TRUE)
 df_grades <- data.frame(Names, Grades, Female) 
 ```
 
-First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)---so variable names are always in strings---, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command `head()` we can show the first 6 rows of this dataframe.
+First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)---so variable names are always in strings---, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have named the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command `head()` we can show the first 6 rows of this dataframe.
 
 ```{r}
 head(df_grades)
@@ -131,7 +138,7 @@ df_grades["Names"]
 
 Most of the statistical stuff we will do invokes the use of dataframe and specific variables from that dataframe. 
 
-How to change variables or generate new variables in such a dataframe. Well, remember you can always access elements from an object by the `$`-sign. So, let's suppose we want to add a new variable to our dataframe where we a whole point to the `Grades` variable. We can do this as follows:
+How to change variables or generate new variables in such a dataframe. Well, note that you can always access elements from an object by the `$`-sign. So, let's suppose we want to add a new variable to our dataframe where we add a whole point to the `Grades` variable. We can do this as follows:
 
 ```{r}
 df_grades$Grades_revised <- df_grades$Grades + 1
@@ -143,7 +150,7 @@ Now, the grades dataframe looks like:
 head(df_grades)
 ```
 
-We can even do this in a more simple way, by invoking the most brilliant `dplyr` package. Say, we want to create a log variable of the "Grades" variable and then a new variable where add +1. No idea why, but we want it. Then
+We can even do this in a more simple way, by invoking the most brilliant `dplyr` package. Say, we want to create a log variable of the "Grades" variable and then a new variable where we add +1. No idea why, but we want it. Then
 
 ```{r}
 df_grades <- mutate(df_grades, 
@@ -151,7 +158,7 @@ df_grades <- mutate(df_grades,
                log_grades_revised = log_grades + 1)
 ```
 
-Does the trick. Note that I only have to invoke `mutate` once. `dplyr` can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found [here](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
+This does oes the trick. Note that I only have to invoke `mutate` once. `dplyr` can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found [here](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).
 
 Now, the grades dataframe looks like:
 
@@ -161,7 +168,7 @@ head(df_grades)
 
 ## Functions
 
-I already referred to the concepts of functions above. Everything in `R` that has the symbols `()` just behind a word denotes a function. And most things in `R` are really a function. Examples you have already seen above are `c()`, `head()`, and `read.csv()`. As a user, you can define your own functions. (But always do this before you 'call' this function.) Suppose, we want to create a function that calculates the function $z  = x^2 + y^2 + 10*x + 12* y - 10$ for every $x$ and $y$ we would like to use. For instance, we can first define the function (let's call the function 'zvalue'):
+I already referred to the concepts of functions above. Everything in `R` that has the symbols `()` just behind a word denotes a function. And most things in `R` are really a function. Examples you have already seen above are `sqrt()`, `head()`, and `read.csv()`. As a user, you can define your own functions. (But always do this before you 'call' this function.) Suppose, we want to create a function that calculates the function $z  = x^2 + y^2 + 10*x + 12* y - 10$ for every $x$ and $y$ we would like to use. For instance, we can first define the function (let's call the function 'zvalue'):
 
 ```{r}
 zvalue <- function(x,y){
@@ -175,7 +182,11 @@ And we invoke the function for $x=2$ and $y=2$ as follows:
 
 ```{r}
 zvalue(2,2)
+zvalue(2,3) # Why not, why not
+zvalue(42,42) # The answer to everying squared!
 ```
+
+In fact, we now see as well why functions are so useful. We can invoke them multiple time with different parameters.
 
 ## Regression modeling
 
@@ -206,7 +217,7 @@ indeed shows the first 6 combination of $x$ and $y$. If we now perform a linear 
 linear_model <- lm(y~x, data = df)
 ```
 
-We now have performed a regression of $y$ onto $x$, using the data `df` and save the result in a variable called linear_model. First note the first part of the `lm(,)` expression. `y~x` means that `y` is the left-hand side variable and `x` the righ-hand side variable (if we have more variables, the formula becomes something as`y~x+u+v+w+z`). The second part of the `lm(,)` expression denotes the specific dataframe to be used. Namely, in `R` you can have multiple dataframes so you have to specify which one is to be used. 
+We now have performed a regression of $y$ onto $x$, using the data `df` and save the result in a variable called linear_model. First look at the first part of the `lm(,)` expression. `y~x` means that `y` is the left-hand side variable and `x` the righ-hand side variable (if we have more variables, the formula becomes something as`y~x+u+v+w+z`). The second part of the `lm(,)` expression denotes the specific dataframe to be used. Namely, in `R` you can have multiple dataframes so you have to specify which one is to be used. 
 
 Right, but now what? Well, we have now a variable called linear_model, just typing in `linear_model` only gets you the real basic results:
 
@@ -230,7 +241,7 @@ And that is basically it, at least for the basics. There is much more to say abo
 
 ## Making plots 
 
-Where `R` truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our $x$ and $y$ data this can be easily done by: 
+Where `R` truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our previously defined $x$ and $y$ data this can be easily done by: 
 
 ```{r,fig.path='./'}
 plot(x,y)
@@ -257,4 +268,4 @@ ggplot(df, aes(x,y))+geom_point() + geom_density2d()
 
 ## Recap
 
-For the absolute beginner `R` is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mousing driven tools (clicking) as `Excel` or `SPSS`. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using `R`.  
+For the absolute beginner `R` is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mouse driven tools (clicking) as `Excel` or `SPSS`. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using `R`.  
