@@ -47,6 +47,10 @@
 
 
 
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
+<script src="libs/sankey-1/sankey.js"></script>
+<script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
 
 
 <style type="text/css">
@@ -107,7 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2" data-path="why-bother.html"><a href="why-bother.html"><i class="fa fa-check"></i><b>2</b> Why bother?</a><ul>
 <li class="chapter" data-level="2.1" data-path="why-bother.html"><a href="why-bother.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
 <li class="chapter" data-level="2.2" data-path="why-bother.html"><a href="why-bother.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
-<li class="chapter" data-level="2.3" data-path="why-bother.html"><a href="why-bother.html#r-markdown"><i class="fa fa-check"></i><b>2.3</b> R Markdown</a></li>
+<li class="chapter" data-level="2.3" data-path="why-bother.html"><a href="why-bother.html#r-markdown-a-wonderful-life-in-plain-text"><i class="fa fa-check"></i><b>2.3</b> R Markdown: a wonderful life in plain text</a></li>
 <li class="chapter" data-level="2.4" data-path="why-bother.html"><a href="why-bother.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.4</b> Regression analysis: not again!</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r-usage.html"><a href="basic-r-usage.html"><i class="fa fa-check"></i><b>3</b> Basic <code>R</code> Usage</a><ul>
@@ -150,7 +154,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#network-characteristics"><i class="fa fa-check"></i><b>5.3</b> Network characteristics</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
+<li class="chapter" data-level="6" data-path="r-edge-densityg-florencepadgb.html"><a href="r-edge-densityg-florencepadgb.html"><i class="fa fa-check"></i><b>6</b> <code>{r} # edge_density(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="7" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>7</b> </a></li>
+<li class="chapter" data-level="8" data-path="which-give-the-proportion-of-the-present-edges-from-all-possible-edges-in-the-network-.html"><a href="which-give-the-proportion-of-the-present-edges-from-all-possible-edges-in-the-network-.html"><i class="fa fa-check"></i><b>8</b> Which give the proportion of the present edges from all possible edges in the network.</a></li>
+<li class="chapter" data-level="9" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>9</b> </a></li>
+<li class="chapter" data-level="10" data-path="the-diameter-of-a-network-can-be-retrieved-as.html"><a href="the-diameter-of-a-network-can-be-retrieved-as.html"><i class="fa fa-check"></i><b>10</b> The diameter of a network can be retrieved as:</a></li>
+<li class="chapter" data-level="11" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>11</b> </a></li>
+<li class="chapter" data-level="12" data-path="r-diameterg-florencepadgb.html"><a href="r-diameterg-florencepadgb.html"><i class="fa fa-check"></i><b>12</b> <code>{r} # diameter(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="13" data-path="r-deg-degreeg-power-law-deg.html"><a href="r-deg-degreeg-power-law-deg.html"><i class="fa fa-check"></i><b>13</b> <code>{r} # deg &lt;- degree(g_power_law) # deg #</code></a></li>
+<li class="chapter" data-level="14" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>14</b> </a></li>
+<li class="chapter" data-level="15" data-path="which-is-not-that-insightful-but-a-histogram-is.html"><a href="which-is-not-that-insightful-but-a-histogram-is.html"><i class="fa fa-check"></i><b>15</b> which is not that insightful, but a histogram is:</a></li>
+<li class="chapter" data-level="16" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>16</b> </a></li>
+<li class="chapter" data-level="17" data-path="r-messagefalse-histdeg.html"><a href="r-messagefalse-histdeg.html"><i class="fa fa-check"></i><b>17</b> <code>{r, message=FALSE} # hist(deg) #</code></a></li>
+<li class="chapter" data-level="18" data-path="r-distancesg-florencepadgb.html"><a href="r-distancesg-florencepadgb.html"><i class="fa fa-check"></i><b>18</b> <code>{r} # distances(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="19" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>19</b> In conclusion</a></li>
 </ul>
 
       </nav>
@@ -174,7 +191,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(<span class="st">&quot;rio&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
-<p>The <code>R</code> programming language and software environment for statistical computing is an implementation of the proprietary <code>S</code> programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 <a href="http://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a>) and now has more than 8,000 user contributed packages (see as well the blog piece <a href="https://www.r-bloggers.com/on-the-growth-of-cran-packages/">On the growth of CRAN packages</a>).</p>
+<p>The <code>R</code> programming language and software environment for statistical computing is an implementation of the proprietary <code>S</code> programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 <a href="http://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a>) and now has more than <strong>official</strong> 10,000 user contributed packages (see as well the blog piece <a href="https://www.r-bloggers.com/on-the-growth-of-cran-packages/">On the growth of CRAN packages</a>).</p>
 <div id="for-absolute-beginners" class="section level2">
 <h2><span class="header-section-number">3.1</span> For absolute beginners</h2>
 <p>At the moment there are <em>many</em> tutorials, blogs, youtube clips, and background materials about using <code>R</code> on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: <a href="http://swirlstats.com/students.html" class="uri">http://swirlstats.com/students.html</a>). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:</p>
@@ -187,22 +204,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="how-to-use-it" class="section level2">
 <h2><span class="header-section-number">3.2</span> How to use it</h2>
-<p><code>R</code> is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which commands to type in, and you frequently make many mistakes. However, when you start to use it more, speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. In contrast with programs such as <code>Excel</code> or <code>SPSS</code>, there are two big differences: (<em>i</em>) you use scripts and (<em>ii</em>) you make frequently use of packages which are essentially written by other <code>R</code> users.</p>
+<p><code>R</code> is truly a programming language in the sense that there is no graphical user interface (GUI) involved. You need to type your own commands. And for beginners this sort of sucks. It seems slower, you have no idea which command to type in, and you frequently make many mistakes. However, when you start to use it more, the speed of getting things done goes up (sometimes exponentially), you have a better grasp on the basic commands, and the number of mistakes go down. And perhaps you even reach that wonderful sensation: you feel in control of things.</p>
+<p>In contrast with programs such as <code>Excel</code> or <code>SPSS</code>, there are two big differences: (<em>i</em>) you use scripts and (<em>ii</em>) you make frequently use of packages which are essentially written by other <code>R</code> users.</p>
 <div id="subsec:scripts" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Scripts</h3>
-<p>The use of scripts or program files is somewhat alien to most. Although <code>Stata</code> also makes use of so-called <code>do</code> files. You start a new script by clicking on File &gt; New Script (<code>R</code> editor) or File &gt; New File &gt; New Script (<code>RStudio</code>). You now have a new <em>empty</em> file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The <strong>huge</strong> benefit of this procedure is that you record what you have done and that you can easily change something.</p>
+<p>The use of scripts or program files is somewhat alien to most. Although programs such as <code>Stata</code> also makes use of scripts in the form of so-called <code>do</code> files. You start a new script by clicking on File &gt; New Script (<code>R</code> editor) or File &gt; New File &gt; New Script (<code>RStudio</code>). You now have a new <em>empty</em> file (which you have to save from time to time). If you fill in this file with commands, you are actually programming. The <strong>huge</strong> benefit of this procedure is that you record what you have done and that you can easily change something without <strong>retyping</strong> the whole thing over again.</p>
 <p>As an example, assume that somebody gives you a dataset with 2 variables and ask you to analyse this dataset. With <code>SPSS</code> you read this dataset in and then click on various butttons so you get some output. Now, assume further that this person actually has forgotten a variable (this happens more often than you think) and gives you a new dataset with 3 variables. Then you have to do all the clicking again (and hopefully you remembered on which buttons you actually clicked).</p>
-<p>When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and save it for later, might cost you some time in the <strong>beginning</strong>, but there are <strong>huge</strong> time savers later on! To run a script you simply need to press the button Edit &gt; Run all (<code>R</code> editor) or Code &gt; Run Region &gt; Run All (<code>RStudio</code>). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors–even in <code>Word</code>.)</p>
+<p>When you have a script file you only have to change the code in 1 or 2 places and run it all again. No sweat! So, writing up all the commmands and saving it for later, might cost you some time in the <strong>beginning</strong>, but there are <strong>huge</strong> time savers later on! To run a script you simply need to press the button Edit &gt; Run all (<code>R</code> editor) or Code &gt; Run Region &gt; Run All (<code>RStudio</code>). Nobody does that however, because there are numerous Keyboard Shortcuts (I advise you to learn them, because they make you considerably faster. Actually, most Keyboard Shortcuts work in a wide variety of editors–even in <code>Word</code>.)</p>
 </div>
 <div id="help" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Help!</h3>
-<p>Sometimes you have found a command you would think you could use, but you do not know how, then you need to use <code>?</code> operator in front of the command. For instance, you know that the command <code>c()</code> could be useful, but how? Then type:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="kw">c</span>()</code></pre></div>
-<p>And the appropiate documentation will pop up.</p>
+<p>Sometimes you have found a command you would think you could use, but you do not know how, then you need to use the <code>help()</code> command, where the thing you want help on should go between parentheses. A shortcut for this would be to use the <code>?</code> operator in front of the command. For instance, you know that the command <code>sqrt</code> could be useful to find square roots, but how? Then type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(sqrt)
+?sqrt</code></pre></div>
+<p>And the appropiate documentation will pop up. Not that the documentation will make sense immediately, but a very efficient way to understand what is going on is to look for the examples at the bottom of the documentation and copy and play with them. In fact, you can immediately run an example by using the <code>example</code> command, as follows</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">example</span>(sqrt)</code></pre></div>
 </div>
 <div id="subsec:packages" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Packages</h3>
-<p><code>R</code> (as many other software applications nowadays) depends heavily on packages written by other parties, usually users of <code>R</code>. There are now many packages out there. You can find the ‘official’ ones on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">the CRAN website</a>, but there are many more. Packages have to be installed (both <code>R</code> editor and <code>RStudio</code> have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome <code>ggplot2</code> package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:</p>
+<p><code>R</code> (as many other software programs/languages nowadays) depends heavily on packages written by other parties, usually users of <code>R</code>. There are now many packages out there. You can find the ‘official’ ones on <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">the CRAN website</a>, but there are many more. Packages have to be installed (both <code>R</code> editor and <code>RStudio</code> have a separate package manager) and afterwards loaded. Say, for instance we want to use the awesome <code>ggplot2</code> package (a package to make plots look nice, actually to make more elaborate plots but anyway), then to install and load the package we give the commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
 <p>Now, we can use the commands from this package as if they were built-in.</p>
@@ -231,13 +251,13 @@ z &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">
 </div>
 <div id="ehmmm-dataframes" class="section level2">
 <h2><span class="header-section-number">3.4</span> Ehmmm, dataframes</h2>
-<p>I already talked a bit about dataframes, but have not yet explained what they are. Simply, it is your data. Lets construct a simple dataframe:</p>
+<p>I already mentioned dataframes above, but have not yet explained what they are. Simply, it is your data. Lets construct a simple dataframe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Names  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Thomas&quot;</span>, <span class="st">&quot;Erik&quot;</span>, <span class="st">&quot;Mark&quot;</span>, <span class="st">&quot;Eveline&quot;</span>)
 Grades &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="fl">6.5</span>, <span class="dv">7</span>)
 Female &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>)
 
 df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names, Grades, Female) </code></pre></div>
-<p>First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)—so variable names are always in strings—, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have names the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command <code>head()</code> we can show the first 6 rows of this dataframe.</p>
+<p>First,note a couple of things. A dataframe can consists of various data_types, in this case strings (the names)—so variable names are always in strings—, numbers (the grades) and so-called Booleans (someone is female or not). Secondly, we have named the variables. So, we now have a dataframe called df_grades. Great, now what? Well, we can do a couple of things. By using the command <code>head()</code> we can show the first 6 rows of this dataframe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
 <pre><code>##     Names Grades Female
 ## 1  Thomas    5.0  FALSE
@@ -263,7 +283,7 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 ## 3    Mark
 ## 4 Eveline</code></pre>
 <p>Most of the statistical stuff we will do invokes the use of dataframe and specific variables from that dataframe.</p>
-<p>How to change variables or generate new variables in such a dataframe. Well, remember you can always access elements from an object by the <code>$</code>-sign. So, let’s suppose we want to add a new variable to our dataframe where we a whole point to the <code>Grades</code> variable. We can do this as follows:</p>
+<p>How to change variables or generate new variables in such a dataframe. Well, note that you can always access elements from an object by the <code>$</code>-sign. So, let’s suppose we want to add a new variable to our dataframe where we add a whole point to the <code>Grades</code> variable. We can do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_grades$Grades_revised &lt;-<span class="st"> </span>df_grades$Grades +<span class="st"> </span><span class="dv">1</span></code></pre></div>
 <p>Now, the grades dataframe looks like:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
@@ -272,11 +292,11 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 ## 2    Erik    8.0  FALSE            9.0
 ## 3    Mark    6.5  FALSE            7.5
 ## 4 Eveline    7.0   TRUE            8.0</code></pre>
-<p>We can even do this in a more simple way, by invoking the most brilliant <code>dplyr</code> package. Say, we want to create a log variable of the “Grades” variable and then a new variable where add +1. No idea why, but we want it. Then</p>
+<p>We can even do this in a more simple way, by invoking the most brilliant <code>dplyr</code> package. Say, we want to create a log variable of the “Grades” variable and then a new variable where we add +1. No idea why, but we want it. Then</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_grades &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_grades, 
                <span class="dt">log_grades =</span> <span class="kw">log</span>(Grades),
                <span class="dt">log_grades_revised =</span> log_grades +<span class="st"> </span><span class="dv">1</span>)</code></pre></div>
-<p>Does the trick. Note that I only have to invoke <code>mutate</code> once. <code>dplyr</code> can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">here</a>.</p>
+<p>This does oes the trick. Note that I only have to invoke <code>mutate</code> once. <code>dplyr</code> can be used for filtering, selecting, reshaping, sorting and a whole lot of other stuff. A very handy cheatsheet can be found <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">here</a>.</p>
 <p>Now, the grades dataframe looks like:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df_grades)</code></pre></div>
 <pre><code>##     Names Grades Female Grades_revised log_grades log_grades_revised
@@ -287,7 +307,7 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 </div>
 <div id="functions" class="section level2">
 <h2><span class="header-section-number">3.5</span> Functions</h2>
-<p>I already referred to the concepts of functions above. Everything in <code>R</code> that has the symbols <code>()</code> just behind a word denotes a function. And most things in <code>R</code> are really a function. Examples you have already seen above are <code>c()</code>, <code>head()</code>, and <code>read.csv()</code>. As a user, you can define your own functions. (But always do this before you ‘call’ this function.) Suppose, we want to create a function that calculates the function <span class="math inline">\(z = x^2 + y^2 + 10*x + 12* y - 10\)</span> for every <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> we would like to use. For instance, we can first define the function (let’s call the function ‘zvalue’):</p>
+<p>I already referred to the concepts of functions above. Everything in <code>R</code> that has the symbols <code>()</code> just behind a word denotes a function. And most things in <code>R</code> are really a function. Examples you have already seen above are <code>sqrt()</code>, <code>head()</code>, and <code>read.csv()</code>. As a user, you can define your own functions. (But always do this before you ‘call’ this function.) Suppose, we want to create a function that calculates the function <span class="math inline">\(z = x^2 + y^2 + 10*x + 12* y - 10\)</span> for every <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> we would like to use. For instance, we can first define the function (let’s call the function ‘zvalue’):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zvalue &lt;-<span class="st"> </span>function(x,y){
   <span class="kw">return</span>(x^<span class="dv">2</span> +<span class="st"> </span>y^<span class="dv">2</span> +<span class="st"> </span><span class="dv">10</span>*x +<span class="st"> </span><span class="dv">12</span>*<span class="st"> </span>y -<span class="st"> </span><span class="dv">10</span>)
 }</code></pre></div>
@@ -295,6 +315,11 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
 <p>And we invoke the function for <span class="math inline">\(x=2\)</span> and <span class="math inline">\(y=2\)</span> as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">2</span>,<span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 42</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Why not, why not</span></code></pre></div>
+<pre><code>## [1] 59</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">42</span>,<span class="dv">42</span>) <span class="co"># The answer to everying squared!</span></code></pre></div>
+<pre><code>## [1] 4442</code></pre>
+<p>In fact, we now see as well why functions are so useful. We can invoke them multiple time with different parameters.</p>
 </div>
 <div id="regression-modeling" class="section level2">
 <h2><span class="header-section-number">3.6</span> Regression modeling</h2>
@@ -309,15 +334,15 @@ y_i = 2 + 6 x_i + \epsilon_i,
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
 <pre><code>##          y         x
-## 1 7.123982 0.7885475
-## 2 4.119386 0.1347265
-## 3 5.632046 0.9044581
-## 4 3.313482 0.3686373
-## 5 3.997021 0.2802013
-## 6 3.181046 0.2228008</code></pre>
+## 1 5.040180 0.5870677
+## 2 5.565579 0.4840062
+## 3 3.573128 0.2387901
+## 4 6.167622 0.6865136
+## 5 2.595035 0.1461433
+## 6 3.900908 0.4097261</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
-<p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First note the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
+<p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First look at the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
 <p>Right, but now what? Well, we have now a variable called linear_model, just typing in <code>linear_model</code> only gets you the real basic results:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model</code></pre></div>
 <pre><code>## 
@@ -326,7 +351,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.210        5.593</code></pre>
+##       2.006        6.245</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -335,42 +360,42 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.53629 -0.64312 -0.01634  0.73202  3.10773 
+## -2.24773 -0.76314 -0.08729  0.54621  2.88716 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.2099     0.2011   10.99   &lt;2e-16 ***
-## x             5.5935     0.3841   14.56   &lt;2e-16 ***
+## (Intercept)   2.0062     0.2375   8.447  2.8e-13 ***
+## x             6.2455     0.3863  16.168  &lt; 2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.034 on 98 degrees of freedom
-## Multiple R-squared:  0.6839, Adjusted R-squared:  0.6807 
-## F-statistic: 212.1 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.003 on 98 degrees of freedom
+## Multiple R-squared:  0.7273, Adjusted R-squared:  0.7245 
+## F-statistic: 261.4 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
-<p><img src="unnamed-chunk-25-1.png" width="672" /><img src="unnamed-chunk-25-2.png" width="672" /><img src="unnamed-chunk-25-3.png" width="672" /><img src="unnamed-chunk-25-4.png" width="672" /></p>
+<p><img src="unnamed-chunk-26-1.png" width="672" /><img src="unnamed-chunk-26-2.png" width="672" /><img src="unnamed-chunk-26-3.png" width="672" /><img src="unnamed-chunk-26-4.png" width="672" /></p>
 <p>And that is basically it, at least for the basics. There is much more to say about the <code>lm()</code> command, but that is for later.</p>
 </div>
 <div id="making-plots" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making plots</h2>
-<p>Where <code>R</code> truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data this can be easily done by:</p>
+<p>Where <code>R</code> truly shines is in making plots, diagrams, histograms, etcetera. The first thing with data you want to do is to make a scatterplot. With our previously defined <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> data this can be easily done by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x,y)</code></pre></div>
-<p><img src="unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-27-1.png" width="672" /></p>
 <p>If you would like to create a histogram, just use <code>hist()</code> as</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(y)</code></pre></div>
-<p><img src="unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-28-1.png" width="672" /></p>
 <p>However, to go one step further you also make a plot of a dataframe. for our df dataframe this is not very insightful, but let’s add another variable <span class="math inline">\(z\)</span> uncorrelated with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> and then plot the dataframe (the <code>$</code> indicate that <code>z</code> is a variable in dataframe <code>df</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df$z &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">0</span>,<span class="dv">1</span>)
 <span class="kw">plot</span>(df)</code></pre></div>
-<p><img src="unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-29-1.png" width="672" /></p>
 <p>And luckily, this plot confirms what we expect. <span class="math inline">\(x\)</span> are correlated <span class="math inline">\(y\)</span> by construction and <span class="math inline">\(z\)</span> is not correlated with either <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. These are all the so-called baseline plots. They are great (and already highly customizable), but lately there has been a new kid on the block called ggplot2. It goes to far to explain the details of ggplot2 (gg here stands for the grammar of graphics), but suffice to say that ggplot2 works with building blocks, so that every piece of the figure that you want (or can think of) can be constructed. Just as an example, let’s redo our scatterplot but now using ggplot2 and say we want to add some density lines from our observations (just because we can). This can be done in the following way</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x,y))+<span class="kw">geom_point</span>() +<span class="st"> </span><span class="kw">geom_density2d</span>()</code></pre></div>
-<p><img src="unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="unnamed-chunk-30-1.png" width="672" /></p>
 </div>
 <div id="recap" class="section level2">
 <h2><span class="header-section-number">3.8</span> Recap</h2>
-<p>For the absolute beginner <code>R</code> is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mousing driven tools (clicking) as <code>Excel</code> or <code>SPSS</code>. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using <code>R</code>.</p>
+<p>For the absolute beginner <code>R</code> is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mouse driven tools (clicking) as <code>Excel</code> or <code>SPSS</code>. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using <code>R</code>.</p>
 
 </div>
 </div>

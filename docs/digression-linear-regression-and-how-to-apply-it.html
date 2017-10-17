@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Research Tools for Social Scientists</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Research Tools for Social Scientists">
-  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Research Tools for Social Scientists" />
   <meta property="og:type" content="book" />
@@ -25,13 +24,8 @@
 
 <meta name="author" content="Thomas de Graaff">
 
-<meta name="date" content="2016-10-19">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2016-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,7 +34,6 @@ MathJax.Hub.Config({
   
 <link rel="prev" href="basic-r-usage.html">
 <link rel="next" href="network-analysis-with-r.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -54,10 +47,10 @@ MathJax.Hub.Config({
 
 
 
-<script src="libs/htmlwidgets-0.5/htmlwidgets.js"></script>
-<script src="libs/d3-3.5.2/d3.min.js"></script>
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/d3-4.5.0/d3.min.js"></script>
 <script src="libs/sankey-1/sankey.js"></script>
-<script src="libs/sankeyNetwork-binding-0.2.8/sankeyNetwork.js"></script>
+<script src="libs/sankeyNetwork-binding-0.4/sankeyNetwork.js"></script>
 
 
 <style type="text/css">
@@ -103,34 +96,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.3</b> Regression analysis: not again!</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#structure-of-the-book"><i class="fa fa-check"></i><b>2.4</b> Structure of the book</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preface"><i class="fa fa-check"></i><b>1.1</b> Preface</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#where-to-get-r"><i class="fa fa-check"></i><b>1.2</b> Where to get <code>R</code></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#structure-of-the-book"><i class="fa fa-check"></i><b>1.3</b> Structure of the book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="why-bother.html"><a href="why-bother.html"><i class="fa fa-check"></i><b>2</b> Why bother?</a><ul>
+<li class="chapter" data-level="2.1" data-path="why-bother.html"><a href="why-bother.html#why-do-we-need-all-this"><i class="fa fa-check"></i><b>2.1</b> Why do we need all this?</a></li>
+<li class="chapter" data-level="2.2" data-path="why-bother.html"><a href="why-bother.html#why-use-r-and-not-other-applications"><i class="fa fa-check"></i><b>2.2</b> Why use <code>R</code> and not other applications?</a></li>
+<li class="chapter" data-level="2.3" data-path="why-bother.html"><a href="why-bother.html#r-markdown-a-wonderful-life-in-plain-text"><i class="fa fa-check"></i><b>2.3</b> R Markdown: a wonderful life in plain text</a></li>
+<li class="chapter" data-level="2.4" data-path="why-bother.html"><a href="why-bother.html#regression-analysis-not-again"><i class="fa fa-check"></i><b>2.4</b> Regression analysis: not again!</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r-usage.html"><a href="basic-r-usage.html"><i class="fa fa-check"></i><b>3</b> Basic <code>R</code> Usage</a><ul>
-<li class="chapter" data-level="3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#where-to-get-it"><i class="fa fa-check"></i><b>3.1</b> Where to get it</a></li>
-<li class="chapter" data-level="3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#for-absolute-beginners"><i class="fa fa-check"></i><b>3.2</b> For absolute beginners</a></li>
-<li class="chapter" data-level="3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#how-to-use-it"><i class="fa fa-check"></i><b>3.3</b> How to use it</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:scripts"><i class="fa fa-check"></i><b>3.3.1</b> Scripts</a></li>
-<li class="chapter" data-level="3.3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#help"><i class="fa fa-check"></i><b>3.3.2</b> Help!</a></li>
-<li class="chapter" data-level="3.3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:packages"><i class="fa fa-check"></i><b>3.3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#using-comments"><i class="fa fa-check"></i><b>3.3.4</b> Using comments</a></li>
+<li class="chapter" data-level="3.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#for-absolute-beginners"><i class="fa fa-check"></i><b>3.1</b> For absolute beginners</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#how-to-use-it"><i class="fa fa-check"></i><b>3.2</b> How to use it</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:scripts"><i class="fa fa-check"></i><b>3.2.1</b> Scripts</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-r-usage.html"><a href="basic-r-usage.html#help"><i class="fa fa-check"></i><b>3.2.2</b> Help!</a></li>
+<li class="chapter" data-level="3.2.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#subsec:packages"><i class="fa fa-check"></i><b>3.2.3</b> Packages</a></li>
+<li class="chapter" data-level="3.2.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#using-comments"><i class="fa fa-check"></i><b>3.2.4</b> Using comments</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#reading-and-writing-data"><i class="fa fa-check"></i><b>3.4</b> Reading and writing data</a></li>
-<li class="chapter" data-level="3.5" data-path="basic-r-usage.html"><a href="basic-r-usage.html#ehmmm-dataframes"><i class="fa fa-check"></i><b>3.5</b> Ehmmm, dataframes</a></li>
-<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#functions"><i class="fa fa-check"></i><b>3.6</b> Functions</a></li>
-<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.7</b> Regression modeling</a></li>
-<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.8</b> Making plots</a></li>
-<li class="chapter" data-level="3.9" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.9</b> Recap</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-r-usage.html"><a href="basic-r-usage.html#reading-and-writing-data"><i class="fa fa-check"></i><b>3.3</b> Reading and writing data</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-r-usage.html"><a href="basic-r-usage.html#ehmmm-dataframes"><i class="fa fa-check"></i><b>3.4</b> Ehmmm, dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-r-usage.html"><a href="basic-r-usage.html#functions"><i class="fa fa-check"></i><b>3.5</b> Functions</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r-usage.html"><a href="basic-r-usage.html#regression-modeling"><i class="fa fa-check"></i><b>3.6</b> Regression modeling</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r-usage.html"><a href="basic-r-usage.html#making-plots"><i class="fa fa-check"></i><b>3.7</b> Making plots</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r-usage.html"><a href="basic-r-usage.html#recap"><i class="fa fa-check"></i><b>3.8</b> Recap</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html"><i class="fa fa-check"></i><b>4</b> Digression: Linear Regression and how to apply it</a><ul>
 <li class="chapter" data-level="4.1" data-path="digression-linear-regression-and-how-to-apply-it.html"><a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory"><i class="fa fa-check"></i><b>4.1</b> Theoretical background</a><ul>
@@ -157,7 +154,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html#network-characteristics"><i class="fa fa-check"></i><b>5.3</b> Network characteristics</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>6</b> In conclusion</a></li>
+<li class="chapter" data-level="6" data-path="r-edge-densityg-florencepadgb.html"><a href="r-edge-densityg-florencepadgb.html"><i class="fa fa-check"></i><b>6</b> <code>{r} # edge_density(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="7" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>7</b> </a></li>
+<li class="chapter" data-level="8" data-path="which-give-the-proportion-of-the-present-edges-from-all-possible-edges-in-the-network-.html"><a href="which-give-the-proportion-of-the-present-edges-from-all-possible-edges-in-the-network-.html"><i class="fa fa-check"></i><b>8</b> Which give the proportion of the present edges from all possible edges in the network.</a></li>
+<li class="chapter" data-level="9" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>9</b> </a></li>
+<li class="chapter" data-level="10" data-path="the-diameter-of-a-network-can-be-retrieved-as.html"><a href="the-diameter-of-a-network-can-be-retrieved-as.html"><i class="fa fa-check"></i><b>10</b> The diameter of a network can be retrieved as:</a></li>
+<li class="chapter" data-level="11" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>11</b> </a></li>
+<li class="chapter" data-level="12" data-path="r-diameterg-florencepadgb.html"><a href="r-diameterg-florencepadgb.html"><i class="fa fa-check"></i><b>12</b> <code>{r} # diameter(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="13" data-path="r-deg-degreeg-power-law-deg.html"><a href="r-deg-degreeg-power-law-deg.html"><i class="fa fa-check"></i><b>13</b> <code>{r} # deg &lt;- degree(g_power_law) # deg #</code></a></li>
+<li class="chapter" data-level="14" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>14</b> </a></li>
+<li class="chapter" data-level="15" data-path="which-is-not-that-insightful-but-a-histogram-is.html"><a href="which-is-not-that-insightful-but-a-histogram-is.html"><i class="fa fa-check"></i><b>15</b> which is not that insightful, but a histogram is:</a></li>
+<li class="chapter" data-level="16" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>16</b> </a></li>
+<li class="chapter" data-level="17" data-path="r-messagefalse-histdeg.html"><a href="r-messagefalse-histdeg.html"><i class="fa fa-check"></i><b>17</b> <code>{r, message=FALSE} # hist(deg) #</code></a></li>
+<li class="chapter" data-level="18" data-path="r-distancesg-florencepadgb.html"><a href="r-distancesg-florencepadgb.html"><i class="fa fa-check"></i><b>18</b> <code>{r} # distances(g_florence$PADGB) #</code></a></li>
+<li class="chapter" data-level="19" data-path="in-conclusion.html"><a href="in-conclusion.html"><i class="fa fa-check"></i><b>19</b> In conclusion</a></li>
 </ul>
 
       </nav>
@@ -268,8 +278,8 @@ y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 ##  Max.   :33.90   Max.   :5.424</code></pre>
 <p>There does not seem to be anything out of the ordinary here, but to be sure, we construct a scatterplot between weight of the car and miles per gallon.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-33"></span>
-<img src="unnamed-chunk-33-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-34"></span>
+<img src="unnamed-chunk-34-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
 <p class="caption">
 Figure 4.1: A scatterplog between miles per gallon and car weight.
 </p>
@@ -305,8 +315,8 @@ Figure 4.1: A scatterplog between miles per gallon and car weight.
 <p>One nice trick is to plot the regression line in the scatterplot above. One can do so by the command <code>abline()</code> or:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)
 <span class="kw">abline</span>(<span class="kw">lm</span>(mpg~wt, mtcars))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-35"></span>
-<img src="unnamed-chunk-35-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-36"></span>
+<img src="unnamed-chunk-36-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
 <p class="caption">
 Figure 4.2: A scatterplog between miles per gallon and car weight with regression line.
 </p>
@@ -366,7 +376,7 @@ Figure 4.2: A scatterplog between miles per gallon and car weight with regressio
 <div id="reporting" class="section level3">
 <h3><span class="header-section-number">4.2.4</span> Reporting</h3>
 <p>Hopefully you agree that the regression output of above looks <strong>horrible</strong> and that you do not need all these statistics and stuff. Therefore, you need to construct your own table for presentation format. The minimum what should be in these tables are the coefficient names, the estimates, the standard errors (and the stars would be nice as well), the <span class="math inline">\(R^2\)</span> and the number of observations used.</p>
-<p>Unfortunately, creating tables of your own is a pain in the … Luckily, within <code>R</code> (and by the way in programs as <code>Stata</code> as well) you can do this automatically! In <code>R</code> there are several packages one can use. I prefer the package Stargazer and after using this package we get the following outcome for our logarithmic specification:<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
+<p>Unfortunately, creating tables of your own is a pain in the … Luckily, within <code>R</code> (and by the way in programs as <code>Stata</code> as well) you can do this automatically! In <code>R</code> there are several packages one can use. I prefer the package Stargazer and after using this package we get the following outcome for our logarithmic specification:<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">stargazer</span>(logmodel, extendedmodel, <span class="dt">header=</span><span class="ot">FALSE</span>, <span class="dt">type =</span> <span class="st">&quot;html&quot;</span>, <span class="dt">omit.stat =</span> <span class="kw">c</span>(<span class="st">&quot;rsq&quot;</span>, <span class="st">&quot;f&quot;</span>))</code></pre></div>
 <table style="text-align:center">
 <tr>
@@ -640,8 +650,8 @@ Residual Std. Error
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>To get nice tables directly into <code>Word</code>, you need something else (as you can imagine, because <code>Word</code> is not scriptable). With Stargazer you should give the command as such <code>stargazer(logmodel, extendedmodel, out = &quot;table1.txt&quot;,omit.stat = c(&quot;rsq&quot;, &quot;f&quot;))</code> and thereafter you can read in and edit the table <code>table1.txt</code>in <code>Word</code>.<a href="digression-linear-regression-and-how-to-apply-it.html#fnref4">↩</a></p></li>
+<ol start="5">
+<li id="fn5"><p>To get nice tables directly into <code>Word</code>, you need something else (as you can imagine, because <code>Word</code> is not scriptable). With Stargazer you should give the command as such <code>stargazer(logmodel, extendedmodel, out = &quot;table1.txt&quot;,omit.stat = c(&quot;rsq&quot;, &quot;f&quot;))</code> and thereafter you can read in and edit the table <code>table1.txt</code>in <code>Word</code>.<a href="digression-linear-regression-and-how-to-apply-it.html#fnref5">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -650,8 +660,9 @@ Residual Std. Error
         </div>
       </div>
 <a href="basic-r-usage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="network-analysis-with-r.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="network-analysis-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -660,9 +671,10 @@ Residual Std. Error
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -693,7 +705,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

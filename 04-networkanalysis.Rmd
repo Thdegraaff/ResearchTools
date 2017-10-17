@@ -129,17 +129,17 @@ Note the tree-like structure.
 
 ### Reading in networks
 
-There are various sources for networks on the internet. One of them is [nexus](http://nexus.igraph.org/). With the following command I import a network from this website:
+<!-- There are various sources for networks on the internet. One of them is [nexus](http://nexus.igraph.org/). With the following command I import a network from this website: -->
 
-```{r, message = FALSE}
-g_florence <- nexus_get("padgett")
-```
+<!-- ```{r, message = FALSE} -->
+<!-- g_florence <- nexus_get("padgett") -->
+<!-- ``` -->
 
-which contains business and marriage ties (PADGB)in 14th century Florence and looks like this
+<!-- which contains business and marriage ties (PADGB) in 14th century Florence and looks like this -->
 
-```{r, message = FALSE}
-plot(g_florence$PADGB)
-```
+<!-- ```{r, message = FALSE} -->
+<!-- plot(g_florence$PADGB) -->
+<!-- ``` -->
 
 Another good but smaller source is the `igraphdata` package which actually contains a network of american domestic flights. 
 
@@ -193,30 +193,30 @@ So, it is fine that you have a network, but what about the network characteristi
 
 For density, or the completeness of the network,  one can look at 
 
-```{r}
-edge_density(g_florence$PADGB)
-```
-
-Which give the proportion of the present edges from all possible edges in the network. 
-
-The diameter of a network can be retrieved as:
-
-```{r}
-diameter(g_florence$PADGB)
-```
+# ```{r}
+# edge_density(g_florence$PADGB)
+# ```
+# 
+# Which give the proportion of the present edges from all possible edges in the network. 
+# 
+# The diameter of a network can be retrieved as:
+# 
+# ```{r}
+# diameter(g_florence$PADGB)
+# ```
 
 somewhat more interesting is given by the degree function which gives the number of connections. For our power-law network this amounts to
 
-```{r}
-deg <- degree(g_power_law)
-deg
-```
-
-which is not that insightful, but a histogram is:
-
-```{r, message=FALSE}
-hist(deg)
-```
+# ```{r}
+# deg <- degree(g_power_law)
+# deg
+# ```
+# 
+# which is not that insightful, but a histogram is:
+# 
+# ```{r, message=FALSE}
+# hist(deg)
+# ```
 
 Which is typical for a power-law.
 
@@ -228,8 +228,8 @@ plot(degree_distribution(g_power_law, cumulative = TRUE))
 
 Finally, we may be interested in the shortest path. This can easily be retrieved using distances (with underlying Dijkstra's algorithm) as follows for the Florence network:
 
-```{r}
-distances(g_florence$PADGB)
-```
+# ```{r}
+# distances(g_florence$PADGB)
+# ```
 
 Note that the Pucci family is not in the network and therefore the distances are set to infinity. 

@@ -129,6 +129,20 @@
 \usepackage{booktabs}
 \usepackage{listings}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 \begin{document}
 \maketitle
 
@@ -136,42 +150,86 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\section{Preface}\label{preface}
+\section{Introduction}\label{introduction}
+
+\subsection{Preface}\label{preface}
 
 I started this online book as background material for the course Network
-Analysis and from the need to teach social science students (including
-Business Administration and econmonics students) the very basics of
-\texttt{R} and the intuition behing applying linear regression. I intend
-to work on this book on the fly meaning that during courses I try to see
-what the needs of students really are. Moreover, during the year I
-intend to add additional chapters, specifically about the use of stated
-preference modeling--and its corresponding logit estimation--and working
-with geographical data. Obviously, all in \texttt{R}. At the moment this
-book really has not yet passed its infant stage. Therefore, all input in
-the form of comments, critique and remarks are \emph{highly}
-appreciated.
+Analysis and from the need to teach social science students (which
+includes Business Administration and Economics students) the a basic
+understanding of \texttt{R}, network techniques and the intuition behing
+applying linear regression. I intend to work on this book on the fly
+meaning that during courses I try to see what the needs of students
+really are. Moreover, over the coming years I intend to add additional
+chapters, specifically about the use of stated preference modeling--and
+its corresponding logit estimation--and working with geographical data.
+Obviously, all in \texttt{R}. At the moment this book still has not yet
+passed its infant stage. Therefore, all input in the form of additions,
+comments, critique and remarks are \emph{highly} appreciated.
 
-\section{Introduction}\label{introduction}
+\subsection{\texorpdfstring{Where to get
+\texttt{R}}{Where to get R}}\label{where-to-get-r}
+
+First, you need to install \texttt{R} itself. You can do this by
+downloading this from \href{http://cran.xl-mirror.nl/}{CRAN} (we choose
+here the server from the Netherlands). Choose your appropriate operating
+system, choose the \texttt{base} system, download \texttt{R} and install
+it. That's it!
+
+The base distribution of \texttt{R} comes with a built-in editor, where
+you can write your script (more about scripts in subsection
+\ref{subsec:scripts}). This editor is however \emph{very} basic.
+Therefore, it is very much advised that you download and install the
+Open Source editor
+\href{https://www.rstudio.com/products/rstudio/download/}{\texttt{RStudio}}
+as well. Again, choose your operating system and just install the latest
+version. The very short video (1.5 minutes) on RStudio's
+\href{https://www.rstudio.com/products/rstudio/}{website} gives an
+overview of the \emph{basic} features (it can do quite some more stuff).
+
+\subsection{Structure of the book}\label{structure-of-the-book}
+
+In its present state, the book contains four chapters dealing with
+contents. The first chapter gives a justification for all this. The
+second chapter concerns the basic usage of \texttt{R}. The third deals
+with the fundamentals behind regression analysis and how to apply it in
+\texttt{R}. The fourth chapter lays out how to do network analysis in
+\texttt{R}.
+
+\section{Why bother?}\label{why-bother}
+
+This chapter deals with the justification for this book and the
+rationale behind using the \texttt{R} software environment versus other
+software applications. The first section deals with understanding the
+various criteria I (and others) maintain for software for proper
+research workflows. Thereafter, I deal with \texttt{R} and subsequently
+with using RMarkdown files (files with the \texttt{.rmd} extension).
+Finally, I say something about the need to revisit regression analysis
+again.
 
 \subsection{Why do we need all this?}\label{why-do-we-need-all-this}
 
-A natural question that arises, or at least should arise, is why bother?
-Why learn students in the social sciences new tools to do research.
-`Old' tools\footnote{Some of the tools I use are actually quite old,
-  even so far as from the 1970s and they are still very good.} such as
-\texttt{Word}, \texttt{Excel} and \texttt{Stata}do just as fine right? I
-would say yes, but up to a certain extent. If you are only interested in
+The first question that arises, or at least should arise, is why bother?
+Why learn students in the social sciences relatively new and specific
+software tools for education and research. `Old' tools\footnote{Some of
+  the tools I use are actually quite old, even so far as from the 1970s
+  and they are still very good.} such as \texttt{Word}, \texttt{Excel}
+and \texttt{STATA} do just as fine right? I would say that it depends,
+but that these tools are severely limited. If you are only interested in
 straightforward regression and anova techniques and collect your sample
-by survey research, then \texttt{Stata} and \texttt{Excel}(or even
-\texttt{SPSS}, the horror\ldots{}) would definitely suffice. But if you
-would like to do more fancy and cool stuff, including creating beautiful
-diagrams, nice maps, simulation, network analysis, and even whole books
-in \texttt{html} then you need more elaborate tools.
+by survey research, then \texttt{Stata} and to a much lesser extent
+\texttt{Excel}(or even \texttt{SPSS}, the horror\ldots{}) would
+definitely suffice. But if you would like to do more fancy and cool
+stuff, including creating beautiful diagrams, nice maps, simulation
+analysis, network analysis, and even whole books in \texttt{html} or
+\texttt{pdf} then you need more elaborate tools.\footnote{Actually, this
+  ``book'' is actually written by a combination of \texttt{R} and
+  \texttt{RStudio}.}
 
-And even though most of the best tools out there\footnote{Including
+And note that, even though most of the best tools out there\footnote{Including
   \texttt{Markdown}, \texttt{LaTeX}, \texttt{Python}, \texttt{Git} and
   \texttt{GitHub}.} are open source (so they are \textbf{free}, as in
-\textbf{free beer}) they will cost you something dearly: namely, your
+\textbf{free beer}), they will cost you something dearly: namely, your
 time. The learning curve of these tools are usually quite steep (which
 also means they will pay-off quickly). So, choose your battles
 carefully. The best tools, I would argue, have the following set of
@@ -180,23 +238,40 @@ characteristics:
 \begin{itemize}
 \tightlist
 \item
-  They are open source. So no lock-in effects anymore with datasets
-  (\texttt{Stata}) or versions (\texttt{Word}).
+  They are open source. The most important argument to use an open
+  source package is reproducibility. Your work is simply less accessible
+  and thus reproducible if the code can only be run with applications
+  that costs over 1,000 Euros.
 \item
-  They are scriptable. This means they can ``communicate'' with other
-  programs. Usually this means that these tools revolve around
-  \texttt{.txt} files.
+  The learning curve is reasonable. First, and foremost, students should
+  be able to use the package for straightforward research. If that is
+  not possible after one six-week's course, the software package is not
+  particularly suitable for social science students
 \item
-  There is a large community that uses these tools. This is very handy
-  for supplementary material and solving questions.
+  They are scriptable. A software package should be scriptable, both
+  internally as externally. Internally scriptable indicates that within
+  the package scripts or programs can be written so that every step
+  within the workflow can be reproduced. With externally scriptable I
+  mean that the software package should also be used in combination with
+  other software packages or languages, such as LaTeX, markdown, make,
+  html, sql, C++, etc.
 \item
-  They are multi-purpose, which means you can use them for various
-  purposes. This is actually only a requirement of the data
-  management/statistics you use.
+  There is a large community that uses these tools. Nobody wants to be
+  locked in with obsolete technology. A large userbase ensures a high
+  probability that the software package will be used and maintained in
+  the future as well. Moreover, all sorts of indirect effects, such as
+  user written routines, packages and documentation, come along for free
+  with a large community.
+\item
+  Flexibility: Ideally, a software approach should be both extendable
+  and scalable. The former ensures that slight deviations from standard
+  approaches can relatively easy be implemented. The latter is important
+  when the size of the database increases, as typically is the case with
+  recent improvements in remote sensing techniques.
 \end{itemize}
 
 One of the tools that meets all these requirements, and more, is
-\texttt{R} and the next section lays out why even social scientists
+\texttt{R} and the next section lays out why ``even'' social scientists
 should learn \texttt{R}.
 
 \subsection{\texorpdfstring{Why use \texttt{R} and not other
@@ -205,12 +280,13 @@ applications?}{Why use R and not other applications?}}\label{why-use-r-and-not-o
 Ask any data scientist at the moment for the software tools most used
 and they will most likely answer \texttt{R} or \texttt{Python}. Of
 course, that should not be a valid answer (many people use \texttt{Word}
-as well and nobody would argue that \texttt{Word} is brilliant), but it
-indicates the popularity (and the community) that uses \texttt{R}.
+as well and nobody would argue that \texttt{Word} is brilliantly
+programmed or designed), but it indicates the popularity (and the
+community) that uses \texttt{R}.
 
 Where 10 years ago most social scientists still used \texttt{SPSS} (and
-the economists \texttt{Stata}), that has now changed completely (well
-the economists still use \texttt{Stata} but the rest of the world moved
+the economists \texttt{Stata}), that has now changed completely (well,
+the economists still use \texttt{Stata}, but the rest of the world moved
 on). And for good reasons, namely:
 
 \begin{enumerate}
@@ -222,14 +298,14 @@ on). And for good reasons, namely:
   \texttt{R} is flexible and thus multi-purpose;
 \item
   there is now a \textbf{very} large userbase; everything you can dream
-  of (well sort of), somebody else most likely already
-  programmed;\footnote{\href{https://cran.r-project.org/web/packages/available_packages_by_name.html}{CRAN
+  of (that is in the context of data science/management), somebody else
+  most likely already programmed;\footnote{\href{https://cran.r-project.org/web/packages/available_packages_by_name.html}{CRAN
     packages} give a great overview of all the official packages out
     there and the wide range of applications, and again they are all
     free!}
 \item
   it generates beautiful pictures, diagram, maps, and histograms (even
-  pie diagrams);
+  3D pie diagrams for the masochists amongst us);
 \item
   relative to \texttt{Stata} or \texttt{Excel} it is fast, which is
   great for larger (spatial) databases.
@@ -240,8 +316,57 @@ analysis, data management, visual display of data, creating documents
 (and presentations), and even GIS applications. In that respect it is
 far more flexible than \texttt{Stata}. Last but perhaps not least,
 \texttt{R} is more and more used outside academia as well. Twitter,
-Facebook and Google use \texttt{R}, but companies as the NY times as
-well for interactive website diagrams.
+Facebook, Booking and Google use \texttt{R}, just as companies as the
+New York Times for creating interactive website diagrams.
+
+Social science students might find working with \texttt{R} initially
+strange, cumbersome or even frustrating. All the lovely drop-menus that
+are still provided by \texttt{Excel} and \texttt{Stata} have
+disappeared, and the whole thing is completely script-driven. In fact,
+\texttt{R} is a full-blown program language. I am aware that this needs
+some adaptation. However, hopefully, learning \texttt{R} in combination
+with \texttt{RStudio} will pay-off; if not in becoming more efficient
+and reproducable, then at least in the fact that you start to understand
+a \emph{different} way of doing things and that the office suite (Word,
+Excel and Powerpoint) is not the only option out there.
+
+\subsection{R Markdown: a wonderful life in plain
+text}\label{r-markdown-a-wonderful-life-in-plain-text}
+
+\texttt{RStudio} does not only provide an editor for \texttt{R} but
+comes with all kinds of various other goodies installed. One of them is
+the ability to use \href{http://rmarkdown.rstudio.com/}{R Markdown}. R
+Markdown is a specific variant on the more generic Markdown markup
+language. Markup languages is not something that social science students
+are familiar with, but actually are very often used. Essentially, a
+markup language very specifically determines how pieces of text should
+look like, e.g., bold, italic, or being a header. One of the most famous
+markup languages is \texttt{html} and another well-known is LaTeX.
+
+One of the problems with these markup languages is that they are
+complex, difficult, or just \emph{annoying} to read and write in (just
+try for yourself with writing a page in \texttt{html}). That's why
+Markdown is invented as a lightweight markup language in 2004 by John
+Gruber. And with lightweight it is meant that there are only a few
+syntax operations (more or less only headers, bold, italics, lists, and
+hyperlinks). Very quickly it became a huge success (especially for web
+based applications). Now various well known applications (such as
+Wordpress, GitHub and others) make use of this format.
+
+R Markdown is a variant on Markdown in combination with other tools (you
+do not have to know them, they are all under the hood of RStudio). And
+with R Markdown you can enable people \textgreater{} ``to write using an
+easy-to-read, easy-to-write plain text format, and optionally convert it
+to structurally valid XHTML (or HTML)''
+
+That means that with R Markdown you can easily write a piece of text and
+then convert it to html. However, you are not restricted to html! You
+can convert the same text to a pdf or open office format! This makes it
+very flexible. In fact, this book has been written in R Markdown as
+well. And you are not restricted to texts. You can create slides as well
+if you want. Even more bonkers: you can put R code in your text with the
+results! That means that in one document you can have your script as
+your report file, which is truly wonderful for reproducable research.
 
 \subsection{Regression analysis: not
 again!}\label{regression-analysis-not-again}
@@ -285,29 +410,10 @@ statistical computing is an implementation of the proprietary \texttt{S}
 programming language by Ross Ithaka and Robert Gentleman in 1992. It
 quickly gained in popularity (see, e.g, this Nature article from 2014
 \href{http://www.nature.com/news/programming-tools-adventures-with-r-1.16609}{Programming
-tools: Adventures with R}) and now has more than 8,000 user contributed
-packages (see as well the blog piece
+tools: Adventures with R}) and now has more than \textbf{official}
+10,000 user contributed packages (see as well the blog piece
 \href{https://www.r-bloggers.com/on-the-growth-of-cran-packages/}{On the
 growth of CRAN packages}).
-
-\subsection{Where to get it}\label{where-to-get-it}
-
-First, you need to install \texttt{R} itself. You can do this by
-downloading this from \href{http://cran.xl-mirror.nl/}{CRAN} (we choose
-here the server from the Netherlands). Choose your appropriate operating
-system, choose the \texttt{base} system, download \texttt{R} and install
-it. That's it!
-
-The base distribution of \texttt{R} comes with a built-in editor, where
-you can write your script (more about scripts in subsection
-\ref{subsec:scripts}). This editor is however \emph{very} basic.
-Therefore, it is very much advised that you download and install the
-Open Source editor
-\href{https://www.rstudio.com/products/rstudio/download/}{\texttt{RStudio}}
-as well. Again, choose your operating system and just install the latest
-version. The very short video (1.5 minutes) on RStudio's
-\href{https://www.rstudio.com/products/rstudio/}{website} gives an
-overview of the \emph{basic} features (it can do quite some more stuff).
 
 \subsection{For absolute beginners}\label{for-absolute-beginners}
 
@@ -354,26 +460,29 @@ on coursera (that is now a paid online course).
 \texttt{R} is truly a programming language in the sense that there is no
 graphical user interface (GUI) involved. You need to type your own
 commands. And for beginners this sort of sucks. It seems slower, you
-have no idea which commands to type in, and you frequently make many
-mistakes. However, when you start to use it more, speed of getting
+have no idea which command to type in, and you frequently make many
+mistakes. However, when you start to use it more, the speed of getting
 things done goes up (sometimes exponentially), you have a better grasp
-on the basic commands, and the number of mistakes go down. In contrast
-with programs such as \texttt{Excel} or \texttt{SPSS}, there are two big
-differences: (\emph{i}) you use scripts and (\emph{ii}) you make
-frequently use of packages which are essentially written by other
+on the basic commands, and the number of mistakes go down. And perhaps
+you even reach that wonderful sensation: you feel in control of things.
+
+In contrast with programs such as \texttt{Excel} or \texttt{SPSS}, there
+are two big differences: (\emph{i}) you use scripts and (\emph{ii}) you
+make frequently use of packages which are essentially written by other
 \texttt{R} users.
 
 \subsubsection{Scripts}\label{subsec:scripts}
 
 The use of scripts or program files is somewhat alien to most. Although
-\texttt{Stata} also makes use of so-called \texttt{do} files. You start
-a new script by clicking on File \textgreater{} New Script (\texttt{R}
-editor) or File \textgreater{} New File \textgreater{} New Script
-(\texttt{RStudio}). You now have a new \emph{empty} file (which you have
-to save from time to time). If you fill in this file with commands, you
-are actually programming. The \textbf{huge} benefit of this procedure is
-that you record what you have done and that you can easily change
-something.
+programs such as \texttt{Stata} also makes use of scripts in the form of
+so-called \texttt{do} files. You start a new script by clicking on File
+\textgreater{} New Script (\texttt{R} editor) or File \textgreater{} New
+File \textgreater{} New Script (\texttt{RStudio}). You now have a new
+\emph{empty} file (which you have to save from time to time). If you
+fill in this file with commands, you are actually programming. The
+\textbf{huge} benefit of this procedure is that you record what you have
+done and that you can easily change something without \textbf{retyping}
+the whole thing over again.
 
 As an example, assume that somebody gives you a dataset with 2 variables
 and ask you to analyse this dataset. With \texttt{SPSS} you read this
@@ -385,7 +494,7 @@ hopefully you remembered on which buttons you actually clicked).
 
 When you have a script file you only have to change the code in 1 or 2
 places and run it all again. No sweat! So, writing up all the commmands
-and save it for later, might cost you some time in the
+and saving it for later, might cost you some time in the
 \textbf{beginning}, but there are \textbf{huge} time savers later on! To
 run a script you simply need to press the button Edit \textgreater{} Run
 all (\texttt{R} editor) or Code \textgreater{} Run Region \textgreater{}
@@ -397,21 +506,34 @@ a wide variety of editors--even in \texttt{Word}.)
 \subsubsection{Help!}\label{help}
 
 Sometimes you have found a command you would think you could use, but
-you do not know how, then you need to use \texttt{?} operator in front
-of the command. For instance, you know that the command \texttt{c()}
-could be useful, but how? Then type:
+you do not know how, then you need to use the \texttt{help()} command,
+where the thing you want help on should go between parentheses. A
+shortcut for this would be to use the \texttt{?} operator in front of
+the command. For instance, you know that the command \texttt{sqrt} could
+be useful to find square roots, but how? Then type:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{?}\KeywordTok{c}\NormalTok{()}
+\KeywordTok{help}\NormalTok{(sqrt)}
+\NormalTok{?sqrt}
 \end{Highlighting}
 \end{Shaded}
 
-And the appropiate documentation will pop up.
+And the appropiate documentation will pop up. Not that the documentation
+will make sense immediately, but a very efficient way to understand what
+is going on is to look for the examples at the bottom of the
+documentation and copy and play with them. In fact, you can immediately
+run an example by using the \texttt{example} command, as follows
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{example}\NormalTok{(sqrt)}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{Packages}\label{subsec:packages}
 
-\texttt{R} (as many other software applications nowadays) depends
+\texttt{R} (as many other software programs/languages nowadays) depends
 heavily on packages written by other parties, usually users of
 \texttt{R}. There are now many packages out there. You can find the
 `official' ones on
@@ -494,7 +616,7 @@ identical.
 
 \subsection{Ehmmm, dataframes}\label{ehmmm-dataframes}
 
-I already talked a bit about dataframes, but have not yet explained what
+I already mentioned dataframes above, but have not yet explained what
 they are. Simply, it is your data. Lets construct a simple dataframe:
 
 \begin{Shaded}
@@ -510,7 +632,7 @@ they are. Simply, it is your data. Lets construct a simple dataframe:
 First,note a couple of things. A dataframe can consists of various
 data\_types, in this case strings (the names)---so variable names are
 always in strings---, numbers (the grades) and so-called Booleans
-(someone is female or not). Secondly, we have names the variables. So,
+(someone is female or not). Secondly, we have named the variables. So,
 we now have a dataframe called df\_grades. Great, now what? Well, we can
 do a couple of things. By using the command \texttt{head()} we can show
 the first 6 rows of this dataframe.
@@ -588,10 +710,10 @@ Most of the statistical stuff we will do invokes the use of dataframe
 and specific variables from that dataframe.
 
 How to change variables or generate new variables in such a dataframe.
-Well, remember you can always access elements from an object by the
+Well, note that you can always access elements from an object by the
 \texttt{\$}-sign. So, let's suppose we want to add a new variable to our
-dataframe where we a whole point to the \texttt{Grades} variable. We can
-do this as follows:
+dataframe where we add a whole point to the \texttt{Grades} variable. We
+can do this as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -617,8 +739,8 @@ Now, the grades dataframe looks like:
 
 We can even do this in a more simple way, by invoking the most brilliant
 \texttt{dplyr} package. Say, we want to create a log variable of the
-``Grades'' variable and then a new variable where add +1. No idea why,
-but we want it. Then
+``Grades'' variable and then a new variable where we add +1. No idea
+why, but we want it. Then
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -628,9 +750,10 @@ but we want it. Then
 \end{Highlighting}
 \end{Shaded}
 
-Does the trick. Note that I only have to invoke \texttt{mutate} once.
-\texttt{dplyr} can be used for filtering, selecting, reshaping, sorting
-and a whole lot of other stuff. A very handy cheatsheet can be found
+This does oes the trick. Note that I only have to invoke \texttt{mutate}
+once. \texttt{dplyr} can be used for filtering, selecting, reshaping,
+sorting and a whole lot of other stuff. A very handy cheatsheet can be
+found
 \href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}{here}.
 
 Now, the grades dataframe looks like:
@@ -648,6 +771,65 @@ Now, the grades dataframe looks like:
 ## 3    Mark    6.5  FALSE            7.5   1.871802           2.871802
 ## 4 Eveline    7.0   TRUE            8.0   1.945910           2.945910
 \end{verbatim}
+
+\subsection{Functions}\label{functions}
+
+I already referred to the concepts of functions above. Everything in
+\texttt{R} that has the symbols \texttt{()} just behind a word denotes a
+function. And most things in \texttt{R} are really a function. Examples
+you have already seen above are \texttt{sqrt()}, \texttt{head()}, and
+\texttt{read.csv()}. As a user, you can define your own functions. (But
+always do this before you `call' this function.) Suppose, we want to
+create a function that calculates the function
+\(z = x^2 + y^2 + 10*x + 12* y - 10\) for every \(x\) and \(y\) we would
+like to use. For instance, we can first define the function (let's call
+the function `zvalue'):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{zvalue <-}\StringTok{ }\NormalTok{function(x,y)\{}
+  \KeywordTok{return}\NormalTok{(x^}\DecValTok{2} \NormalTok{+}\StringTok{ }\NormalTok{y^}\DecValTok{2} \NormalTok{+}\StringTok{ }\DecValTok{10}\NormalTok{*x +}\StringTok{ }\DecValTok{12}\NormalTok{*}\StringTok{ }\NormalTok{y -}\StringTok{ }\DecValTok{10}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the \texttt{return()} is not necessary, as long as it is the
+last statement that you make.
+
+And we invoke the function for \(x=2\) and \(y=2\) as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{zvalue}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{zvalue}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{) }\CommentTok{# Why not, why not}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 59
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{zvalue}\NormalTok{(}\DecValTok{42}\NormalTok{,}\DecValTok{42}\NormalTok{) }\CommentTok{# The answer to everying squared!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4442
+\end{verbatim}
+
+In fact, we now see as well why functions are so useful. We can invoke
+them multiple time with different parameters.
 
 \subsection{Regression modeling}\label{regression-modeling}
 
@@ -681,12 +863,12 @@ checking this with
 
 \begin{verbatim}
 ##          y         x
-## 1 5.677078 0.6821151
-## 2 7.977810 0.8826769
-## 3 2.131435 0.0237788
-## 4 7.643682 0.9517926
-## 5 6.687696 0.8392424
-## 6 5.470086 0.6484546
+## 1 4.645198 0.1056006
+## 2 6.637983 0.5346498
+## 3 3.664484 0.1307786
+## 4 5.597854 0.6302566
+## 5 6.185716 0.5432318
+## 6 8.190675 0.9575318
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -703,7 +885,7 @@ linear model) to do this as follows:
 
 We now have performed a regression of \(y\) onto \(x\), using the data
 \texttt{df} and save the result in a variable called linear\_model.
-First note the first part of the \texttt{lm(,)} expression.
+First look at the first part of the \texttt{lm(,)} expression.
 \texttt{y\textasciitilde{}x} means that \texttt{y} is the left-hand side
 variable and \texttt{x} the righ-hand side variable (if we have more
 variables, the formula becomes something
@@ -729,7 +911,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.515        6.732
+##       2.115        5.854
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -749,18 +931,18 @@ gives you the following outcome
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -3.14525 -0.73716 -0.05392  0.74744  2.40644 
+## -2.13012 -0.73845  0.00594  0.59310  2.69743 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   1.5147     0.2029   7.466 3.44e-11 ***
-## x             6.7319     0.3466  19.421  < 2e-16 ***
+## (Intercept)   2.1147     0.1995   10.60   <2e-16 ***
+## x             5.8543     0.3535   16.56   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 1.051 on 98 degrees of freedom
-## Multiple R-squared:  0.7938, Adjusted R-squared:  0.7917 
-## F-statistic: 377.2 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 1.006 on 98 degrees of freedom
+## Multiple R-squared:  0.7367, Adjusted R-squared:  0.734 
+## F-statistic: 274.2 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -776,10 +958,10 @@ linear\_model
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-23-1.pdf}
-\includegraphics{./unnamed-chunk-23-2.pdf}
-\includegraphics{./unnamed-chunk-23-3.pdf}
-\includegraphics{./unnamed-chunk-23-4.pdf}
+\includegraphics{./unnamed-chunk-26-1.pdf}
+\includegraphics{./unnamed-chunk-26-2.pdf}
+\includegraphics{./unnamed-chunk-26-3.pdf}
+\includegraphics{./unnamed-chunk-26-4.pdf}
 
 And that is basically it, at least for the basics. There is much more to
 say about the \texttt{lm()} command, but that is for later.
@@ -788,7 +970,8 @@ say about the \texttt{lm()} command, but that is for later.
 
 Where \texttt{R} truly shines is in making plots, diagrams, histograms,
 etcetera. The first thing with data you want to do is to make a
-scatterplot. With our \(x\) and \(y\) data this can be easily done by:
+scatterplot. With our previously defined \(x\) and \(y\) data this can
+be easily done by:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -796,7 +979,7 @@ scatterplot. With our \(x\) and \(y\) data this can be easily done by:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-24-1.pdf}
+\includegraphics{./unnamed-chunk-27-1.pdf}
 
 If you would like to create a histogram, just use \texttt{hist()} as
 
@@ -806,7 +989,7 @@ If you would like to create a histogram, just use \texttt{hist()} as
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-25-1.pdf}
+\includegraphics{./unnamed-chunk-28-1.pdf}
 
 However, to go one step further you also make a plot of a dataframe. for
 our df dataframe this is not very insightful, but let's add another
@@ -821,7 +1004,7 @@ dataframe \texttt{df}).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-26-1.pdf}
+\includegraphics{./unnamed-chunk-29-1.pdf}
 
 And luckily, this plot confirms what we expect. \(x\) are correlated
 \(y\) by construction and \(z\) is not correlated with either \(x\) and
@@ -841,7 +1024,7 @@ be done in the following way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{./unnamed-chunk-27-1.pdf}
+\includegraphics{./unnamed-chunk-30-1.pdf}
 
 \subsection{Recap}\label{recap}
 
@@ -849,11 +1032,11 @@ For the absolute beginner \texttt{R} is huge and daunting. You need to
 learn by taking small steps and by practicing (a lot). Do not aim
 immediately at big and complex projects but start small and at the
 basics. You will then learn that you quickly make progress and at a
-certain time even become efficienter than when using mousing driven
-tools (clicking) as \texttt{Excel} or \texttt{SPSS}. In later chapters I
-dive in to some more detailed topics, and hopefully the material
-provides you with a background solid enough to understand and work with
-those topics using \texttt{R}.
+certain time even become efficienter than when using mouse driven tools
+(clicking) as \texttt{Excel} or \texttt{SPSS}. In later chapters I dive
+in to some more detailed topics, and hopefully the material provides you
+with a background solid enough to understand and work with those topics
+using \texttt{R}.
 
 \section{Digression: Linear Regression and how to apply
 it}\label{digression-linear-regression-and-how-to-apply-it}
@@ -912,30 +1095,30 @@ that do not explain much (where the \(R^2\)'s are low, say \(<\) 0.2)
 are just as good as models that explain quite a lot, as long as the
 least squares assumptions hold. In transportation science in general
 (and other disciplines that deals with making large models) predictions
-and thus eplanatory power is key. Here it is now very important that you
-perfectly understand what causes what as long as out-of-sample
+and thus explanatory power is key. Here it is now very important that
+you perfectly understand what causes what as long as out-of-sample
 predicting is good (say for predicting future commuting flows).
 
 I usually have finding causal relations in mind when talking about least
 squares (already difficult enough), but note again that the same least
-squares assumptions should hold when you want to predict or want to find
-statistical relations.
+squares assumptions, in some form or another, should hold when you want
+to predict or want to find statistical relations.
 
 \subsubsection{The model}\label{the-model}
 
 Assume we are interested in the effect of the weight of a car on the
-fuel efficiency of the car (measures in miles per gallon). We state the
+fuel efficiency of the car (measured in miles per gallon). We state the
 following univariate regression model: \[
 y_i = \alpha + \beta x_i + \epsilon_i,
 \] where \(y\) denotes the fuel efficiency of the car, \(x\) denotes the
 weight of the car and subscript \(i\) stands for the \(i\)-th
 observation. \(\alpha\) and \(\beta\) are the parameters of the model
-and they are \textbf{unknown} so have to be \textbf{estimated}.
+and they are \textbf{unknown} so they have to be \textbf{estimated}.
 \(\epsilon\) is a so-called error term and denotes all the variation
-that is not captures by our two variables (\(\alpha\) and \(\beta\)) and
-our weight variable \(x\).
+that is not captured by our two variables (\(\alpha\) and \(\beta\)) and
+our weight of the car variable \(x\).
 
-The following observations are rather important:
+The following observations are very important:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -943,8 +1126,8 @@ The following observations are rather important:
 \item
   What is on the left hand side of the \(=\) sign is what is to be
   explained (in this case miles per gallon). What is on the right hand
-  side is what we use to explain \(y\). In this case \(x\), the weight
-  of the car.
+  side is what we use to explain \(y\); in this case being \(x\), the
+  weight of the car.
 \item
   The parameters \(\alpha\) en \(\beta\) constitute a \textbf{linear}
   relation between \(x\) and \(y\)
@@ -970,9 +1153,9 @@ The following observations are rather important:
 \end{enumerate}
 
 Now, let's assume that we want to incorporate another variable (say the
-number of cylinders \(c\)), because we think that that variable is very
-important in explaining miles per gallon. Then we get the following
-\emph{multivariate} regression model: \[
+number of cylinders, denoted by \(c\)), because we think that that
+variable is very important as well in explaining miles per gallon. Then
+we get the following \emph{multivariate} regression model: \[
 y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 \] where we now have two variables on the right hand side (\(x_i\) and
 \(c_i\)) and three parameters (\(\alpha\), \(\beta_1\) and \(\beta_2\)).
@@ -997,7 +1180,7 @@ assumptions hold:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  There are no large outliers
+  There are no large outliers.
 \item
   All left hand side (in this case \(y\)) and right side variables (in
   this case \(x\) and \(c\)) are \emph{i.i.d.}
@@ -1011,15 +1194,16 @@ outliers and think whether they are \emph{real} observations or perhaps
 typo's (in Excel or something). Do not throw outliers immediately away
 but check whether they are correct.
 
-The second is relatively easy to understand as well (but not that much
-in practice). \emph{i.i.d.} in this case stands for independently and
-identically distributed. This basically means that the observations in
-your dataset are independent from each other: in other words, the
-observations should have been correctly \emph{sampled}.
+The second is relatively easy to understand as well (but not that easy
+to uphold in practice). \emph{i.i.d.} in this case stands for
+independently and identically distributed. This basically means that the
+observations in your dataset are independent from each other: in other
+words, the observations should have been correctly \emph{sampled}.
 
 The third looks the most horrible, and, to be quite honest, is so--both
 in theory as in reality. This is also the assumption that is least well
-understood. And especially in assessing whether regression output is
+understood; below, I will give some intuition what this assumptions
+stands for. And especially in assessing whether regression output is
 correct (is your estimate \emph{really} close to \(\beta_1\)) this
 assumption is crucial.
 
@@ -1027,9 +1211,9 @@ assumption is crucial.
 them}\label{possible-violations-and-how-to-spot-them}
 
 A violation of the first assumption is usually easy to spot. There is a
-very strange outlier. But this also marks the importance of analysing
-\emph{descriptive statistics}, including means, maximums and minimums,
-scatterplots and histograms.
+very strange outlier somewhere. But this also signifies the importance
+of analysing \emph{descriptive statistics}, including means, maximums
+and minimums, scatterplots and histograms.
 
 Whether your data is not \emph{i.i.d.} can come because of a couple of
 reasons. The most straightforward is getting your data via snowballing
@@ -1046,28 +1230,29 @@ time-series, where what happened in the previous period might have a
 large effect on the current period.
 
 In general, however, violations of the \emph{i.i.d.} property are not
-that devestating for your model as long as you are only interested in
+that devastating for your model as long as you are only interested in
 finding the true \(\beta_1\): namely, it usually only affects the
 precision of your estimate (the standard error) and not the estimate
 itself. When this assumption is violated, we therefore say that the
-estimate is \textbf{inefficient}. When you want to predict however, this
-assumption is crucial, as you would like your estimate to be \emph{as
-precise} as possible.
+estimate is \textbf{inefficient}. When you want to predict, however,
+this assumption is crucial, as you would like your estimate to be
+\emph{as precise} as possible.
 
 When the third assumption is violated, we say that our estimate is
 \textbf{biased}, in other words \textbf{wrong}: our parameter estimate
 does not come close to the true parameter. And this happens more often
 than not. So, what does \(E[\epsilon|X=x] = 0\) actually mean. Loosely
 speaking, the parameters on the right hand side (in our case \(x\) and
-\(c\)) and the error term (\(\epsilon\)) are not allowed to be
-correlated. There are several ways that this might happen, from which
-the following are in our case the most relevant:
+\(c\)) on the one hand and the error term (\(\epsilon\)) on the other
+hand are not allowed to be correlated. There are several ways how this
+might happen, from which the following are in our case the most
+relevant:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
 \item
   Reverse causality: \(x\) impacts \(y\), but \(y\) might impact \(x\)
-  as well. This is the classical chicken and egg problem. Do firm
+  as well. This is the classical chicken and egg problem. Do firms
   perform better because of good management, or do good managers go to
   the better performing firms?
 \item
@@ -1087,7 +1272,7 @@ most important ones. Reverse causality is usually hard to correct for,
 but unobserved heterogeneity bias is luckily easier. Namely, we add
 \emph{relevant} control variables (as we did with \(c\)). In this case
 we can \emph{minimize} possible unobserved heterogeity bias.
-Misspefications are in general as well relative easy to correct for.
+Misspefications are in general as well relatively easy to correct for.
 From our descriptive statistics and scatterplot we usually can infer the
 relation between \(x\) and \(y\) and control for possible nonlinearities
 by using (natural) logarithms and squared terms.
@@ -1132,7 +1317,7 @@ errors). Nothing more, nothing less. And there are corrections for that
 \texttt{R}), so that nobody needs to care anymore about
 heteroskedasticity.
 
-Finally, there is multicollinearity. And this come in two flavours:
+Finally, there is multicollinearity. And this comes in two flavours:
 perfect and imperfect multicollinearity. Perfect multicollinearity
 occurs, e.g., when your model contains two identical variables. Then,
 OLS can not decide which one to use and usually one of the variables is
@@ -1166,7 +1351,7 @@ look at the descriptives of the dataset.
 \subsubsection{Descriptives}\label{descriptives}
 
 The build-in dataset \texttt{mtcars} has, besides several other
-variables, information on weight of a car in (1000 lbs or in about 450
+variables, information on weight of a car (in 1000 lbs or in about 450
 kilos) and miles per gallon. With the following command \texttt{head()}
 we can look at the first 6 observations.
 
@@ -1222,8 +1407,8 @@ gallon.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{./unnamed-chunk-31-1.pdf}
-\caption{\label{fig:unnamed-chunk-31}A scatterplog between miles per gallon
+\includegraphics{./unnamed-chunk-34-1.pdf}
+\caption{\label{fig:unnamed-chunk-34}A scatterplog between miles per gallon
 and car weight.}
 \end{figure}
 
@@ -1281,12 +1466,12 @@ stars. What do they all mean again? We focus on \texttt{wt} here
 
 The estimate is easy; that is \(\beta\) or the marginal effect of \(x\)
 on \(y\). So, increasing \(x\) with 1 (or with a 1000 lbs) decreases the
-miles per gallon with 5.3445 (which is quite lot).
+miles per gallon with 5.3445 (which is quite a lot).
 
-The standard error denote thes \emph{precision} of the estimate. As a
+The standard error denotes the \emph{precision} of the estimate. As a
 rule of thumb: you know with 95\% centainty that the true value of
-\(\beta\) lies within the interval {[}estimate - 2 \(\times\) standard
-error, estimate + 2 \(\times\) standard error{]}. The standard error is
+\(\beta\) lies within the interval {[}estimate \(- 2 \times\) standard
+error, estimate \(+ 2 \times\) standard error{]}. The standard error is
 very important and is used to \textbf{test} possible values of the
 parameter. One of the most important tests is whether \(\beta=0\). Why?
 Because, if \(\beta=0\) then the variable \texttt{wt} does nothing on
@@ -1295,7 +1480,7 @@ its associated probability and the corresponding star thingies. In this
 case, the \(t\)-value is high in an absolute sense, so it is \emph{very}
 improbable that the estimate could be zero (somehting like a probability
 of 0.0000000001 which is small indeed), and the stars neatly indicate
-that this probability (of \(\beta=0\) is smaller than 0.001.
+that this probability (of \(\beta=0\)) is smaller than 0.001.
 
 One nice trick is to plot the regression line in the scatterplot above.
 One can do so by the command \texttt{abline()} or:
@@ -1309,8 +1494,8 @@ One can do so by the command \texttt{abline()} or:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{./unnamed-chunk-33-1.pdf}
-\caption{\label{fig:unnamed-chunk-33}A scatterplog between miles per gallon
+\includegraphics{./unnamed-chunk-36-1.pdf}
+\caption{\label{fig:unnamed-chunk-36}A scatterplog between miles per gallon
 and car weight with regression line.}
 \end{figure}
 
@@ -1360,7 +1545,7 @@ the estimate now differs. It has become an elasticity with size
 fuel efficiency of the car goes down by 84\%!
 
 Secondly, you might want to include other variables, such as being a
-foreing car (opposite to a car from USA) (\texttt{vs}), the number of
+foreing car (opposite to a car from the US) (\texttt{vs}), the number of
 cylinders (\texttt{cyl}), the gross horsepower (\texttt{hp}) and how
 quick the car does over a quarter of a mile (\texttt{qsec}). Again, we
 are not interested in these additional variables or whether they crank
@@ -1410,7 +1595,7 @@ Hopefully you agree that the regression output of above looks
 \textbf{horrible} and that you do not need all these statistics and
 stuff. Therefore, you need to construct your own table for presentation
 format. The minimum what should be in these tables are the coefficient
-names, the estimates, the standard errors (and the start would be nice
+names, the estimates, the standard errors (and the stars would be nice
 as well), the \(R^2\) and the number of observations used.
 
 Unfortunately, creating tables of your own is a pain in the \ldots{}
@@ -1420,9 +1605,9 @@ packages one can use. I prefer the package Stargazer and after using
 this package we get the following outcome for our logarithmic
 specification:\footnote{To get nice tables directly into \texttt{Word},
   you need something else (as you can imagine, because \texttt{Word} is
-  not scriptable). With Stargazer shoud give the command as such
+  not scriptable). With Stargazer you should give the command as such
   \texttt{stargazer(logmodel,\ extendedmodel,\ out\ =\ "table1.txt",omit.stat\ =\ c("rsq",\ "f"))}
-  and there after you can read in and edit the table
+  and thereafter you can read in and edit the table
   \texttt{table1.txt}in \texttt{Word}.}
 
 \begin{Shaded}
@@ -1521,11 +1706,11 @@ possible biases. Here again come the three least squares assumptions:
 \def\labelenumi{\arabic{enumi}.}
 \item
   No large outliers: we have checked that with our descriptive
-  statistics and our scatterplot and it seems that assumption is met.
+  statistics and our scatterplot and it seems that this assumption is
+  met.
 \item
   Both miles per gallon and car weight should be \emph{i.i.d.}. We can
-  reasonably assume that the sampling has been correctly and that this
-  is the case.
+  reasonably assume that the sampling has been done correctly.
 \item
   The following condition should hold: \(E[\epsilon|X=x] = 0\). This one
   is dubious. Probably there is no reverse causality (difficult to image
@@ -1599,8 +1784,8 @@ Let us have a look at \texttt{g\_4}
 \end{Shaded}
 
 \begin{verbatim}
-## IGRAPH U--- 4 4 -- 
-## + edges:
+## IGRAPH 803f1cd U--- 4 4 -- 
+## + edges from 803f1cd:
 ## [1] 1--2 2--3 3--4 1--4
 \end{verbatim}
 
@@ -1616,7 +1801,7 @@ leads to:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-40-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 The connectivity matrix of the network can be directly given by:
 
@@ -1651,7 +1836,7 @@ with as plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \texttt{+-+}, in combination with the command
@@ -1664,7 +1849,7 @@ Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-47-1.pdf}
 
 Finally, we can influence the color and sizes (amongst others) of all
 the elements of the network, so:
@@ -1675,7 +1860,7 @@ the elements of the network, so:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-45-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-48-1.pdf}
 
 However, this way of creating of networks is not very efficient. We
 therefore offer some other ways as well, starting with created directly
@@ -1695,7 +1880,7 @@ and no links.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 The other extreme is obviously the fully connected network. With the
 command \texttt{make\_full\_graph(40)} we can create a fully connected
@@ -1709,7 +1894,7 @@ time to create that network (with \(500 \times 500 - 500\) links)).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-50-1.pdf}
 
 The \texttt{make\_star(500)} command create a star network (or a
 hub-and-spoke network) with 500 nodes.
@@ -1721,7 +1906,7 @@ hub-and-spoke network) with 500 nodes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 With the \texttt{make\_tree(500,\ children\ =\ 3,\ mode="undirected}
 command, we create an undirected hierarchical tree with each time tree
@@ -1734,7 +1919,7 @@ children
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 And the \texttt{graph.ring(500)} creates a ring (or line) structure
 where each node is connected to two other nodes in a sequential way
@@ -1746,7 +1931,7 @@ where each node is connected to two other nodes in a sequential way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-50-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 For the real-world network we can use the following commands. First, the
 command \texttt{erdos.renyi.game(500,\ 0.005)} creates a random network,
@@ -1759,7 +1944,7 @@ node.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-54-1.pdf}
 
 For the small-world network, we need to rewire the ring network. We can
 do by the command \texttt{rewire} as follows:
@@ -1770,7 +1955,7 @@ do by the command \texttt{rewire} as follows:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 Note that the probability of rewiring is now 0.5.
 
@@ -1785,32 +1970,11 @@ network with the following underlying formula \(P(k) = k^{-0.5}\).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 Note the tree-like structure.
 
 \subsubsection{Reading in networks}\label{reading-in-networks}
-
-There are various sources for networks on the internet. One of them is
-\href{http://nexus.igraph.org/}{nexus}. With the following command I
-import a network from this website:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{g_florence <-}\StringTok{ }\KeywordTok{nexus_get}\NormalTok{(}\StringTok{"padgett"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-which contains business and marriage ties (PADGB)in 14th century
-Florence and looks like this
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(g_florence$PADGB)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 Another good but smaller source is the \texttt{igraphdata} package which
 actually contains a network of american domestic flights.
@@ -1833,7 +1997,7 @@ Something like (I took and modified the example from
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 Note that this only requires a from and to columns in a \texttt{.csv}
 file, which resembles trade, commuting, migration and transport networks
@@ -1870,6 +2034,8 @@ convert this data in a igraph structure with \texttt{graph.data.frame}.
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{htmlwidget-2f5437846f355938e32a}{}
+
 \subsection{Network characteristics}\label{network-characteristics}
 
 So, it is fine that you have a network, but what about the network
@@ -1877,75 +2043,36 @@ characteristics. Well these are easily given once you have a network.
 
 For density, or the completeness of the network, one can look at
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{edge_density}\NormalTok{(g_florence$PADGB)}
-\end{Highlighting}
-\end{Shaded}
+\section{\texorpdfstring{\texttt{\{r\}\ \#\ edge\_density(g\_florence\$PADGB)\ \#}}{\{r\} \# edge\_density(g\_florence\$PADGB) \#}}\label{r-edge_densityg_florencepadgb}
 
-\begin{verbatim}
-## [1] 0.1666667
-\end{verbatim}
+\section{}\label{section}
 
-Which give the proportion of the present edges from all possible edges
-in the network.
+\section{Which give the proportion of the present edges from all
+possible edges in the
+network.}\label{which-give-the-proportion-of-the-present-edges-from-all-possible-edges-in-the-network.}
 
-The diameter of a network can be retrieved as:
+\section{}\label{section-1}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{diameter}\NormalTok{(g_florence$PADGB)}
-\end{Highlighting}
-\end{Shaded}
+\section{The diameter of a network can be retrieved
+as:}\label{the-diameter-of-a-network-can-be-retrieved-as}
 
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
+\section{}\label{section-2}
+
+\section{\texorpdfstring{\texttt{\{r\}\ \#\ diameter(g\_florence\$PADGB)\ \#}}{\{r\} \# diameter(g\_florence\$PADGB) \#}}\label{r-diameterg_florencepadgb}
 
 somewhat more interesting is given by the degree function which gives
 the number of connections. For our power-law network this amounts to
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{deg <-}\StringTok{ }\KeywordTok{degree}\NormalTok{(g_power_law)}
-\NormalTok{deg}
-\end{Highlighting}
-\end{Shaded}
+\section{\texorpdfstring{\texttt{\{r\}\ \#\ deg\ \textless{}-\ degree(g\_power\_law)\ \#\ deg\ \#}}{\{r\} \# deg \textless{}- degree(g\_power\_law) \# deg \#}}\label{r-deg---degreeg_power_law-deg}
 
-\begin{verbatim}
-##   [1]  8  6 11 13 13  3  7  8  7  4  6 12  8  1  8  1  2  6  8  6  5  5  8
-##  [24]  1  7  5  3  1  1  4  6  1  4  4  6  6  4  2  2  2  1  3  5  1  1  1
-##  [47]  4  9  6  2  1  3  2  3  7  6  4  4  2  7  5  8  4  4  6  3  3  5  1
-##  [70]  1  2  3  1  7  1  7  5  4  4  5  2  4  1  2  2  1  3  2  2  1  1  2
-##  [93]  4  7  4  4  1  1  4  1  2  1  1  1  1  1  1  5  1  1  2  1  2  3  4
-## [116]  2  1  1  1  2  3  3  1  2  5  2  3  4  2  2  1  4  1  2  2  1  1  1
-## [139]  2  1  4  3  1  1  1  1  2  1  4  1  1  1  2  2  1  6  1  1  2  2  3
-## [162]  2  1  3  2  4  3  5  1  1  2  3  2  6  3  3  1  3  3  1  1  2  1  3
-## [185]  1  1  1  2  3  1  1  3  1  1  2  2  2  3  1  2  1  1  1  1  1  2  2
-## [208]  1  1  3  3  1  5  3  2  1  1  1  1  2  1  4  1  2  3  1  1  1  1  1
-## [231]  1  1  2  2  1  3  1  1  2  1  4  1  1  1  2  1  1  2  2  2  2  1  2
-## [254]  1  1  1  1  1  2  2  1  1  2  1  1  1  1  1  1  1  1  2  1  1  2  1
-## [277]  1  2  1  1  1  2  1  1  2  1  1  1  2  1  1  1  1  3  1  3  1  1  1
-## [300]  2  1  1  1  1  1  2  2  2  1  2  2  1  2  1  1  1  1  2  1  1  1  2
-## [323]  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  2  1  2  1  2  1  2  2
-## [346]  1  1  1  1  2  1  1  1  1  1  1  2  1  1  1  1  2  1  1  1  2  2  1
-## [369]  1  1  2  1  1  1  2  1  1  1  1  1  1  2  2  1  1  1  1  1  1  1  1
-## [392]  1  1  1  1  1  1  1  2  1  2  2  1  1  1  1  1  1  1  1  1  1  1  1
-## [415]  1  1  1  1  1  3  1  1  2  1  1  1  1  1  1  1  1  1  2  2  1  1  1
-## [438]  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  1  1  2  1  1  1  1  1
-## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
-\end{verbatim}
+\section{}\label{section-3}
 
-which is not that insightful, but a histogram is:
+\section{which is not that insightful, but a histogram
+is:}\label{which-is-not-that-insightful-but-a-histogram-is}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{hist}\NormalTok{(deg)}
-\end{Highlighting}
-\end{Shaded}
+\section{}\label{section-4}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
+\section{\texorpdfstring{\texttt{\{r,\ message=FALSE\}\ \#\ hist(deg)\ \#}}{\{r, message=FALSE\} \# hist(deg) \#}}\label{r-messagefalse-histdeg}
 
 Which is typical for a power-law.
 
@@ -1957,71 +2084,13 @@ The \texttt{degree\_distribution} is insightful here as well
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 Finally, we may be interested in the shortest path. This can easily be
 retrieved using distances (with underlying Dijkstra's algorithm) as
 follows for the Florence network:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{distances}\NormalTok{(g_florence$PADGB)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##           ACCIAIUOL ALBIZZI BARBADORI BISCHERI CASTELLAN GINORI GUADAGNI
-## ACCIAIUOL         0       2         2        4         3      3        3
-## ALBIZZI           2       0         2        2         3      1        1
-## BARBADORI         2       2         0        3         1      3        3
-## BISCHERI          4       2         3        0         2      3        1
-## CASTELLAN         3       3         1        2         0      4        3
-## GINORI            3       1         3        3         4      0        2
-## GUADAGNI          3       1         3        1         3      2        0
-## LAMBERTES         4       2         4        2         4      3        1
-## MEDICI            1       1         1        3         2      2        2
-## PAZZI             3       3         3        5         4      4        4
-## PERUZZI           4       3         2        1         1      4        2
-## PUCCI           Inf     Inf       Inf      Inf       Inf    Inf      Inf
-## RIDOLFI           2       2         2        2         2      3        2
-## SALVIATI          2       2         2        4         3      3        3
-## STROZZI           3       3         2        1         1      4        2
-## TORNABUON         2       2         2        2         3      3        1
-##           LAMBERTES MEDICI PAZZI PERUZZI PUCCI RIDOLFI SALVIATI STROZZI
-## ACCIAIUOL         4      1     3       4   Inf       2        2       3
-## ALBIZZI           2      1     3       3   Inf       2        2       3
-## BARBADORI         4      1     3       2   Inf       2        2       2
-## BISCHERI          2      3     5       1   Inf       2        4       1
-## CASTELLAN         4      2     4       1   Inf       2        3       1
-## GINORI            3      2     4       4   Inf       3        3       4
-## GUADAGNI          1      2     4       2   Inf       2        3       2
-## LAMBERTES         0      3     5       3   Inf       3        4       3
-## MEDICI            3      0     2       3   Inf       1        1       2
-## PAZZI             5      2     0       5   Inf       3        1       4
-## PERUZZI           3      3     5       0   Inf       2        4       1
-## PUCCI           Inf    Inf   Inf     Inf     0     Inf      Inf     Inf
-## RIDOLFI           3      1     3       2   Inf       0        2       1
-## SALVIATI          4      1     1       4   Inf       2        0       3
-## STROZZI           3      2     4       1   Inf       1        3       0
-## TORNABUON         2      1     3       3   Inf       1        2       2
-##           TORNABUON
-## ACCIAIUOL         2
-## ALBIZZI           2
-## BARBADORI         2
-## BISCHERI          2
-## CASTELLAN         3
-## GINORI            3
-## GUADAGNI          1
-## LAMBERTES         2
-## MEDICI            1
-## PAZZI             3
-## PERUZZI           3
-## PUCCI           Inf
-## RIDOLFI           1
-## SALVIATI          2
-## STROZZI           2
-## TORNABUON         0
-\end{verbatim}
+\section{\texorpdfstring{\texttt{\{r\}\ \#\ distances(g\_florence\$PADGB)\ \#}}{\{r\} \# distances(g\_florence\$PADGB) \#}}\label{r-distancesg_florencepadgb}
 
 Note that the Pucci family is not in the network and therefore the
 distances are set to infinity.
