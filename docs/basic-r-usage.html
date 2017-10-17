@@ -25,7 +25,7 @@
 <meta name="author" content="Thomas de Graaff">
 
 
-<meta name="date" content="2016-10-19">
+<meta name="date" content="2017-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -312,14 +312,14 @@ df_grades &lt;-<span class="st"> </span><span class="kw">data.frame</span>(Names
   <span class="kw">return</span>(x^<span class="dv">2</span> +<span class="st"> </span>y^<span class="dv">2</span> +<span class="st"> </span><span class="dv">10</span>*x +<span class="st"> </span><span class="dv">12</span>*<span class="st"> </span>y -<span class="st"> </span><span class="dv">10</span>)
 }</code></pre></div>
 <p>Note that the <code>return()</code> is not necessary, as long as it is the last statement that you make.</p>
-<p>And we invoke the function for <span class="math inline">\(x=2\)</span> and <span class="math inline">\(y=2\)</span> as follows:</p>
+<p>And we invoke the function for <span class="math inline">\(x=2\)</span> and <span class="math inline">\(y=2\)</span>, or for <span class="math inline">\(x=2\)</span> and <span class="math inline">\(y=3\)</span>, or even for <span class="math inline">\(x=42\)</span> and <span class="math inline">\(y=42\)</span>,as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">2</span>,<span class="dv">2</span>)</code></pre></div>
 <pre><code>## [1] 42</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Why not, why not</span></code></pre></div>
 <pre><code>## [1] 59</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">zvalue</span>(<span class="dv">42</span>,<span class="dv">42</span>) <span class="co"># The answer to everying squared!</span></code></pre></div>
 <pre><code>## [1] 4442</code></pre>
-<p>In fact, we now see as well why functions are so useful. We can invoke them multiple time with different parameters.</p>
+<p>In fact, we now see as well why functions are so useful. We can invoke them multiple times with different parameters.</p>
 </div>
 <div id="regression-modeling" class="section level2">
 <h2><span class="header-section-number">3.6</span> Regression modeling</h2>
@@ -333,13 +333,13 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y         x
-## 1 5.040180 0.5870677
-## 2 5.565579 0.4840062
-## 3 3.573128 0.2387901
-## 4 6.167622 0.6865136
-## 5 2.595035 0.1461433
-## 6 3.900908 0.4097261</code></pre>
+<pre><code>##          y           x
+## 1 4.265370 0.670692675
+## 2 5.975114 0.805880995
+## 3 2.584399 0.007362912
+## 4 7.525057 0.937456517
+## 5 5.673946 0.584580522
+## 6 7.855942 0.927313220</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
 <p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First look at the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
@@ -351,7 +351,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.006        6.245</code></pre>
+##       2.011        6.315</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -360,18 +360,18 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.24773 -0.76314 -0.08729  0.54621  2.88716 
+## -1.98101 -0.74311  0.00882  0.70486  2.63105 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.0062     0.2375   8.447  2.8e-13 ***
-## x             6.2455     0.3863  16.168  &lt; 2e-16 ***
+## (Intercept)   2.0107     0.1875   10.73   &lt;2e-16 ***
+## x             6.3153     0.3443   18.34   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.003 on 98 degrees of freedom
-## Multiple R-squared:  0.7273, Adjusted R-squared:  0.7245 
-## F-statistic: 261.4 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 1.034 on 98 degrees of freedom
+## Multiple R-squared:  0.7744, Adjusted R-squared:  0.7721 
+## F-statistic: 336.4 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
 <p><img src="unnamed-chunk-26-1.png" width="672" /><img src="unnamed-chunk-26-2.png" width="672" /><img src="unnamed-chunk-26-3.png" width="672" /><img src="unnamed-chunk-26-4.png" width="672" /></p>
