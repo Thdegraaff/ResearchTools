@@ -1,3 +1,37 @@
+---
+title: "Research Tools for Social Scientists"
+author: "Thomas de Graaff"
+date: "October 17, 2017"
+always_allow_html: yes
+output:
+  bookdown::gitbook: default
+  bookdown::epub_book: default
+  bookdown::pdf_book:
+    citation_package: natbib
+    includes:
+       in_header: preamble.tex
+    keep_tex: yes
+    latex_engine: xelatex
+site: bookdown::bookdown_site
+github-repo: Thdegraaff/Research_tools_for_social_scientists
+---
+
+# Introduction 
+## Preface
+## Where to get `R`
+## Structure of the book
+
+<!--chapter:end:index.rmd-->
+
+
+# Why bother?
+## Why do we need all this?
+## Why use `R` and not other applications?
+## R Markdown: a wonderful life in plain text
+## Regression analysis: not again!
+
+<!--chapter:end:01-introduction.Rmd-->
+
 # Basic `R` Usage
 
 ```{r, message=FALSE, warning=FALSE}
@@ -273,3 +307,39 @@ ggplot(df, aes(x,y))+geom_point() + geom_density2d()
 ## Recap
 
 For the absolute beginner `R` is huge and daunting. You need to learn by taking small steps and by practicing (a lot). Do not aim immediately at big and complex projects but start small and at the basics. You will then learn that you quickly make progress and at a certain time even become efficienter than when using mouse driven tools (clicking) as `Excel` or `SPSS`. In later chapters I dive in to some more detailed topics, and hopefully the material provides you with a background solid enough to understand and work with those topics using `R`.  
+
+<!--chapter:end:02-usingr.Rmd-->
+
+
+# Digression: Linear Regression and how to apply it
+## Theoretical background {#sec:theory}
+### The model
+### The least squares assumptions
+### Possible violations and how to spot them
+### Normality, heteroskedasticity and multicollinearity
+## Applications of linear regression {#sec:applications}
+### Descriptives
+### Baseline model
+### Specificion issues
+### Reporting
+### Internal validation
+
+<!--chapter:end:03-linearregression.Rmd-->
+
+
+# Network analysis with `R`
+## Introduction
+## Creating networks
+### Creating network yourself
+### Structured networks
+### Reading in networks
+### Sankey networks
+## Network characteristics
+
+<!--chapter:end:04-networkanalysis.Rmd-->
+
+
+# In conclusion
+
+<!--chapter:end:05-conclusion.Rmd-->
+
