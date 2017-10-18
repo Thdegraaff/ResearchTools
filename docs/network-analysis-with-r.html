@@ -192,7 +192,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(<span class="st">&quot;networkD3&quot;</span>)</code></pre></div>
 <div id="introduction-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
-<p>Network analysis is huge and applied in many disciplines, ranging from mathematics to sociology. In <code>R</code> there are many packages available. We will use the <code>igraph</code> package, which seems to be the most encompassing.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics.</p>
+<p>Network analysis is a huge topic and applied in many disciplines, ranging from mathematics to sociology. In <code>R</code> there are many packages available. We will use the <code>igraph</code> package, which seems to be the most encompassing.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics.</p>
 </div>
 <div id="creating-networks" class="section level2">
 <h2><span class="header-section-number">5.2</span> Creating networks</h2>
@@ -200,17 +200,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="creating-network-yourself" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Creating network yourself</h3>
 <p>First of all, I will show how to create a network “by hand”. We first start with an undirected network. Suppose we have a network with four nodes (named 1,2, 3 and, you guessed it, 4). Then we can create a graph called <code>g_4</code> by:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4 &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Let us have a look at <code>g_4</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4</code></pre></div>
-<pre><code>## IGRAPH 6f83950 U--- 4 4 -- 
-## + edges from 6f83950:
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_<span class="dv">4</span></code></pre></div>
+<pre><code>## IGRAPH 550719b U--- 4 4 -- 
+## + edges from 550719b:
 ## [1] 1--2 2--3 3--4 1--4</code></pre>
 <p>So, <code>g_4</code> is an igraph sort of object which has four edges <code>1--2 2--3 3--4 1--4</code>. Note that these coincide with <code>c(1,2,2,3,3,4, 4,1)</code>, so an edge is always formed by two components (they do not have to be numbers). Now plotting <code>g_4</code> leads to:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_<span class="dv">4</span>)</code></pre></div>
 <p><img src="ResearchTools_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p>The connectivity matrix of the network can be directly given by:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4[]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_<span class="dv">4</span>[]</code></pre></div>
 <pre><code>## 4 x 4 sparse Matrix of class &quot;dgCMatrix&quot;
 ##             
 ## [1,] . 1 . 1
@@ -218,12 +218,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [3,] . 1 . 1
 ## [4,] 1 . 1 .</code></pre>
 <p>Now, for more directed graphs we need to set <code>directed = TRUE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_4 &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">graph</span> (<span class="dt">edges =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>), <span class="dt">n =</span> <span class="dv">4</span>, <span class="dt">directed =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>with as plot</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_4)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(g_<span class="dv">4</span>)</code></pre></div>
 <p><img src="ResearchTools_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Graphs may also be generated by using <code>-</code>, <code>-+</code> and <code>+-+</code>, in combination with the command <code>graph_from_literal</code>. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_directed &lt;-<span class="st"> </span><span class="kw">graph_from_literal</span>(A-+B, B +-+<span class="st"> </span>C, C+-A)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g_directed &lt;-<span class="st"> </span><span class="kw">graph_from_literal</span>(A<span class="op">-+</span>B, B <span class="op">+-+</span><span class="st"> </span>C, C<span class="op">+-</span>A)
 <span class="kw">plot</span>(g_directed)</code></pre></div>
 <p><img src="ResearchTools_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>Finally, we can influence the color and sizes (amongst others) of all the elements of the network, so:</p>
@@ -295,15 +295,15 @@ g_relations &lt;-<span class="st"> </span><span class="kw">graph.data.frame</spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Read in the data in a dataframe called Data</span>
 Data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Migration_Corop_2003.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
 <span class="co"># We filter some of the data so that our sankey diagram will not be too large</span>
-Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, To &lt;<span class="st"> </span><span class="dv">25</span>)
-Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, From &lt;<span class="st"> </span><span class="dv">25</span>)
+Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, To <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span>)
+Data &lt;-<span class="st"> </span><span class="kw">filter</span>(Data, From <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span>)
 <span class="co"># Create a variable for the names of the node (both on the left and right side)</span>
-DataNames &lt;-<span class="st"> </span><span class="kw">rep</span>(Data$NameFrom[<span class="dv">1</span>:<span class="dv">8</span>], <span class="dt">times=</span><span class="dv">2</span>)
+DataNames &lt;-<span class="st"> </span><span class="kw">rep</span>(Data<span class="op">$</span>NameFrom[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">times=</span><span class="dv">2</span>)
 <span class="co"># Create a dataframe of this variable names</span>
 Names &lt;-<span class="st"> </span><span class="kw">data.frame</span>(DataNames, <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)
 <span class="co"># Revalue To and From such that they nicely count up to the number of nodes (Note, we start at index number 0!)</span>
-Data$To &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">8</span>:<span class="dv">15</span>, <span class="dt">each=</span><span class="dv">8</span>)
-Data$From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>:<span class="dv">7</span>, <span class="dt">times=</span><span class="dv">8</span>)
+Data<span class="op">$</span>To &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">8</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">each=</span><span class="dv">8</span>)
+Data<span class="op">$</span>From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">times=</span><span class="dv">8</span>)
 
 <span class="co"># Now plot network</span>
 <span class="kw">sankeyNetwork</span>(<span class="dt">Links =</span> Data, <span class="co"># which dataframe to be used for the flows</span>
@@ -315,8 +315,8 @@ Data$From &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class=
               <span class="dt">NodeID =</span> <span class="st">&quot;DataNames&quot;</span>, <span class="co"># Variable that gives the names from the dataframe Names </span>
               <span class="dt">fontSize =</span> <span class="dv">14</span>,  <span class="co"># Make things look better</span>
               <span class="dt">nodeWidth =</span> <span class="dv">40</span>) <span class="co"># make things look good</span></code></pre></div>
-<div id="htmlwidget-91252816c5a3c7cc3d13" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-91252816c5a3c7cc3d13">{"x":{"links":{"source":[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7],"target":[8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15],"value":[0,374,255,134,396,172,3120,1718,299,0,1407,257,325,384,1662,87,216,1340,0,711,241,249,1001,73,106,258,416,0,1161,323,867,37,360,224,174,816,0,82,2331,138,107,228,128,224,88,0,2104,48,3432,1587,972,720,2632,1378,0,1496,1492,137,66,40,103,67,1871,0]},"nodes":{"name":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "],"group":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "]},"options":{"NodeID":"DataNames","NodeGroup":"DataNames","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":14,"fontFamily":null,"nodeWidth":40,"nodePadding":10,"units":"Migrants","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5aed239acf927aec94e9" style="width:672px;height:480px;" class="sankeyNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5aed239acf927aec94e9">{"x":{"links":{"source":[0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7,0,1,2,3,4,5,6,7],"target":[8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15],"value":[0,374,255,134,396,172,3120,1718,299,0,1407,257,325,384,1662,87,216,1340,0,711,241,249,1001,73,106,258,416,0,1161,323,867,37,360,224,174,816,0,82,2331,138,107,228,128,224,88,0,2104,48,3432,1587,972,720,2632,1378,0,1496,1492,137,66,40,103,67,1871,0]},"nodes":{"name":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "],"group":["Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek ","Utrecht ","Kop van Noord-Holland ","Alkmaar en omgeving ","IJmond ","Agglomeratie Haarlem ","Zaanstreek ","Groot-Amsterdam ","Het Gooi en Vechtstreek "]},"options":{"NodeID":"DataNames","NodeGroup":"DataNames","LinkGroup":null,"colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":14,"fontFamily":null,"nodeWidth":40,"nodePadding":10,"units":"Migrants","margin":{"top":null,"right":null,"bottom":null,"left":null},"iterations":32,"sinksRight":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="network-characteristics" class="section level2">

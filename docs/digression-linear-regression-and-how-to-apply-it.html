@@ -277,7 +277,7 @@ y_i = \alpha + \beta_1 x_i + \beta_2 c_i + \epsilon_i,
 ##  3rd Qu.:22.80   3rd Qu.:3.610  
 ##  Max.   :33.90   Max.   :5.424</code></pre>
 <p>There does not seem to be anything out of the ordinary here, but to be sure, we construct a scatterplot between weight of the car and miles per gallon.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg<span class="op">~</span>wt, mtcars)</code></pre></div>
 <div class="figure"><span id="fig:unnamed-chunk-34"></span>
 <img src="unnamed-chunk-34-1.png" alt="A scatterplog between miles per gallon and car weight." width="672" />
 <p class="caption">
@@ -289,7 +289,7 @@ Figure 4.1: A scatterplog between miles per gallon and car weight.
 <div id="baseline-model" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Baseline model</h3>
 <p>So, if we are only interested in the relation between weight of a car (the variable <code>wt</code>) and miles per gallon, we can easily perform the following regression (recall again that the command <code>lm()</code> performs a least squares estimation and that <code>&lt;-</code> denotes an assignment to a variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baselinemodel &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg~wt, mtcars)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">baselinemodel &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg<span class="op">~</span>wt, mtcars)
 <span class="kw">summary</span>(baselinemodel)</code></pre></div>
 <pre><code>## 
 ## Call:
@@ -313,8 +313,8 @@ Figure 4.1: A scatterplog between miles per gallon and car weight.
 <p>The estimate is easy; that is <span class="math inline">\(\beta\)</span> or the marginal effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>. So, increasing <span class="math inline">\(x\)</span> with 1 (or with a 1000 lbs) decreases the miles per gallon with 5.3445 (which is quite a lot).</p>
 <p>The standard error denotes the <em>precision</em> of the estimate. As a rule of thumb: you know with 95% centainty that the true value of <span class="math inline">\(\beta\)</span> lies within the interval [estimate <span class="math inline">\(- 2 \times\)</span> standard error, estimate <span class="math inline">\(+ 2 \times\)</span> standard error]. The standard error is very important and is used to <strong>test</strong> possible values of the parameter. One of the most important tests is whether <span class="math inline">\(\beta=0\)</span>. Why? Because, if <span class="math inline">\(\beta=0\)</span> then the variable <code>wt</code> does nothing on <code>mpg</code>. This specific test is always denoted by the <span class="math inline">\(t\)</span>-value, its associated probability and the corresponding star thingies. In this case, the <span class="math inline">\(t\)</span>-value is high in an absolute sense, so it is <em>very</em> improbable that the estimate could be zero (somehting like a probability of 0.0000000001 which is small indeed), and the stars neatly indicate that this probability (of <span class="math inline">\(\beta=0\)</span>) is smaller than 0.001.</p>
 <p>One nice trick is to plot the regression line in the scatterplot above. One can do so by the command <code>abline()</code> or:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg~wt, mtcars)
-<span class="kw">abline</span>(<span class="kw">lm</span>(mpg~wt, mtcars))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mpg<span class="op">~</span>wt, mtcars)
+<span class="kw">abline</span>(<span class="kw">lm</span>(mpg<span class="op">~</span>wt, mtcars))</code></pre></div>
 <div class="figure"><span id="fig:unnamed-chunk-36"></span>
 <img src="unnamed-chunk-36-1.png" alt="A scatterplog between miles per gallon and car weight with regression line." width="672" />
 <p class="caption">
@@ -325,7 +325,7 @@ Figure 4.2: A scatterplog between miles per gallon and car weight with regressio
 <div id="specificion-issues" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Specificion issues</h3>
 <p>I can imagine that you are not very satisfied yet with the analysis. First of all, the relation between <code>mpg</code> and <code>wt</code> might be nonlinear and, secondly, you would like to include additional variables. First we look at the possible nonlinearity in the regression relation (note that we can use the regression formula as before, but that we can specify logarithmic relations by <code>log()</code>):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)~<span class="kw">log</span>(wt), mtcars)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)<span class="op">~</span><span class="kw">log</span>(wt), mtcars)
 <span class="kw">summary</span>(logmodel)</code></pre></div>
 <pre><code>## 
 ## Call:
@@ -347,7 +347,7 @@ Figure 4.2: A scatterplog between miles per gallon and car weight with regressio
 ## F-statistic: 124.4 on 1 and 30 DF,  p-value: 3.406e-12</code></pre>
 <p>We have now the same type of output as before, but I would like to focus on two things here. First, the <span class="math inline">\(R^2\)</span> has gone up and that is what you typically get in the social sciences. Logarithmically transformed variables usually <strong>fit</strong> better. Secondly, the interpretation of the estimate now differs. It has become an elasticity with size <span class="math inline">\(-0.84\)</span>, which is quite high again. If the car doubles in weights, the fuel efficiency of the car goes down by 84%!</p>
 <p>Secondly, you might want to include other variables, such as being a foreing car (opposite to a car from the US) (<code>vs</code>), the number of cylinders (<code>cyl</code>), the gross horsepower (<code>hp</code>) and how quick the car does over a quarter of a mile (<code>qsec</code>). Again, we are not interested in these additional variables or whether they crank up the <span class="math inline">\(R^2\)</span>. The only thing we are interested is in whether the coefficient of <code>log(wt)</code> changes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">extendedmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)~<span class="kw">log</span>(wt)+vs+cyl +<span class="st"> </span>hp +<span class="st"> </span>qsec, mtcars)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">extendedmodel &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">log</span>(mpg)<span class="op">~</span><span class="kw">log</span>(wt)<span class="op">+</span>vs<span class="op">+</span>cyl <span class="op">+</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>qsec, mtcars)
 <span class="kw">summary</span>(extendedmodel)</code></pre></div>
 <pre><code>## 
 ## Call:

@@ -8,7 +8,7 @@ library("networkD3")
 
 ## Introduction
 
-Network analysis is huge and applied in many disciplines, ranging from mathematics to sociology. In `R` there are many packages available. We will use the `igraph` package, which seems to be the most encompassing.[^tutorial] The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics. 
+Network analysis is a huge topic and applied in many disciplines, ranging from mathematics to sociology. In `R` there are many packages available. We will use the `igraph` package, which seems to be the most encompassing.[^tutorial] The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics. 
 
 [^tutorial]: Obviously I want to provide a self-contained manual, however, there are as well some pretty good and more extensive tutorials on internet: e.g., the one over [here](http://kateto.net/networks-r-igraph/).
 
