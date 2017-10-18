@@ -421,10 +421,23 @@ At the moment there are \emph{many} tutorials, blogs, youtube clips, and
 background materials about using \texttt{R} on the internet. I therefore
 do not intend to write a complete handbook, but focus instead on what I
 need for my courses. Moreover, I do not intend to teach the very basic
-stuff. There is very good tutorial package out there called Swirl (see
-as well the website: \url{http://swirlstats.com/students.html}). I very
-much recommend using this package for absolute beginners. The way to do
-this is rather simple. First install the package by typing:
+stuff. There are very good online (and offline) tutorials out there. The
+RStudio \url{https://www.rstudio.com/online-learning/\#R}{]} gives a
+good overview of all the options.
+
+One tutorial I particularly enjoyed is the quick and free code school
+tutorial from O'Reilly (to be found here:
+\url{http://tryr.codeschool.com/}. Another option would be to take the
+introduction course from DataCamp
+\url{https://www.datacamp.com/courses/free-introduction-to-r}. Note that
+although both tutorials are free, subsequent tutorials are not. But for
+our purpose we only need the free introductions.
+
+For slightly more extensive material, there is a very good tutorial
+package out there called Swirl (see as well the website:
+\url{http://swirlstats.com/students.html}). I very much recommend using
+this package for absolute beginners. The way to do this is rather
+simple. First install the package by typing:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -864,12 +877,12 @@ checking this with
 
 \begin{verbatim}
 ##          y          x
-## 1 2.858058 0.20153805
-## 2 6.507901 0.43083945
-## 3 2.622260 0.18962624
-## 4 3.245422 0.09814036
-## 5 6.054300 0.42511502
-## 6 6.407707 0.42129878
+## 1 2.802321 0.11662009
+## 2 2.476864 0.05690395
+## 3 6.180196 0.84285697
+## 4 7.776698 0.90890444
+## 5 6.546026 0.63165184
+## 6 6.901733 0.68908606
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -912,7 +925,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.069        6.075
+##       1.871        6.015
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -932,18 +945,18 @@ gives you the following outcome
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -2.70878 -0.56968  0.03074  0.67789  3.06108 
+## -2.54300 -0.63022 -0.04414  0.61301  2.05909 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   2.0688     0.1858   11.14   <2e-16 ***
-## x             6.0746     0.3265   18.61   <2e-16 ***
+## (Intercept)   1.8708     0.1721   10.87   <2e-16 ***
+## x             6.0148     0.3368   17.86   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9535 on 98 degrees of freedom
-## Multiple R-squared:  0.7794, Adjusted R-squared:  0.7771 
-## F-statistic: 346.2 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9377 on 98 degrees of freedom
+## Multiple R-squared:  0.7649, Adjusted R-squared:  0.7625 
+## F-statistic: 318.9 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -1785,8 +1798,8 @@ Let us have a look at \texttt{g\_4}
 \end{Shaded}
 
 \begin{verbatim}
-## IGRAPH bac3020 U--- 4 4 -- 
-## + edges from bac3020:
+## IGRAPH 44e05f1 U--- 4 4 -- 
+## + edges from 44e05f1:
 ## [1] 1--2 2--3 3--4 1--4
 \end{verbatim}
 
@@ -2035,7 +2048,7 @@ convert this data in a igraph structure with \texttt{graph.data.frame}.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-8af44a266aba6fa76204}{}
+\hypertarget{htmlwidget-588d19a2f94d7adf1716}{}
 
 \subsection{Network characteristics}\label{network-characteristics}
 

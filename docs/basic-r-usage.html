@@ -194,7 +194,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The <code>R</code> programming language and software environment for statistical computing is an implementation of the proprietary <code>S</code> programming language by Ross Ithaka and Robert Gentleman in 1992. It quickly gained in popularity (see, e.g, this Nature article from 2014 <a href="http://www.nature.com/news/programming-tools-adventures-with-r-1.16609">Programming tools: Adventures with R</a>) and now has more than <strong>official</strong> 10,000 user contributed packages (see as well the blog piece <a href="https://www.r-bloggers.com/on-the-growth-of-cran-packages/">On the growth of CRAN packages</a>).</p>
 <div id="for-absolute-beginners" class="section level2">
 <h2><span class="header-section-number">3.1</span> For absolute beginners</h2>
-<p>At the moment there are <em>many</em> tutorials, blogs, youtube clips, and background materials about using <code>R</code> on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There is very good tutorial package out there called Swirl (see as well the website: <a href="http://swirlstats.com/students.html" class="uri">http://swirlstats.com/students.html</a>). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:</p>
+<p>At the moment there are <em>many</em> tutorials, blogs, youtube clips, and background materials about using <code>R</code> on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There are very good online (and offline) tutorials out there. The RStudio <a href="https://www.rstudio.com/online-learning/#R" class="uri">https://www.rstudio.com/online-learning/#R</a>] gives a good overview of all the options.</p>
+<p>One tutorial I particularly enjoyed is the quick and free code school tutorial from O’Reilly (to be found here: <a href="http://tryr.codeschool.com/" class="uri">http://tryr.codeschool.com/</a>. Another option would be to take the introduction course from DataCamp <a href="https://www.datacamp.com/courses/free-introduction-to-r" class="uri">https://www.datacamp.com/courses/free-introduction-to-r</a>. Note that although both tutorials are free, subsequent tutorials are not. But for our purpose we only need the free introductions.</p>
+<p>For slightly more extensive material, there is a very good tutorial package out there called Swirl (see as well the website: <a href="http://swirlstats.com/students.html" class="uri">http://swirlstats.com/students.html</a>). I very much recommend using this package for absolute beginners. The way to do this is rather simple. First install the package by typing:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</code></pre></div>
 <p>then start Swirl by first loading the package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;swirl&quot;</span>)</code></pre></div>
@@ -333,13 +335,13 @@ y_i = 2 + 6 x_i + \epsilon_i,
 \]</span> where <span class="math inline">\(\epsilon_i\)</span> is standard normally distributed (as I will explain later in Section <a href="digression-linear-regression-and-how-to-apply-it.html#sec:theory">4.1</a> this is for convenience but <strong>not</strong> absolutely needed to do linear regression).</p>
 <p>checking this with</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(df)</code></pre></div>
-<pre><code>##          y           x
-## 1 4.265370 0.670692675
-## 2 5.975114 0.805880995
-## 3 2.584399 0.007362912
-## 4 7.525057 0.937456517
-## 5 5.673946 0.584580522
-## 6 7.855942 0.927313220</code></pre>
+<pre><code>##          y         x
+## 1 4.855492 0.6288822
+## 2 2.795213 0.2021803
+## 3 6.614334 0.6558422
+## 4 3.480773 0.3412876
+## 5 7.540253 0.9320690
+## 6 4.109245 0.5941999</code></pre>
 <p>indeed shows the first 6 combination of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. If we now perform a linear regression, then we expect that the estimated intercept should be very close to 2 and the estimated slope parameter should be very close to 6. In <code>R</code> we have the command <code>lm()</code> (from linear model) to do this as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linear_model &lt;-<span class="st"> </span><span class="kw">lm</span>(y~x, <span class="dt">data =</span> df)</code></pre></div>
 <p>We now have performed a regression of <span class="math inline">\(y\)</span> onto <span class="math inline">\(x\)</span>, using the data <code>df</code> and save the result in a variable called linear_model. First look at the first part of the <code>lm(,)</code> expression. <code>y~x</code> means that <code>y</code> is the left-hand side variable and <code>x</code> the righ-hand side variable (if we have more variables, the formula becomes something as<code>y~x+u+v+w+z</code>). The second part of the <code>lm(,)</code> expression denotes the specific dataframe to be used. Namely, in <code>R</code> you can have multiple dataframes so you have to specify which one is to be used.</p>
@@ -351,7 +353,7 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.011        6.315</code></pre>
+##       2.126        5.750</code></pre>
 <p>But, you want more, right? Standard errors, t-statistics, R-squares, the whole lot. For this, you need the <code>summary()</code> command, which gives you the following outcome</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(linear_model)</code></pre></div>
 <pre><code>## 
@@ -360,18 +362,18 @@ y_i = 2 + 6 x_i + \epsilon_i,
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.98101 -0.74311  0.00882  0.70486  2.63105 
+## -2.77633 -0.50333 -0.05125  0.53769  2.43766 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.0107     0.1875   10.73   &lt;2e-16 ***
-## x             6.3153     0.3443   18.34   &lt;2e-16 ***
+## (Intercept)   2.1264     0.1972   10.79   &lt;2e-16 ***
+## x             5.7504     0.3444   16.70   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 1.034 on 98 degrees of freedom
-## Multiple R-squared:  0.7744, Adjusted R-squared:  0.7721 
-## F-statistic: 336.4 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.9778 on 98 degrees of freedom
+## Multiple R-squared:  0.7399, Adjusted R-squared:  0.7373 
+## F-statistic: 278.8 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Interestingly, our parameters are close to 2 and 6, but not that close (which happens with a limited amount of observations, notice as well the relatively large standard errors). So, the command <code>summary()</code> gives all the needed statistical output, but what about regression diagnostics. For this you can ask for a plot of the variable linear_model</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(linear_model)</code></pre></div>
 <p><img src="unnamed-chunk-26-1.png" width="672" /><img src="unnamed-chunk-26-2.png" width="672" /><img src="unnamed-chunk-26-3.png" width="672" /><img src="unnamed-chunk-26-4.png" width="672" /></p>
