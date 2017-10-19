@@ -1,3 +1,7 @@
 # In conclusion
 
-To be written
+`R` is a powerful program and in this webbook I only scratched the surface of it. Granted, `R` is not the best (actually, most beautiful) programming tool and its wealth of packages sometimes makes it hard to find the stuff you want, but in the end, it a a great tool for doing data science. 
+
+Does that mean, that we all should be data scientists and `R` is the best tool out there? No, for most students, more out of the box packages absolutely suffice (and `STATA` would then be a good candidate). And there are already enoough data scientists on this world---Uber that! But, `R` and `RStudio` is a good example of an alternative to the Microsoft office universe. Along with other tools, it can actually be part of a workflow which is not only open (open source), but as well as reproducible as possible. Something that is difficult to attain with `Excel` or `SPSS`. So, for some students (and scientists) `R` is therefore a great tool, if not only for dealing with large and complex databases. 
+
+As already mentioned, this webbook only a beginning and serves as a stepping stone for more and better `R` usage. The first thing I can advise to students that want to know more about `R` it to look at the great and wonderful `ggplot2` and `dplyr` packages. If there are killer apps in the datascience world, these are it. Moreover, `R` lends itself wonderful to be used in combination with other open source packages, such as for versioning (git), blogging (hugo), typesetting (latex), and making wonderful interactive web diagrams (with the shiny application). It truly is a wonderful world.
