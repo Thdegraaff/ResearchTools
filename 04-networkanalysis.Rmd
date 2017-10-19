@@ -3,6 +3,7 @@
 ```{r, message=FALSE, warning=FALSE}
 library("igraph")
 library("igraphdata")
+library("network")
 library("networkD3")
 ```
 
@@ -10,13 +11,13 @@ library("networkD3")
 
 Network analysis is a huge topic and applied in many disciplines, ranging from mathematics to sociology. In `R` there are many packages available. We will use the `igraph` package, which seems to be the most encompassing.[^tutorial] The next sections first starts with creating networks on our own (from scratch), then I show how to make structured networks and finally we create networks from data. Thereafter, I say something about creating interactive networks (those cool things, you sometimes see on internet). The last section deals with calculating network characteristics. 
 
-[^tutorial]: Obviously I want to provide a self-contained manual, however, there are as well some pretty good and more extensive tutorials on internet: e.g., the one over [here](http://kateto.net/networks-r-igraph/).
+[^tutorial]: Obviously, I want to provide a self-contained manual, however, there are as well some pretty good and more extensive tutorials on internet: e.g., the one over [here](http://kateto.net/networks-r-igraph/).
 
 ## Creating networks
 
 There are various ways to create a network: one can it oneself, one can create a structured network, and one can read a network from file or the internet. (The latter is typically done with very large and dynamics network data.)
 
-### Creating network yourself
+### Creating a network yourself
 
 First of all, I will show how to create a network "by hand". We first start with an undirected network. Suppose we have a network with four nodes (named 1,2, 3 and, you guessed it, 4). Then we can create a graph called `g_4` by: 
 
@@ -71,7 +72,7 @@ However, this way of creating of networks is not very efficient. We therefore of
 
 ### Structured networks
 
-With the package `igraph` it is rather straighforward to create structured networks. Let's start with an empty network. We therefore use the command `make_empty_graph(500` in order to create 500 nodes and no links.  
+With the package `igraph` it is rather straighforward to create structured networks. Let's start with an empty network. We therefore use the command `make_empty_graph(500)` in order to create 500 nodes and no links.  
 
 ```{r, message=FALSE}
 g_empty <- make_empty_graph(500)
@@ -85,13 +86,13 @@ g_full <- make_full_graph(40)
 plot(g_full, vertex.label= NA, edge.arrow.size=0.02,vertex.size = 0.5)
 ```
 
-The `make_star(500)` command create a star network (or a hub-and-spoke network) with 500 nodes.
+The `make_star(500)` command creates a star network (or a hub-and-spoke network) with 500 nodes.
 ```{r, message = FALSE}
 g_star <- make_star(500)
 plot(g_star, vertex.label= NA, edge.arrow.size=0.02,vertex.size = 0.5)
 ```
 
-With the `make_tree(500, children = 3, mode="undirected` command, we create an undirected hierarchical tree with each time tree children 
+With the `make_tree(500, children = 3, mode="undirected` command, we create an undirected hierarchical tree with each time three children 
 
 ```{r, message = FALSE}
 g_tree <- make_tree(500, children = 3, mode = "undirected")
@@ -105,20 +106,20 @@ g_ring <- graph.ring(500)
 plot(g_ring, vertex.label= NA, edge.arrow.size=0.02,vertex.size = 0.5)
 ```
 
-For the real-world network we can use the following commands. First, the command `erdos.renyi.game(500, 0.005)` creates a random network, where each node has a probability of 0.005 to be connected to each other node.  
+For real-world networks we can use the following commands. First, the command `erdos.renyi.game(500, 0.005)` creates a random network, where each node has a probability of 0.005 to be connected to each other node.  
 
 ```{r}
 plot(erdos.renyi.game(500, 0.005), vertex.label= NA, edge.arrow.size=0.02,vertex.size = 0.5)
 ```
 
-For the small-world network, we need to rewire the ring network. We can do by the command `rewire` as follows:
+For small-world networks, we need to rewire the ring network. We can do by the command `rewire` as follows:
 ```{r}
 plot(rewire(g_ring,each_edge(prob = 0.5)), vertex.label= NA, edge.arrow.size=0.02,vertex.size = 0.5)
 ```
 
 Note that the probability of rewiring is now 0.5.
 
-Finally, for a power-law we need to invoke an algorithm. In this case the `barabasi.game`, where we now create a power-law type of network with the following underlying formula $P(k) = k^{-0.5}$.
+Finally, for a power-law we need to invoke an algorithm. In this case the it is called `barabasi.game`, where we now create a power-law type of network with the following underlying formula $P(k) = k^{-0.5}$.
 
 ```{r, message = FALSE}
 g_power_law <- barabasi.game(500, 0.5)
@@ -129,17 +130,19 @@ Note the tree-like structure.
 
 ### Reading in networks
 
-<!-- There are various sources for networks on the internet. One of them is [nexus](http://nexus.igraph.org/). With the following command I import a network from this website: -->
+There are various sources for networks on the internet. One of them is the wonderful `network` package, which containts the famous florentine wedding network -->
 
-<!-- ```{r, message = FALSE} -->
-<!-- g_florence <- nexus_get("padgett") -->
-<!-- ``` -->
+```{r, message = FALSE}
+library("network")                 # Read in the library
+data(flo)                          # read built in data
+florence <- network(flo, directed = FALSE) # connect data to object
+```
 
-<!-- which contains business and marriage ties (PADGB) in 14th century Florence and looks like this -->
+which contains business and marriage ties (PADGB) in 14th century Florence and looks like this
 
-<!-- ```{r, message = FALSE} -->
-<!-- plot(g_florence$PADGB) -->
-<!-- ``` -->
+```{r, message = FALSE}
+plot(florence, displaylabels = TRUE) # plot the object
+```
 
 Another good but smaller source is the `igraphdata` package which actually contains a network of american domestic flights. 
 
@@ -193,30 +196,31 @@ So, it is fine that you have a network, but what about the network characteristi
 
 For density, or the completeness of the network,  one can look at 
 
-# ```{r}
-# edge_density(g_florence$PADGB)
-# ```
-# 
-# Which give the proportion of the present edges from all possible edges in the network. 
-# 
-# The diameter of a network can be retrieved as:
-# 
-# ```{r}
-# diameter(g_florence$PADGB)
-# ```
+```{r}
+ i_florence <- graph_from_adjacency_matrix(flo, mode = "undirected")
+ edge_density(i_florence)
+```
+ 
+Which give the proportion of the present edges from all possible edges in the network. 
+
+The diameter of a network can be retrieved as:
+ 
+```{r}
+diameter(i_florence)
+```
 
 somewhat more interesting is given by the degree function which gives the number of connections. For our power-law network this amounts to
 
-# ```{r}
-# deg <- degree(g_power_law)
-# deg
-# ```
-# 
-# which is not that insightful, but a histogram is:
-# 
-# ```{r, message=FALSE}
-# hist(deg)
-# ```
+```{r}
+ deg <- degree(g_power_law)
+ deg
+ ```
+ 
+ which is not that insightful, but a histogram is:
+ 
+```{r, message=FALSE}
+ hist(deg)
+ ```
 
 Which is typical for a power-law.
 
@@ -228,8 +232,8 @@ plot(degree_distribution(g_power_law, cumulative = TRUE))
 
 Finally, we may be interested in the shortest path. This can easily be retrieved using distances (with underlying Dijkstra's algorithm) as follows for the Florence network:
 
-# ```{r}
-# distances(g_florence$PADGB)
-# ```
+```{r}
+distances(i_florence)
+```
 
 Note that the Pucci family is not in the network and therefore the distances are set to infinity. 
