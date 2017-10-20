@@ -11,7 +11,7 @@ The `R` programming language and software environment for statistical computing 
 
 ## For absolute beginners
 
-At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There are very good online (and offline) tutorials out there. The RStudio [https://www.rstudio.com/online-learning/#R](https://www.rstudio.com/online-learning/#R)] gives a good overview of all the options. 
+At the moment there are *many* tutorials, blogs, youtube clips, and background materials about using `R` to be found on the internet. I therefore do not intend to write a complete handbook, but focus instead on what I need for my courses. Moreover, I do not intend to teach the very basic stuff. There are very good online (and offline) tutorials out there. For beginners a good start is the [Introduction to R](http://colinfay.me/intro-to-r/) tutorial in bookform. The RStudio [https://www.rstudio.com/online-learning/#R](https://www.rstudio.com/online-learning/#R)] gives a good overview of all the online learning options. 
 
 One tutorial I particularly enjoyed is the quick and free code school tutorial from O'Reilly (to be found here: [http://tryr.codeschool.com/](http://tryr.codeschool.com/). Another option would be to take the introduction course from DataCamp [https://www.datacamp.com/courses/free-introduction-to-r](https://www.datacamp.com/courses/free-introduction-to-r). Note that although both tutorials are free, subsequent tutorials are not. But for our purpose we only need the free introductions.
  
