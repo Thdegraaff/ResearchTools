@@ -1,0 +1,28 @@
+# R Markdown: your life in plain text
+
+```{r, message=FALSE, warning=FALSE}
+library("rmarkdown")
+```
+
+## Why bother with a mark-up language?
+
+R Markdown is a so-called mark-up language. And these are more common than some would believe. For starters, the whole internet is made of mark-up languages, with as best well-know example the `html` format. Here, we deal with R Markdown which is a variant on the now very popular Markdown language. Originally, [John Gruber](https://daringfireball.net/projects/markdown/syntax) created the language in 2004 and is extremely simple (hence the name mark*down*): there is just not that many syntax to learn. One of the most attractive features of markdown is that it can be converted or exported to other formats, most notably pdf (via LaTeX) and html. Therefore, markdown became **very** popular for writers who wanted to write *distraction free*. It works more or less similar to the well known writing application Scrivener (which can actually import and export Markdown). Other types of applications are blogging with Wordpress and the online (nerd) repository GitHub (btw, all resources for this book can be found on [Github](https://github.com/Thdegraaff/ResearchTools); of course in markdown).
+
+Building on Markdown, the people of [RStudio](http://rmarkdown.rstudio.com) added some additional features, most notably including the possibility of adding equations and literature programming (writing text/documentation and code together). They bundled this in a package called RMarkdown, although it actually still is Markdown with some additional flavour. The nice thingabout this is that is works (well, should work) directly out of the box. So, clicking on `File > New File > R Markdown` already gives an example file that enables you to create a webpage or Word document. 
+
+## So, how does it work? 
+
+
+### Equations
+
+## Literate programming
+
+
+
+## Exporting ("knitting") to html, pdf or Word
+
+## As conclusion some final remarks
+
+My aim is not that everyone should use this tool to create documents, presentations or blog posts. This is not the "best" tool for everyone (heck, there is not even a "best" tool). And for some of you this feels too cumbersome, nerdy, or outright dreary. However, I would like to present you this as an alternative to the Microsoft Office universe. As Word or Powerpoint definitely have advantages (everyone uses it), they also have some disadvantages. First of all, equations and source code are sometimes cumbersome to implement, converting to blogposts could be nightmarish, and immediately incorporating statistical output in the form of tables is not possible. 
+
+Well, you never know. Some of you actually might find this useful. 
