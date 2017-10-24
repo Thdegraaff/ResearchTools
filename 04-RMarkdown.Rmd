@@ -12,6 +12,22 @@ Building on Markdown, the people of [RStudio](http://rmarkdown.rstudio.com) adde
 
 ## So, how does it work? 
 
+I first explain the basics of rmarkdown, then the working of the frontmatter (the "YAML") and finally how to insert equations. Note that I keep to the basics here; for a good overview, see RStudio's [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf).
+
+### Basics
+
+### The YAML
+
+YAML stands for *Yet another Meta Language* and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example `title: "Tutorial 1"` denotes that the title of the document is "Tutorial 1". There are some other variables, but typically they are filled in by RStudio itself. YAML always come between `---` chunks, so a full example would be:
+
+```{r, eval=FALSE}}
+---
+title: "Tutorial 1"
+author: "Thomas de Graaff"
+---
+``` 
+
+The most important thing to remember is that this frontmatter, the YAML, says something about the content but is not part of the content itself.
 
 ### Equations
 
