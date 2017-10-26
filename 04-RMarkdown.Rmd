@@ -12,15 +12,90 @@ Building on Markdown, the people of [RStudio](http://rmarkdown.rstudio.com) adde
 
 ## So, how does it work? 
 
-I first explain the basics of rmarkdown, then the working of the frontmatter (the "YAML") and finally how to insert equations. Note that I keep to the basics here; for a good overview, see RStudio's [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf).
+I first explain the basics of Rmarkdown, then the working of the frontmatter (the "YAML") and finally how to insert equations. Note that I keep to the basics here; for a good overview, see RStudio's [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf).
 
 ### Basics
+
+With a mark-up language, there is some code or tags around text. Fortunately, with Markdown this is rather easy. 
+
+#### Headers
+
+To structure a text, headers are indispensable. Headers are denoted with a hashtag (`#`), where the number of `#`'s indicated the level of the header. So:
+
+```{markdown, eval=FALSE}
+# Header 1
+## (Sub-)header 2
+## (Subsub-) header 3
+``` 
+
+#### Bold, italics, and verbatim text
+
+Making text bold or verbatim (the latter is like code font) is rather straightforward and works as follows:
+
+```{markdown}
+*Italics*; **bold** and `verbatim` 
+```
+
+looks as *Italics*; **bold** and `verbatim`. 
+
+#### Lists
+
+Unorded lists are very simple (as long as the indentation is correct; four space are needed), so
+
+```{markdown}
+* unordered list
+    + sub-item 1
+    + sub-item 2
+        - sub-sub-item 1 
+```
+yields:
+
+* unordered list
+    + sub-item 1
+    + sub-item 2
+        - sub-sub-item 1 
+
+Orded lists work likewise:
+
+```{markdown}
+1. ordered list
+2. item 2
+    i. sub-item 1
+        a. sub-sub-item 1 
+```
+yields:
+
+1. ordered list
+2. item 2
+    i. sub-item 1
+        a. sub-sub-item 1 
+        
+#### Links and the like
+
+Finally, links (to whatever) are inserted as with first square brackets and then parentheses, so:
+
+```{markdown}
+[http://thomasdegraaff.nl/ResearchTools](ResearchTools)
+```
+
+yields:
+[http://thomasdegraaff.nl/ResearchTools](ResearchTools)
+
+Inserting images works likewise, but then with a exclamation mark in front, then a caption in square brackets and then a path to where the image can be found, so:
+
+```{markdown}
+![Social networks with R](Network.png)
+```
+
+displaus the Network.png picture as follows:
+
+![Social networks with R](Network.png)
 
 ### The YAML
 
 YAML stands for *Yet another Meta Language* and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example `title: "Tutorial 1"` denotes that the title of the document is "Tutorial 1". There are some other variables, but typically they are filled in by RStudio itself. YAML always come between `---` chunks at the *beginning* of your document, so a full example would be:
 
-```{r, eval=FALSE}
+```{markdown, eval=FALSE}
 ---
 title: "Tutorial 1"
 author: "Thomas de Graaff"

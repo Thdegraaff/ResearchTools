@@ -152,7 +152,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.3" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#equations"><i class="fa fa-check"></i><b>5.2.3</b> Equations</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#literate-programming"><i class="fa fa-check"></i><b>5.3</b> Literate programming</a></li>
-<li class="chapter" data-level="5.4" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#exporting-knitting-to-html-pdf-or-word"><i class="fa fa-check"></i><b>5.4</b> Exporting (“knitting”) to html, pdf or Word</a></li>
+<li class="chapter" data-level="5.4" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#exporting-knitting-to-html-pdf-or-word"><i class="fa fa-check"></i><b>5.4</b> Exporting (“knitting”) to html, pdf or Word</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#exporting-to-presentations"><i class="fa fa-check"></i><b>5.4.1</b> Exporting to presentations</a></li>
+</ul></li>
 <li class="chapter" data-level="5.5" data-path="r-markdown-your-life-in-plain-text.html"><a href="r-markdown-your-life-in-plain-text.html#as-conclusion-some-final-remarks"><i class="fa fa-check"></i><b>5.5</b> As conclusion some final remarks</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="network-analysis-with-r.html"><a href="network-analysis-with-r.html"><i class="fa fa-check"></i><b>6</b> Network analysis with <code>R</code></a><ul>
@@ -193,18 +195,80 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="so-how-does-it-work" class="section level2">
 <h2><span class="header-section-number">5.2</span> So, how does it work?</h2>
-<p>I first explain the basics of rmarkdown, then the working of the frontmatter (the “YAML”) and finally how to insert equations. Note that I keep to the basics here; for a good overview, see RStudio’s <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">cheatsheet</a>.</p>
+<p>I first explain the basics of Rmarkdown, then the working of the frontmatter (the “YAML”) and finally how to insert equations. Note that I keep to the basics here; for a good overview, see RStudio’s <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">cheatsheet</a>.</p>
 <div id="basics" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Basics</h3>
+<p>With a mark-up language, there is some code or tags around text. Fortunately, with Markdown this is rather easy.</p>
+<div id="headers" class="section level4">
+<h4><span class="header-section-number">5.2.1.1</span> Headers</h4>
+<p>To structure a text, headers are indispensable. Headers are denoted with a hashtag (<code>#</code>), where the number of <code>#</code>’s indicated the level of the header. So:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="fu"># Header 1</span>
+<span class="fu">## (Sub-)header 2</span>
+<span class="fu">## (Subsub-) header 3</span></code></pre></div>
+</div>
+<div id="bold-italics-and-verbatim-text" class="section level4">
+<h4><span class="header-section-number">5.2.1.2</span> Bold, italics, and verbatim text</h4>
+<p>Making text bold or verbatim (the latter is like code font) is rather straightforward and works as follows:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">*Italics*; **bold** and <span class="bn">`verbatim`</span> </code></pre></div>
+<p>looks as <em>Italics</em>; <strong>bold</strong> and <code>verbatim</code>.</p>
+</div>
+<div id="lists" class="section level4">
+<h4><span class="header-section-number">5.2.1.3</span> Lists</h4>
+<p>Unorded lists are very simple (as long as the indentation is correct; four space are needed), so</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">* <span class="fl">unordered list</span>
+<span class="fl">    + sub-item 1</span>
+<span class="fl">    + sub-item 2</span>
+<span class="fl">        - sub-sub-item 1 </span></code></pre></div>
+<p>yields:</p>
+<ul>
+<li>unordered list
+<ul>
+<li>sub-item 1</li>
+<li>sub-item 2
+<ul>
+<li>sub-sub-item 1</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Orded lists work likewise:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">1. <span class="fl">ordered list</span>
+<span class="fl">2. item 2</span>
+<span class="fl">    i. sub-item 1</span>
+<span class="fl">        a. sub-sub-item 1 </span></code></pre></div>
+<p>yields:</p>
+<ol style="list-style-type: decimal">
+<li>ordered list</li>
+<li>item 2
+<ol style="list-style-type: lower-roman">
+<li>sub-item 1
+<ol style="list-style-type: lower-alpha">
+<li>sub-sub-item 1</li>
+</ol></li>
+</ol></li>
+</ol>
+</div>
+<div id="links-and-the-like" class="section level4">
+<h4><span class="header-section-number">5.2.1.4</span> Links and the like</h4>
+<p>Finally, links (to whatever) are inserted as with first square brackets and then parentheses, so:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="ot">[http://thomasdegraaff.nl/ResearchTools](ResearchTools)</span></code></pre></div>
+<p>yields: <a href="ResearchTools">http://thomasdegraaff.nl/ResearchTools</a></p>
+<p>Inserting images works likewise, but then with a exclamation mark in front, then a caption in square brackets and then a path to where the image can be found, so:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="al">![Social networks with R](Network.png)</span></code></pre></div>
+<p>displaus the Network.png picture as follows:</p>
+<div class="figure">
+<img src="network.png" alt="Social networks with R" />
+<p class="caption">Social networks with R</p>
+</div>
+</div>
 </div>
 <div id="the-yaml" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> The YAML</h3>
-<p>YAML stands for <em>Yet another Meta Language</em> and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example <code>title: &quot;Tutorial 1&quot;</code> denotes that the title of the document is “Tutorial 1”. There are some other variables, but typically they are filled in by RStudio itself. YAML always come between <code>---</code> chunks, so a full example would be:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">---
-title:<span class="st"> &quot;Tutorial 1&quot;</span>
-author:<span class="st"> &quot;Thomas de Graaff&quot;</span>
+<p>YAML stands for <em>Yet another Meta Language</em> and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example <code>title: &quot;Tutorial 1&quot;</code> denotes that the title of the document is “Tutorial 1”. There are some other variables, but typically they are filled in by RStudio itself. YAML always come between <code>---</code> chunks at the <em>beginning</em> of your document, so a full example would be:</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">---
+title: &quot;Tutorial 1&quot;
+author: &quot;Thomas de Graaff&quot;
 ---</code></pre></div>
-<p>The most important thing to remember is that this frontmatter, the YAML, says something about the content but is not part of the content itself.</p>
+<p>The most important thing to remember here is that this frontmatter, the YAML, says something about the content but is not part of the content itself.</p>
 </div>
 <div id="equations" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Equations</h3>
@@ -215,6 +279,9 @@ author:<span class="st"> &quot;Thomas de Graaff&quot;</span>
 </div>
 <div id="exporting-knitting-to-html-pdf-or-word" class="section level2">
 <h2><span class="header-section-number">5.4</span> Exporting (“knitting”) to html, pdf or Word</h2>
+<div id="exporting-to-presentations" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Exporting to presentations</h3>
+</div>
 </div>
 <div id="as-conclusion-some-final-remarks" class="section level2">
 <h2><span class="header-section-number">5.5</span> As conclusion some final remarks</h2>
