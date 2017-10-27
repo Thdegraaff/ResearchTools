@@ -191,7 +191,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="why-bother-with-a-mark-up-language" class="section level2">
 <h2><span class="header-section-number">5.1</span> Why bother with a mark-up language?</h2>
 <p>R Markdown is a so-called mark-up language. And these are more common than some would believe. For starters, the whole internet is made of mark-up languages, with as best well-know example the <code>html</code> format. Here, we deal with R Markdown which is a variant on the now very popular Markdown language. Originally, <a href="https://daringfireball.net/projects/markdown/syntax">John Gruber</a> created the language in 2004 and is extremely simple (hence the name mark<em>down</em>): there is just not that many syntax to learn. One of the most attractive features of markdown is that it can be converted or exported to other formats, most notably pdf (via LaTeX) and html. Therefore, markdown became <strong>very</strong> popular for writers who wanted to write <em>distraction free</em>. It works more or less similar to the well known writing application Scrivener (which can actually import and export Markdown). Other types of applications are blogging with Wordpress and the online (nerd) repository GitHub (btw, all resources for this book can be found on <a href="https://github.com/Thdegraaff/ResearchTools">Github</a>; of course in markdown).</p>
-<p>Building on Markdown, the people of <a href="http://rmarkdown.rstudio.com">RStudio</a> added some additional features, most notably including the possibility of adding equations and literature programming (writing text/documentation and code together). They bundled this in a package called RMarkdown, although it actually still is Markdown with some additional flavour. The nice thingabout this is that is works (well, should work) directly out of the box. So, clicking on <code>File &gt; New File &gt; R Markdown</code> already gives an example file that enables you to create a webpage or Word document.</p>
+<p>Building on Markdown, the people of <a href="http://rmarkdown.rstudio.com">RStudio</a> added some additional features, most notably including the possibility of adding equations and literature programming (writing text/documentation and code together). They bundled this in a package called RMarkdown, although it actually still is Markdown with some additional flavour. The nice thing about this is that it works (well, should work) directly out of the box. So, clicking on <code>File &gt; New File &gt; R Markdown</code> already gives an example file that enables you to create a webpage or Word document.</p>
 </div>
 <div id="so-how-does-it-work" class="section level2">
 <h2><span class="header-section-number">5.2</span> So, how does it work?</h2>
@@ -263,7 +263,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="the-yaml" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> The YAML</h3>
-<p>YAML stands for <em>Yet another Meta Language</em> and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example <code>title: &quot;Tutorial 1&quot;</code> denotes that the title of the document is “Tutorial 1”. There are some other variables, but typically they are filled in by RStudio itself. YAML always come between <code>---</code> chunks at the <em>beginning</em> of your document, so a full example would be:</p>
+<p>YAML stands for <em>Yet Another Meta Language</em> and is to be regarded as meta-data. It says something how your contents should look like and typically instructions come in key-value pairs. As an example <code>title: &quot;Tutorial 1&quot;</code> denotes that the title of the document is “Tutorial 1”. There are some other variables, but typically they are filled in by RStudio itself. YAML always come between <code>---</code> chunks at the <em>beginning</em> of your document, so a full example would be:</p>
 <div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">---
 title: &quot;Tutorial 1&quot;
 author: &quot;Thomas de Graaff&quot;
@@ -272,10 +272,17 @@ author: &quot;Thomas de Graaff&quot;
 </div>
 <div id="equations" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Equations</h3>
+<p>It is relatively straightforward to insert equations into a document, using LaTeX like syntax, which is remarkably similar as what you would do in Excel. In-line equations are denoted with a single pair of dollar signs. Stand alone equations with double pairs of dollar signs. So</p>
+<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
+$$ Q^\ast = \sqrt{\frac{sDK}{h}}$$</code></pre></div>
+<p>yields:</p>
+<p>While Einstein might favor <span class="math inline">\(E = mc^2\)</span>, the formula that would do it for me would be: <span class="math display">\[ Q^\ast = \sqrt{\frac{sDK}{h}}\]</span></p>
+<p>The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called <a href="https://www.mathjax.org/">MathJax</a>.</p>
 </div>
 </div>
 <div id="literate-programming" class="section level2">
 <h2><span class="header-section-number">5.3</span> Literate programming</h2>
+<p>Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most famous mark-up languages—LaTeX).</p>
 </div>
 <div id="exporting-knitting-to-html-pdf-or-word" class="section level2">
 <h2><span class="header-section-number">5.4</span> Exporting (“knitting”) to html, pdf or Word</h2>

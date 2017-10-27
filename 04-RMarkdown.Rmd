@@ -8,7 +8,7 @@ library("rmarkdown")
 
 R Markdown is a so-called mark-up language. And these are more common than some would believe. For starters, the whole internet is made of mark-up languages, with as best well-know example the `html` format. Here, we deal with R Markdown which is a variant on the now very popular Markdown language. Originally, [John Gruber](https://daringfireball.net/projects/markdown/syntax) created the language in 2004 and is extremely simple (hence the name mark*down*): there is just not that many syntax to learn. One of the most attractive features of markdown is that it can be converted or exported to other formats, most notably pdf (via LaTeX) and html. Therefore, markdown became **very** popular for writers who wanted to write *distraction free*. It works more or less similar to the well known writing application Scrivener (which can actually import and export Markdown). Other types of applications are blogging with Wordpress and the online (nerd) repository GitHub (btw, all resources for this book can be found on [Github](https://github.com/Thdegraaff/ResearchTools); of course in markdown).
 
-Building on Markdown, the people of [RStudio](http://rmarkdown.rstudio.com) added some additional features, most notably including the possibility of adding equations and literature programming (writing text/documentation and code together). They bundled this in a package called RMarkdown, although it actually still is Markdown with some additional flavour. The nice thingabout this is that is works (well, should work) directly out of the box. So, clicking on `File > New File > R Markdown` already gives an example file that enables you to create a webpage or Word document. 
+Building on Markdown, the people of [RStudio](http://rmarkdown.rstudio.com) added some additional features, most notably including the possibility of adding equations and literature programming (writing text/documentation and code together). They bundled this in a package called RMarkdown, although it actually still is Markdown with some additional flavour. The nice thing about this is that it works (well, should work) directly out of the box. So, clicking on `File > New File > R Markdown` already gives an example file that enables you to create a webpage or Word document. 
 
 ## So, how does it work? 
 
@@ -22,7 +22,7 @@ With a mark-up language, there is some code or tags around text. Fortunately, wi
 
 To structure a text, headers are indispensable. Headers are denoted with a hashtag (`#`), where the number of `#`'s indicated the level of the header. So:
 
-```{markdown, eval=FALSE}
+```{markdown}
 # Header 1
 ## (Sub-)header 2
 ## (Subsub-) header 3
@@ -93,7 +93,7 @@ displaus the Network.png picture as follows:
 
 ### The YAML
 
-YAML stands for *Yet another Meta Language* and is to be regarded as meta-data. It says somehting how your contents should look like and typically they come in key-value pairs. As an example `title: "Tutorial 1"` denotes that the title of the document is "Tutorial 1". There are some other variables, but typically they are filled in by RStudio itself. YAML always come between `---` chunks at the *beginning* of your document, so a full example would be:
+YAML stands for *Yet Another Meta Language* and is to be regarded as meta-data. It says something how your contents should look like and typically instructions come in key-value pairs. As an example `title: "Tutorial 1"` denotes that the title of the document is "Tutorial 1". There are some other variables, but typically they are filled in by RStudio itself. YAML always come between `---` chunks at the *beginning* of your document, so a full example would be:
 
 ```{markdown, eval=FALSE}
 ---
@@ -106,9 +106,23 @@ The most important thing to remember here is that this frontmatter, the YAML, sa
 
 ### Equations
 
+It is relatively straightforward to insert equations into a document, using LaTeX like syntax, which is remarkably similar as what you would do in Excel. In-line equations are denoted with a single pair of dollar signs. Stand alone equations with double pairs of dollar signs. So
+
+```{markdown, eval=FALSE}
+While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
+$$ Q^\ast = \sqrt{\frac{sDK}{h}}$$
+``` 
+
+yields:
+
+While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
+$$ Q^\ast = \sqrt{\frac{sDK}{h}}$$
+
+The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called [MathJax](https://www.mathjax.org/).  
+
 ## Literate programming
 
-
+Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most famous mark-up languages---LaTeX).
 
 ## Exporting ("knitting") to html, pdf or Word
 

@@ -879,13 +879,13 @@ checking this with
 \end{Shaded}
 
 \begin{verbatim}
-##          y          x
-## 1 2.929024 0.01208628
-## 2 6.556531 0.59187690
-## 3 5.942372 0.90946309
-## 4 6.262097 0.57606484
-## 5 3.594199 0.40525259
-## 6 6.641954 0.91884978
+##          y         x
+## 1 5.953196 0.3967588
+## 2 4.885434 0.4800479
+## 3 4.108080 0.3855051
+## 4 4.343306 0.5235265
+## 5 6.942139 0.8681887
+## 6 3.268571 0.3504102
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -928,7 +928,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       2.097        5.788
+##       1.879        6.034
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -948,18 +948,18 @@ gives you the following outcome
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.76113 -0.65827 -0.08801  0.63236  1.78640 
+## -2.18853 -0.68889  0.03957  0.64725  2.00197 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   2.0973     0.1945   10.78   <2e-16 ***
-## x             5.7881     0.3056   18.94   <2e-16 ***
+## (Intercept)   1.8787     0.1911   9.829 2.84e-16 ***
+## x             6.0339     0.3367  17.923  < 2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.8831 on 98 degrees of freedom
-## Multiple R-squared:  0.7855, Adjusted R-squared:  0.7833 
-## F-statistic: 358.8 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9398 on 98 degrees of freedom
+## Multiple R-squared:  0.7662, Adjusted R-squared:  0.7639 
+## F-statistic: 321.2 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -1781,8 +1781,8 @@ Building on Markdown, the people of
 features, most notably including the possibility of adding equations and
 literature programming (writing text/documentation and code together).
 They bundled this in a package called RMarkdown, although it actually
-still is Markdown with some additional flavour. The nice thingabout this
-is that is works (well, should work) directly out of the box. So,
+still is Markdown with some additional flavour. The nice thing about
+this is that it works (well, should work) directly out of the box. So,
 clicking on
 \texttt{File\ \textgreater{}\ New\ File\ \textgreater{}\ R\ Markdown}
 already gives an example file that enables you to create a webpage or
@@ -1933,9 +1933,9 @@ displaus the Network.png picture as follows:
 
 \subsubsection{The YAML}\label{the-yaml}
 
-YAML stands for \emph{Yet another Meta Language} and is to be regarded
-as meta-data. It says somehting how your contents should look like and
-typically they come in key-value pairs. As an example
+YAML stands for \emph{Yet Another Meta Language} and is to be regarded
+as meta-data. It says something how your contents should look like and
+typically instructions come in key-value pairs. As an example
 \texttt{title:\ "Tutorial\ 1"} denotes that the title of the document is
 ``Tutorial 1''. There are some other variables, but typically they are
 filled in by RStudio itself. YAML always come between \texttt{-\/-\/-}
@@ -1957,7 +1957,32 @@ itself.
 
 \subsubsection{Equations}\label{equations}
 
+It is relatively straightforward to insert equations into a document,
+using LaTeX like syntax, which is remarkably similar as what you would
+do in Excel. In-line equations are denoted with a single pair of dollar
+signs. Stand alone equations with double pairs of dollar signs. So
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{While Einstein might favor $E = mc^2$, the formula that would do it for me would be:}
+\NormalTok{$$ Q^\textbackslash{}ast = \textbackslash{}sqrt\{\textbackslash{}frac\{sDK\}\{h\}\}$$}
+\end{Highlighting}
+\end{Shaded}
+
+yields:
+
+While Einstein might favor \(E = mc^2\), the formula that would do it
+for me would be: \[ Q^\ast = \sqrt{\frac{sDK}{h}}\]
+
+The formulas are automatically parsed to a html like object through an
+integrated built-in Javascript program called
+\href{https://www.mathjax.org/}{MathJax}.
+
 \subsection{Literate programming}\label{literate-programming}
+
+Literate programming is a concept initially coined by the very
+distinguished computer scientist Donald Knuth (the same guy who wrote
+one the most famous mark-up languages---LaTeX).
 
 \subsection{\texorpdfstring{Exporting (``knitting'') to html, pdf or
 Word}{Exporting (knitting) to html, pdf or Word}}\label{exporting-knitting-to-html-pdf-or-word}
@@ -2038,8 +2063,8 @@ Let us have a look at \texttt{g\_4}
 \end{Shaded}
 
 \begin{verbatim}
-## IGRAPH 162b54b U--- 4 4 -- 
-## + edges from 162b54b:
+## IGRAPH f7afb49 U--- 4 4 -- 
+## + edges from f7afb49:
 ## [1] 1--2 2--3 3--4 1--4
 \end{verbatim}
 
@@ -2055,7 +2080,7 @@ leads to:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 The connectivity matrix of the network can be directly given by:
 
@@ -2090,7 +2115,7 @@ with as plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \texttt{+-+}, in combination with the command
@@ -2103,7 +2128,7 @@ Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 Finally, we can influence the color and sizes (amongst others) of all
 the elements of the network, so:
@@ -2114,7 +2139,7 @@ the elements of the network, so:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 However, this way of creating of networks is not very efficient. We
 therefore offer some other ways as well, starting with created directly
@@ -2134,7 +2159,7 @@ nodes and no links.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 The other extreme is obviously the fully connected network. With the
 command \texttt{make\_full\_graph(40)} we can create a fully connected
@@ -2148,7 +2173,7 @@ time to create that network (with \(500 \times 500 - 500\) links)).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 The \texttt{make\_star(500)} command creates a star network (or a
 hub-and-spoke network) with 500 nodes.
@@ -2160,7 +2185,7 @@ hub-and-spoke network) with 500 nodes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
 
 With the \texttt{make\_tree(500,\ children\ =\ 3,\ mode="undirected}
 command, we create an undirected hierarchical tree with each time three
@@ -2173,7 +2198,7 @@ children
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 And the \texttt{graph.ring(500)} creates a ring (or line) structure
 where each node is connected to two other nodes in a sequential way
@@ -2185,7 +2210,7 @@ where each node is connected to two other nodes in a sequential way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 For real-world networks we can use the following commands. First, the
 command \texttt{erdos.renyi.game(500,\ 0.005)} creates a random network,
@@ -2198,7 +2223,7 @@ node.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-63-1.pdf}
 
 For small-world networks, we need to rewire the ring network. We can do
 by the command \texttt{rewire} as follows:
@@ -2209,7 +2234,7 @@ by the command \texttt{rewire} as follows:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-64-1.pdf}
 
 Note that the probability of rewiring is now 0.5.
 
@@ -2225,7 +2250,7 @@ type of network with the following underlying formula
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-64-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-65-1.pdf}
 
 Note the tree-like structure.
 
@@ -2252,7 +2277,7 @@ Florence and looks like this
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-66-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-67-1.pdf}
 
 Another good but smaller source is the \texttt{igraphdata} package which
 actually contains a network of american domestic flights.
@@ -2275,7 +2300,7 @@ Something like (I took and modified the example from
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-67-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 Note that this only requires a from and to columns in a \texttt{.csv}
 file, which resembles trade, commuting, migration and transport networks
@@ -2312,7 +2337,7 @@ convert this data in a igraph structure with \texttt{graph.data.frame}.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-ce202025a867c02f4e43}{}
+\hypertarget{htmlwidget-6b6f5ccaa6a235481340}{}
 
 \subsection{Network characteristics}\label{network-characteristics}
 
@@ -2358,27 +2383,27 @@ the number of connections. For our power-law network this amounts to
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 13 12  7 12 11  4  4  9  3  7  4  3  5  4  5  4  3  9  1  4 10  3 10
-##  [24]  4  5  4  6  3  4 11  4  9  2  6  1  1  4  1  3  2  1  7  5  1  3  1
-##  [47]  6  4  1  5  3  8  1  3  1  2  2  3  4  4  2  1  5  3  3  4  1  1 10
-##  [70]  1  1  5  4  3  3  1  3  1  1  3  2  2  1  4  1  3  3  2  6  3  5  1
-##  [93]  3  4  5  3  2  3  3  1  2  1  4  1  4  1  1  2  5  2  3  2  2  3  3
-## [116]  3  6  2  6  1  1  1  1  2  2  2  3  2  2  1  9  5  1  1  2  2  2  2
-## [139]  4  1  3  4  1  1  4  2  2  2  2  3  1  1  5  2  2  1  2  3  1  1  1
-## [162]  2  3  1  1  4  2  1  2  4  2  2  1  5  2  2  1  4  1  2  7  1  1  1
-## [185]  2  2  1  1  2  1  1  1  1  2  2  1  2  2  1  1  2  1  2  1  3  3  1
-## [208]  2  2  2  1  2  3  1  2  4  1  1  2  3  1  2  1  2  1  1  1  1  1  2
-## [231]  1  1  1  2  1  4  3  1  1  1  1  1  3  2  2  1  2  4  3  1  1  2  1
-## [254]  2  1  2  1  1  1  1  1  3  1  1  2  1  3  2  1  2  2  1  1  1  2  2
-## [277]  1  2  1  1  1  3  1  1  1  1  1  1  2  1  1  2  1  1  1  1  1  1  3
-## [300]  2  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  2  1
-## [323]  1  1  1  2  1  1  1  1  2  1  1  3  1  1  1  2  1  1  1  1  1  1  1
-## [346]  1  1  1  1  1  3  1  2  1  1  1  2  1  1  2  1  2  1  1  1  1  3  1
-## [369]  1  1  1  1  1  1  1  1  1  2  2  1  1  1  1  1  1  1  1  1  1  1  1
-## [392]  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1
-## [415]  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  2  1  1  1  1
-## [438]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
-## [461]  1  1  2  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1
+##   [1] 20 14 14  2  7  5  5  7  1  9  8 10  4  1 10  9  3  4  1  5  1  3  7
+##  [24]  1  6  5  6  2  2  3  4  9 10  7  6  3  3  5  7  6  6  1 10  3  3  2
+##  [47]  1  6  1  6  7  2  7  5  3  2  4  1  3  3  2  4  2  1  3  2  2  1  6
+##  [70]  3  4  4  8  1  6  1  1  1  4  3  2  5  2  1  2  2  3  1  3  4  1  4
+##  [93]  2  1  1  2  1  1  1  3  5  3  1  1  1  1  3  2  1  3  4  1  1  2  1
+## [116]  1  2  3  5  3  1  4  1  5  1  1  1  1  1  1  1  2  1  1  1  1  1  3
+## [139]  2  4  1  4  1  1  1  3  1  1  1  1  2  2  5  1  1  1  1  2  2  1  2
+## [162]  3  1  1  4  1  3  5  1  1  1  4  1  2  2  1  3  1  1  1  1  1  2  1
+## [185]  3  2  4  2  1  3  1  3  4  2  3  1  1  2  1  2  2  4  1  1  1  1  2
+## [208]  1  2  1  1  2  3  1  1  3  3  1  3  1  3  2  1  1  1  1  2  1  1  1
+## [231]  1  2  3  1  2  2  1  3  2  1  5  2  2  1  2  1  1  1  4  1  5  1  1
+## [254]  1  1  1  1  2  1  1  1  3  1  2  3  1  1  1  4  2  1  1  2  1  1  1
+## [277]  1  1  1  1  1  2  1  2  2  2  1  3  2  1  1  1  1  1  2  1  1  1  3
+## [300]  1  1  2  1  1  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  2  1  1
+## [323]  1  1  1  1  4  1  2  3  1  2  1  3  1  1  1  1  1  3  1  1  1  3  1
+## [346]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  2  1  1  3  1  1  1  1  2
+## [369]  1  1  2  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  2  1  1  1  1
+## [392]  1  2  1  1  2  1  1  1  1  1  3  1  1  1  1  1  2  1  1  1  2  1  1
+## [415]  1  2  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
+## [438]  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
+## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 ## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 \end{verbatim}
 
@@ -2390,7 +2415,7 @@ which is not that insightful, but a histogram is:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-72-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 Which is typical for a power-law.
 
@@ -2402,7 +2427,7 @@ The \texttt{degree\_distribution} is insightful here as well
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 Finally, we may be interested in the shortest path. This can easily be
 retrieved using distances (with underlying Dijkstra's algorithm) as
