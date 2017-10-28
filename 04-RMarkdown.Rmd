@@ -2,6 +2,7 @@
 
 ```{r, message=FALSE, warning=FALSE}
 library("rmarkdown")
+library("knitr")
 ```
 
 ## Why bother with a mark-up language?
@@ -22,7 +23,7 @@ With a mark-up language, there is some code or tags around text. Fortunately, wi
 
 To structure a text, headers are indispensable. Headers are denoted with a hashtag (`#`), where the number of `#`'s indicated the level of the header. So:
 
-```{markdown}
+```{r, eval = FALSE}
 # Header 1
 ## (Sub-)header 2
 ## (Subsub-) header 3
@@ -32,7 +33,7 @@ To structure a text, headers are indispensable. Headers are denoted with a hasht
 
 Making text bold or verbatim (the latter is like code font) is rather straightforward and works as follows:
 
-```{markdown}
+```{r, eval = FALSE}
 *Italics*; **bold** and `verbatim` 
 ```
 
@@ -42,7 +43,7 @@ looks as *Italics*; **bold** and `verbatim`.
 
 Unorded lists are very simple (as long as the indentation is correct; four space are needed), so
 
-```{markdown}
+```{r, eval = FALSE}
 * unordered list
     + sub-item 1
     + sub-item 2
@@ -57,7 +58,7 @@ yields:
 
 Orded lists work likewise:
 
-```{markdown}
+```{r, eval = FALSE}
 1. ordered list
 2. item 2
     i. sub-item 1
@@ -74,7 +75,7 @@ yields:
 
 Finally, links (to whatever) are inserted as with first square brackets and then parentheses, so:
 
-```{markdown}
+```{r, eval = FALSE}
 [http://thomasdegraaff.nl/ResearchTools](ResearchTools)
 ```
 
@@ -83,7 +84,7 @@ yields:
 
 Inserting images works likewise, but then with a exclamation mark in front, then a caption in square brackets and then a path to where the image can be found, so:
 
-```{markdown}
+```{r, eval = FALSE}
 ![Social networks with R](Network.png)
 ```
 
@@ -95,7 +96,7 @@ displaus the Network.png picture as follows:
 
 YAML stands for *Yet Another Meta Language* and is to be regarded as meta-data. It says something how your contents should look like and typically instructions come in key-value pairs. As an example `title: "Tutorial 1"` denotes that the title of the document is "Tutorial 1". There are some other variables, but typically they are filled in by RStudio itself. YAML always come between `---` chunks at the *beginning* of your document, so a full example would be:
 
-```{markdown, eval=FALSE}
+```{r, eval=FALSE}
 ---
 title: "Tutorial 1"
 author: "Thomas de Graaff"
@@ -108,7 +109,7 @@ The most important thing to remember here is that this frontmatter, the YAML, sa
 
 It is relatively straightforward to insert equations into a document, using LaTeX like syntax, which is remarkably similar as what you would do in Excel. In-line equations are denoted with a single pair of dollar signs. Stand alone equations with double pairs of dollar signs. So
 
-```{markdown, eval=FALSE}
+```{r eval=FALSE}
 While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
 $$ Q^\ast = \sqrt{\frac{sDK}{h}}$$
 ``` 
@@ -118,15 +119,48 @@ yields:
 While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
 $$ Q^\ast = \sqrt{\frac{sDK}{h}}$$
 
-The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called [MathJax](https://www.mathjax.org/).  
+The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called [MathJax](https://www.mathjax.org/). See for some background material concerning LaTeX equations this [Wikibook](https://en.wikibooks.org/wiki/LaTeX/Mathematics).
 
 ## Literate programming
 
-Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most famous mark-up languages---LaTeX).
+Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most (in)famous mark-up languages of them all---LaTeX). Literate programming basically means that code and text (documentation) are written together, which is wonderful for, e.g., reproducible research. With one command both text (say your paper) and the analysis are generated. 
+
+Whether literate programming is always a good idea for a larger project is debatable. Some people argue to keep code and text (documentation) separated. However, for educational and smaller scientific purposes, such as theses, papers and tutorials, it can be a great tool. Fortunately, R studio and RMarkdown provide a great and relatively straightforward way to engage in literate programming with the use of the package `knitr` (see as well this [website](https://yihui.name/knitr/)).
+
+`knitr` is very powerful, but for now I just give the basics. Say, one invokes the car dataset and would like to perform a regression and a scatterplot, then the following might do this trick:
+
+` ```{r}` 
+
+` data("cars")    # Use built in dataset `
+
+` summary(cars)` 
+
+` plot(cars$speed, cars$dist)` 
+
+` summary(lm(dist~speed, data = cars))`
+
+` ``` `
+
+Which renders:
+
+```{r}
+data("cars")    # Use built in dataset 
+summary(cars)
+plot(cars$speed, cars$dist)
+summary(lm(dist~speed, data = cars))
+```
+
+`knitr` can deal with various options, so as to hide the results or the code. Even different programming languages such as Python or Bash can be indicated as for proper syntax highlighting. For inline code one use backticks and the indicate r, such as around r 1+2, which renders in `r 1+2`. 
 
 ## Exporting ("knitting") to html, pdf or Word
 
+Perhaps the biggest advantage of using (R) Markdown is that it is all just plain text. And as such, it can be easily exported to other (prettier) formats, such as html or pdf. RMarkdown documents can actually be exported to Word documents, although that is typically less pretty. If you would like to convert to pdf then you need a LaTeX engine installed on your computer. And that is quite a hefty download. However, on the plus side, just download and install it and under the hood of RStudio all the magic happens. So, you can have nice and pretty LaTeX document without actually touching upon LaTeX mark-up code (which, believe me, is not that pretty).
+
 ### Exporting to presentations
+
+There are kinds of other benefits to using RMarkdown, but a **big** one is that it is pretty easy to make presentation slides (using `File > New File > R Markdown > Presentation`). So you can create a fancy html presentation with proper equations, code with syntax highlighting and figures (or statistical output if really wanted). 
+
+Better, when LaTeX is installed you can create a LaTeX (beamer) presentation on the fly and looking all nerdy with it! And in the output options you can easily indicate the theme and colorscheme (e.g., my lecture slides use the Darmstadt-beaver combination). 
 
 ## As conclusion some final remarks
 

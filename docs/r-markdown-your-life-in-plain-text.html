@@ -187,7 +187,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="r-markdown-your-life-in-plain-text" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> R Markdown: your life in plain text</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)
+<span class="kw">library</span>(<span class="st">&quot;knitr&quot;</span>)</code></pre></div>
 <div id="why-bother-with-a-mark-up-language" class="section level2">
 <h2><span class="header-section-number">5.1</span> Why bother with a mark-up language?</h2>
 <p>R Markdown is a so-called mark-up language. And these are more common than some would believe. For starters, the whole internet is made of mark-up languages, with as best well-know example the <code>html</code> format. Here, we deal with R Markdown which is a variant on the now very popular Markdown language. Originally, <a href="https://daringfireball.net/projects/markdown/syntax">John Gruber</a> created the language in 2004 and is extremely simple (hence the name mark<em>down</em>): there is just not that many syntax to learn. One of the most attractive features of markdown is that it can be converted or exported to other formats, most notably pdf (via LaTeX) and html. Therefore, markdown became <strong>very</strong> popular for writers who wanted to write <em>distraction free</em>. It works more or less similar to the well known writing application Scrivener (which can actually import and export Markdown). Other types of applications are blogging with Wordpress and the online (nerd) repository GitHub (btw, all resources for this book can be found on <a href="https://github.com/Thdegraaff/ResearchTools">Github</a>; of course in markdown).</p>
@@ -202,23 +203,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="headers" class="section level4">
 <h4><span class="header-section-number">5.2.1.1</span> Headers</h4>
 <p>To structure a text, headers are indispensable. Headers are denoted with a hashtag (<code>#</code>), where the number of <code>#</code>’s indicated the level of the header. So:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="fu"># Header 1</span>
-<span class="fu">## (Sub-)header 2</span>
-<span class="fu">## (Subsub-) header 3</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Header 1</span>
+## (Sub-)header 2
+## (Subsub-) header 3</code></pre></div>
 </div>
 <div id="bold-italics-and-verbatim-text" class="section level4">
 <h4><span class="header-section-number">5.2.1.2</span> Bold, italics, and verbatim text</h4>
 <p>Making text bold or verbatim (the latter is like code font) is rather straightforward and works as follows:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">*Italics*; **bold** and <span class="bn">`verbatim`</span> </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">*</span>Italics<span class="op">*</span>; <span class="op">**</span>bold<span class="op">**</span><span class="st"> </span>and <span class="st">`</span><span class="dt">verbatim</span><span class="st">`</span> </code></pre></div>
 <p>looks as <em>Italics</em>; <strong>bold</strong> and <code>verbatim</code>.</p>
 </div>
 <div id="lists" class="section level4">
 <h4><span class="header-section-number">5.2.1.3</span> Lists</h4>
 <p>Unorded lists are very simple (as long as the indentation is correct; four space are needed), so</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">* <span class="fl">unordered list</span>
-<span class="fl">    + sub-item 1</span>
-<span class="fl">    + sub-item 2</span>
-<span class="fl">        - sub-sub-item 1 </span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">*</span><span class="st"> </span>unordered list
+    <span class="op">+</span><span class="st"> </span>sub<span class="op">-</span>item <span class="dv">1</span>
+    <span class="op">+</span><span class="st"> </span>sub<span class="op">-</span>item <span class="dv">2</span>
+        <span class="op">-</span><span class="st"> </span>sub<span class="op">-</span>sub<span class="op">-</span>item <span class="dv">1</span> </code></pre></div>
 <p>yields:</p>
 <ul>
 <li>unordered list
@@ -231,10 +232,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul>
 <p>Orded lists work likewise:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">1. <span class="fl">ordered list</span>
-<span class="fl">2. item 2</span>
-<span class="fl">    i. sub-item 1</span>
-<span class="fl">        a. sub-sub-item 1 </span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>. ordered list
+<span class="dv">2</span>. item <span class="dv">2</span>
+    i. sub<span class="op">-</span>item <span class="dv">1</span>
+        a. sub<span class="op">-</span>sub<span class="op">-</span>item <span class="dv">1</span> </code></pre></div>
 <p>yields:</p>
 <ol style="list-style-type: decimal">
 <li>ordered list</li>
@@ -250,10 +251,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="links-and-the-like" class="section level4">
 <h4><span class="header-section-number">5.2.1.4</span> Links and the like</h4>
 <p>Finally, links (to whatever) are inserted as with first square brackets and then parentheses, so:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="ot">[http://thomasdegraaff.nl/ResearchTools](ResearchTools)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[http<span class="op">:</span><span class="er">//</span>thomasdegraaff.nl<span class="op">/</span>ResearchTools](ResearchTools)</code></pre></div>
 <p>yields: <a href="ResearchTools">http://thomasdegraaff.nl/ResearchTools</a></p>
 <p>Inserting images works likewise, but then with a exclamation mark in front, then a caption in square brackets and then a path to where the image can be found, so:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="al">![Social networks with R](Network.png)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">!</span>[Social networks with R](Network.png)</code></pre></div>
 <p>displaus the Network.png picture as follows:</p>
 <div class="figure">
 <img src="network.png" alt="Social networks with R" />
@@ -264,30 +265,73 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="the-yaml" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> The YAML</h3>
 <p>YAML stands for <em>Yet Another Meta Language</em> and is to be regarded as meta-data. It says something how your contents should look like and typically instructions come in key-value pairs. As an example <code>title: &quot;Tutorial 1&quot;</code> denotes that the title of the document is “Tutorial 1”. There are some other variables, but typically they are filled in by RStudio itself. YAML always come between <code>---</code> chunks at the <em>beginning</em> of your document, so a full example would be:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">---
-title: &quot;Tutorial 1&quot;
-author: &quot;Thomas de Graaff&quot;
----</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">---</span>
+title<span class="op">:</span><span class="st"> &quot;Tutorial 1&quot;</span>
+author<span class="op">:</span><span class="st"> &quot;Thomas de Graaff&quot;</span>
+<span class="op">---</span></code></pre></div>
 <p>The most important thing to remember here is that this frontmatter, the YAML, says something about the content but is not part of the content itself.</p>
 </div>
 <div id="equations" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Equations</h3>
 <p>It is relatively straightforward to insert equations into a document, using LaTeX like syntax, which is remarkably similar as what you would do in Excel. In-line equations are denoted with a single pair of dollar signs. Stand alone equations with double pairs of dollar signs. So</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown">While Einstein might favor $E = mc^2$, the formula that would do it for me would be:
-$$ Q^\ast = \sqrt{\frac{sDK}{h}}$$</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">While Einstein might favor <span class="op">$</span>E =<span class="st"> </span>mc<span class="op">^</span><span class="dv">2</span><span class="op">$</span>, the formula that would do it <span class="cf">for</span> me would be<span class="op">:</span>
+<span class="er">$$</span><span class="st"> </span>Q<span class="op">^</span>\ast =<span class="st"> </span>\sqrt{\frac{sDK}{h}}<span class="op">$</span><span class="er">$</span></code></pre></div>
 <p>yields:</p>
 <p>While Einstein might favor <span class="math inline">\(E = mc^2\)</span>, the formula that would do it for me would be: <span class="math display">\[ Q^\ast = \sqrt{\frac{sDK}{h}}\]</span></p>
-<p>The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called <a href="https://www.mathjax.org/">MathJax</a>.</p>
+<p>The formulas are automatically parsed to a html like object through an integrated built-in Javascript program called <a href="https://www.mathjax.org/">MathJax</a>. See for some background material concerning LaTeX equations this <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">Wikibook</a>.</p>
 </div>
 </div>
 <div id="literate-programming" class="section level2">
 <h2><span class="header-section-number">5.3</span> Literate programming</h2>
-<p>Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most famous mark-up languages—LaTeX).</p>
+<p>Literate programming is a concept initially coined by the very distinguished computer scientist Donald Knuth (the same guy who wrote one the most (in)famous mark-up languages of them all—LaTeX). Literate programming basically means that code and text (documentation) are written together, which is wonderful for, e.g., reproducible research. With one command both text (say your paper) and the analysis are generated.</p>
+<p>Whether literate programming is always a good idea for a larger project is debatable. Some people argue to keep code and text (documentation) separated. However, for educational and smaller scientific purposes, such as theses, papers and tutorials, it can be a great tool. Fortunately, R studio and RMarkdown provide a great and relatively straightforward way to engage in literate programming with the use of the package <code>knitr</code> (see as well this <a href="https://yihui.name/knitr/">website</a>).</p>
+<p><code>knitr</code> is very powerful, but for now I just give the basics. Say, one invokes the car dataset and would like to perform a regression and a scatterplot, then the following might do this trick:</p>
+<p><code>```{r}</code></p>
+<p><code>data(&quot;cars&quot;)    # Use built in dataset</code></p>
+<p><code>summary(cars)</code></p>
+<p><code>plot(cars$speed, cars$dist)</code></p>
+<p><code>summary(lm(dist~speed, data = cars))</code></p>
+<p><code>```</code></p>
+<p>Which renders:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;cars&quot;</span>)    <span class="co"># Use built in dataset </span>
+<span class="kw">summary</span>(cars)</code></pre></div>
+<pre><code>##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(cars<span class="op">$</span>speed, cars<span class="op">$</span>dist)</code></pre></div>
+<p><img src="ResearchTools_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(dist<span class="op">~</span>speed, <span class="dt">data =</span> cars))</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -29.069  -9.525  -2.272   9.215  43.201 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -17.5791     6.7584  -2.601   0.0123 *  
+## speed         3.9324     0.4155   9.464 1.49e-12 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 15.38 on 48 degrees of freedom
+## Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 
+## F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12</code></pre>
+<p><code>knitr</code> can deal with various options, so as to hide the results or the code. Even different programming languages such as Python or Bash can be indicated as for proper syntax highlighting. For inline code one use backticks and the indicate r, such as around r 1+2, which renders in 3.</p>
 </div>
 <div id="exporting-knitting-to-html-pdf-or-word" class="section level2">
 <h2><span class="header-section-number">5.4</span> Exporting (“knitting”) to html, pdf or Word</h2>
+<p>Perhaps the biggest advantage of using (R) Markdown is that it is all just plain text. And as such, it can be easily exported to other (prettier) formats, such as html or pdf. RMarkdown documents can actually be exported to Word documents, although that is typically less pretty. If you would like to convert to pdf then you need a LaTeX engine installed on your computer. And that is quite a hefty download. However, on the plus side, just download and install it and under the hood of RStudio all the magic happens. So, you can have nice and pretty LaTeX document without actually touching upon LaTeX mark-up code (which, believe me, is not that pretty).</p>
 <div id="exporting-to-presentations" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Exporting to presentations</h3>
+<p>There are kinds of other benefits to using RMarkdown, but a <strong>big</strong> one is that it is pretty easy to make presentation slides (using <code>File &gt; New File &gt; R Markdown &gt; Presentation</code>). So you can create a fancy html presentation with proper equations, code with syntax highlighting and figures (or statistical output if really wanted).</p>
+<p>Better, when LaTeX is installed you can create a LaTeX (beamer) presentation on the fly and looking all nerdy with it! And in the output options you can easily indicate the theme and colorscheme (e.g., my lecture slides use the Darmstadt-beaver combination).</p>
 </div>
 </div>
 <div id="as-conclusion-some-final-remarks" class="section level2">

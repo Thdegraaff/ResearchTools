@@ -880,12 +880,12 @@ checking this with
 
 \begin{verbatim}
 ##          y         x
-## 1 5.953196 0.3967588
-## 2 4.885434 0.4800479
-## 3 4.108080 0.3855051
-## 4 4.343306 0.5235265
-## 5 6.942139 0.8681887
-## 6 3.268571 0.3504102
+## 1 5.252072 0.5576394
+## 2 2.891267 0.2462099
+## 3 3.099801 0.4391265
+## 4 3.483048 0.2442348
+## 5 7.467587 0.7253978
+## 6 4.707871 0.4685683
 \end{verbatim}
 
 indeed shows the first 6 combination of \(x\) and \(y\). If we now
@@ -928,7 +928,7 @@ results:
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##       1.879        6.034
+##       1.867        6.359
 \end{verbatim}
 
 But, you want more, right? Standard errors, t-statistics, R-squares, the
@@ -947,19 +947,19 @@ gives you the following outcome
 ## lm(formula = y ~ x, data = df)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -2.18853 -0.68889  0.03957  0.64725  2.00197 
+##     Min      1Q  Median      3Q     Max 
+## -2.2285 -0.7077 -0.1157  0.7344  2.4220 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   1.8787     0.1911   9.829 2.84e-16 ***
-## x             6.0339     0.3367  17.923  < 2e-16 ***
+## (Intercept)   1.8674     0.1878   9.944   <2e-16 ***
+## x             6.3590     0.3506  18.136   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9398 on 98 degrees of freedom
-## Multiple R-squared:  0.7662, Adjusted R-squared:  0.7639 
-## F-statistic: 321.2 on 1 and 98 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9918 on 98 degrees of freedom
+## Multiple R-squared:  0.7704, Adjusted R-squared:  0.7681 
+## F-statistic: 328.9 on 1 and 98 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 Interestingly, our parameters are close to 2 and 6, but not that close
@@ -1751,6 +1751,7 @@ text}\label{r-markdown-your-life-in-plain-text}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(}\StringTok{"rmarkdown"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(}\StringTok{"knitr"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1808,9 +1809,9 @@ level of the header. So:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{# Header 1}
-\FunctionTok{## (Sub-)header 2}
-\FunctionTok{## (Subsub-) header 3}
+\CommentTok{# Header 1}
+\NormalTok{## (Sub-)header 2}
+\NormalTok{## (Subsub-) header 3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1822,7 +1823,7 @@ straightforward and works as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{*Italics*; **bold** and }\BaseNTok{`verbatim`} 
+\OperatorTok{*}\NormalTok{Italics}\OperatorTok{*}\NormalTok{; }\OperatorTok{**}\NormalTok{bold}\OperatorTok{**}\StringTok{ }\NormalTok{and }\StringTok{`}\DataTypeTok{verbatim}\StringTok{`} 
 \end{Highlighting}
 \end{Shaded}
 
@@ -1835,10 +1836,10 @@ four space are needed), so
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{* }\FloatTok{unordered list}
-\FloatTok{    + sub-item 1}
-\FloatTok{    + sub-item 2}
-\FloatTok{        - sub-sub-item 1 }
+\OperatorTok{*}\StringTok{ }\NormalTok{unordered list}
+    \OperatorTok{+}\StringTok{ }\NormalTok{sub}\OperatorTok{-}\NormalTok{item }\DecValTok{1}
+    \OperatorTok{+}\StringTok{ }\NormalTok{sub}\OperatorTok{-}\NormalTok{item }\DecValTok{2}
+        \OperatorTok{-}\StringTok{ }\NormalTok{sub}\OperatorTok{-}\NormalTok{sub}\OperatorTok{-}\NormalTok{item }\DecValTok{1} 
 \end{Highlighting}
 \end{Shaded}
 
@@ -1868,10 +1869,10 @@ Orded lists work likewise:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{1. }\FloatTok{ordered list}
-\FloatTok{2. item 2}
-\FloatTok{    i. sub-item 1}
-\FloatTok{        a. sub-sub-item 1 }
+\DecValTok{1}\NormalTok{. ordered list}
+\DecValTok{2}\NormalTok{. item }\DecValTok{2}
+\NormalTok{    i. sub}\OperatorTok{-}\NormalTok{item }\DecValTok{1}
+\NormalTok{        a. sub}\OperatorTok{-}\NormalTok{sub}\OperatorTok{-}\NormalTok{item }\DecValTok{1} 
 \end{Highlighting}
 \end{Shaded}
 
@@ -1907,7 +1908,7 @@ and then parentheses, so:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\OtherTok{[http://thomasdegraaff.nl/ResearchTools](ResearchTools)}
+\NormalTok{[http}\OperatorTok{:}\ErrorTok{//}\NormalTok{thomasdegraaff.nl}\OperatorTok{/}\NormalTok{ResearchTools](ResearchTools)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1919,7 +1920,7 @@ image can be found, so:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\AlertTok{![Social networks with R](Network.png)}
+\OperatorTok{!}\NormalTok{[Social networks with R](Network.png)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1944,10 +1945,10 @@ be:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{---}
-\NormalTok{title: "Tutorial 1"}
-\NormalTok{author: "Thomas de Graaff"}
-\NormalTok{---}
+\OperatorTok{---}
+\NormalTok{title}\OperatorTok{:}\StringTok{ "Tutorial 1"}
+\NormalTok{author}\OperatorTok{:}\StringTok{ "Thomas de Graaff"}
+\OperatorTok{---}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1964,8 +1965,8 @@ signs. Stand alone equations with double pairs of dollar signs. So
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{While Einstein might favor $E = mc^2$, the formula that would do it for me would be:}
-\NormalTok{$$ Q^\textbackslash{}ast = \textbackslash{}sqrt\{\textbackslash{}frac\{sDK\}\{h\}\}$$}
+\NormalTok{While Einstein might favor }\OperatorTok{$}\NormalTok{E =}\StringTok{ }\NormalTok{mc}\OperatorTok{^}\DecValTok{2}\OperatorTok{$}\NormalTok{, the formula that would do it }\ControlFlowTok{for}\NormalTok{ me would be}\OperatorTok{:}
+\ErrorTok{$$}\StringTok{ }\NormalTok{Q}\OperatorTok{^}\NormalTok{\textbackslash{}ast =}\StringTok{ }\NormalTok{\textbackslash{}sqrt\{\textbackslash{}frac\{sDK\}\{h\}\}}\OperatorTok{$}\ErrorTok{$}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1976,19 +1977,133 @@ for me would be: \[ Q^\ast = \sqrt{\frac{sDK}{h}}\]
 
 The formulas are automatically parsed to a html like object through an
 integrated built-in Javascript program called
-\href{https://www.mathjax.org/}{MathJax}.
+\href{https://www.mathjax.org/}{MathJax}. See for some background
+material concerning LaTeX equations this
+\href{https://en.wikibooks.org/wiki/LaTeX/Mathematics}{Wikibook}.
 
 \subsection{Literate programming}\label{literate-programming}
 
 Literate programming is a concept initially coined by the very
 distinguished computer scientist Donald Knuth (the same guy who wrote
-one the most famous mark-up languages---LaTeX).
+one the most (in)famous mark-up languages of them all---LaTeX). Literate
+programming basically means that code and text (documentation) are
+written together, which is wonderful for, e.g., reproducible research.
+With one command both text (say your paper) and the analysis are
+generated.
+
+Whether literate programming is always a good idea for a larger project
+is debatable. Some people argue to keep code and text (documentation)
+separated. However, for educational and smaller scientific purposes,
+such as theses, papers and tutorials, it can be a great tool.
+Fortunately, R studio and RMarkdown provide a great and relatively
+straightforward way to engage in literate programming with the use of
+the package \texttt{knitr} (see as well this
+\href{https://yihui.name/knitr/}{website}).
+
+\texttt{knitr} is very powerful, but for now I just give the basics.
+Say, one invokes the car dataset and would like to perform a regression
+and a scatterplot, then the following might do this trick:
+
+\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
+
+\texttt{data("cars")\ \ \ \ \#\ Use\ built\ in\ dataset}
+
+\texttt{summary(cars)}
+
+\texttt{plot(cars\$speed,\ cars\$dist)}
+
+\texttt{summary(lm(dist\textasciitilde{}speed,\ data\ =\ cars))}
+
+\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+Which renders:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(}\StringTok{"cars"}\NormalTok{)    }\CommentTok{# Use built in dataset }
+\KeywordTok{summary}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(cars}\OperatorTok{$}\NormalTok{speed, cars}\OperatorTok{$}\NormalTok{dist)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(}\KeywordTok{lm}\NormalTok{(dist}\OperatorTok{~}\NormalTok{speed, }\DataTypeTok{data =}\NormalTok{ cars))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -29.069  -9.525  -2.272   9.215  43.201 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -17.5791     6.7584  -2.601   0.0123 *  
+## speed         3.9324     0.4155   9.464 1.49e-12 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 15.38 on 48 degrees of freedom
+## Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 
+## F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
+\end{verbatim}
+
+\texttt{knitr} can deal with various options, so as to hide the results
+or the code. Even different programming languages such as Python or Bash
+can be indicated as for proper syntax highlighting. For inline code one
+use backticks and the indicate r, such as around r 1+2, which renders in
+3.
 
 \subsection{\texorpdfstring{Exporting (``knitting'') to html, pdf or
 Word}{Exporting (knitting) to html, pdf or Word}}\label{exporting-knitting-to-html-pdf-or-word}
 
+Perhaps the biggest advantage of using (R) Markdown is that it is all
+just plain text. And as such, it can be easily exported to other
+(prettier) formats, such as html or pdf. RMarkdown documents can
+actually be exported to Word documents, although that is typically less
+pretty. If you would like to convert to pdf then you need a LaTeX engine
+installed on your computer. And that is quite a hefty download. However,
+on the plus side, just download and install it and under the hood of
+RStudio all the magic happens. So, you can have nice and pretty LaTeX
+document without actually touching upon LaTeX mark-up code (which,
+believe me, is not that pretty).
+
 \subsubsection{Exporting to
 presentations}\label{exporting-to-presentations}
+
+There are kinds of other benefits to using RMarkdown, but a \textbf{big}
+one is that it is pretty easy to make presentation slides (using
+\texttt{File\ \textgreater{}\ New\ File\ \textgreater{}\ R\ Markdown\ \textgreater{}\ Presentation}).
+So you can create a fancy html presentation with proper equations, code
+with syntax highlighting and figures (or statistical output if really
+wanted).
+
+Better, when LaTeX is installed you can create a LaTeX (beamer)
+presentation on the fly and looking all nerdy with it! And in the output
+options you can easily indicate the theme and colorscheme (e.g., my
+lecture slides use the Darmstadt-beaver combination).
 
 \subsection{As conclusion some final
 remarks}\label{as-conclusion-some-final-remarks}
@@ -2063,8 +2178,8 @@ Let us have a look at \texttt{g\_4}
 \end{Shaded}
 
 \begin{verbatim}
-## IGRAPH f7afb49 U--- 4 4 -- 
-## + edges from f7afb49:
+## IGRAPH e2d1114 U--- 4 4 -- 
+## + edges from e2d1114:
 ## [1] 1--2 2--3 3--4 1--4
 \end{verbatim}
 
@@ -2080,7 +2195,7 @@ leads to:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 The connectivity matrix of the network can be directly given by:
 
@@ -2115,7 +2230,7 @@ with as plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-55-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \texttt{+-+}, in combination with the command
@@ -2128,7 +2243,7 @@ Graphs may also be generated by using \texttt{-}, \texttt{-+} and
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
 
 Finally, we can influence the color and sizes (amongst others) of all
 the elements of the network, so:
@@ -2139,7 +2254,7 @@ the elements of the network, so:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 However, this way of creating of networks is not very efficient. We
 therefore offer some other ways as well, starting with created directly
@@ -2159,7 +2274,7 @@ nodes and no links.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 The other extreme is obviously the fully connected network. With the
 command \texttt{make\_full\_graph(40)} we can create a fully connected
@@ -2173,7 +2288,7 @@ time to create that network (with \(500 \times 500 - 500\) links)).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
 
 The \texttt{make\_star(500)} command creates a star network (or a
 hub-and-spoke network) with 500 nodes.
@@ -2185,7 +2300,7 @@ hub-and-spoke network) with 500 nodes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 With the \texttt{make\_tree(500,\ children\ =\ 3,\ mode="undirected}
 command, we create an undirected hierarchical tree with each time three
@@ -2198,7 +2313,7 @@ children
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 And the \texttt{graph.ring(500)} creates a ring (or line) structure
 where each node is connected to two other nodes in a sequential way
@@ -2210,7 +2325,7 @@ where each node is connected to two other nodes in a sequential way
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-63-1.pdf}
 
 For real-world networks we can use the following commands. First, the
 command \texttt{erdos.renyi.game(500,\ 0.005)} creates a random network,
@@ -2223,7 +2338,7 @@ node.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-64-1.pdf}
 
 For small-world networks, we need to rewire the ring network. We can do
 by the command \texttt{rewire} as follows:
@@ -2234,7 +2349,7 @@ by the command \texttt{rewire} as follows:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-64-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-65-1.pdf}
 
 Note that the probability of rewiring is now 0.5.
 
@@ -2250,7 +2365,7 @@ type of network with the following underlying formula
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-65-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-66-1.pdf}
 
 Note the tree-like structure.
 
@@ -2277,7 +2392,7 @@ Florence and looks like this
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-67-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 Another good but smaller source is the \texttt{igraphdata} package which
 actually contains a network of american domestic flights.
@@ -2300,7 +2415,7 @@ Something like (I took and modified the example from
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 Note that this only requires a from and to columns in a \texttt{.csv}
 file, which resembles trade, commuting, migration and transport networks
@@ -2337,7 +2452,7 @@ convert this data in a igraph structure with \texttt{graph.data.frame}.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{htmlwidget-6b6f5ccaa6a235481340}{}
+\hypertarget{htmlwidget-918dcad2f2f5653cb61c}{}
 
 \subsection{Network characteristics}\label{network-characteristics}
 
@@ -2383,27 +2498,27 @@ the number of connections. For our power-law network this amounts to
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 20 14 14  2  7  5  5  7  1  9  8 10  4  1 10  9  3  4  1  5  1  3  7
-##  [24]  1  6  5  6  2  2  3  4  9 10  7  6  3  3  5  7  6  6  1 10  3  3  2
-##  [47]  1  6  1  6  7  2  7  5  3  2  4  1  3  3  2  4  2  1  3  2  2  1  6
-##  [70]  3  4  4  8  1  6  1  1  1  4  3  2  5  2  1  2  2  3  1  3  4  1  4
-##  [93]  2  1  1  2  1  1  1  3  5  3  1  1  1  1  3  2  1  3  4  1  1  2  1
-## [116]  1  2  3  5  3  1  4  1  5  1  1  1  1  1  1  1  2  1  1  1  1  1  3
-## [139]  2  4  1  4  1  1  1  3  1  1  1  1  2  2  5  1  1  1  1  2  2  1  2
-## [162]  3  1  1  4  1  3  5  1  1  1  4  1  2  2  1  3  1  1  1  1  1  2  1
-## [185]  3  2  4  2  1  3  1  3  4  2  3  1  1  2  1  2  2  4  1  1  1  1  2
-## [208]  1  2  1  1  2  3  1  1  3  3  1  3  1  3  2  1  1  1  1  2  1  1  1
-## [231]  1  2  3  1  2  2  1  3  2  1  5  2  2  1  2  1  1  1  4  1  5  1  1
-## [254]  1  1  1  1  2  1  1  1  3  1  2  3  1  1  1  4  2  1  1  2  1  1  1
-## [277]  1  1  1  1  1  2  1  2  2  2  1  3  2  1  1  1  1  1  2  1  1  1  3
-## [300]  1  1  2  1  1  1  1  1  2  1  2  1  1  1  1  1  1  1  1  1  2  1  1
-## [323]  1  1  1  1  4  1  2  3  1  2  1  3  1  1  1  1  1  3  1  1  1  3  1
-## [346]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  2  1  1  3  1  1  1  1  2
-## [369]  1  1  2  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  2  1  1  1  1
-## [392]  1  2  1  1  2  1  1  1  1  1  3  1  1  1  1  1  2  1  1  1  2  1  1
-## [415]  1  2  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
-## [438]  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1
-## [461]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+##   [1]  9 13  9 18 14  8  8  3 11  4  6  9  2  4  2  2  3  1 13  1  1  4  2
+##  [24]  1  7  3  8  7  7  5  1  5  6  5  2  2  2  4  4  4  6  2  4  3  6  6
+##  [47]  6  1  4  3  5  8  4  5  2  7  2  4  1  5  3  1  4  3  2  1  3  2  2
+##  [70]  1  5  1  3  5  7  3  3  2  1  1  5  5  6  5  3  1  1  1  3  2  1  3
+##  [93]  2  5  5  1  2  2  3  2  1  4  1  1  5  4  1  1  1  2  1  2  3  3  2
+## [116]  4  3  4  5  5  3  2  1  1  3  3  3  2  5  1  2  2  1  1  1  2  1  4
+## [139]  1  3  1  2  3  3  3  2  2  1  1  2  2  4  3  1  1  1  1  1  2  2  5
+## [162]  4  2  1  5  1  1  1  2  1  1  3  1  3  1  1  1  1  1  1  1  1  1  1
+## [185]  2  1  1  1  1  3  1  2  1  2  1  1  2  7  2  1  4  1  3  1  1  2  1
+## [208]  1  1  4  1  1  1  1  1  1  1  2  1  4  1  2  1  1  1  4  4  1  1  3
+## [231]  3  1  1  1  2  5  1  2  1  1  3  1  3  2  2  2  1  1  1  1  1  1  1
+## [254]  2  1  1  1  1  1  2  1  1  1  1  3  3  1  2  1  1  1  1  1  1  3  3
+## [277]  1  1  1  1  1  1  1  1  1  1  1  3  2  1  1  1  1  1  1  1  1  1  4
+## [300]  1  1  1  2  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  3  1  1
+## [323]  2  1  1  1  1  1  1  2  1  1  2  1  1  1  2  1  1  1  2  1  2  1  1
+## [346]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [369]  1  1  2  1  1  3  1  1  2  1  1  1  1  2  2  2  1  1  1  1  1  1  1
+## [392]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  1  1  1  1
+## [415]  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+## [438]  1  1  1  1  1  1  1  3  1  1  1  1  1  1  1  1  2  2  1  1  1  1  1
+## [461]  1  1  2  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 ## [484]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
 \end{verbatim}
 
@@ -2415,7 +2530,7 @@ which is not that insightful, but a histogram is:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 Which is typical for a power-law.
 
@@ -2427,7 +2542,7 @@ The \texttt{degree\_distribution} is insightful here as well
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{ResearchTools_files/figure-latex/unnamed-chunk-75-1.pdf}
 
 Finally, we may be interested in the shortest path. This can easily be
 retrieved using distances (with underlying Dijkstra's algorithm) as
